@@ -1,2 +1,3 @@
-# WebINFO_reUser_2019
+![reUser logo](readme-images/reuser-logo.png)
+
 repo for operation "reUser"
