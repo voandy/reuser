@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="ex3.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <div id="wordTiles">
+        <!--
+        <div class=”char">w</div>
+        <div class=”char">o</div>
+        <div class=”char">r</div>
+        <div class=”char">d</div>
+        -->
+        </div>
+        <br><br>
+        <form onsubmit="getGuess()">
+            <label>Enter your guess</label>
+            <input type="text" name="guess">
+            <button>Submit</button>
+        </form>
+
+        <!-- the word to be guessed --> 
+        <p id="theword">The word</p>
+
+        <br><br>
+        Game board
+        <hr width=20%>
+            <table id="gameboard" border=1>
+                <tr>
+                <th>Incorrect Guesses</th>
+                <td>000</td>
+                </tr>
+                <tr>
+                <th>Remaining Guesses</th>
+                <td>000</td>
+                </tr>
+            </table>
+        <hr width=20%>
+
+        <br><br>
+        <form onclick="setWord('test')" onsubmit="return false">
+            <button>Set word to be guessed</button>
+            <input type="text" name="answer" id="answer">
+        </form>
+
+        </center>
+</body>
+</html>
