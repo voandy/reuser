@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title> INFO30005 :: JavaScript - Workshop #2 </title> </head>
+<body>
+<p id ='text'> Javascript DOM :: Changing paragraph style</p> <div>
+
+  <button id="style" onclick="change_style()">New style</button> </div>
+
+<script>
+
+  var odd_time = true;
+  var myText = document.getElementById("text");
+  var myButton = document.getElementById("style");
+  var myPrevText;
+
+  function change_style() {
+    
+    if (odd_time) {
+      ///myPrevText = JSON.parse(JSON.stringify(myText));
+      js_new_style();
+    }
+    else {
+      js_prev_style();
+    }
+  }
+
+  function js_new_style() {
+    myText.style.fontSize = "30px";
+    myText.style.fontStyle = "italic";
+    myText.style.color = "#ff0000";
+
+    myButton.innerHTML = "Previous Style";
+
+    odd_time = false;
+  }
+
+  function js_prev_style() {
+    myText = myPrevText;
+
+    myButton.innerHTML = "New Style";
+
+    odd_time = true;
+  }
+
+</script>
+
+</body>
+</html>
