@@ -20,13 +20,16 @@
         <br><br>
         <form onsubmit="getGuess()">
             <label>Enter your guess</label>
-            <input type="text" name="guess">
+            <input type="text" id="guess">
             <button>Submit</button>
         </form>
 
         <!-- the word to be guessed --> 
-        <p id="theword">The word</p>
+        <p id="theword">
+            <h1>The word</h1>
+        </p>
 
+        <!-- the game table, showing other details -->
         <br><br>
         Game board
         <hr width=20%>
@@ -42,10 +45,11 @@
             </table>
         <hr width=20%>
 
+        <!-- the word to be guessed -->
         <br><br>
-        <form onclick="setWord('test')" onsubmit="return false">
-            <button>Set word to be guessed</button>
-            <input type="text" name="answer" id="answer">
+        <form>
+            <button onclick="getAnswer()">Set word to be guessed</button>
+            <input type="text" id="answer">
         </form>
 
         </center>

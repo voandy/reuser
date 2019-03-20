@@ -1,8 +1,24 @@
 
+// get the value of the guess
+function getGuess(){
+    var guess = document.getElementById("guess").value;
+}
+
+// get value of the answer
+function getAnswer(){
+    var ans = document.getElementById("answer").value;
+}
+
+
+
+
+/* ------------------------------------------------ */
+
 let gameState = {
     incorrectGuesses : [],
     remainingGuesses : 10
     };
+
     function setWord (word) {
         //set word to be guessed
             
@@ -27,13 +43,3 @@ let gameState = {
     //reset the game (set new word to be guessed, clean word tiles, incorrect
     //guesses and remaining guesses
     }
-
-
-function getGuess(){
-
-    alert("Hello There");
-}
-
-function getAnswer(){
-
-}
