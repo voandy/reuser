@@ -1,36 +1,43 @@
+    // global variables
+    var guess;
+    var ans;
 
-// get the value of the guess
-function getGuess(){
-    var guess = document.getElementById("guess").value;
-}
+    // get the value of the guess
+    function getGuess(){
+        guess = document.getElementById("guess").value;
 
-// get value of the answer
-function getAnswer(){
-    var ans = document.getElementById("answer").value;
-}
+        check(guess);
+    }
+
+    // get value of the answer
+    function getAnswer(){
+        ans = document.getElementById("answer").value;
+    }
 
 
+    /* ------------------------------------------------ */
 
-
-/* ------------------------------------------------ */
-
-let gameState = {
-    incorrectGuesses : [],
-    remainingGuesses : 10
-    };
+    let gameState = {
+        incorrectGuesses : [],
+        remainingGuesses : 10
+        };
 
     function setWord (word) {
         //set word to be guessed
-            
-        var ans = document.getElementById("answer").value;
-        
-        document.getElementById("theword").innerHTML = ans;
     }
     function validate (guess) {
-    //validate the input from the form (letter)
+        //validate the input from the form (letter)
     }
     function check (guess) {
-    //check if the guess is correct
+        //check if the guess is correct
+        console.log(guess + "&" + ans);
+
+        if(guess !== ans){
+            alert("false");
+        }
+        else{
+            alert("true");
+        }
     }
     function updateWordTiles (index) {
     //update the tiles on the HTML
