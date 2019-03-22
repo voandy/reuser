@@ -5,31 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Guessing Game</title>
 </head>
 <body>
     <center>
-        <div id="wordTiles">
-        <!--
-        <div class=”char">w</div>
-        <div class=”char">o</div>
-        <div class=”char">r</div>
-        <div class=”char">d</div>
-        -->
-        </div>
-
         <!-- your GUESS here -->
         <br><br>
         <form>
             <label>Enter your guess</label>
             <input type="text" id="guess">
-            <button onclick="getGuess()">Submit</button>
+            <button type="button" onclick="getGuess()">Submit</button>
         </form>
 
         <!-- the word to be guessed --> 
-        <p id="theword">
-            <h1>The word</h1>
+        <p>
+            <h1 id="theWord">The word</h1>
         </p>
+
+        <!-- previously guessed words -->
+        <p id="guessedWords"></p>           
 
         <!-- the game table, showing other details -->
         <br><br>
@@ -38,11 +32,11 @@
             <table id="gameboard" border=1>
                 <tr>
                 <th>Incorrect Guesses</th>
-                <td>000</td>
+                <td id="wrong">000</td>
                 </tr>
                 <tr>
                 <th>Remaining Guesses</th>
-                <td>000</td>
+                <td id="chanceLeft">010</td>
                 </tr>
             </table>
         <hr width=20%>
@@ -50,10 +44,10 @@
         <!-- the word to be guessed -->
         <br><br>
         <form>
-            <button onclick="getAnswer()">Set word to be guessed</button>
+            <button type="button" onclick="getAnswer()">Set word to be guessed</button>
             <input type="text" id="answer">
         </form>
 
-        </center>
+    </center>
 </body>
 </html>
