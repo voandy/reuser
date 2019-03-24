@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Guessing Game</title>
+</head>
+<body>
+  <center>
+    <div id="wordTiles">
+      <!--
+      <div class=”char">w</div>
+      <div class=”char">o</div>
+      <div class=”char">r</div>
+      <div class=”char">d</div>
+    -->
+  </div>
+  <br><br>
+  <form id="word-game">
+    <label>Enter your guess</label>
+    <input type="text" name="guess" id="guess-id">
+    <button>Submit</button>
+  </form>
+  <br><br>
+  <br><br>
+  Game board
+  <hr width=20%>
+  <table id="gameboard" border=1>
+    <tr>
+      <th>Incorrect Guesses</th>
+      <td id='incorrectCount'>000</td>
+    </tr>
+    <tr>
+      <th>Remaining Guesses</th>
+      <td id='remainingCount'>000</td>
+    </tr>
+  </table>
+  <hr width=20%>
+  <br><br>
+  <button id="set-word">Set word to be guessed</button>
+</center>
+<script src="script.js"></script>
+</body>
+</html>
