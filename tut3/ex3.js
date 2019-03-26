@@ -30,7 +30,7 @@
         gameState.remainingGuesses --;
 
         // correct answer
-        if (ans === guess){
+        if (ans == guess){
             index = 1;
             alert("you win ! the answer was -> " + ans);
         }      
