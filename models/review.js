@@ -9,7 +9,6 @@ const reviewSchema = new Schema(
     // user who this review is for
     givenToEmail:String,
 
-
     title:String,
     contents:String,
     starRating:Number
