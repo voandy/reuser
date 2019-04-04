@@ -1,0 +1,23 @@
+{
+  "name": "reuser",
+  "version": "0.0.1",
+  "description": "Backend skeleton",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voandy/info30005-2019-reuser.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/voandy/info30005-2019-reuser/issues"
+  },
+  "homepage": "https://github.com/voandy/info30005-2019-reuser#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.21"
+  }
+}
