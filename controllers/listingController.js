@@ -36,4 +36,5 @@ module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
+
 module.exports.filterListings = filterListings;

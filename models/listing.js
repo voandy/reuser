@@ -5,7 +5,7 @@ var enums = require('./enums');
 const listingSchema = new Schema(
   {
     // user who made this listing
-    userEmail:String,
+    userId:String,
 
     title:String,
     datePosted:{type: Date, default: Date.now},
@@ -25,8 +25,8 @@ const listingSchema = new Schema(
     // min number of thanks required to view listing
     minVisibility:Number,
 
-    // array of user emails who have left thanks for this listing
-    thanksReEmail:[String],
+    // array of user ids who have given thanks for this listing
+    thanksRecId:[String],
 
     // whether the listing is active or archived
     isActive:Boolean

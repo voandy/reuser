@@ -6,8 +6,8 @@ var getAll = function(req,res){
   // TODO
 };
 
-// get user by email
-var getByEmail = function(req,res){
+// get user by id
+var getById = function(req,res){
   // TODO
 };
 
@@ -26,8 +26,15 @@ var updateByEmail = function(req,res){
   // TODO
 };
 
+// get user by email
+var getByEmail = function(req,res){
+  // TODO
+};
+
 module.exports.getAll = getAll;
-module.exports.getByEmail = getByEmail;
+module.exports.getById = getById;
 module.exports.create = create;
-module.exports.deleteByEmail = deleteByEmail;
-module.exports.updateByEmail = updateByEmail;
+module.exports.deleteById = deleteById;
+module.exports.updateById = updateById;
+
+module.exports.getByEmail = getByEmail;

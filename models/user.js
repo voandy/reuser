@@ -23,13 +23,11 @@ const userSchema = new Schema(
     // derived star rating average
     starRatingAvg:Number,
 
-    // array of users emails who this user has reviewed
-    reviewsGiven:[String],
-
     // array of ids of listings this user has created
     listingIds:[String],
-    // array of ids of reviews this user has received
-    reviewIds:[String]
+
+    // array of ids for review received
+    reviewReceived:[String]
   }
 );
 

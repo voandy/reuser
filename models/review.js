@@ -5,9 +5,9 @@ var enums = require('./enums');
 const reviewSchema = new Schema(
   {
     // user who left this review
-    leftByEmail:String,
+    leftById:String,
     // user who this review is for
-    givenToEmail:String,
+    givenToId:String,
 
     title:String,
     contents:String,

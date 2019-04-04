@@ -10,13 +10,15 @@ const reviewCont = require('../controllers/reviewController.js');
 // get all users
 router.get('/user', userCont.getAll);
 // get user by email
-router.get('/user/email/:email', userCont.getByEmail);
+router.get('/user/email/:email', userCont.getById);
 // create user
 router.post('/user', userCont.create);
-// delete user by email
-router.delete('user/email/:email', userCont.deleteByEmail);
-// update user by email
-router.put('user/email/:email', userCont.updateByEmail);
+// delete user by id
+router.delete('user/id/:id', userCont.deleteById);
+// update user by id
+router.put('user/id/:id', userCont.updateById);
+// get user by email
+router.put('user/email/:email', userCont.getByEmail);
 
 
 /* LISTING ROUTS */
