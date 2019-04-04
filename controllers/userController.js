@@ -17,12 +17,12 @@ var create = function(req,res){
 };
 
 // delete user by email
-var deleteByEmail = function(req,res){
+var deleteById = function(req,res){
   // TODO
 };
 
 // update user by email
-var updateByEmail = function(req,res){
+var updateById = function(req,res){
   // TODO
 };
 
