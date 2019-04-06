@@ -9,8 +9,8 @@ const reviewCont = require('../controllers/reviewController.js');
 
 // get all users
 router.get('/user', userCont.getAll);
-// get user by email
-router.get('/user/email/:email', userCont.getById);
+// get user by id
+router.get('/user/id/:id', userCont.getById);
 // create user
 router.post('/user', userCont.create);
 // delete user by id

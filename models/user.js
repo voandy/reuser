@@ -17,6 +17,8 @@ const userSchema = new Schema(
     addressLine2:String,
     suburb:String,
     state:{type: String, enum: Object.values(enums.State)},
+    postcode:Number,
+
     phoneNo:String,
 
     thanksReceived:Number,
@@ -27,7 +29,7 @@ const userSchema = new Schema(
     listingIds:[String],
 
     // array of ids for review received
-    reviewReceived:[String]
+    reviewIds:[String]
   }
 );
 

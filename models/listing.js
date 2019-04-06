@@ -4,9 +4,6 @@ var enums = require('./enums');
 
 const listingSchema = new Schema(
   {
-    // user who made this listing
-    userId:String,
-
     title:String,
     datePosted:{type: Date, default: Date.now},
     dateExpires:Date,
@@ -15,6 +12,7 @@ const listingSchema = new Schema(
     addressLine2:String,
     suburb:String,
     state:{type: String, enum: Object.values(enums.State)},
+    postcode:Number,
 
     // derived from address using GoogleMaps API, required for filtering
     longitude:Number,
