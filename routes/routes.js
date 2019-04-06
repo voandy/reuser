@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const userCont = require('../controllers/userController.js');
-const listingCont = require('../controllers/listingController.js');
-const reviewCont = require('../controllers/reviewController.js');
+const userCont = require('../controllers/user-controller.js');
+const listingCont = require('../controllers/listing-controller.js');
+const reviewCont = require('../controllers/review-controller.js');
 
 /* USER ROUTS */
 
