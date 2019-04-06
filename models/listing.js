@@ -8,17 +8,19 @@ const listingSchema = new Schema(
     datePosted:{type: Date, default: Date.now},
     dateExpires:Date,
 
-    addressLine1:String,
-    addressLine2:String,
-    suburb:String,
-    state:{type: String, enum: Object.values(enums.State)},
-    postcode:Number,
+    address: {
+      addressLine1:String,
+      addressLine2:String,
+      suburb:String,
+      state:{type: String, enum: Object.values(enums.States)},
+      postcode:Number,
+    },
 
     // derived from address using GoogleMaps API, required for filtering
     longitude:Number,
     latitude:Number,
 
-    category:{type: String, enum: Object.values(enums.Category)},
+    category:{type: String, enum: Object.values(enums.Categories)},
 
     // min number of thanks required to view listing
     minVisibility:Number,
@@ -30,5 +32,11 @@ const listingSchema = new Schema(
     isActive:Boolean
   }
 );
+
+// assign state object to listingSchema
+listingSchema.statics.States = enums.States;
+
+// assign category object to listingSchema
+listingSchema.statics.Categories = enums.Categories;
 
 mongoose.model('listing',listingSchema);

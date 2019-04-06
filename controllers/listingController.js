@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Listing = mongoose.model('listing');
-var listingFunc = require('./functions/listing-functions.js');
 
 // get all listings
 var getAll = function(req,res){
@@ -25,18 +24,46 @@ var getById = function(req,res){
 };
 
 // create listing
-// TODO: As well as creating a listing object the create function should get
-// the user who made it and add its own id as a foreign key for that user
 var create = function(req,res){
-  // TODO
+  var listing = new Listing({
+    title:req.body.title,
+    datePosted: new Date(),
+    dateExpires:req.body.dateExpires,
+
+    address: {
+      addressLine1:req.body.addressLine1,
+      addressLine2:req.body.addressLine2,
+      suburb:req.body.suburb,
+      state:req.body.state,
+      postcode:req.body.postcode,
+    },
+
+    longitude:0,
+    latitude:0,
+
+    category:req.body.category,
+
+    minVisibility:req.body.minVisibility,
+
+    thanksRecId:[],
+
+    isActive:1
+  });
+  listing.save(function(err,newListing){
+    if(!err){
+      res.send(newListing);
+    }else{
+      res.status(400).send(err);
+    }
+  })
 };
 
 // delete listing by id
 var deleteById = function(req,res){
   var listingId = req.params.id;
-  Listing.findByIdAndRemove(userId, function(err, listing){
+  Listing.findByIdAndDelete(listingId, function(err, listing){
     if (!err){
-      res.send(listingId + "deleted.");
+      res.send(listingId + " deleted.");
     }else{
       res.status(404);
     }
@@ -44,13 +71,12 @@ var deleteById = function(req,res){
 };
 
 // update listing by id
-// TODO: Check functionality
 var updateById = function(req,res){
   var listingId = req.params.id;
   var updatedFields = req.body;
-  Listing.findByIdAndUpdate(userId, req.body, function(err, listing){
+  Listing.findByIdAndUpdate(listingId, req.body, function(err, listing){
     if (!err){
-      res.send(listingId + "updated.");
+      res.send(listingId + " updated.");
     }else{
       res.status(404);
     }

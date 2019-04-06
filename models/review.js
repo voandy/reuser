@@ -8,7 +8,7 @@ const reviewSchema = new Schema(
 
     title:String,
     contents:String,
-    starRating:Number
+    starRating:{type:Number, min:0, max:5}
   }
 );
 

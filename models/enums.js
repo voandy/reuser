@@ -1,5 +1,5 @@
 // define states
-const State = Object.freeze({
+const States = Object.freeze({
   VIC: "VIC",
   NSW: "NSW",
   QLD: "QLD",
@@ -10,7 +10,7 @@ const State = Object.freeze({
 });
 
 // define categories
-const Category = Object.freeze({
+const Categories = Object.freeze({
   Materials: "materials",
   Food: "food",
   Clothing: "clothing",
@@ -20,5 +20,5 @@ const Category = Object.freeze({
   Misc: "misc",
 });
 
-module.exports.State = State;
-module.exports.Category = Category;
+module.exports.States = States;
+module.exports.Categories = Categories;

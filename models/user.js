@@ -13,11 +13,13 @@ const userSchema = new Schema(
     firstName:String,
     lastName:String,
 
-    addressLine1:String,
-    addressLine2:String,
-    suburb:String,
-    state:{type: String, enum: Object.values(enums.State)},
-    postcode:Number,
+    address: {
+      addressLine1:String,
+      addressLine2:String,
+      suburb:String,
+      state:{type: String, enum: Object.values(enums.States)},
+      postcode:Number, //TODO: Probably better as a validated string
+    },
 
     phoneNo:String,
 
@@ -32,5 +34,8 @@ const userSchema = new Schema(
     reviewIds:[String]
   }
 );
+
+// assign state object to userSchema
+userSchema.statics.States = enums.States;
 
 mongoose.model('user',userSchema);

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Review = mongoose.model('review');
-var reviewFunc = require('./functions/review-functions.js');
 
 // get all reviews
 var getAll = function(req,res){
@@ -26,10 +25,21 @@ var getById = function(req,res){
 };
 
 // create review
-// TODO: As well as creating a review object the create function should get
-// the user the rewiew is for and add its own id as a foreign key for that user
 var create = function(req,res){
-  // TODO
+  var review = new Review({
+    leftById:req.body.leftById,
+
+    title:req.body.title,
+    contents:req.body.contents,
+    starRating:req.body.starRating
+  });
+  review.save(function(err,newReview){
+    if(!err){
+      res.send(newReview);
+    }else{
+      res.status(400).send(err);
+    }
+  });
 };
 
 // delete review by id
@@ -37,7 +47,7 @@ var deleteById = function(req,res){
   var reviewId = req.params.id;
   Review.findByIdAndRemove(reviewId, function(err, review){
     if (!err){
-      res.send(reviewId + "deleted.");
+      res.send(reviewId + " deleted.");
     }else{
       res.status(404);
     }
@@ -45,13 +55,12 @@ var deleteById = function(req,res){
 };
 
 // update review by id
-// TODO: Check functionality
 var updateById = function(req,res){
   var reviewId = req.params.id;
   var updatedFields = req.body;
-  User.findByIdAndUpdate(reviewId, req.body, function(err, review){
+  Review.findByIdAndUpdate(reviewId, req.body, function(err, review){
     if (!err){
-      res.send(reviewId + "updated.");
+      res.send(reviewId + " updated.");
     }else{
       res.status(404);
     }
