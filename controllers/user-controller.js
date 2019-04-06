@@ -64,6 +64,7 @@ var create = function(req,res){
 // TODO: Deleting a user should also delete associated listings and reviews
 var deleteById = function(req,res){
   var userId = req.params.id;
+
   User.findByIdAndDelete(userId, function(err, user){
     if (!err){
       res.send(userId + " deleted.");
@@ -77,6 +78,10 @@ var deleteById = function(req,res){
 var updateById = function(req,res){
   var userId = req.params.id;
   var updatedFields = req.body;
+
+  // TODO maybe? : what i think this should fix, but it aint working 
+  // User.findOneAndUpdate(userId, req.body, function(err, user){
+
   User.findByIdAndUpdate(userId, req.body, function(err, user){
     if (!err){
       res.send(userId + " updated.");
