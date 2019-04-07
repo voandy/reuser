@@ -14,7 +14,5 @@ var hashPassword = function(password, salt){
   return hash;
 }
 
-console.log(hashPassword("passw0rd", "0feb642d830a7f14"));
-
 module.exports.generateSalt = generateSalt;
 module.exports.hashPassword = hashPassword;
