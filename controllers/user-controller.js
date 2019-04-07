@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
 
+const cryptography = require("./cryptography/cryptography.js");
+
 // get all users
 var getAll = function(req,res){
   User.find(function(err,users){
@@ -26,12 +28,15 @@ var getById = function(req,res){
 
 // create user
 var create = function(req,res){
+  var salt = cryptography.generateSalt();
+  var hash = cryptography.hashPassword(req.body.password, salt);
+
   var user = new User({
     email:req.body.email,
     dateJoined: new Date(),
 
-    password:req.body.password,
-    passwordSalt:"salt",
+    password:hash,
+    passwordSalt:salt,
 
     firstName:req.body.firstName,
     lastName:req.body.lastName,
