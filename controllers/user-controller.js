@@ -79,10 +79,8 @@ var updateById = function(req,res){
   var userId = req.params.id;
   var updatedFields = req.body;
 
-  // TODO maybe? : what i think this should fix, but it aint working 
-  // User.findOneAndUpdate(userId, req.body, function(err, user){
-
-  User.findByIdAndUpdate(userId, req.body, function(err, user){
+  User.findByIdAndUpdate(userId, req.body, {runValidators:true},
+    function(err, user){
     if (!err){
       res.send(userId + " updated.");
     }else{

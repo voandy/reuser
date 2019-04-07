@@ -18,7 +18,7 @@ const userSchema = new Schema(
       addressLine2:String,
       suburb:String,
       state:{type: String, enum: Object.values(enums.States)},
-      postcode:Number, //TODO: Probably better as a validated string
+      postcode:{type:Number, min:0, max:9999}
     },
 
     phoneNo:String,
