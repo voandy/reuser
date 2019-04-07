@@ -19,6 +19,8 @@ router.delete('/user/id/:id', userCont.deleteById);
 router.put('/user/id/:id', userCont.updateById);
 // get user by email
 router.get('/user/email/:email', userCont.getByEmail);
+// add random users
+router.post('/user/n/:n', userCont.addRandom);
 
 
 /* LISTING ROUTS */
@@ -49,6 +51,8 @@ router.post('/review', reviewCont.create);
 router.delete('/review/id/:id', reviewCont.deleteById);
 // update review
 router.put('/review/id/:id', reviewCont.updateById);
+// add random reviews
+router.post('/review/n/:n', reviewCont.addRandom);
 
 
 module.exports = router;
