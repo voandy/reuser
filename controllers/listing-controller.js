@@ -9,12 +9,6 @@ const geocoder = NodeGeocoder({
   formatter: null
 });
 
-// geocoder.geocode("2 Alawara Ct, Burwood East VIC 3151", function(err, res){
-//   console.log(res[0].latitude);
-//   console.log(res[0].longitude);
-// });
-
-
 // get all listings
 var getAll = function(req,res){
   Listing.find(function(err,listings){
