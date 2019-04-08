@@ -32,7 +32,7 @@ var getById = function(req,res){
 };
 
 // create listing
-var create = function(req,res){
+var create = async (req,res) => {
   var address = req.body.addressLine1 + " " +
                 ((req.body.addressLine2 != null) ? req.body.addressLine2 : "") + ", " +
                 req.body.suburb + " " +
@@ -42,50 +42,50 @@ var create = function(req,res){
   var listing, latitude, longitude;
 
   // geocode concatenated address
-  geocoder.geocode(address, function(err, res){
+  await geocoder.geocode(address, function(err, res){
     if (!err){
       latitude = res[0].latitude;
       longitude = res[0].longitude;
     }else{
       res.status(400).send(err);
     }
-  }).then(function(){
-    // create the listing
-    listing = new Listing({
-      title:req.body.title,
-      datePosted: new Date(),
-      dateExpires:req.body.dateExpires,
-
-      address: {
-        addressLine1:req.body.addressLine1,
-        addressLine2:req.body.addressLine2,
-        suburb:req.body.suburb,
-        state:req.body.state,
-        postcode:req.body.postcode,
-      },
-
-      latitude:latitude,
-      longitude:longitude,
-
-      category:req.body.category,
-
-      minVisibility:req.body.minVisibility,
-
-      thanksRecId:[],
-
-      isActive:1
-    });
-
-    // send it to database
-    listing.save(function(err,newListing){
-      if(!err){
-        res.send(newListing);
-      }else{
-        res.status(400).send(err);
-      }
-    });
   });
-};
+
+  // create the listing
+  listing = new Listing({
+    title:req.body.title,
+    datePosted: new Date(),
+    dateExpires:req.body.dateExpires,
+
+    address: {
+      addressLine1:req.body.addressLine1,
+      addressLine2:req.body.addressLine2,
+      suburb:req.body.suburb,
+      state:req.body.state,
+      postcode:req.body.postcode,
+    },
+
+    latitude:latitude,
+    longitude:longitude,
+
+    category:req.body.category,
+
+    minVisibility:req.body.minVisibility,
+
+    thanksRecId:[],
+
+    isActive:1
+  });
+
+  // send it to database
+  listing.save(function(err,newListing){
+    if(!err){
+      res.send(newListing);
+    }else{
+      res.status(400).send(err);
+    }
+  });
+}
 
 // delete listing by id
 var deleteById = function(req,res){
