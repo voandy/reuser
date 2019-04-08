@@ -18,6 +18,7 @@
   "homepage": "https://github.com/voandy/info30005-2019-reuser#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "mongoose": "^5.4.21"
+    "mongoose": "^5.4.21",
+    "node-geocoder": "^3.22.0"
   }
 }

@@ -1,5 +1,19 @@
 const mongoose = require('mongoose');
 const Listing = mongoose.model('listing');
+const NodeGeocoder = require('node-geocoder');
+
+const geocoder = NodeGeocoder({
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: 'AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA',
+  formatter: null
+});
+
+// geocoder.geocode("2 Alawara Ct, Burwood East VIC 3151", function(err, res){
+//   console.log(res[0].latitude);
+//   console.log(res[0].longitude);
+// });
+
 
 // get all listings
 var getAll = function(req,res){
@@ -25,37 +39,58 @@ var getById = function(req,res){
 
 // create listing
 var create = function(req,res){
-  var listing = new Listing({
-    title:req.body.title,
-    datePosted: new Date(),
-    dateExpires:req.body.dateExpires,
+  var address = req.body.addressLine1 + " " +
+                ((req.body.addressLine2 != null) ? req.body.addressLine2 : "") + ", " +
+                req.body.suburb + " " +
+                req.body.state + " " +
+                req.body.postcode;
 
-    address: {
-      addressLine1:req.body.addressLine1,
-      addressLine2:req.body.addressLine2,
-      suburb:req.body.suburb,
-      state:req.body.state,
-      postcode:req.body.postcode,
-    },
+  var listing, latitude, longitude;
 
-    longitude:0,
-    latitude:0,
-
-    category:req.body.category,
-
-    minVisibility:req.body.minVisibility,
-
-    thanksRecId:[],
-
-    isActive:1
-  });
-  listing.save(function(err,newListing){
-    if(!err){
-      res.send(newListing);
+  // geocode concatenated address
+  geocoder.geocode(address, function(err, res){
+    if (!err){
+      latitude = res[0].latitude;
+      longitude = res[0].longitude;
     }else{
       res.status(400).send(err);
     }
-  })
+  }).then(function(){
+    // create the listing
+    listing = new Listing({
+      title:req.body.title,
+      datePosted: new Date(),
+      dateExpires:req.body.dateExpires,
+
+      address: {
+        addressLine1:req.body.addressLine1,
+        addressLine2:req.body.addressLine2,
+        suburb:req.body.suburb,
+        state:req.body.state,
+        postcode:req.body.postcode,
+      },
+
+      latitude:latitude,
+      longitude:longitude,
+
+      category:req.body.category,
+
+      minVisibility:req.body.minVisibility,
+
+      thanksRecId:[],
+
+      isActive:1
+    });
+
+    // send it to database
+    listing.save(function(err,newListing){
+      if(!err){
+        res.send(newListing);
+      }else{
+        res.status(400).send(err);
+      }
+    });
+  });
 };
 
 // delete listing by id
