@@ -37,6 +37,8 @@ router.delete('/listing/id/:id', listingCont.deleteById);
 router.put('/listing/id/:id', listingCont.updateById);
 // get listings filtered by location, category or search term
 router.get('/listing', listingCont.filterListings);
+// add random listings
+router.post('/listing/n/:n', listingCont.addRandom);
 
 
 /* REVIEW ROUTS */

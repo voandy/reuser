@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Listing = mongoose.model('listing');
+const faker = require('faker');
 
 // get all listings
 var getAll = function(req,res){
@@ -58,6 +59,44 @@ var create = function(req,res){
   })
 };
 
+// adds random listings
+var addRandom = function(req,res){
+  var numListings = req.params.n;
+  var categories = Object.values(Listing.Categories);
+
+  for(var i=0; i<numListings; i++){
+    var listing = new Listing({
+      title:faker.lorem.words(),
+      datePosted: new Date(),
+      dateExpires:faker.date.future(),
+
+      address:{
+        addressLine1:faker.address.streetAddress(),
+        suburb:faker.address.city(),
+        state:"VIC",
+        postcode:Math.floor(Math.random() * (3999 - 3000)) + 3000,
+      },
+
+      longitude:(Math.random() * (37.820528 - 37.765455) + 37.765455) * -1,
+      latitude:Math.random() * (145.020131 - 144.882132) + 144.882132,
+
+      category:categories[Math.floor(Math.random()*categories.length)],
+
+      minVisibility:0,
+
+      thanksRecId:[],
+
+      isActive:1
+    });
+    listing.save(function(err,newListing){
+      if(err){
+        res.status(400).send(err);
+      }
+    });
+  }
+  res.send("Added " + numListings + " listings.");
+}
+
 // delete listing by id
 var deleteById = function(req,res){
   var listingId = req.params.id;
@@ -95,3 +134,4 @@ module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 
 module.exports.filterListings = filterListings;
+module.exports.addRandom = addRandom;
