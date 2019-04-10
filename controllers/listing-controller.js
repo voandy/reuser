@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const Listing = mongoose.model('listing');
 const faker = require('faker');
+const NodeGeocoder = require('node-geocoder');
+
+const geocoder = NodeGeocoder({
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: 'AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA',
+  formatter: null
+});
 
 // get all listings
 var getAll = function(req,res){
@@ -25,8 +33,27 @@ var getById = function(req,res){
 };
 
 // create listing
-var create = function(req,res){
-  var listing = new Listing({
+var create = async (req,res) => {
+  var address = req.body.addressLine1 + " " +
+    ((req.body.addressLine2 != null) ? req.body.addressLine2 : "") + ", " +
+    req.body.suburb + " " +
+    req.body.state + " " +
+    req.body.postcode;
+
+  var listing, latitude, longitude;
+
+  // geocode concatenated address
+  await geocoder.geocode(address, function(err, res){
+    if (!err){
+      longitude = res[0].longitude;
+      latitude = res[0].latitude;
+    }else{
+      res.status(400).send(err);
+    }
+  });
+
+  // create the listing
+  listing = new Listing({
     title:req.body.title,
     datePosted: new Date(),
     dateExpires:req.body.dateExpires,
@@ -39,8 +66,8 @@ var create = function(req,res){
       postcode:req.body.postcode,
     },
 
-    longitude:0,
-    latitude:0,
+    longitude:longitude,
+    latitude:latitude,
 
     category:req.body.category,
 
@@ -50,14 +77,16 @@ var create = function(req,res){
 
     isActive:1
   });
+
+  // send it to database
   listing.save(function(err,newListing){
     if(!err){
       res.send(newListing);
     }else{
       res.status(400).send(err);
     }
-  })
-};
+  });
+}
 
 // adds random listings
 var addRandom = function(req,res){
