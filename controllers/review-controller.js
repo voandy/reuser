@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Review = mongoose.model('review');
 const faker = require('faker');
+const User = mongoose.model('user');
 
 // get all reviews
 var getAll = function(req,res){
@@ -27,12 +28,29 @@ var getById = function(req,res){
 
 // create review
 var create = function(req,res){
+  var userId = req.params.id;
+
   var review = new Review({
     leftById:req.body.leftById,
 
     title:req.body.title,
     contents:req.body.contents,
     starRating:req.body.starRating
+  });
+  
+  /// PROBLEM HERE
+  // updating user's reviewIds array with leftById
+  var newReviewIds = [];
+  User.findById(userId, function(err, user) {
+    var newReviewIds = user.reviewIds;
+    newReviewIds.push(review._id);
+  });
+  
+  // PROBLEM HERE
+  // assigning the updated reviewIds array belonging to user
+  User.findByIdAndUpdate(userId, { "reviewIds" : newReviewIds }, {runValidators:true}, 
+  function(err, user) {
+    console.log(user);
   });
   review.save(function(err,newReview){
     if(!err){
