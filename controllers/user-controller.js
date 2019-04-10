@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
 const faker = require('faker');
-
 const cryptography = require("./cryptography/cryptography.js");
+
+const Listing = mongoose.model('listing');
+const Review = mongoose.model('review');
 
 // get all users
 var getAll = function(req,res){
@@ -109,6 +111,20 @@ var addRandom = function(req,res){
 // TODO: Deleting a user should also delete associated listings and reviews
 var deleteById = function(req,res){
   var userId = req.params.id;
+
+  // delete associated listings and reviews
+  User.findById(userId, function(err, user){
+    user.listingIds.forEach(function(listingId){
+      Listing.findByIdAndDelete(listingId, function(err, listing){
+        // Some logging
+      });
+    });
+    user.reviewIds.forEach(function(reviewId){
+      Review.findByIdAndDelete(reviewId, function(err, review){
+        // Some logging
+      });
+    });
+  });
 
   User.findByIdAndDelete(userId, function(err, user){
     if (!err){
