@@ -70,6 +70,7 @@ var deleteById = function(req,res){
   var reviewId  = req.params.id;
   var userId    = req.params.user;
 
+
   // remove reviewId in User db
   User.findByIdAndUpdate(userId, {$pull: {reviewIds : reviewId } });
   
