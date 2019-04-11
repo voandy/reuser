@@ -48,7 +48,7 @@ router.get('/review', reviewCont.getAll);
 // get review by id
 router.get('/review/id/:id', reviewCont.getById);
 // create review
-router.post('/review/user_id/:id', reviewCont.create);
+router.post('/review', reviewCont.create);
 // delete review by id
 router.delete('/review/id/:id', reviewCont.deleteById);
 // update review

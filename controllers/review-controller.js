@@ -27,8 +27,10 @@ var getById = function(req,res){
 };
 
 // create review
-var create = function(req,res){
-  var userId = req.params.id;
+var create = function (req,res) {
+  // We can put it in the json since we're passing a json anyway
+  // var userId = req.params.id;
+  var userId = req.body.userId;
 
   var review = new Review({
     leftById:req.body.leftById,
@@ -37,27 +39,30 @@ var create = function(req,res){
     contents:req.body.contents,
     starRating:req.body.starRating
   });
-  
-  /// PROBLEM HERE
-  // updating user's reviewIds array with leftById
-  var newReviewIds = [];
-  User.findById(userId, function(err, user) {
-    var newReviewIds = user.reviewIds;
-    newReviewIds.push(review._id);
-  });
-  
-  // PROBLEM HERE
-  // assigning the updated reviewIds array belonging to user
-  User.findByIdAndUpdate(userId, { "reviewIds" : newReviewIds }, {runValidators:true}, 
-  function(err, user) {
-    console.log(user);
-  });
+
+  /* OLD CODE
+    var newReviewIds = [];
+    User.findById(userId, function(err, user) {
+      var newReviewIds = user.reviewIds;
+      newReviewIds.push(review._id); // can't do this, doesn't have an id yet as it's not in the db, it's just a json object.
+    });
+
+    User.findByIdAndUpdate(userId, { "reviewIds" : newReviewIds }, {runValidators:true},
+    function(err, user) {
+      console.log(user);
+    });
+  */
+
+
+  // FIXED CODE
+  // I left out error checking to make it easier to read, will add in final version
+
   review.save(function(err,newReview){
-    if(!err){
+    // put this inside save so don't need async
+    User.findByIdAndUpdate(userId, {"$push": {"reviewIds" : newReview._id}}, function(){
       res.send(newReview);
-    }else{
-      res.status(400).send(err);
-    }
+    });
+
   });
 };
 
