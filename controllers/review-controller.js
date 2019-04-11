@@ -65,24 +65,22 @@ var addRandom = function(req,res){
   res.send("Added " + numReviews + " reviews.");
 };
 
-// delete review by id                (Issues here)
+// delete review by id
 var deleteById = function(req,res){
   var reviewId  = req.params.id;
   var userId    = req.params.user;
 
-
   // remove reviewId in User db
-  User.findByIdAndUpdate(userId, {$pull: {reviewIds : reviewId } });
-  
+  User.findByIdAndUpdate(userId, {$pull: {reviewIds : reviewId } },{new: true}, function(err, user){});
+    
   // delete review
-  // Review.findByIdAndRemove(reviewId, function(err, review){
-  //   if (!err){
-  //     res.send(reviewId + " deleted.");
-  //   }else{
-  //     res.status(404);
-  //   }
-  // });
-  res.send("ok review");
+  Review.findByIdAndRemove(reviewId, function(err, review){
+    if (!err){
+      res.send(reviewId + " deleted.");
+    }else{
+      res.status(404);
+    }
+  });
 };
 
 // update review by id
