@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const Review = mongoose.model('review');
-const faker = require('faker');
+const Review  = mongoose.model('review');
+const User    = mongoose.model('user');
+const faker   = require('faker');
 
 // get all reviews
 var getAll = function(req,res){
@@ -64,16 +65,23 @@ var addRandom = function(req,res){
   res.send("Added " + numReviews + " reviews.");
 };
 
-// delete review by id
+// delete review by id                (Issues here)
 var deleteById = function(req,res){
-  var reviewId = req.params.id;
-  Review.findByIdAndRemove(reviewId, function(err, review){
-    if (!err){
-      res.send(reviewId + " deleted.");
-    }else{
-      res.status(404);
-    }
-  });
+  var reviewId  = req.params.id;
+  var userId    = req.params.user;
+
+  // remove reviewId in User db
+  User.findByIdAndUpdate(userId, {$pull: {reviewIds : reviewId } });
+  
+  // delete review
+  // Review.findByIdAndRemove(reviewId, function(err, review){
+  //   if (!err){
+  //     res.send(reviewId + " deleted.");
+  //   }else{
+  //     res.status(404);
+  //   }
+  // });
+  res.send("ok review");
 };
 
 // update review by id

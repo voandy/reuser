@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Listing = mongoose.model('listing');
-const faker = require('faker');
+const User    = mongoose.model('user');
+const faker   = require('faker');
 const NodeGeocoder = require('node-geocoder');
 
 const geocoder = NodeGeocoder({
@@ -126,16 +127,40 @@ var addRandom = function(req,res){
   res.send("Added " + numListings + " listings.");
 }
 
-// delete listing by id
+// delete listing by id             (Issues here)
 var deleteById = function(req,res){
+
   var listingId = req.params.id;
+  var userId    = req.params.user;
+
+  // remove listing id from User db
+  User.findByIdAndUpdate(userId, {$pull: {listingIds : listingId } });
+
+
+  // TODO, DELETE THIS VVV
+  //   console.log(user.listingIds);
+  //   // listings array
+  //   user.listingIds.forEach(function (item, index, object) {
+  //     // remove spaces
+  //     item = item.replace(/\s+/g, '');
+  //     if(item === listingId){
+  //       object.splice(index, 1);
+  //       console.log(object);
+  //       // some logging
+  //     }
+  //   });
+  // });
+  res.send("ok listing");
+  
+  /*
+  // delete listing (TODO, DONT DELETE THIS)
   Listing.findByIdAndDelete(listingId, function(err, listing){
     if (!err){
       res.send(listingId + " deleted.");
     }else{
       res.status(404);
     }
-  });
+  }); */
 };
 
 // update listing by id

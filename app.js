@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port= 7900;
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -15,6 +16,6 @@ app.get('/', function(req,res){
   res.send("Welcome to reUser");
 });
 
-app.listen(7900, function(req,res){
-  console.log("Listening on port 7900.")
+app.listen(port, function(req,res){
+  console.log("Listening on port " + port);
 });
