@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port= 7900;
+const port = 7900;
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());

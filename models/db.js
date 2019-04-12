@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 
 const dbURI = "mongodb+srv://andy:aExWCboBTwKTm1Pf@reuser-2aqqs.mongodb.net/";
 
-mongoose.connect(dbURI, {useNewUrlParser: true, useFindAndModify: false, dbName: "reUser"}).then(
+var options = {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  dbName: "reUser"
+};
+
+mongoose.connect(dbURI, options).then(
   () => { console.log("Connected to MongoDB Atlas.") },
   err => { console.log(err) }
 );

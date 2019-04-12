@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('user');
-const faker = require('faker');
 const cryptography = require("./cryptography/cryptography.js");
 
+const User = mongoose.model('user');
 const Listing = mongoose.model('listing');
 const Review = mongoose.model('review');
 
@@ -68,64 +67,29 @@ var create = function(req,res){
   });
 };
 
-var addRandom = function(req,res){
-  var numUsers = req.params.n;
-  var salt = cryptography.generateSalt();
-  var hash = cryptography.hashPassword(faker.internet.password(), salt);
-
-  for(var i=0; i<numUsers; i++){
-    var user = new User({
-      email:faker.internet.email(),
-      dateJoined: new Date(),
-
-      password:hash,
-      passwordSalt:salt,
-
-      firstName:faker.name.firstName(),
-      lastName:faker.name.lastName(),
-
-      address:{
-        addressLine1:faker.address.streetAddress(),
-        suburb:faker.address.city(),
-        state:"VIC",
-        postcode:Math.floor(Math.random() * (3999 - 3000)) + 3000,
-      },
-
-      phoneNo:faker.phone.phoneNumber(),
-
-      thanksReceived:0,
-      starRatingAvg:0,
-      listingIds:[],
-      reviewIds:[]
-    });
-    user.save(function(err,newUser){
-      if(err){
-        res.status(400).send(err);
-      }
-    });
-  }
-  res.send("Added " + numUsers + " users.");
-}
-
-// delete user by email
-// TODO: Deleting a user should also delete associated listings and reviews
-var deleteById = function(req,res){
+// delete user by id
+var deleteById = async (req,res) => {
   var userId = req.params.id;
 
   // delete associated listings and reviews
-  User.findById(userId, function(err, user){
+  await User.findById(userId, function(err, user){
     user.listingIds.forEach(function(listingId){
       Listing.findByIdAndDelete(listingId, function(err, listing){
-        // Some logging
+        if (err){
+          res.status(404);
+        }
       });
     });
     user.reviewIds.forEach(function(reviewId){
       Review.findByIdAndDelete(reviewId, function(err, review){
-        // Some logging
+        if (err){
+          res.status(404);
+        }
       });
     });
   });
 
+  // delete the user
   User.findByIdAndDelete(userId, function(err, user){
     if (!err){
       res.send(userId + " deleted.");
@@ -169,4 +133,3 @@ module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 
 module.exports.getByEmail = getByEmail;
-module.exports.addRandom = addRandom;

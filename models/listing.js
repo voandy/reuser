@@ -5,6 +5,8 @@ var enums = require('./enums');
 const listingSchema = new Schema(
   {
     title:String,
+    description:String,
+
     datePosted:{type: Date, default: Date.now},
     dateExpires:Date,
 

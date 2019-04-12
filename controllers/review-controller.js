@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+
 const Review = mongoose.model('review');
 const User = mongoose.model('user');
-const faker = require('faker');
 
 // get all reviews
 var getAll = function(req,res){
@@ -9,7 +9,7 @@ var getAll = function(req,res){
     if(!err){
       res.send(reviews);
     }else{
-      res.sendStatus(404);
+      res.status(400);
     }
   });
 };
@@ -28,72 +28,37 @@ var getById = function(req,res){
 
 // create review
 var create = function (req,res) {
-  // We can put it in the json since we're passing a json anyway
-  // var userId = req.params.id;
-  var userId = req.body.userId;
+  // TODO: Update user's average star rating when a review is added
+  var userId = req.params.userId;
 
   var review = new Review({
-    leftById:req.body.leftById,
-
     title:req.body.title,
     contents:req.body.contents,
     starRating:req.body.starRating
   });
 
-  /* OLD CODE
-    var newReviewIds = [];
-    User.findById(userId, function(err, user) {
-      var newReviewIds = user.reviewIds;
-      newReviewIds.push(review._id); // can't do this, doesn't have an id yet as it's not in the db, it's just a json object.
-    });
-
-    User.findByIdAndUpdate(userId, { "reviewIds" : newReviewIds }, {runValidators:true},
-    function(err, user) {
-      console.log(user);
-    });
-  */
-
-
-  // FIXED CODE
-  // I left out error checking to make it easier to read, will add in final version
-
-  review.save(function(err,newReview){
-    // put this inside save so don't need async
-    User.findByIdAndUpdate(userId, {"$push": {"reviewIds" : newReview._id}}, function(){
+  review.save(async (err,newReview) => {
+    if (!err){
+      // add review id to user's foreign keys
+      await User.findByIdAndUpdate(userId, {"$push": {"reviewIds" : newReview._id.str}});
       res.send(newReview);
-    });
-
+    }else{
+      res.status(400);
+    }
   });
-};
-
-// adds random reviews
-var addRandom = function(req,res){
-  var numReviews = req.params.n;
-
-  for(var i=0; i<numReviews; i++){
-    var review = new Review({
-      leftById:"5ca9bc07da394e32944ad120",
-
-      title:faker.lorem.sentence(),
-      contents:faker.lorem.paragraph(),
-      starRating:Math.floor(Math.random() * (5 - 1)) + 1
-    });
-    review.save(function(err,newReview){
-      if(err){
-        res.status(400).send(err);
-      }
-    });
-  }
-  res.send("Added " + numReviews + " reviews.");
 };
 
 // delete review by id
 var deleteById = function(req,res){
-  var reviewId  = req.params.id;
-  var userId    = req.params.user;
+  var reviewId = req.params.reviewId;
+  var userId = req.params.userId;
 
-  // remove reviewId in User db
-  User.findByIdAndUpdate(userId, {$pull: {reviewIds : reviewId } },{new: true}, function(err, user){});
+  // remove reviewId from user foreign keys
+  User.findByIdAndUpdate(userId, { $pull: {reviewIds : reviewId} }, function(err){
+    if (err){
+      res.status(400);
+    }
+  });
 
   // delete review
   Review.findByIdAndRemove(reviewId, function(err, review){
@@ -123,5 +88,3 @@ module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
-
-module.exports.addRandom = addRandom;

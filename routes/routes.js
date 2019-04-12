@@ -5,6 +5,8 @@ const userCont = require('../controllers/user-controller.js');
 const listingCont = require('../controllers/listing-controller.js');
 const reviewCont = require('../controllers/review-controller.js');
 
+const faker = require('../controllers/faker/faker.js');
+
 /* USER ROUTS */
 
 // get all users
@@ -20,7 +22,7 @@ router.put('/user/id/:id', userCont.updateById);
 // get user by email
 router.get('/user/email/:email', userCont.getByEmail);
 // add random users
-router.post('/user/n/:n', userCont.addRandom);
+router.post('/user/n/:n', faker.addRandomUsers);
 
 
 /* LISTING ROUTS */
@@ -30,15 +32,15 @@ router.get('/listing', listingCont.getAll);
 // get listing by id
 router.get('/listing/id/:id', listingCont.getById);
 // create listing
-router.post('/listing', listingCont.create);
+router.post('/listing/id/:userId', listingCont.create);
 // delete listing by id
-router.delete('/listing/id/:id/:user', listingCont.deleteById);
+router.delete('/listing/id/:listingId/:userId', listingCont.deleteById);
 // update listing by id
 router.put('/listing/id/:id', listingCont.updateById);
 // get listings filtered by location, category or search term
 router.get('/listing', listingCont.filterListings);
 // add random listings
-router.post('/listing/n/:n', listingCont.addRandom);
+router.post('/listing/n/:n', faker.addRandomListings);
 
 
 /* REVIEW ROUTS */
@@ -48,13 +50,13 @@ router.get('/review', reviewCont.getAll);
 // get review by id
 router.get('/review/id/:id', reviewCont.getById);
 // create review
-router.post('/review', reviewCont.create);
+router.post('/review/id/:userId', reviewCont.create);
 // delete review by id
-router.delete('/review/id/:id/:user', reviewCont.deleteById);
+router.delete('/review/id/:reviewId/:userId', reviewCont.deleteById);
 // update review
 router.put('/review/id/:id', reviewCont.updateById);
 // add random reviews
-router.post('/review/n/:n', reviewCont.addRandom);
+router.post('/review/n/:n', faker.addRandomReviews);
 
 
 module.exports = router;

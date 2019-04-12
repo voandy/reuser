@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var random = require('mongoose-simple-random');
 var enums = require('./enums');
 
 const userSchema = new Schema(
@@ -34,6 +35,9 @@ const userSchema = new Schema(
     reviewIds:[String]
   }
 );
+
+// adds a method which get's random users for testing
+userSchema.plugin(random);
 
 // assign state object to userSchema
 userSchema.statics.States = enums.States;

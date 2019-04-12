@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
+const NodeGeocoder = require('node-geocoder');
+
 const Listing = mongoose.model('listing');
 const User    = mongoose.model('user');
-const faker   = require('faker');
-const NodeGeocoder = require('node-geocoder');
 
 const geocoder = NodeGeocoder({
   provider: 'google',
@@ -35,6 +35,8 @@ var getById = function(req,res){
 
 // create listing
 var create = async (req,res) => {
+  var userId = req.params.userId;
+
   var address = req.body.addressLine1 + " " +
     ((req.body.addressLine2 != null) ? req.body.addressLine2 : "") + ", " +
     req.body.suburb + " " +
@@ -56,6 +58,8 @@ var create = async (req,res) => {
   // create the listing
   listing = new Listing({
     title:req.body.title,
+    description:req.body.description,
+
     datePosted: new Date(),
     dateExpires:req.body.dateExpires,
 
@@ -80,8 +84,10 @@ var create = async (req,res) => {
   });
 
   // send it to database
-  listing.save(function(err,newListing){
+  listing.save(async (err,newListing) => {
     if(!err){
+      // add listing id to user's foreign keys
+      await User.findByIdAndUpdate(userId, {"$push": {"listingIds" : newListing._id}});
       res.send(newListing);
     }else{
       res.status(400).send(err);
@@ -89,53 +95,18 @@ var create = async (req,res) => {
   });
 }
 
-// adds random listings
-var addRandom = function(req,res){
-  var numListings = req.params.n;
-  var categories = Object.values(Listing.Categories);
-
-  for(var i=0; i<numListings; i++){
-    var listing = new Listing({
-      title:faker.lorem.words(),
-      datePosted: new Date(),
-      dateExpires:faker.date.future(),
-
-      address:{
-        addressLine1:faker.address.streetAddress(),
-        suburb:faker.address.city(),
-        state:"VIC",
-        postcode:Math.floor(Math.random() * (3999 - 3000)) + 3000,
-      },
-
-      longitude:(Math.random() * (37.820528 - 37.765455) + 37.765455) * -1,
-      latitude:Math.random() * (145.020131 - 144.882132) + 144.882132,
-
-      category:categories[Math.floor(Math.random()*categories.length)],
-
-      minVisibility:0,
-
-      thanksRecId:[],
-
-      isActive:1
-    });
-    listing.save(function(err,newListing){
-      if(err){
-        res.status(400).send(err);
-      }
-    });
-  }
-  res.send("Added " + numListings + " listings.");
-}
-
 // delete listing by id
 var deleteById = function(req,res){
+  var listingId = req.params.listingId;
+  var userId = req.params.userId;
 
-  var listingId = req.params.id;
-  var userId    = req.params.user;
+  // remove listing id from user's foreign keys
+  User.findByIdAndUpdate(userId, { $pull: {listingIds : listingId} }, function(err){
+    if(err){
+      sendStatus(400);
+    }
+  });
 
-  // remove listing id from User db
-  User.findByIdAndUpdate(userId, {$pull: {listingIds : listingId } },{new: true}, function(err, user){});
-  
   // delete the Listing
   Listing.findByIdAndDelete(listingId, function(err, listing){
     if (!err){
@@ -171,4 +142,3 @@ module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 
 module.exports.filterListings = filterListings;
-module.exports.addRandom = addRandom;
