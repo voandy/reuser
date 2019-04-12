@@ -23,5 +23,8 @@
     "mongoose": "^5.4.21",
     "mongoose-simple-random": "^0.4.1",
     "node-geocoder": "^3.22.0"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }

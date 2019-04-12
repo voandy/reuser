@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const port = 7900;
+const port = process.env.PORT || 7900;
+
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -16,6 +17,6 @@ app.get('/', function(req,res){
   res.send("Welcome to reUser");
 });
 
-app.listen(port, function(req,res){
+app.listen(port, function(){
   console.log("Listening on port " + port);
 });
