@@ -35,8 +35,6 @@ var getById = function(req,res){
 
 // create listing
 var create = async (req,res) => {
-  var userId = req.params.userId;
-
   var address = req.body.addressLine1 + " " +
     ((req.body.addressLine2 != null) ? req.body.addressLine2 : "") + ", " +
     req.body.suburb + " " +
@@ -57,6 +55,8 @@ var create = async (req,res) => {
 
   // create the listing
   listing = new Listing({
+    userId:req.params.userId,
+
     title:req.body.title,
     description:req.body.description,
 
@@ -84,10 +84,8 @@ var create = async (req,res) => {
   });
 
   // send it to database
-  listing.save(async (err,newListing) => {
+  listing.save(function (err,newListing) {
     if(!err){
-      // add listing id to user's foreign keys
-      await User.findByIdAndUpdate(userId, {"$push": {"listingIds" : newListing._id}});
       res.send(newListing);
     }else{
       res.status(400).send(err);
@@ -97,15 +95,7 @@ var create = async (req,res) => {
 
 // delete listing by id
 var deleteById = function(req,res){
-  var listingId = req.params.listingId;
-  var userId = req.params.userId;
-
-  // remove listing id from user's foreign keys
-  User.findByIdAndUpdate(userId, { $pull: {listingIds : listingId} }, function(err){
-    if(err){
-      sendStatus(400);
-    }
-  });
+  var listingId = req.params.id;
 
   // delete the Listing
   Listing.findByIdAndDelete(listingId, function(err, listing){

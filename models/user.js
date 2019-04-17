@@ -25,14 +25,9 @@ const userSchema = new Schema(
     phoneNo:String,
 
     thanksReceived:Number,
+
     // derived star rating average
     starRatingAvg:Number,
-
-    // array of ids of listings this user has created
-    listingIds:[String],
-
-    // array of ids for review received
-    reviewIds:[String]
   }
 );
 

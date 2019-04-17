@@ -34,7 +34,7 @@ router.get('/listing/id/:id', listingCont.getById);
 // create listing
 router.post('/listing/id/:userId', listingCont.create);
 // delete listing by id
-router.delete('/listing/id/:listingId/:userId', listingCont.deleteById);
+router.delete('/listing/id/:id', listingCont.deleteById);
 // update listing by id
 router.put('/listing/id/:id', listingCont.updateById);
 // get listings filtered by location, category or search term
@@ -50,9 +50,9 @@ router.get('/review', reviewCont.getAll);
 // get review by id
 router.get('/review/id/:id', reviewCont.getById);
 // create review
-router.post('/review/id/:userId', reviewCont.create);
+router.post('/review/id/:userId/:leftById', reviewCont.create);
 // delete review by id
-router.delete('/review/id/:reviewId/:userId', reviewCont.deleteById);
+router.delete('/review/id/:id', reviewCont.deleteById);
 // update review
 router.put('/review/id/:id', reviewCont.updateById);
 // add random reviews

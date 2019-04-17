@@ -4,6 +4,9 @@ var enums = require('./enums');
 
 const listingSchema = new Schema(
   {
+    // user who made the listing
+    userId:String,
+
     title:String,
     description:String,
 

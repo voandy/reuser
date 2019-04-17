@@ -4,7 +4,7 @@
   "description": "First submission",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,5 @@
     "mongoose": "^5.4.21",
     "mongoose-simple-random": "^0.4.1",
     "node-geocoder": "^3.22.0"
-  },
-  "scripts": {
-    "start": "node app.js"
   }
 }

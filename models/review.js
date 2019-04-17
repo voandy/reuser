@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema(
   {
+    // user the review describes
+    userId:String,
     // user who left this review
     leftById:String,
 

@@ -54,10 +54,9 @@ var create = function(req,res){
     phoneNo:req.body.phoneNo,
 
     thanksReceived:0,
-    starRatingAvg:0,
-    listingIds:[],
-    reviewIds:[]
+    starRatingAvg:0
   });
+
   user.save(function(err,newUser){
     if(!err){
       res.send(newUser);
@@ -68,26 +67,12 @@ var create = function(req,res){
 };
 
 // delete user by id
-var deleteById = async (req,res) => {
+var deleteById = function (req,res) {
   var userId = req.params.id;
 
   // delete associated listings and reviews
-  await User.findById(userId, function(err, user){
-    user.listingIds.forEach(function(listingId){
-      Listing.findByIdAndDelete(listingId, function(err, listing){
-        if (err){
-          res.status(404);
-        }
-      });
-    });
-    user.reviewIds.forEach(function(reviewId){
-      Review.findByIdAndDelete(reviewId, function(err, review){
-        if (err){
-          res.status(404);
-        }
-      });
-    });
-  });
+  Listing.remove( { userId: userId } );
+  Review.remove( { userId: userId } );
 
   // delete the user
   User.findByIdAndDelete(userId, function(err, user){

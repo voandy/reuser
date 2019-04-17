@@ -29,18 +29,17 @@ var getById = function(req,res){
 // create review
 var create = function (req,res) {
   // TODO: Update user's average star rating when a review is added
-  var userId = req.params.userId;
 
   var review = new Review({
+    userId:req.params.userId,
+    leftById:req.params.leftById,
     title:req.body.title,
     contents:req.body.contents,
     starRating:req.body.starRating
   });
 
-  review.save(async (err,newReview) => {
+  review.save(function (err,newReview) {
     if (!err){
-      // add review id to user's foreign keys
-      await User.findByIdAndUpdate(userId, {"$push": {"reviewIds" : newReview._id.str}});
       res.send(newReview);
     }else{
       res.status(400);
@@ -50,15 +49,7 @@ var create = function (req,res) {
 
 // delete review by id
 var deleteById = function(req,res){
-  var reviewId = req.params.reviewId;
-  var userId = req.params.userId;
-
-  // remove reviewId from user foreign keys
-  User.findByIdAndUpdate(userId, { $pull: {reviewIds : reviewId} }, function(err){
-    if (err){
-      res.status(400);
-    }
-  });
+  var reviewId = req.params.id;
 
   // delete review
   Review.findByIdAndRemove(reviewId, function(err, review){
