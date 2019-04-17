@@ -71,8 +71,12 @@ var deleteById = function (req,res) {
   var userId = req.params.id;
 
   // delete associated listings and reviews
-  Listing.remove( { userId: userId } );
-  Review.remove( { userId: userId } );
+  Listing.deleteMany( {userId: userId}, function(err){
+    res.status(400);
+  });
+  Review.deleteMany( {$or: [{userId: userId}, {leftById: userId}]}, function(err){
+    res.status(400);
+  });
 
   // delete the user
   User.findByIdAndDelete(userId, function(err, user){

@@ -63,6 +63,7 @@ var addRandomListings = function(req,res){
     }
 
     async function createListing(){
+      // TODO: Error handling for rejected promise
       var userId = await getRandomUserId();
 
       listing = new Listing({
@@ -123,6 +124,7 @@ var addRandomReviews = function(req,res){
     }
 
     async function createReview(){
+      // TODO: Error handling for rejected promise
       var userId = await getRandomUserId();
       var leftById = await getRandomUserId();
 

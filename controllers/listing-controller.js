@@ -34,63 +34,72 @@ var getById = function(req,res){
 };
 
 // create listing
-var create = async (req,res) => {
+var create = function (req,res) {
   var address = req.body.addressLine1 + " " +
     ((req.body.addressLine2 != null) ? req.body.addressLine2 : "") + ", " +
     req.body.suburb + " " +
     req.body.state + " " +
     req.body.postcode;
 
-  var listing, latitude, longitude;
+  var listing;
 
   // geocode concatenated address
-  await geocoder.geocode(address, function(err, res){
-    if (!err){
-      longitude = res[0].longitude;
-      latitude = res[0].latitude;
-    }else{
-      res.status(400).send(err);
-    }
-  });
+  function geocodeAddress() {
+    return new Promise((resolve,reject) => {
+      geocoder.geocode(address, function(err, res){
+        if (!err){
+          resolve({longitude:res[0].longitude, latitude:res[0].latitude});
+        }else{
+          reject();
+        }
+      });
+    });
+  }
 
-  // create the listing
-  listing = new Listing({
-    userId:req.params.userId,
+  async function createListing(){
+    // TODO: Error handling for rejected promise
+    var coords = await geocodeAddress();
 
-    title:req.body.title,
-    description:req.body.description,
+    // create the listing
+    listing = new Listing({
+      userId:req.params.userId,
 
-    datePosted: new Date(),
-    dateExpires:req.body.dateExpires,
+      title:req.body.title,
+      description:req.body.description,
 
-    address: {
-      addressLine1:req.body.addressLine1,
-      addressLine2:req.body.addressLine2,
-      suburb:req.body.suburb,
-      state:req.body.state,
-      postcode:req.body.postcode,
-    },
+      datePosted: new Date(),
+      dateExpires:req.body.dateExpires,
 
-    longitude:longitude,
-    latitude:latitude,
+      address: {
+        addressLine1:req.body.addressLine1,
+        addressLine2:req.body.addressLine2,
+        suburb:req.body.suburb,
+        state:req.body.state,
+        postcode:req.body.postcode,
+      },
 
-    category:req.body.category,
+      longitude:coords.longitude,
+      latitude:coords.latitude,
 
-    minVisibility:req.body.minVisibility,
+      category:req.body.category,
 
-    thanksRecId:[],
+      minVisibility:req.body.minVisibility,
 
-    isActive:1
-  });
+      thanksRecId:[],
 
-  // send it to database
-  listing.save(function (err,newListing) {
-    if(!err){
-      res.send(newListing);
-    }else{
-      res.status(400).send(err);
-    }
-  });
+      isActive:1
+    });
+
+    // send it to database
+    listing.save(function (err,newListing) {
+      if(!err){
+        res.send(newListing);
+      }else{
+        res.status(400).send(err);
+      }
+    });
+  }
+  createListing();
 }
 
 // delete listing by id
