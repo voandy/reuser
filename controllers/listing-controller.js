@@ -19,7 +19,8 @@ var getAll = function(req,res){
     }else{
       res.sendStatus(404);
     }
-  });};
+  });
+};
 
 // get listing by id
 var getById = function(req,res){
@@ -129,9 +130,26 @@ var updateById = function(req,res){
   });
 };
 
-// get listings filtered by location, category or search term
-var filterListings = function(req,res){
-  // TODO
+// get listings filtered by coords
+var filteredListings = function(req,res){
+  var longmin = req.body.longmin;
+  var longmax = req.body.longmax;
+  var latmin = req.body.latmin;
+  var latmax = req.body.latmax;
+
+  var range =
+  {
+    longitude: {'$gte': longmin, '$lte': longmax},
+    latitude: {'$gte': latmin, '$lte': latmax}
+  }
+
+  Listing.find(range, function(err,listings){
+    if(!err){
+      res.send(listings);
+    }else{
+      res.sendStatus(404);
+    }
+  });
 };
 
 module.exports.getAll = getAll;
@@ -140,4 +158,4 @@ module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 
-module.exports.filterListings = filterListings;
+module.exports.filteredListings = filteredListings;
