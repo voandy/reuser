@@ -84,8 +84,8 @@ var addRandomListings = function(req,res){
         },
 
         // Random coordinates in Melbourne
-        longitude:(Math.random() * (37.820528 - 37.765455) + 37.765455) * -1,
-        latitude:Math.random() * (145.020131 - 144.882132) + 144.882132,
+        longitude:Math.random() * (145.020131 - 144.882132) + 144.882132,
+        latitude:(Math.random() * (37.820528 - 37.765455) + 37.765455) * -1,
 
         // Random category from product categories
         category:categories[Math.floor(Math.random()*categories.length)],

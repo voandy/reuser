@@ -6,6 +6,11 @@ const port = process.env.PORT || 7900;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    next();
+});
+
 // setup MongoDB Atlas
 require('./models/db.js');
 
