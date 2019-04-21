@@ -1,3 +1,3 @@
-![reUser logo](readme-images/reuser-logo.png)
+![reUser logo](readme-images/reuser-log-new.png)
 
 repo for operation "reUser"
