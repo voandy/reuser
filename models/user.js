@@ -11,8 +11,7 @@ const userSchema = new Schema(
     password:String,
     passwordSalt:String,
 
-    firstName:String,
-    lastName:String,
+    fullName:String,
 
     address: {
       addressLine1:String,
@@ -28,6 +27,8 @@ const userSchema = new Schema(
 
     // derived star rating average
     starRatingAvg:Number,
+
+    profilePicURL:String
   }
 );
 

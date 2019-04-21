@@ -40,8 +40,7 @@ var create = function(req,res){
     password:hash,
     passwordSalt:salt,
 
-    firstName:req.body.firstName,
-    lastName:req.body.lastName,
+    fullName:req.body.fullName,
 
     address:{
       addressLine1:req.body.addressLine1,
@@ -54,7 +53,9 @@ var create = function(req,res){
     phoneNo:req.body.phoneNo,
 
     thanksReceived:0,
-    starRatingAvg:0
+    starRatingAvg:0,
+
+    profilePicURL:null
   });
 
   user.save(function(err,newUser){
@@ -115,6 +116,27 @@ var getByEmail = function(req,res){
   });
 };
 
+// upload a single image to aws s3
+var imageUpload = function(req, res) {
+  var userId = req.params.id;
+
+  singleUpload(req, res, function(err, some) {
+    if (err) {
+      return res.status(422).send({errors: [{title: 'Image Upload Error', detail: err.message}] });
+    }
+
+    User.findByIdAndUpdate(userId, {profilePicURL: req.file.location}, function(err, user){
+      if(!err){
+        res.send(user);
+      }else{
+        res.sendStatus(404);
+      }
+    });
+
+    return res.json({'imageUrl': req.file.location});
+  });
+};
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
@@ -122,3 +144,4 @@ module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 
 module.exports.getByEmail = getByEmail;
+module.exports.imageUpload = imageUpload;

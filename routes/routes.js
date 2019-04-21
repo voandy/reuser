@@ -24,6 +24,8 @@ router.put('/user/id/:id', userCont.updateById);
 router.get('/user/email/:email', userCont.getByEmail);
 // add random users
 router.post('/user/n/:n', faker.addRandomUsers);
+// upload a profile pic to aws s3
+router.put('/user/image/id/:id', listingCont.imageUpload);
 
 
 /* LISTING ROUTS */

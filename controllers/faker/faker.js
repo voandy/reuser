@@ -21,8 +21,7 @@ var addRandomUsers = function(req,res){
       password:hash,
       passwordSalt:salt,
 
-      firstName:faker.name.firstName(),
-      lastName:faker.name.lastName(),
+      fullName:faker.name.findName(),
 
       address:{
         addressLine1:faker.address.streetAddress(),
@@ -36,6 +35,8 @@ var addRandomUsers = function(req,res){
 
       thanksReceived:0,
       starRatingAvg:0,
+
+      profilePicURL:null
     });
     user.save(function(err,newUser){
       if(err){
@@ -94,7 +95,9 @@ var addRandomListings = function(req,res){
 
         thanksRecId:[],
 
-        isActive:1
+        isActive:1,
+
+        imageURLs:[]
       });
 
       listing.save(function(err,newListing) {
@@ -134,7 +137,9 @@ var addRandomReviews = function(req,res){
 
         title:faker.lorem.sentence(),
         contents:faker.lorem.paragraph(),
-        starRating:Math.floor(Math.random() * (5 - 1)) + 1
+        starRating:Math.floor(Math.random() * (5 - 1)) + 1,
+
+        imageURLs:[]
       });
 
       review.save(function(err,newReview) {
