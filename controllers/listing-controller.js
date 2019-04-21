@@ -4,6 +4,9 @@ const NodeGeocoder = require('node-geocoder');
 const Listing = mongoose.model('listing');
 const User    = mongoose.model('user');
 
+const upload = require('../services/image-upload');
+const singleUpload = upload.single('image')
+
 const geocoder = NodeGeocoder({
   provider: 'google',
   httpAdapter: 'https',
@@ -152,6 +155,46 @@ var filteredListings = function(req,res){
   });
 };
 
+// upload a single image to aws s3 
+var imageUpload = function(req, res) {
+  var listingId = req.params.id;
+
+  singleUpload(req, res, function(err, some) {
+    if (err) {
+      return res.status(422).send({errors: [{title: 'Image Upload Error', detail: err.message}] });
+    }
+    Listing.findById(listingId, function(err, listing){
+      var imageURLs = listing.imageURLs;
+      imageURLs.push(req.file.location);
+      listing.imageURLs = imageURLs;
+      listing.save();
+    });
+    return res.json({'imageUrl': req.file.location});
+  });
+};
+
+// return all image urls in the listing
+var getAllImages = function(req, res) {
+  var listingId = req.params.id;
+  Listing.findById(listingId, function(err, listing) {
+    return res.send(listing.imageURLs); 
+  });
+};
+
+// delete a specific listing's image by the image URL
+var deleteImageByURL = function(req, res) {
+  var listingId = req.params.id;
+  var imageURL = req.body.url;
+
+  Listing.findById(listingId, function(err, listing) {
+    var imageURLs = listing.imageURLs;
+    imageURLs = imageURLs.filter(url => url != imageURL);
+    listing.imageURLs = imageURLs;
+    listing.save();
+    return res.send(listing.imageURLs);
+  });
+};
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
@@ -159,3 +202,8 @@ module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 
 module.exports.filteredListings = filteredListings;
+
+module.exports.imageUpload = imageUpload;
+module.exports.getAllImages = getAllImages;
+module.exports.deleteImageByURL = deleteImageByURL;
+

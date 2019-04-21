@@ -34,7 +34,10 @@ const listingSchema = new Schema(
     thanksRecId:[String],
 
     // whether the listing is active or archived
-    isActive:Boolean
+    isActive:Boolean,
+
+    // url of the images posted 
+    imageURLs:[String]
   }
 );
 
