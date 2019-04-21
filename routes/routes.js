@@ -7,6 +7,7 @@ const reviewCont = require('../controllers/review-controller.js');
 
 const faker = require('../controllers/faker/faker.js');
 
+
 /* USER ROUTS */
 
 // get all users
@@ -41,6 +42,12 @@ router.put('/listing/id/:id', listingCont.updateById);
 router.post('/listing/n/:n', faker.addRandomListings);
 // get listings filtered by coords
 router.post('/listing/filtered', listingCont.filteredListings);
+// get all listing's images
+router.get('/listing/image/id/:id', listingCont.getAllImages);
+// create and upload to aws s3
+router.put('/listing/image/id/:id', listingCont.imageUpload);
+// delete a specific listing's image by the image URL
+router.delete('/listing/image/id/:id', listingCont.deleteImageByURL);
 
 
 /* REVIEW ROUTS */

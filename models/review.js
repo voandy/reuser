@@ -10,7 +10,10 @@ const reviewSchema = new Schema(
 
     title:String,
     contents:String,
-    starRating:{type:Number, min:1, max:5}
+    starRating:{type:Number, min:1, max:5},
+
+    // url of the images posted 
+    imageURLs:[String]
   }
 );
 
