@@ -5,6 +5,9 @@ const User = mongoose.model('user');
 const Listing = mongoose.model('listing');
 const Review = mongoose.model('review');
 
+const upload = require('../services/image-upload');
+const singleUpload = upload.single('image')
+
 // get all users
 var getAll = function(req,res){
   User.find(function(err,users){
@@ -126,9 +129,7 @@ var imageUpload = function(req, res) {
     }
 
     User.findByIdAndUpdate(userId, {profilePicURL: req.file.location}, function(err, user){
-      if(!err){
-        res.send(user);
-      }else{
+      if(err){
         res.sendStatus(404);
       }
     });
