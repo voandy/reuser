@@ -1,4 +1,4 @@
-const listingURI = "http://127.0.0.1:7900/listing/id/";
+const listingURL = "https://re-user.herokuapp.com/listing/id/";
 const listingId = window.location.search.substring(1);
 
 var listing;
@@ -13,7 +13,7 @@ const category = document.getElementById('category');
 
 function getListing(listingId){
   return new Promise(resolve => {
-    jQuery.get(listingURI + listingId, function(data){
+    jQuery.get(listingURL + listingId, function(data){
       listing = data;
       resolve();
     });

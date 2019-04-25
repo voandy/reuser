@@ -11,9 +11,17 @@ block content
       .map
         #map
       .search-bar
-        input#search-box.mapControls(type='text', placeholder='Address or Suburb')
+        table
+          tbody
+            tr
+              td
+                input#search-box.mapControls(type='text', placeholder='Address or Suburb')
+              td
+                img#filter-button(src='filter.png')
       #sidebar.sidebar
-        #listings-list Loading...
+        #listings-list
+          center
+            img(src='loading.png')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap', async='', defer='')
-    script(src='/scripts/map_script.js')
+    script(src='script.js')
