@@ -1,13 +1,13 @@
-extends default.pug
+extends nav.pug
 
 append head
-  link(rel='stylesheet', href='../public/css/register_styles.css')
+  link(rel='stylesheet', href='/css/register_styles.css')
 
 block content
     .container
       .item1  
       .item2
-        img(src='../public/images/register.jpg', alt='a guy giving out rice cooker', width='95%/')
+        img(src='/images/register.jpg', alt='a guy giving out rice cooker', width='95%/')
       form(action='action_page.php')
         .item3
           h1 Create a new reUser account
