@@ -1,0 +1,28 @@
+extends default.pug
+
+append head
+  link(rel='stylesheet', href='../public/css/register_styles.css')
+
+block content
+    .container
+      .item1  
+      .item2
+        img(src='../public/images/register.jpg', alt='a guy giving out rice cooker', width='95%/')
+      form(action='action_page.php')
+        .item3
+          h1 Create a new reUser account
+          p Connect with others, and start reusing
+          input(type='text', placeholder='First Name')
+          br
+          input(type='text', placeholder='Last Name')
+          br
+          input(type='email', placeholder='Email Address')
+          br
+          input(type='password', placeholder='Password')
+          br
+          button.registerbtn(type='submit') Register
+          br
+          p#haveAccount
+            | Already have an account? 
+            a(href='#') Sign in
+            | .

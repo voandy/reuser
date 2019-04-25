@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(220, 220, 220);
+  }
+  
+  /* Add padding to containers */
+  .container {
+    display: grid;
+    grid: 
+    'header header'
+    'image sign-up';
+  
+    background-color: rgb(220, 220, 220);
+  
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 9fr; 
+  }
+  
+  input, select {
+    width: 500px;
+    height: 60px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for the submit button */
+  .registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 500px;
+    height: 60px;
+    opacity: 0.9;
+  }
+  
+  .item1 {grid-area : header;}
+  .item2 {grid-area : image;}
+  .item3 {grid-area : sign-up;
+    padding: 10px;
+    text-align: center;}
+  
+  #haveAccount {
+    text-align: center;
+  }
+  
+  /*
+  .item-b {
+    grid-column-start: 2;
+    grid-column-end: five;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+  }
+  
+  .item-c {
+    grid-column-start: 2;
+    grid-column-end: five;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+  }
+  */
