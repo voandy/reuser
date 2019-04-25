@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link{
+    color: white;
+}
+
+.navbar{
+    /* background-color: #57CC86; */
+    background-color: green;
+    height: 48px;
+}
+
+.logo-text{
+    color: white;
+    margin-right: 3%;
+}
+
+.navbar-toggler-icon{
+    background-color: black;
+}
+
+#log-in{
+    background-color: #57CC86;
+    color: white;
+    padding: auto;
+}
+
+
+   /* when screen reduces in size  */
+@media screen and (max-width: 576px) {
+    .navbar-text{
+        display: none;
+    }   
+    .navbar{
+        height: auto;
+    } 
+}

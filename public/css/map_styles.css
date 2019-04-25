@@ -1,0 +1,68 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  }
+  
+  h3 {
+    text-transform: capitalize;
+  }
+  
+  a {
+      color: #1b8000;
+      text-decoration: none;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas: ". .";
+    height: 100vh;
+  }
+  
+  .map {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    z-index: 1;
+  }
+  
+  .search-bar {
+    grid-column: 2;
+    grid-row: 1;
+    z-index: 2;
+  }
+  
+  .sidebar {
+    grid-column: 2;
+    grid-row: 2;
+    z-index: 2;
+    overflow: auto;
+  }
+  
+  .listing {
+    cursor: pointer;
+    z-index: 2;
+    background-color: #fff;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #1b8000;
+  }
+  
+  .list-title {
+    text-transform: capitalize;
+    color: #1b8000;
+  }
+  
+  #map {
+    height: 100%;
+  }
+  
+  #search-box {
+    margin-top: 10px;
+    padding: 10px;
+    text-overflow: ellipsis;
+    width: 260px;
+  }
+  
