@@ -75,10 +75,10 @@ function initPage(){
       reloadSidebar();
 
       // re-sort listings whenever the centre has changed
-      // map.addListener('idle', function() {
-      //   reloadSidebar();
-      //   document.getElementById('sidebar').scrollTop = 0;
-      // });
+      map.addListener('idle', function() {
+        reloadSidebar();
+        document.getElementById('sidebar').scrollTop = 0;
+      });
     });
   });
 }
