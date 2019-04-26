@@ -17,9 +17,9 @@ head
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
 
 // header for home page
-.jumbotron(style='margin-bottom: 0px;')
-  h3 ReUser
-  p things doesn&apos;t always need to go into the trash
+//- .jumbotron(style='margin-bottom: 0px;')
+//-   h3 ReUser
+//-   p things doesn&apos;t always need to go into the trash
 
 nav.navbar.navbar-expand-sm.sticky-top
   // burger bar
@@ -48,11 +48,12 @@ nav.navbar.navbar-expand-sm.sticky-top
           a.dropdown-item(href='#technology') Technology
           a.dropdown-item(href='#other') Others
   div
-    // SOMETHING WRONG HERE????
     ul.navbar-nav
       li.nav-item
         a.nav-link(href='#log-in')
-          img(src='images/nav/login.png', height='30px')
+          img(src='images/nav/login.png', height='30px', style="vertical-align: middle;")
+  div(style="height: 40px")
+    ul.navbar-nav
       li.nav-item
         a.nav-link(href='#log-in') Log In
 

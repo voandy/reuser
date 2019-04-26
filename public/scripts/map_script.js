@@ -1,5 +1,5 @@
-const listingURI = "http://127.0.0.1:7900/listing/";
-const listingLink = "../mock-listing/listing.html?";
+const listingURL = "/listing";
+const userURL = "/user";
 
 const sidebarLimit = 10;
 const listingsList = document.getElementById('listings-list');
@@ -7,6 +7,8 @@ const listingsList = document.getElementById('listings-list');
 var map;
 var infowindow;
 var listings;
+
+initPage();
 
 // create a new google map
 function initMap() {
@@ -36,19 +38,26 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
 
   // center map on current location if available
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      map.setCenter(pos);
-    });
-  }
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     var pos = {
+  //       lat: position.coords.latitude,
+  //       lng: position.coords.longitude
+  //     };
+  //     map.setCenter(pos);
+  //   });
+  // }
 
   // add google autocompleter to search-box
   var input = document.getElementById('search-box');
   var autocomplete = new google.maps.places.Autocomplete(input);
+
+  // circle in which to bias location searches
+  var circle = new google.maps.Circle({
+    center: map.getCenter(),
+    radius: 10000
+  });
+  autocomplete.setBounds(circle.getBounds());
 
   // listen for search-box input to recenter map
   autocomplete.addListener('place_changed', function() {
@@ -58,30 +67,74 @@ function initMap() {
   });
 }
 
-// retreuve all listings from backend
+
+function initPage(){
+  getListings().then(function(){
+    getUsers().then(function(){
+      placeListings();
+      reloadSidebar();
+
+      // re-sort listings whenever the centre has changed
+      // map.addListener('idle', function() {
+      //   reloadSidebar();
+      //   document.getElementById('sidebar').scrollTop = 0;
+      // });
+    });
+  });
+}
+
+// retrieve all listings from backend
 function getListings(){
   return new Promise(resolve => {
-    jQuery.get(listingURI, function(data){
+    jQuery.get(listingURL, function(data){
       listings = data;
       resolve();
     });
   });
 }
 
+// given a listing, will get the associated user and add to that listing
+function getUser(listing){
+  return new Promise(resolve => {
+    jQuery.get(userURL + "/id/" + listing.userId, function(user) {
+      resolve(listing.user = user);
+    });
+  });
+}
+
+// add associated user to all listings
+async function getUsers(){
+  const promises = listings.map(getUser);
+  await Promise.all(promises);
+}
+
 // place listings on map
 function placeListings(){
   for(var i=0; i<listings.length; i++){
 
-    var content =
-    '<a href=' + listingLink + listings[i]._id + '>' +
-    '<h3>' + listings[i].title + '</h3>' + '</a>' +
-    '<p>' + listings[i].description + '</p>';
+    var content = "<div class='info-window'><table><tbody><tr>";
+
+    // add image if one exists
+    if (listings[i].imageURLs) {
+      content += "<td><img class=\"info-pic\" src=\"" + listings[i].imageURLs[0] + "\"></td>"
+    }
+
+    content +=
+    "<td><div class=\"info-description\">" +
+      "<p><table><tbody><tr>" +
+        "<td><a href=\"" + listingURL + "/id/" + listings[i]._id + "\">" +
+        "<h3 class=\"info-title\">" + listings[i].title + "</h3></a></td>" +
+        "<td><img src=\"/images/map/new-window.png\" class=\"nw-icon\"></td>" +
+      "</tr></tbody></table></p>" +
+      "<p>" + listings[i].description + "</p>";
 
     // add expiry date if one exists
     if (listings[i].dateExpires){
       var expiry = new Date(listings[i].dateExpires);
-      content += '<i> Expires: ' + expiry.toLocaleDateString('en-AU');
+      content += "<i class=\"exipiry-date\"> Expires: " + expiry.toLocaleDateString("en-AU") + "</i>";
     }
+
+    content += "<td></tr></tbody></table></div></div>";
 
     // create marker
     var marker = new google.maps.Marker({
@@ -90,7 +143,7 @@ function placeListings(){
       title: listings[i].title,
       content: content,
       icon: {
-        url: 'green-dot.png'
+        url: "/images/map/green-dot.png"
       }
     });
 
@@ -98,7 +151,7 @@ function placeListings(){
     listings[i].marker = marker;
 
     // add InfoWindow to marker
-    google.maps.event.addListener(marker, 'click', function () {
+    google.maps.event.addListener(marker, "click", function () {
       infowindow.setContent(this.content);
       infowindow.open(map, this);
     });
@@ -107,19 +160,6 @@ function placeListings(){
     marker.setMap(map);
   }
 }
-
-
-getListings().then(function(){
-  placeListings();
-  reloadSidebar();
-
-    // re-sort listings whenever the centre has changed
-    map.addListener('idle', function() {
-      reloadSidebar();
-      document.getElementById('sidebar').scrollTop = 0;
-    });
-  }
-);
 
 // update distance of listings from center of map
 function updateDist(latLng){
@@ -142,20 +182,41 @@ function loadSidebar (){
 
   // setup divs for sidebar
   for (var i=0; i<noListings; i++){
-    content += "<div class='listing' id=list-" + i + ">"  +
-    "<h4 class='list-title'>" + listings[i].title  + '</h4>' +
-    '<p>' + listings[i].description + '</p>' +
-    '<i>' + listings[i].category  + '</i>' +
+    content +=
+    "<div class=\"listing\" id=list-" + i + ">"  +
+      "<h3 class=\"list-title\">" + listings[i].title  + "</h3>" +
+      "<i class=\"category\">" + listings[i].category  + "</i>";
+
+    // add image if one exists
+    if (listings[i].imageURLs) {
+      content += "<div class=\"sidebar-crop\"><img class=\"sidebar-pic\" src=\"" + listings[i].imageURLs[0] + "\"></div>"
+    }
+
+    // add user
+    content +=
+    "<div><table><tbody><tr>" +
+      "<td><div class=\"profile-cropper\">" +
+        "<img class=\"profile-pic\" src=\"" +
+        // add profile pic if one exists
+        ((listings[i].user.profilePicURL) ? listings[i].user.profilePicURL : "avatar.png") +
+        "\">" +
+      "</div></td>" +
+      "<td><p class=\"user-box\">" + listings[i].user.fullName + "<br>" +
+      "<i class=\"time-since\">" + timeSince(new Date(listings[i].datePosted)) + "</i></p>"+
+      "</td>" +
+    "</tr></tbody></table></div>";
+
+    content +=
     "</div>";
   }
 
   listingsList.innerHTML = content;
 
-  var listingBoxes = document.getElementsByClassName('listing');
+  var listingBoxes = document.getElementsByClassName("listing");
 
   // add event listener for each div that opens the linked marker
   for (var i = 0; i < listingBoxes.length; i++) {
-    listingBoxes[i].addEventListener('click', (function(i) {
+    listingBoxes[i].addEventListener("click", (function(i) {
       return function() {
         infowindow.setContent(listings[i].marker.content);
         map.setZoom(15);
@@ -165,101 +226,43 @@ function loadSidebar (){
   }
 }
 
+// re-sorts listings by proximity to map centre and reloads sidebar
 function reloadSidebar(){
   updateDist(map.getCenter());
   listings.sort((a, b) => parseFloat(a.dist) - parseFloat(b.dist));
   loadSidebar();
 }
 
+
+// credit: Sky Sanders stackoverflow.com
+function timeSince(date) {
+  var seconds = Math.floor((new Date() - date) / 1000);
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " years ago";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " months ago";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " days ago";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " hours ago";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutes ago";
+  }
+  return "Just now";
+}
+
 var mapstyle =
 [
-  {
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#523735"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#c9b2a6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#dcd2be"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#ae9e90"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#93817c"
-      }
-    ]
-  },
   {
     "featureType": "poi.business",
     "stylers": [
@@ -269,92 +272,11 @@ var mapstyle =
     ]
   },
   {
-    "featureType": "poi.park",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#a5b076"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#447530"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
     "featureType": "road",
     "elementType": "labels.icon",
     "stylers": [
       {
         "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#fdfcf8"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f8c967"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#e9bc62"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#e98d58"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#db8555"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#806b63"
       }
     ]
   },
@@ -363,69 +285,6 @@ var mapstyle =
     "stylers": [
       {
         "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#8f7d77"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "labels.icon",
-    "stylers": [
-      {
-        "visibility": "simplified"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#b9d3c2"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#92998d"
       }
     ]
   }

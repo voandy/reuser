@@ -1,7 +1,7 @@
 extends nav.pug
 
 append head
-    title ReUser : things doesn't always need to go into the trash
+    title reUser : Things doesn't always need to go into the trash
     meta(name='viewport', content='initial-scale=1.0')
     meta(charset='utf-8')
     link(rel='stylesheet', href='/css/map_styles.css')
@@ -23,5 +23,5 @@ block content
           center
             img(src='/images/map/loading.png')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap', async='', defer='')
     script(src='/scripts/map_script.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap', async='', defer='')

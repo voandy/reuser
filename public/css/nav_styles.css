@@ -6,6 +6,11 @@ body {
 
 .nav-link{
     color: white;
+
+}
+
+.nav-link:hover {
+  color: #5fb75f;
 }
 
 .navbar{
@@ -34,8 +39,8 @@ body {
 @media screen and (max-width: 576px) {
     .navbar-text{
         display: none;
-    }   
+    }
     .navbar{
         height: auto;
-    } 
+    }
 }
