@@ -22,6 +22,18 @@ img {
   vertical-align: baseline;
 }
 
+@media(max-width:1024px) {
+  #sidebar {
+    display: none;
+  }
+}
+
+@media(max-width:768px) {
+  .info-pic {
+    display: none;
+  }
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 300px;
@@ -57,7 +69,7 @@ img {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #999;
-    line-height: 1.3rem;
+  line-height: 1.3rem;
 }
 
 .list-title {

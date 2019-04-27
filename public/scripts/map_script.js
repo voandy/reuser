@@ -20,6 +20,7 @@ function initMap() {
 
     // place google map controls
     mapTypeControl: false,
+    fullscreenControl: false,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.TOP_CENTER
@@ -29,24 +30,22 @@ function initMap() {
     },
     streetViewControlOptions: {
       position: google.maps.ControlPosition.LEFT_BOTTOM
-    },
-    fullscreenControlOptions: {
-      position: google.maps.ControlPosition.LEFT_TOP
     }
   });
 
   infowindow = new google.maps.InfoWindow();
 
-  // center map on current location if available
-  // if (navigator.geolocation) {
-  //   navigator.geolocation.getCurrentPosition(function(position) {
-  //     var pos = {
-  //       lat: position.coords.latitude,
-  //       lng: position.coords.longitude
-  //     };
-  //     map.setCenter(pos);
-  //   });
-  // }
+  //center map on current location if available
+  var curr_pos;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      curr_pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(pos);
+    });
+  }
 
   // add google autocompleter to search-box
   var input = document.getElementById('search-box');
@@ -54,7 +53,7 @@ function initMap() {
 
   // circle in which to bias location searches
   var circle = new google.maps.Circle({
-    center: map.getCenter(),
+    center: (curr_pos ? curr_pos : map.getCenter()),
     radius: 10000
   });
   autocomplete.setBounds(circle.getBounds());
