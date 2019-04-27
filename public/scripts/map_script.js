@@ -17,6 +17,7 @@ function initMap() {
     center: {lat: -37.798535, lng: 144.960605},
     zoom: 15,
     styles: mapstyle,
+    gestureHandling: 'greedy',
 
     // place google map controls
     mapTypeControl: false,
