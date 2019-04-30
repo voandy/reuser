@@ -1,23 +1,26 @@
 doctype html
-
 head
-    link(rel='stylesheet' href='/css/nav_styles.css')        
-    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
-            
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    meta(http-equiv='X-UA-Compatible' content='ie=edge')
 
-    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js' integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut' crossorigin='anonymous')
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js' integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k' crossorigin='anonymous')
+    // nav bar style and behaviour
+    link(rel='stylesheet', href='/css/login_styles.css')
+    link(rel='stylesheet', href='/css/nav_styles.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+      
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k', crossorigin='anonymous')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
 
+    
+    // login page style and behaviour
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js')
+    script(src='//code.jquery.com/jquery-1.11.1.min.js')  
+    
 // header for home page
-//- .jumbotron(style='margin-bottom: 0px;')
-//-   h3 ReUser
-//-   p things doesn&apos;t always need to go into the trash
-
 nav.navbar.navbar-expand-sm.sticky-top
   // burger bar
   button.navbar-default.navbar-toggler(data-toggle='collapse', data-target='#data_links')
@@ -44,14 +47,30 @@ nav.navbar.navbar-expand-sm.sticky-top
           a.dropdown-item(href='#food') Food
           a.dropdown-item(href='#technology') Technology
           a.dropdown-item(href='#other') Others
+
+  // login section
   div
     ul.navbar-nav
       li.nav-item
         a.nav-link.profile(href='#log-in')
-          img(src='images/nav/login.png', height='30px', style="margin-top: 2px")
-  div(style="height: 40px")
+          img(src='images/nav/login.png', height='30px', style='margin-top: 2px; margin-right: 6px')
+  div(style='height: 40px;')
     ul.navbar-nav
       li.nav-item
-        a.nav-link(href='#log-in') Log In
+        a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#') Login
+        ul.dropdown-menu.form-wrapper
+          li
+            form(action='/examples/actions/confirmation.php', accept-charset='UTF-8', role='form')
+            fieldset
+              .form-group
+                input.form-control(placeholder='Username', name='username', type='text')
+              .form-group
+                input.form-control(placeholder='Password', name='password', type='password', value='')
+              .checkbox
+                label
+                  input(name='remember', type='checkbox', value='Remember Me')
+                  |  Remember Me
+              input.btn.btn-lg.btn-success.btn-block(type='submit', value='Login')
+              
 
-        
+              
