@@ -43,14 +43,27 @@ body {
     background-color: black;
 }
 
+/* login page styles */
+.navbar .dropdown-menu.form-wrapper {
+    width: 310px;
+    padding: 20px;
+    left: auto;
+    right: 0;
+    font-size: 14px;
+}
+
+.forget-password{
+    padding-left: 40px;
+    font-size: 13.5px;
+}
+
 #log-in{
     background-color: #57CC86;
     color: white;
     padding: auto;
 }
 
-
-   /* when screen reduces in size  */
+/* when screen reduces in size  */
 @media screen and (max-width: 576px) {
     .navbar-text{
         display: none;

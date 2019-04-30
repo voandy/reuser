@@ -2,7 +2,6 @@ doctype html
 head
 
     // nav bar style and behaviour
-    link(rel='stylesheet', href='/css/login_styles.css')
     link(rel='stylesheet', href='/css/nav_styles.css')
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
       
@@ -17,8 +16,9 @@ head
 
     
     // login page style and behaviour
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js')
-    script(src='//code.jquery.com/jquery-1.11.1.min.js')  
+    //<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
 // header for home page
 nav.navbar.navbar-expand-sm.sticky-top
@@ -66,11 +66,17 @@ nav.navbar.navbar-expand-sm.sticky-top
                 input.form-control(placeholder='Username', name='username', type='text')
               .form-group
                 input.form-control(placeholder='Password', name='password', type='password', value='')
-              .checkbox
-                label
-                  input(name='remember', type='checkbox', value='Remember Me')
-                  |  Remember Me
+              label.checkbox.pull-left
+                input(type='checkbox', value='remember-me')
+                |     Remember Me
+              a.forget-password(href='#') Forget Password? 
+              span.clearfix
+                
               input.btn.btn-lg.btn-success.btn-block(type='submit', value='Login')
+              .bottom.text-center
+                | Don't have account ? 
+                a(href='#')
+                  b Sign Up
               
 
               
