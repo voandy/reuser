@@ -34,11 +34,11 @@ nav.navbar.navbar-expand-sm.sticky-top
     // nav bar links
     ul.navbar-nav
       li.nav-item
-        a.nav-link(href='#about') About
+        a.nav-link(href='/about') About
       li.nav-item
         a.nav-link(href='#home') Home
       li.nav-item
-        a.nav-link(href='#map') Map
+        a.nav-link(href='/map') Map
       // categories
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle(data-toggle='dropdown', data-target='dropdown_target', href='#category') Categories
@@ -68,14 +68,14 @@ nav.navbar.navbar-expand-sm.sticky-top
                 input.form-control(placeholder='Password', name='password', type='password', value='')
               label.checkbox.pull-left
                 input(type='checkbox', value='remember-me')
-                |     Remember Me
-              a.forget-password(href='#') Forget Password? 
+                |  Remember Me
+              a.forget-password(href='#') Forget Password
               span.clearfix
                 
               input.btn.btn-lg.btn-success.btn-block(type='submit', value='Login')
               .bottom.text-center
-                | Don't have account ? 
-                a(href='#')
+                | Don't have account? 
+                a(href='/register')
                   b Sign Up
               
 
