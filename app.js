@@ -28,6 +28,21 @@ app.get('/', function(req,res){
   res.render('map');
 });
 
+// map page
+app.get('/map', function(req,res) {
+  res.render('map');
+});
+
+// 
+app.get('/about', function(req,res) {
+  res.render('about');
+});
+
+// sign-up page
+app.get('/register', function(req,res) {
+  res.render('sign-up');
+});
+
 app.listen(port, function(){
   console.log("Listening on port " + port);
 });

@@ -1,0 +1,46 @@
+extends default
+
+append head
+    link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/css/sign-up_styles.css')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    // ---- Include the above in your HEAD tag --------
+    title Bootstrap Example
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+
+block content
+    // if you want to create login page and register page together in one page ...you have to only chnage his name...that's it...
+    .container(style='margin-top: 5%;')
+      .row
+        .col-sm-4  
+        .col-md-4
+          h1.text-center.text-success  Sign-Up
+          br
+          .col-sm-12
+            br
+            .tab-content
+                form(action='#')
+                  .form-group
+                    label(for='firstName') First Name
+                    input#email.form-control(type='text')
+                  .form-group
+                    label(for='lastName') Last Name
+                    input#email.form-control(type='text')
+                  .form-group
+                    label(for='email') Email address:
+                    input#email.form-control(type='email')
+                  .form-group
+                    label(for='pwd') Password:
+                    input#pwd.form-control(type='password')
+                  .form-group
+                    label(for='pwd') Confirm Password:
+                    input#pwd.form-control(type='password')
+                br
+                a.pull-right.btn.btn-block.btn-success(href='#')  Register  
+
+
