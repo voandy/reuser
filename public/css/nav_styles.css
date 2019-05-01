@@ -1,42 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 
-body {
-    font-family: 'Montserrat', sans-serif;
+.navbar {
+    font-family: futura;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #4CD15F;
+    height: 70px;
 }
 
-.navbar-brand.logo {
-    position: fixed;
-    top: 3px;
+.navbar-brand {
+    margin-left: 60px;
+    margin-right: 0px !important;
+    padding-right: 0px;
 }
 
-.navbar-collapse {
-    margin-left: 7rem;
+img.logo {
+    height: 28px;
 }
 
 .nav-link{
-    color: white;
+    color: black;
+}
+
+.navbar-collapse {
+    margin-left: 10px;
 }
 
 .nav-link:hover {
-  color: #5fb75f;
+    color: #646363;
 }
 
-.nav-link.profile {
-    top: 0;
-    right: 70px;
-    position: fixed;
+img.login-icon {
+    height: 30px;
 }
 
-.navbar{
-    /* background-color: #57CC86; */
-    background-color: green;
-    height: 48px;
-}
-
-.logo-text{
-    position: fixed;
-    color: white;
-    margin-left: 3rem;
+.nav-link.dropdown-toggle.login-text {
+    margin-right: 52px;
 }
 
 .navbar-toggler-icon{
@@ -52,23 +51,71 @@ body {
     font-size: 14px;
 }
 
-.forget-password{
-    padding-left: 54px;
-    font-size: 13.5px;
+.remember-me-text {
+    font-size: 12px;
 }
 
+.forget-password-text {
+    padding-left: 50px;
+    font-size: 12px;
+}
+
+.btn {
+    border-radius: 47px !important;
+}
+
+.dont-have-account-text {
+    margin-left: 30px;
+    font-size: 12px;
+}
+
+.sign-up-text {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* 
 #log-in{
     background-color: #57CC86;
     color: white;
     padding: auto;
-}
+} */
 
 /* when screen reduces in size  */
+
 @media screen and (max-width: 576px) {
-    .navbar-text{
-        display: none;
+    
+}
+
+/* the #data_links.collapse.navbar-collapse doesn't immediately 
+   come in effect at 576, hence this is to fix the resize bug at 
+   width 576px */
+@media screen and (max-width: 575px) {
+    .navbar-expand-sm .navbar-nav .dropdown-menu {
+        position: absolute;
     }
-    /* .navbar{
-        height: auto;
-    } */
+
+    .navbar {
+        justify-content: flex-start !important;
+    }
+
+    .navbar-brand {
+        margin-left: 10px;
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .nav-link.dropdown-toggle.login-text {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    img.login-icon {
+        margin-left: 10px;
+    }
+
+    .nav-link.brand-name {
+        flex-grow: 1 !important;
+        padding-left: 10px;
+    }
 }

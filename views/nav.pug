@@ -21,62 +21,51 @@ head
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
 // header for home page
-nav.navbar.navbar-expand-sm.sticky-top
-  // burger bar
-  button.navbar-default.navbar-toggler(data-toggle='collapse', data-target='#data_links')
-    // SOMETHING WRONG HERE????
-    span.navbar-toggler-icon
+nav.navbar.navbar-expand-sm
+  //- // burger bar
+  //- button.navbar-default.navbar-toggler(data-toggle='collapse', data-target='#data_links')
+  //-   // SOMETHING WRONG HERE????
+  //-   span.navbar-toggler-icon
   // logo
-  a.navbar-brand.logo
-    img(src='images/nav/reuser-logo-white.png', height='30px')
-  span.navbar-text.logo.logo-text reuser
+  a.navbar-brand
+    img.logo(src='images/nav/reuser-logo-new.png')
+  a.nav-link.brand-name(href='/') reuser
   #data_links.collapse.navbar-collapse
     // nav bar links
     ul.navbar-nav
       li.nav-item
-        a.nav-link(href='/about') About
-      li.nav-item
-        a.nav-link(href='#home') Home
-      li.nav-item
-        a.nav-link(href='/map') Map
-      // categories
-      li.nav-item.dropdown
-        a.nav-link.dropdown-toggle(data-toggle='dropdown', data-target='dropdown_target', href='#category') Categories
-        .dropdown-menu(aria-labelledby='dropdown_target')
-          a.dropdown-item(href='#furniture') Furniture
-          a.dropdown-item(href='#food') Food
-          a.dropdown-item(href='#technology') Technology
-          a.dropdown-item(href='#other') Others
+        a.nav-link(href='/about') about
 
   // login section
   div
     ul.navbar-nav
       li.nav-item
-        a.nav-link.profile(href='#log-in')
-          img(src='images/nav/login.png', height='30px', style='margin-top: 2px; margin-right: 6px')
-  div(style='height: 40px;')
+        a.nav-link(href='#log-in')
+          img.login-icon(src='images/nav/login-icon.png')
+
+  div
     ul.navbar-nav
       li.nav-item
-        a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#') Login
+        a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#').login-text login
         ul.dropdown-menu.form-wrapper
           li
             form(action='/examples/actions/confirmation.php', accept-charset='UTF-8', role='form')
             fieldset
               .form-group
-                input.form-control(placeholder='Username', name='username', type='text')
+                input.form-control(placeholder='username', name='username', type='text')
               .form-group
-                input.form-control(placeholder='Password', name='password', type='password', value='')
+                input.form-control(placeholder='password', name='password', type='password', value='')
               label.checkbox.pull-left
                 input(type='checkbox', value='remember-me')
-                |  Remember Me
-              a.forget-password(href='#') Forget Password
-              span.clearfix
+              a.remember-me-text  remember me
+              a.forget-password-text(href='#') forget password?
+              br
+              br
+              //span.clearfix
                 
-              input.btn.btn-lg.btn-success.btn-block(type='submit', value='Login')
-              .bottom.text-center
-                | Don't have account? 
-                a(href='/register')
-                  b Sign Up
+              input.btn.btn-md.btn-primary.btn-block(type='submit', value='login')
+              a.dont-have-account-text don't have account? 
+              a.sign-up-text(href='/register') sign up
               
 
               
