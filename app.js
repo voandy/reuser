@@ -40,7 +40,7 @@ app.get('/about', function(req,res) {
 
 // sign-up page
 app.get('/register', function(req,res) {
-  res.render('register');
+  res.render('sign-up');
 });
 
 app.listen(port, function(){
