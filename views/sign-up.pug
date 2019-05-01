@@ -24,23 +24,24 @@ block content
           .col-sm-12
             br
             .tab-content
-                form(action='#')
-                  .form-group
-                    label(for='firstName') First Name
-                    input#email.form-control(type='text')
-                  .form-group
-                    label(for='lastName') Last Name
-                    input#email.form-control(type='text')
-                  .form-group
-                    label(for='email') Email address:
-                    input#email.form-control(type='email')
-                  .form-group
-                    label(for='pwd') Password:
-                    input#pwd.form-control(type='password')
-                  .form-group
-                    label(for='pwd') Confirm Password:
-                    input#pwd.form-control(type='password')
-                br
-                a.pull-right.btn.btn-block.btn-success(href='#')  Register  
+              form(action='#')
+                .form-group
+                  label(for='firstName') First Name
+                  input#firstName.form-control(type='text', placeholder='John')
+                .form-group
+                  label(for='lastName') Last Name
+                  input#lastName.form-control(type='text', placeholder='Appleseed')
+                .form-group
+                  label(for='email') Email address:
+                  input#email.form-control(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
+                .form-group
+                  label(for='pwd') Password:
+                  input#pwd.form-control(type='password', placeholder='Password must be at least 8 characters long')
+                .form-group
+                  label(for='pwd') Confirm Password:
+                  input#pwdConfirm.form-control(type='password', placeholder='Password must be at least 8 characters long')
+              br
+              button.pull-right.btn.btn-block.btn-success(disabled='', href='/map')  Register 
+ 
 
 
