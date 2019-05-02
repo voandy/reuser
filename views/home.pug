@@ -1,0 +1,61 @@
+extends default.pug
+
+append head
+    title Home
+    link(rel='stylesheet', href='/css/home_styles.css')
+    
+
+block content
+
+    div.main-container
+        div.home-text-container
+            a.home-text hundreds of people are using 
+                span.reuser-text reuser
+            p.home-text to help reduce their environmental footprint.    
+            button.button
+                span.button-text be a reuser now
+
+        div.hp-illustration-container
+            img.hp-illustration(src='images/home/hp-illustration.svg')
+    br
+    br
+    div
+        div.above-search-section
+            a.above-search(href='/map') discover 
+            a.above-search-separator |
+            a.above-search(href='/listing') categories
+        br
+        div.search-section
+            form.search-bar-container
+                div.search-input
+                    input.form-control(type='search-terms', placeholder='find something...')
+                a.search-field-separator |
+                img.location-pin-image(src='images/home/location-pin.png')
+                div.location-input
+                    input.form-control(type='location', placeholder='location')
+                a.search-field-separator |
+                div.distance-input
+                    select.form-control(type='distance', placeholder='km')
+                            option + 1 km
+                            option + 2 km
+                            option + 5 km
+                            option +10 km
+                            option +20 km
+                button.btn.search-btn(type='submit')
+                    img.search-btn-image(src='images/others/search-btn.png')
+
+    br
+    br
+    br
+    br
+
+    //- footer.text-muted
+    //-   .container
+    //-     p.float-right
+    //-       a(href='#') Back to top
+    //-     p Reuser © - all rights reserved 
+
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script.
+      window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\\\/script>')
+    script(src='/docs/4.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o', crossorigin='anonymous')

@@ -38,6 +38,10 @@ app.get('/about', function(req,res) {
   res.render('about');
 });
 
+app.get('/home', function(req,res) {
+  res.render('home');
+});
+
 // sign-up page
 app.get('/register', function(req,res) {
   res.render('sign-up');

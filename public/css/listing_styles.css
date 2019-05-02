@@ -29,7 +29,6 @@ body {
     height: 48px;
 }
 
-
    /* when screen reduces in size  */
 @media screen and (max-width: 576px) {
     .navbar-text{
