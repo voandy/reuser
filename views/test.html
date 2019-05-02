@@ -68,24 +68,14 @@
                                 </div>
                             </div>
                         </form><br />
-                        <button class="pull-right btn btn-block btn-success" disabled="" href="/map"> Register </button>
+                        <button class="pull-right btn btn-block btn-success" href="/map"> Register </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        // $('input[type="submit"], input[type="button"], button').disable(true);
-
-
-
         $(document).ready(function () {
-
-            var firstName   = false;
-            var lastName    = false;
-            var email       = false;
-            var pwd         = false;
-            var pwdConfirm  = false;
 
             $("#email").focusout(function () {
                 email_validator();
@@ -141,7 +131,6 @@
                     $('#pwdConfirm').addClass('is-invalid');
                 }
             }
-
             // if(email && pwd && pwdConfirm)
             //         $('button').prop('disabled', false);
             //         // $('button').prop('disabled', true);

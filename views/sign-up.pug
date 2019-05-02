@@ -33,15 +33,76 @@ block content
                   input#lastName.form-control(type='text', placeholder='Appleseed')
                 .form-group
                   label(for='email') Email address:
-                  input#email.form-control(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
+                  input#email.form-control.is-invalid(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
+                  div
+                    small#invalidEmail.text-danger
+                      | Invalid email.
                 .form-group
                   label(for='pwd') Password:
-                  input#pwd.form-control(type='password', placeholder='Must be at least 8 characters long')
+                  input#pwd.form-control.valid(type='password', placeholder='Must be at least 8 characters long')
+                  div
+                    small#passwordLength.text-danger
+                      | Must be at least 8 characters long.
                 .form-group
                   label(for='pwd') Confirm Password:
-                  input#pwdConfirm.form-control(type='password', placeholder='Must be at least 8 characters long')
+                  input#pwdConfirm.form-control.invalid(type='password', placeholder='Must be at least 8 characters long')
+                  div
+                    small#passwordDifferent.text-danger
+                      | Password doesn't match.
               br
-              button.pull-right.btn.btn-block.btn-success(disabled='', href='/map')  Register 
- 
+              button.pull-right.btn.btn-block.btn-success(href='/map')  Register 
+    script.
+      $(document).ready(function () {
+        $("#email").focusout(function () {
+          email_validator();
+        })
+        $("#pwd").focusout(function () {
+          password_validator();
+        })
+        $("#pwdConfirm").focusout(function () {
+         password_length_validator();
+        })
+        function email_validator() {
+          const pattern = /^([\\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+          var email = $('#email').val();
+
+            if (pattern.test(email) && email != "") {
+              $('#invalidEmail').css('display', 'none');
+              $('#email').removeClass('is-invalid');
+              email = true;
+          } else {
+              $('#invalidEmail').css('display', 'block');
+              $('#email').addClass('is-invalid');
+          }
+        }
+        function password_validator() {
+          const min = 8;
+          var pwd = $('#pwd').val();
+          if (pwd.length >= min) {
+            $('#passwordLength').css('display', 'none');
+            $('#pwd').removeClass('is-invalid');
+            pwd = true;
+          } else {
+            $('#passwordLength').css('display', 'block');
+            $('#pwd').addClass('is-invalid');
+          }
+        }
+        function password_length_validator() {
+          var pwd1 = $('#pwd').val();
+          var pwd2 = $('#pwdConfirm').val();
+          if (pwd1 === pwd2 && pwd2 != "") {
+            $('#passwordDifferent').css('display', 'none');
+            $('#pwdConfirm').removeClass('is-invalid');
+            pwdConfirm = true;
+          } else {
+            $('#passwordDifferent').css('display', 'block');
+            $('#pwdConfirm').addClass('is-invalid');
+          }
+        }
+        // if(email && pwd && pwdConfirm)
+        //         $('button').prop('disabled', false);
+        //         // $('button').prop('disabled', true);
+      });
+
 
 
