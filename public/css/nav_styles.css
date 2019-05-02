@@ -5,11 +5,12 @@
     font-size: 17px;
     font-weight: bold;
     background-color: #4CD15F;
+    /* background-color: white; */
     height: 70px;
 }
 
 .navbar-brand {
-    margin-left: 60px;
+    margin-left: 100px;
     margin-right: 0px !important;
     padding-right: 0px;
 }
@@ -35,7 +36,7 @@ img.login-icon {
 }
 
 .nav-link.dropdown-toggle.login-text {
-    margin-right: 52px;
+    margin-right: 82px;
 }
 
 .navbar-toggler-icon{
