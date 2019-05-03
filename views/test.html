@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../public/css/sign-up_styles.css" />"
     <script src="../public/scripts/signin_script.js"></script>
 
-
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- ---- Include the above in your HEAD tag ---------->
@@ -68,7 +67,7 @@
                                 </div>
                             </div>
                         </form><br />
-                        <button class="pull-right btn btn-block btn-success" href="/map"> Register </button>
+                        <button class="pull-right btn btn-block btn-success" id="register-button" href="/map"> Register </button>
                     </div>
                 </div>
             </div>
@@ -97,7 +96,6 @@
                 if (pattern.test(email) && email != "") {
                     $('#invalidEmail').css('display', 'none');
                     $('#email').removeClass('is-invalid');
-                    email = true;
                 } else {
                     $('#invalidEmail').css('display', 'block');
                     $('#email').addClass('is-invalid');
@@ -111,7 +109,6 @@
                 if (pwd.length >= min) {
                     $('#passwordLength').css('display', 'none');
                     $('#pwd').removeClass('is-invalid');
-                    pwd = true;
                 } else {
                     $('#passwordLength').css('display', 'block');
                     $('#pwd').addClass('is-invalid');
@@ -125,15 +122,11 @@
                 if (pwd1 === pwd2 && pwd2 != "") {
                     $('#passwordDifferent').css('display', 'none');
                     $('#pwdConfirm').removeClass('is-invalid');
-                    pwdConfirm = true;
                 } else {
                     $('#passwordDifferent').css('display', 'block');
                     $('#pwdConfirm').addClass('is-invalid');
                 }
             }
-            // if(email && pwd && pwdConfirm)
-            //         $('button').prop('disabled', false);
-            //         // $('button').prop('disabled', true);
         });
     </script>
 
