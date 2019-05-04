@@ -3,7 +3,7 @@ extends default
 append head
   link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
   // HERE
-  link(rel='stylesheet', href='../public/css/sign-up_styles.css')
+  link(rel='stylesheet', href='../css/sign-up_styles.css')
   | &quot;
   script(src='../public/scripts/signin_script.js')
   script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
@@ -36,19 +36,19 @@ block content
                 input#lastName.form-control(type='text', placeholder='Appleseed')
               .form-group
                 label(for='email') Email address:
-                input#email.form-control.is-invalid(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
+                input#email.form-control(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
                 div
                   small#invalidEmail.text-danger
                     | Invalid email.
               .form-group
                 label(for='pwd') Password:
-                input#pwd.form-control.valid(type='password', placeholder='Must be at least 8 characters long')
+                input#pwd.form-control(type='password', placeholder='Must be at least 8 characters long')
                 div
                   small#passwordLength.text-danger
                     | Must be at least 8 characters long.
               .form-group
                 label(for='pwd') Confirm Password:
-                input#pwdConfirm.form-control.invalid(type='password', placeholder='Must be at least 8 characters long')
+                input#pwdConfirm.form-control(type='password', placeholder='Must be at least 8 characters long')
                 div
                   small#passwordDifferent.text-danger
                     | Password doesn&apos;t match.

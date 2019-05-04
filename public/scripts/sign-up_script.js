@@ -4,10 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function test() {
     var email = $('#email').val();
-    alert("Current Email is " + email);
 }
 
-/*
+
 $(document).ready(function () {
     $("#email").focusout(function () {
         email_validator();
@@ -19,12 +18,13 @@ $(document).ready(function () {
         password_length_validator();
     })
 });
-*/
+
 
 function email_validator() {
-    const pattern = /^([\\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    const pattern = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var email = $('#email').val();
-    if (pattern.test(email) && email != "") {
+    
+    if (pattern.test(email)) {
         $('#invalidEmail').css('display', 'none');
         $('#email').removeClass('is-invalid');
     } else {
@@ -33,7 +33,7 @@ function email_validator() {
     }
 }
 
-/*
+
 function password_validator() {
     const min = 8;
     var pwd = $('#pwd').val();
@@ -57,7 +57,7 @@ function password_length_validator() {
         $('#pwdConfirm').addClass('is-invalid');
     }
 }
-*/
+
 
 
 
