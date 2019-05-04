@@ -1,56 +1,58 @@
 extends default
 
 append head
-    link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
-    link(rel='stylesheet', href='/css/sign-up_styles.css')
-    script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    // ---- Include the above in your HEAD tag --------
-    title Sign-up
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-    script(src='/scripts/email_already_exists_script.js')
+  link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
+  // HERE
+  link(rel='stylesheet', href='../public/css/sign-up_styles.css')
+  | &quot;
+  script(src='../public/scripts/signin_script.js')
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  // ---- Include the above in your HEAD tag --------
+  title Bootstrap Example
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  script(src='scripts/sign-up_script.js')
 
 block content
-    .container(style='margin-top: 5%;')
-      .row
-        .col-sm-4  
-        .col-md-4
-          h1.text-center.text-success  Sign-Up
+  .container(style='margin-top: 5%;')
+    .row
+      .col-sm-4  
+      .col-md-4
+        h1.text-center.text-success  Sign-Up
+        br
+        .col-sm-12
           br
-          .col-sm-12
+          .tab-content
+            form(action='#')
+              .form-group
+                label(for='firstName') First Name
+                input#firstName.form-control(type='text', placeholder='John')
+              .form-group
+                label(for='lastName') Last Name
+                input#lastName.form-control(type='text', placeholder='Appleseed')
+              .form-group
+                label(for='email') Email address:
+                input#email.form-control.is-invalid(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
+                div
+                  small#invalidEmail.text-danger
+                    | Invalid email.
+              .form-group
+                label(for='pwd') Password:
+                input#pwd.form-control.valid(type='password', placeholder='Must be at least 8 characters long')
+                div
+                  small#passwordLength.text-danger
+                    | Must be at least 8 characters long.
+              .form-group
+                label(for='pwd') Confirm Password:
+                input#pwdConfirm.form-control.invalid(type='password', placeholder='Must be at least 8 characters long')
+                div
+                  small#passwordDifferent.text-danger
+                    | Password doesn&apos;t match.
             br
-            .tab-content
-              form(action='#')
-                .form-group
-                  label(for='#firstName') First Name
-                  input#firstName.form-control(type='text', placeholder='John')
-                .form-group
-                  label(for='#lastName') Last Name
-                  input#lastName.form-control(type='text', placeholder='Appleseed')
-                .form-group
-                  label(for='#email') Email address:
-                  input.form-control(id = 'email', data-toggle='tooltip', data-placement='top', title='Tooltip on top', oninput = 'myFunction()',type='email', placeholder='name@example.com')
-                .p(id = 'demo')
-                  //div
-                    small#invalidEmail.text-danger
-                      | Invalid email.
-                .form-group
-                  label(for='#pwd') Password:
-                  input#pwd.form-control(type='password', placeholder='Must be at least 8 characters long')
-                  //div
-                    small#passwordLength.text-danger
-                      | Must be at least 8 characters long.
-                .form-group
-                  label(for='#pwdConfirm') Confirm Password:
-                  input#pwdConfirm.form-control(type='password', placeholder='Must be at least 8 characters long')
-                  //div
-                    small#passwordDifferent.text-danger
-                      | Password doesn't match.
-              br
-              button.pull-right.btn.btn-block.btn-success(href='/map')  Register 
-
-
+            button#register-button.pull-right.btn.btn-block.btn-success(href='/map')  Register 
+      
+      
