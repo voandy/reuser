@@ -1,3 +1,21 @@
 body {
     background-image: url(http://www.joburgchiropractor.co.za/images/background.jpg);
 }
+
+/* IDs */
+
+#invalidEmail {
+    display: none;
+}
+
+#passwordLength {
+    display: none;
+
+}
+
+#passwordDifferent{
+    display: none;
+
+    
+}
+
