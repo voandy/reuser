@@ -25,7 +25,7 @@ app.use('/',routes);
 
 // home page
 app.get('/', function(req,res){
-  res.render('map');
+  res.render('home');
 });
 
 // map page
