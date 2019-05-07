@@ -1,40 +1,37 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
-
-body {
-    font-family: 'Montserrat', sans-serif;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 300px 900px 1fr;
+  grid-template-rows: auto;
 }
 
-.nav-link{
-    color: white;
+.user {
+  grid-column: 2;
 }
 
-.navbar{
-    background-color: green;
-    height: 48px;
+.listing {
+  grid-column: 3;
 }
 
-.logo-text{
-    color: white;
-    margin-right: 3%;
+.profile-cropper {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
-/* Link */
-.navbar-default .navbar-item > li > a {
-    color:white;
+.profile-pic {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
 }
 
-#log-in{
-    background-color: #57CC86;
-    color: white;
-    height: 48px;
+.star-rating {
+  width: 100px;
 }
 
-   /* when screen reduces in size  */
-@media screen and (max-width: 576px) {
-    .navbar-text{
-        display: none;
-    }   
-    .navbar{
-        height: auto;
-    } 
+.listing-pic {
+  width = 100%;
+  max-width: 900px;
 }

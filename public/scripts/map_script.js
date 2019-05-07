@@ -1,4 +1,5 @@
 const listingURL = "/listing";
+const viewListingURL ="/view-listing"
 const userURL = "/user";
 var currPos =
   (window.location.search ? getJsonFromUrl(window.location.search) : null);
@@ -111,14 +112,14 @@ function placeListings(){
     var content = "<div class='info-window'><table><tbody><tr>";
 
     // add image if one exists
-    if (listings[i].imageURLs) {
+    if (listings[i].imageURLs.length != 0) {
       content += "<td><img class=\"info-pic\" src=\"" + listings[i].imageURLs[0] + "\"></td>"
     }
 
     content +=
     "<td><div class=\"info-description\">" +
       "<p><table><tbody><tr>" +
-        "<td><a href=\"" + listingURL + "/id/" + listings[i]._id + "\">" +
+        "<td><a href=\"" + viewListingURL + "?id=" + listings[i]._id + "\">" +
         "<h3 class=\"info-title\">" + listings[i].title + "</h3></a></td>" +
         "<td><img src=\"/images/map/new-window.png\" class=\"nw-icon\"></td>" +
       "</tr></tbody></table></p>" +
@@ -184,7 +185,7 @@ function loadSidebar (){
       "<i class=\"category\">" + listings[i].category  + "</i>";
 
     // add image if one exists
-    if (listings[i].imageURLs) {
+    if (listings[i].imageURLs.length != 0) {
       content += "<div class=\"sidebar-crop\"><img class=\"sidebar-pic\" src=\"" + listings[i].imageURLs[0] + "\"></div>"
     }
 

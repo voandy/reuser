@@ -8,11 +8,13 @@ const reviewSchema = new Schema(
     // user who left this review
     leftById:String,
 
+    datePosted:{type: Date, default: Date.now},
+
     title:String,
-    contents:String,
+    content:String,
     starRating:{type:Number, min:1, max:5},
 
-    // url of the images posted 
+    // url of the images posted
     imageURLs:[String]
   }
 );

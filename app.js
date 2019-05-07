@@ -33,7 +33,7 @@ app.get('/map', function(req,res) {
   res.render('map');
 });
 
-// 
+//
 app.get('/about', function(req,res) {
   res.render('about');
 });
@@ -45,6 +45,11 @@ app.get('/home', function(req,res) {
 // sign-up page
 app.get('/sign-up', function(req,res) {
   res.render('sign-up');
+});
+
+// listing page
+app.get('/view-listing', function(req,res) {
+  res.render('view-listing');
 });
 
 app.listen(port, function(){

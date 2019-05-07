@@ -25,22 +25,4 @@ function initMap(){
     longitude = place.geometry.location.lng();
     window.open("/map?" + 'lat=' + latitude + '&lng=' + longitude, "_self");
   });
-
-  // from stackoverflow.com credit: Basj
-  // var selectFirstOnEnter = function(input){
-  //   var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
-  //   function addEventListenerWrapper(type, listener) {
-  //     if (type == "keydown") {
-  //       var orig_listener = listener;
-  //       listener = function (event) {
-  //         var suggestion_selected = $(".pac-item-selected").length > 0;
-  //         if (event.which == 13 && !suggestion_selected) { var simulated_downarrow = $.Event("keydown", {keyCode:40, which:40}); orig_listener.apply(input, [simulated_downarrow]); }
-  //         orig_listener.apply(input, [event]);
-  //       };
-  //     }
-  //     _addEventListener.apply(input, [type, listener]);
-  //   }
-  //   if (input.addEventListener) { input.addEventListener = addEventListenerWrapper; } else if (input.attachEvent) { input.attachEvent = addEventListenerWrapper; }
-  // }
-  // selectFirstOnEnter(input);
 }

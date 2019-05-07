@@ -33,8 +33,9 @@ var create = function (req,res) {
   var review = new Review({
     userId:req.params.userId,
     leftById:req.params.leftById,
+    datePosted: new Date(),
     title:req.body.title,
-    contents:req.body.contents,
+    content:req.body.content,
     starRating:req.body.starRating
   });
 
@@ -74,8 +75,21 @@ var updateById = function(req,res){
   });
 };
 
+// given a userId returns all review written ABOUT that user
+var getByUser = function(req,res){
+  var userId = req.params.userId;
+  Review.find({userId:userId}, function(err, reviews){
+    if (!err){
+      res.send(reviews);
+    }else{
+      res.status(404);
+    }
+  });
+}
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
+module.exports.getByUser = getByUser;
