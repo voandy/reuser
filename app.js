@@ -43,7 +43,7 @@ app.get('/home', function(req,res) {
 });
 
 // sign-up page
-app.get('/register', function(req,res) {
+app.get('/sign-up', function(req,res) {
   res.render('sign-up');
 });
 
