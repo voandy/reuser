@@ -1,14 +1,16 @@
 extends default
 
 append head
+  title reuser | sign-up
+  link(rel='icon', href='/images/others/reuser-logo-green-small.png')
+
   link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
-  // HERE
   link(rel='stylesheet', href='../css/sign-up_styles.css')
+
   script(src='../public/scripts/signin_script.js')
   script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
   script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-  // ---- Include the above in your HEAD tag --------
-  title Bootstrap Example
+  // ---- Include the above in your HEAD tag --------  
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1')
   //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
@@ -19,39 +21,41 @@ append head
 block content
   .container(style='margin-top: 5%;')
     .row
-      .col-sm-4  
-      .col-md-4
-        h1.text-center.text-success  Sign-Up
-        br
+      .col-md-3 
+      .col-md-6
+        h3.text-center.text-success  create your account
         .col-sm-12
           br
           .tab-content
             form(action='#')
               .form-group
-                label(for='firstName') First Name
-                input#firstName.form-control(type='text', placeholder='John')
+                label(for='fullName') full name
+                input#firstName.form-control(type='text', placeholder='John Appleseed')
               .form-group
-                label(for='lastName') Last Name
-                input#lastName.form-control(type='text', placeholder='Appleseed')
-              .form-group
-                label(for='email') Email address:
+                label(for='email') email address:
                 input#email.form-control(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
                 div
                   small#invalidEmail.text-danger
                     | Invalid email.
               .form-group
-                label(for='pwd') Password:
-                input#pwd.form-control(type='password', placeholder='Must be at least 8 characters long')
+                label(for='pwd') password:
+                input#pwd.form-control(type='password', placeholder='at least 8 characters long')
                 div
                   small#passwordLength.text-danger
                     | Must be at least 8 characters long.
               .form-group
-                label(for='pwd') Confirm Password:
-                input#pwdConfirm.form-control(type='password', placeholder='Must be at least 8 characters long')
+                label(for='pwd') confirm password:
+                input#pwdConfirm.form-control(type='password', placeholder='retype your password')
                 div
                   small#passwordDifferent.text-danger
                     | Password doesn&apos;t match.
+              br 
+              hr
+              .form-group
+                label(for="address") address (optional):
+                input#address.form-control(type='text', placeholder='full address')
             br
             button#register-button.pull-right.btn.btn-block.btn-success(href='/map')  Register 
+            br
       
       

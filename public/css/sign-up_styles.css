@@ -1,5 +1,16 @@
 body {
-    background-image: url(http://www.joburgchiropractor.co.za/images/background.jpg);
+    /* background-image: url(http://www.joburgchiropractor.co.za/images/background.jpg); */
+}
+
+.container{
+    font-family: futura;
+}
+
+.form-control {
+    -webkit-border-radius: 47px !important; 
+    -moz-border-radius: 47px !important;
+    
+    border-radius: 47px !important;
 }
 
 /* IDs */
@@ -10,12 +21,9 @@ body {
 
 #passwordLength {
     display: none;
-
 }
 
 #passwordDifferent{
-    display: none;
-
-    
+    display: none;    
 }
 
