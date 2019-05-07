@@ -1,5 +1,7 @@
 const listingURL = "/listing";
 const userURL = "/user";
+var currPos =
+  (window.location.search ? getJsonFromUrl(window.location.search) : null);
 
 const sidebarLimit = 10;
 const listingsList = document.getElementById('listings-list');
@@ -17,6 +19,7 @@ function initMap() {
     center: {lat: -37.798535, lng: 144.960605},
     zoom: 15,
     styles: mapstyle,
+    // scroll the map with one finger on touch based platforms
     gestureHandling: 'greedy',
 
     // place google map controls
@@ -36,16 +39,9 @@ function initMap() {
 
   infowindow = new google.maps.InfoWindow();
 
-  //center map on current location if available
-  var curr_pos;
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      curr_pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      map.setCenter(pos);
-    });
+  // center on searched location if available
+  if (currPos) {
+    map.setCenter(currPos);
   }
 
   // add google autocompleter to search-box
@@ -54,7 +50,7 @@ function initMap() {
 
   // circle in which to bias location searches
   var circle = new google.maps.Circle({
-    center: (curr_pos ? curr_pos : map.getCenter()),
+    center: (currPos ? currPos : map.getCenter()),
     radius: 10000
   });
   autocomplete.setBounds(circle.getBounds());
@@ -259,6 +255,17 @@ function timeSince(date) {
     return interval + " minutes ago";
   }
   return "Just now";
+}
+
+// from stackoverflow.com credit: Jan Turoň
+function getJsonFromUrl(url) {
+  var query = url.substr(1);
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = parseFloat(decodeURIComponent(item[1]), 10);
+  });
+  return result;
 }
 
 var mapstyle =

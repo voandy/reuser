@@ -11,8 +11,7 @@ const userSchema = new Schema(
     password:String,
     passwordSalt:String,
 
-    firstName:String,
-    lastName:String,
+    fullName:String,
 
     address: {
       addressLine1:String,

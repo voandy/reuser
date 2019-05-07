@@ -26,23 +26,9 @@ block content
             a.above-search(href='/listing') categories
         br
         div.search-section
-            form.search-bar-container
-                div.search-input
-                    input.form-control(type='search-terms', placeholder='find something...')
-                a.search-field-separator |
+            div.search-bar-container
+                input#location-search.location-input(type='location', placeholder='Address/Suburb')
                 img.location-pin-image(src='images/home/location-pin.png')
-                div.location-input
-                    input.form-control(type='location', placeholder='location')
-                a.search-field-separator |
-                div.distance-input
-                    select.form-control(type='distance', placeholder='km')
-                            option + 1 km
-                            option + 2 km
-                            option + 5 km
-                            option +10 km
-                            option +20 km
-                button.btn.search-btn(type='submit')
-                    img.search-btn-image(src='images/others/search-btn.png')
 
     br
     br
@@ -59,3 +45,5 @@ block content
     script.
       window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\\\/script>')
     script(src='/docs/4.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o', crossorigin='anonymous')
+    script(src='/scripts/home.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap')
