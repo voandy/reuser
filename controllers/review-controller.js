@@ -28,23 +28,45 @@ var getById = function(req,res){
 
 // create review
 var create = function (req,res) {
-  // TODO: Update user's average star rating when a review is added
-
   var review = new Review({
     userId:req.params.userId,
     leftById:req.params.leftById,
+    datePosted: new Date(),
     title:req.body.title,
-    contents:req.body.contents,
+    content:req.body.content,
     starRating:req.body.starRating
   });
 
+  // save new review
   review.save(function (err,newReview) {
-    if (!err){
-      res.send(newReview);
-    }else{
+    if (err){
       res.status(400);
     }
   });
+
+  // update average user rating
+  var userId = req.params.userId;
+
+  Review.find({userId:userId}, function(err, reviews){
+    var reviewCount = 0;
+    var starTotal = 0;
+    var starRatingAvg = 0;
+
+    reviews.forEach(function(review) {
+      reviewCount ++;
+      starTotal += review.starRating;
+    });
+    starRatingAvg = starTotal / reviewCount;
+
+    User.findByIdAndUpdate(userId, {starRatingAvg:starRatingAvg},
+      {runValidators:true}, function(err, user) {
+      if (err){
+        res.status(404);
+      }
+    });
+  });
+
+  res.send(newReview);
 };
 
 // delete review by id
@@ -74,8 +96,21 @@ var updateById = function(req,res){
   });
 };
 
+// given a userId returns all review written ABOUT that user
+var getByUser = function(req,res){
+  var userId = req.params.userId;
+  Review.find({userId:userId}, function(err, reviews){
+    if (!err){
+      res.send(reviews);
+    }else{
+      res.status(404);
+    }
+  });
+}
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
+module.exports.getByUser = getByUser;

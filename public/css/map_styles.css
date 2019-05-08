@@ -4,12 +4,12 @@ html, body {
 }
 
 a {
-  color: #1b8000;
+  color: #39B54A;
   text-decoration: none;
 }
 
 a:hover {
-  color: #5fb75f;
+  color: #57EB74;
   text-decoration: none;
 }
 
@@ -74,7 +74,7 @@ img {
 
 .list-title {
   text-transform: capitalize;
-  color: #1b8000;
+  color: #39B54A;
   margin: 0;
 }
 
@@ -154,7 +154,7 @@ img {
 }
 
 #search-box:focus {
-  border-color: #1b8000;
+  border-color: #39B54A;
   outline-width: 0;
 }
 

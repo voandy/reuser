@@ -1,4 +1,5 @@
 const listingURL = "/listing";
+const viewListingURL ="/view-listing"
 const userURL = "/user";
 var currPos =
   (window.location.search ? getJsonFromUrl(window.location.search) : null);
@@ -111,15 +112,15 @@ function placeListings(){
     var content = "<div class='info-window'><table><tbody><tr>";
 
     // add image if one exists
-    if (listings[i].imageURLs) {
+    if (listings[i].imageURLs.length != 0) {
       content += "<td><img class=\"info-pic\" src=\"" + listings[i].imageURLs[0] + "\"></td>"
     }
 
     content +=
     "<td><div class=\"info-description\">" +
       "<p><table><tbody><tr>" +
-        "<td><a href=\"" + listingURL + "/id/" + listings[i]._id + "\">" +
-        "<h3 class=\"info-title\">" + listings[i].title + "</h3></a></td>" +
+        "<td><a href=\"" + viewListingURL + "?id=" + listings[i]._id + "\">" +
+        "<h5 class=\"info-title\">" + listings[i].title + "</h5></a></td>" +
         "<td><img src=\"/images/map/new-window.png\" class=\"nw-icon\"></td>" +
       "</tr></tbody></table></p>" +
       "<p>" + listings[i].description + "</p>";
@@ -180,11 +181,11 @@ function loadSidebar (){
   for (var i=0; i<noListings; i++){
     content +=
     "<div class=\"listing\" id=list-" + i + ">"  +
-      "<h3 class=\"list-title\">" + listings[i].title  + "</h3>" +
+      "<h5 class=\"list-title\">" + listings[i].title  + "</h5>" +
       "<i class=\"category\">" + listings[i].category  + "</i>";
 
     // add image if one exists
-    if (listings[i].imageURLs) {
+    if (listings[i].imageURLs.length != 0) {
       content += "<div class=\"sidebar-crop\"><img class=\"sidebar-pic\" src=\"" + listings[i].imageURLs[0] + "\"></div>"
     }
 
@@ -194,7 +195,7 @@ function loadSidebar (){
       "<td><div class=\"profile-cropper\">" +
         "<img class=\"profile-pic\" src=\"" +
         // add profile pic if one exists
-        ((listings[i].user.profilePicURL) ? listings[i].user.profilePicURL : "avatar.png") +
+        ((listings[i].user.profilePicURL) ? listings[i].user.profilePicURL : "images/map/avatar.png") +
         "\">" +
       "</div></td>" +
       "<td><p class=\"user-box\">" + listings[i].user.fullName + "<br>" +

@@ -66,6 +66,8 @@ router.delete('/review/id/:id', reviewCont.deleteById);
 router.put('/review/id/:id', reviewCont.updateById);
 // add random reviews
 router.post('/review/n/:n', faker.addRandomReviews);
+// returns all reviews about given user
+router.get('/review/userId/:userId', reviewCont.getByUser);
 
 
 module.exports = router;
