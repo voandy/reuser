@@ -1,61 +1,64 @@
 extends default
 
 append head
+  //- tab title
   title reuser | sign-up
   link(rel='icon', href='/images/others/reuser-logo-green-small.png')
-
-  link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
+  //- import css stylesheet
   link(rel='stylesheet', href='../css/sign-up_styles.css')
-
-  script(src='../public/scripts/signin_script.js')
-  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
-  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-  // ---- Include the above in your HEAD tag --------  
-  meta(charset='utf-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1')
-  //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  //- import jQuery script
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js')
+  //- import custome script
   script(src='scripts/sign-up_script.js')
 
 block content
-  .container(style='margin-top: 5%;')
-    .row
-      .col-md-3 
-      .col-md-6
-        h3.text-center.text-success  create your account
-        .col-sm-12
-          br
-          .tab-content
-            form(id= '#sign-up_form')
-              .form-group
-                label(for='fullName') full name
-                input#fullName.form-control(type='text', placeholder='John Appleseed')
-              .form-group
-                label(for='email') email address:
-                input#email.form-control(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
-                div
-                  small#invalidEmail.text-danger
-                    | Invalid email.
-              .form-group
-                label(for='pwd') password:
-                input#password.form-control(type='password', placeholder='at least 8 characters long')
-                div
-                  small#passwordLength.text-danger
-                    | Must be at least 8 characters long.
-              .form-group
-                label(for='pwd') confirm password:
-                input#pwdConfirm.form-control(type='password', placeholder='retype your password')
-                div
-                  small#passwordDifferent.text-danger
-                    | Password doesn&apos;t match.
-              br 
-              hr
-              .form-group
-                label(for="address") address (optional):
-                input#address.form-control(type='text', placeholder='full address')
-              br
-              button#register-button.pull-right.btn.btn-block.btn-success(onclick= 'createUser()')  Register 
-              br
-      
-      
+  div.main-container
+    form
+      div.form-container
+        h2 Create your account
+        hr
+
+        div.input-field-container
+          label(for='fullname')
+            b Name
+          input#fullName.custom-field(type='text', placeholder='', name='fullname', required='')
+          span.underline
+
+        div.input-field-container
+          label(for='email')
+            b Email
+          input#email.custom-field(type='text', placeholder='', name='email', required='')
+          span.underline
+          div
+            a#invalidEmail.text-red
+              | Invalid email.
+
+        div.input-field-container
+          label(for='pwd')
+            b Password
+          input#password.custom-field(type='password', placeholder='', name='pwd', required='')
+          span.underline
+          div
+            a#passwordLength.text-red
+              | Must be at least 8 characters long.
+
+        div.input-field-container
+          label(for='confirm-pwd')
+            b Confirm Password
+          input#pwdConfirm.custom-field(type='password', placeholder='', name='confirm-pwd', required='')
+          span.underline
+          div
+            a#passwordDifferent.text-red
+              | Password doesn&apos;t match.
+
+        hr
+        br
+        p.term-n-privacy-text
+          | by creating an account, you agree to our 
+          a(href='#') terms & privacy
+          | .
+        button.registerbtn(type='submit') register
+        p.already-has-account-text
+          | already have an account? 
+          a(href='#') sign in
+          | .

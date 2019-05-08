@@ -1,27 +1,41 @@
 $(document).ready(function () {
     $("#email").focusout(function () {
         email_validator();
-    })
-    $("#pwd").focusout(function () {
+    });
+    $("#password").focusout(function () {
         password_validator();
-    })
+    });
     $("#pwdConfirm").focusout(function () {
         password_length_validator();
-    })
+    });
 });
 
 // given a listing, will get the associated user and add to that listing
 function createUser(){
-    fullName = $('#fullName').val();
-    email = $('#email').val();
-    password = $('#password').val();
+    var fullName = $('#fullName').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+
     
     if (fullName == '' || email == '' || password == '') {
         alert("Please Fill All Fields");
     }
     else {
-        jQuery.post('/user', {fullName: fullName, email: email, password: password});
-        alert("Post Success")
+        var body =
+            { 
+                'fullName': fullName,
+                'email': email,
+                'password': password 
+            };
+
+        $.ajax({
+            type: "POST",
+            url: '/user',
+            data: JSON.stringify(body),
+            contentType: 'application/json'
+        });
+        // $.post('/user', JSON.stringify(body));
+        // alert("Post Success");
     }
 }
 

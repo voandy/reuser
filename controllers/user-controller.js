@@ -36,6 +36,10 @@ var create = function(req,res){
   // var salt = cryptography.generateSalt();
   // var hash = cryptography.hashPassword(req.body.password, salt);
 
+  console.log('someone tries to create user!');
+  console.log(req.body.email);
+
+
   var user = new User({
     email:req.body.email,
     dateJoined: new Date(),
