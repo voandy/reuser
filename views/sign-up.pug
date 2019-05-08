@@ -27,10 +27,10 @@ block content
         .col-sm-12
           br
           .tab-content
-            form(action='#')
+            form(id= '#sign-up_form')
               .form-group
                 label(for='fullName') full name
-                input#firstName.form-control(type='text', placeholder='John Appleseed')
+                input#fullName.form-control(type='text', placeholder='John Appleseed')
               .form-group
                 label(for='email') email address:
                 input#email.form-control(data-toggle='tooltip', data-placement='top', title='Tooltip on top', type='email', placeholder='name@example.com')
@@ -39,7 +39,7 @@ block content
                     | Invalid email.
               .form-group
                 label(for='pwd') password:
-                input#pwd.form-control(type='password', placeholder='at least 8 characters long')
+                input#password.form-control(type='password', placeholder='at least 8 characters long')
                 div
                   small#passwordLength.text-danger
                     | Must be at least 8 characters long.
@@ -54,8 +54,8 @@ block content
               .form-group
                 label(for="address") address (optional):
                 input#address.form-control(type='text', placeholder='full address')
-            br
-            button#register-button.pull-right.btn.btn-block.btn-success(href='/map')  Register 
-            br
+              br
+              button#register-button.pull-right.btn.btn-block.btn-success(onclick= 'createUser()')  Register 
+              br
       
       

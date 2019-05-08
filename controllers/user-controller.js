@@ -33,15 +33,15 @@ var getById = function(req,res){
 
 // create user
 var create = function(req,res){
-  var salt = cryptography.generateSalt();
-  var hash = cryptography.hashPassword(req.body.password, salt);
+  // var salt = cryptography.generateSalt();
+  // var hash = cryptography.hashPassword(req.body.password, salt);
 
   var user = new User({
     email:req.body.email,
     dateJoined: new Date(),
 
-    password:hash,
-    passwordSalt:salt,
+    password:req.body.password,
+    passwordSalt:"salt",
 
     fullName:req.body.fullName,
 
