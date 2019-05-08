@@ -1,15 +1,27 @@
+/* container to contain everything, mainly use for alignment */
+
 .main-container {
-    background-color: white;
-    font-family: futura;
-    font-size: 20px;
-    font-weight: bold;
+    width: 100%;
     display: flex;
-    height: 550px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* grid definition */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw;
+  grid-template-rows: 580px 60px 130px;
+  grid-template-areas: 
+    "text text text illustration illustration illustration"
+    ". . above-search-bar above-search-bar . ."
+    ". search-bar search-bar search-bar search-bar .";
 }
 
 .home-text-container {
+    grid-area: text;
     padding-top: 50px;
-    width: 55vw;
     display:flex;
     word-wrap: break-word;
     flex-direction: column;
@@ -22,25 +34,27 @@
 }
 
 .home-text {
-    margin-left: 160px;
-    font-size: 35px;
+    margin-left: 120px;
+    font-family: futura;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 /* button and animations */
 
 .button {
+    background-color: #39B54A;
+    font-family: futura;
+    font-size: 20px;
+    color: white;
     border-radius: 47px;
-    background-color: #4EE062;
     border: none;
-    color: black;
     text-align: center;
-    font-size: 17px;
-    font-weight: bold;
     padding: 16px;
     width: 220px;
     transition: all 0.5s;
     cursor: pointer;
-    margin-left: 150px;
+    margin-left: 120px;
   }
 
   .button span {
@@ -71,19 +85,20 @@
 /* illustration piece */
 
 .hp-illustration-container {
+    grid-area: illustration;
     display:flex;
-    width: 45vw;
     justify-content: flex-start;
     align-items: center;
 }
 
 img.hp-illustration {
-    height: 380px;
+    width: 70%;
     margin-top: 40px;
-    margin-left: 120px;
+    margin-left: 100px;
 }
 
 div.above-search-section {
+    grid-area: above-search-bar;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -105,6 +120,7 @@ div.above-search-section {
 }
 
 .search-section {
+    grid-area: search-bar;
     width: 100%;
     height: 50px;
     display: flex;
@@ -114,7 +130,7 @@ div.above-search-section {
 
 .search-bar-container {
     display: flex;
-    width: 500px;
+    width: 100%;
     border-radius: 47px;
     justify-content: flex-start;
     border: 1px solid grey;
@@ -128,13 +144,89 @@ img.location-pin-image {
 }
 
 .location-input {
-    flex-grow: 1;
     padding-left: 10px;
-    width: 320px;
+    width: 96%;
     background: transparent;
     border: none;
 }
 
 input:focus, textarea:focus, select:focus{
     outline: none;
+}
+
+@media screen and (max-width: 1440px) {
+    .grid-container {
+        grid-template-rows: 480px 60px 130px;
+      }
+}
+
+@media screen and (max-width: 1300px) {
+    .home-text {
+        font-size: 25px;        
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .home-text {
+        font-size: 20px;        
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .grid-container {
+        grid-template-columns: 95vw;
+        grid-template-rows: 350px 200px 60px 120px;
+        grid-template-areas: 
+          "illustration"
+          "text"
+          "above-search-bar"
+          "search-bar";
+    }
+
+    .hp-illustration-container {
+        justify-content: center;
+        align-items: center;
+    }
+
+    img.hp-illustration {
+        height: 80%;
+        margin: 0;
+        padding-top: 20px;
+    }
+    
+    .home-text-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .home-text {
+        margin-left: 0;
+        font-size: 18px;
+    }
+
+    .above-search {
+        font-size: 18px;
+    }
+
+    .button {
+        width: 200px;
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    .search-bar-container {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .location-input {
+        width: 87%;
+    }
+
+
 }

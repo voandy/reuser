@@ -135,8 +135,10 @@ var addRandomReviews = function(req,res){
         userId:userId,
         leftById:leftById,
 
+        datePosted: new Date(),
+
         title:faker.lorem.sentence(),
-        contents:faker.lorem.paragraph(),
+        content:faker.lorem.paragraph(),
         starRating:Math.floor(Math.random() * (5 - 1)) + 1,
 
         imageURLs:[]
@@ -146,6 +148,25 @@ var addRandomReviews = function(req,res){
         if(err){
           res.status(400).send(err);
         }
+      });
+
+      Review.find({userId:userId}, function(err, reviews){
+        var reviewCount = 0;
+        var starTotal = 0;
+        var starRatingAvg = 0;
+
+        reviews.forEach(function(review) {
+          reviewCount ++;
+          starTotal += review.starRating;
+        });
+        starRatingAvg = starTotal / reviewCount;
+
+        User.findByIdAndUpdate(userId, {starRatingAvg:starRatingAvg},
+          {runValidators:true}, function(err, user) {
+          if (err){
+            res.status(404);
+          }
+        });
       });
     }
 

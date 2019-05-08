@@ -1,0 +1,26 @@
+extends default.pug
+
+append head
+  title reUser : Spend less, consume less.
+  meta(name='viewport', content='initial-scale=1.0')
+  meta(charset='utf-8')
+  link(rel='stylesheet', href='/css/listing_styles.css')
+
+block content
+  .grid-container
+    .user
+      .user-details
+          h4#full-name
+          #user-pic
+          i#date-joined
+          #average-rating
+          #contact-button
+      #reviews-rec
+    .listing
+      h2#title
+      i#date-posted
+      #address
+      #images
+      #description
+      i#date-expires
+  script(src='/scripts/listing_script.js')

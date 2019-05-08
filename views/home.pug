@@ -9,38 +9,26 @@ append head
 block content
 
     div.main-container
-        div.home-text-container
-            a.home-text hundreds of people are using 
-                span.reuser-text reuser
-            p.home-text to help reduce their environmental footprint.    
-            button.button
-                span.button-text be a reuser now
+        div.grid-container 
+            div.home-text-container
+                a.home-text hundreds of people are using 
+                    span.reuser-text reuser
+                p.home-text to help reduce their environmental footprint.    
+                button.button
+                    span.button-text be a reuser now
 
-        div.hp-illustration-container
-            img.hp-illustration(src='images/home/hp-illustration.svg')
-    br
-    br
-    div
-        div.above-search-section
-            a.above-search(href='/map') discover 
-            a.above-search-separator |
-            a.above-search(href='/listing') categories
-        br
-        div.search-section
-            div.search-bar-container
-                input#location-search.location-input(type='location', placeholder='Address/Suburb')
-                img.location-pin-image(src='images/home/location-pin.png')
+            div.hp-illustration-container
+                img.hp-illustration(src='images/home/hp-illustration.svg')
 
-    br
-    br
-    br
-    br
+            div.above-search-section
+                a.above-search(href='/map') discover 
+                a.above-search-separator |
+                a.above-search(href='/listing') categories
 
-    //- footer.text-muted
-    //-   .container
-    //-     p.float-right
-    //-       a(href='#') Back to top
-    //-     p Reuser © - all rights reserved 
+            div.search-section
+                div.search-bar-container
+                    input#location-search.location-input(type='location', placeholder='Address/Suburb')
+                    img.location-pin-image(src='images/home/location-pin.png')   
 
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
     script.

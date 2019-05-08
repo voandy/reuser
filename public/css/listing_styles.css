@@ -1,40 +1,76 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
-
-body {
-    font-family: 'Montserrat', sans-serif;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 300px 900px 1fr;
+  grid-template-rows: auto;
 }
 
-.nav-link{
-    color: white;
+.user {
+  grid-column: 2;
+  padding: 20px 10px 20px 10px;
 }
 
-.navbar{
-    background-color: green;
-    height: 48px;
+.listing {
+  grid-column: 3;
+  padding: 20px 10px 20px 30px;
 }
 
-.logo-text{
-    color: white;
-    margin-right: 3%;
+.review {
+  padding-bottom: 20px;
 }
 
-/* Link */
-.navbar-default .navbar-item > li > a {
-    color:white;
+.user-details {
+  padding-bottom: 20px;
 }
 
-#log-in{
-    background-color: #57CC86;
-    color: white;
-    height: 48px;
+.date {
+  color: #999;
+  padding-bottom: 10px;
 }
 
-   /* when screen reduces in size  */
-@media screen and (max-width: 576px) {
-    .navbar-text{
-        display: none;
-    }   
-    .navbar{
-        height: auto;
-    } 
+.profile-cropper {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-pic {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+
+.star-rating {
+  width: 100px;
+  padding-bottom: 10px;
+}
+
+.user-rating {
+  width: 100px;
+  padding-bottom: 10px;
+}
+
+.listing-pic {
+  width = 100%;
+  max-width: 860px;
+  padding: 20px 0 20px 0;
+}
+
+#title {
+  text-transform: capitalize;
+}
+
+#category {
+  color: #999;
+  text-transform: capitalize;
+}
+
+#user-pic {
+  padding-bottom: 10px;
+}
+
+#description {
+  padding-bottom: 10px;
 }
