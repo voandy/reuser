@@ -6,10 +6,25 @@
 
 .user {
   grid-column: 2;
+  padding: 20px 10px 20px 10px;
 }
 
 .listing {
   grid-column: 3;
+  padding: 20px 10px 20px 30px;
+}
+
+.review {
+  padding-bottom: 20px;
+}
+
+.user-details {
+  padding-bottom: 20px;
+}
+
+.date {
+  color: #999;
+  padding-bottom: 10px;
 }
 
 .profile-cropper {
@@ -29,9 +44,33 @@
 
 .star-rating {
   width: 100px;
+  padding-bottom: 10px;
+}
+
+.user-rating {
+  width: 100px;
+  padding-bottom: 10px;
 }
 
 .listing-pic {
   width = 100%;
-  max-width: 900px;
+  max-width: 860px;
+  padding: 20px 0 20px 0;
+}
+
+#title {
+  text-transform: capitalize;
+}
+
+#category {
+  color: #999;
+  text-transform: capitalize;
+}
+
+#user-pic {
+  padding-bottom: 10px;
+}
+
+#description {
+  padding-bottom: 10px;
 }

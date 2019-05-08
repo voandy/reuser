@@ -1,0 +1,39 @@
+a {
+  color: #39B54A;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #57EB74;
+  text-decoration: none;
+}
+
+h1 {
+  color: #39B54A;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+h2 {
+  color: #39B54A;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h3 {
+  color: #39B54A;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+h4 {
+  color: #39B54A;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+h5 {
+  color: #39B54A;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
