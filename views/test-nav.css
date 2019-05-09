@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+
+body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+ /* general  */
+.nav-container{
+    height: 60px;
+    font-size: 20px;
+    font-family: futura;
+    background-color: #39B54A;
+    display:  grid;
+    grid-auto-flow: column;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    grid-template-columns: 8vw 12vw 60vw 12vw 8vw;
+    grid-template-areas: 
+    "space1 logo nav login space2";
+}
+
+li{
+    list-style: none;
+    display: inline;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+
+a:hover{
+  color: #646363;
+}
+
+
+/* logo  */
+.nav-logo{
+    float: left;
+    display: grid;
+    grid-area: logo;
+    height: inherit;
+    justify-content: left;
+}
+
+img.logo{
+    height: 30px;
+    padding-top: 15px;
+}
+
+.nav-logo li{
+    display: flex;
+    grid-area: logo; 
+}
+
+
+/* buttons */
+.nav-button{
+    display: grid;
+    grid-area: nav;
+}
+
+.nav-button a{
+    float: left;
+    padding-right:10px; 
+}
+
+
+/* login */
+.nav-login{
+  display: grid;
+  grid-area: login;
+}
+
+img.nav-button{
+  height: 30px;
+  padding-top: 15px;
+  float: right;
+}
+
+.nav-login a{
+  float: right;
+}
+
+
+
+/* smaller screen */
+@media screen and (max-width: 500px){
+
+  .nav-container{
+    grid-template-columns: 30vw 40vw 30vw;
+    grid-template-areas: 
+    "logo space login";
+  }
+
+  .nav-logo{
+    grid-area: logo;
+    padding-left: 20px;
+  }
+
+  .nav-button{
+    display: none;
+  }
+
+  .nav-login{
+    grid-area: login;
+    padding-right: 20px;
+  }
+}
