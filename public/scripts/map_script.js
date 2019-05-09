@@ -128,7 +128,9 @@ function placeListings(){
     // add expiry date if one exists
     if (listings[i].dateExpires){
       var expiry = new Date(listings[i].dateExpires);
-      content += "<i class=\"exipiry-date\"> Expires: " + expiry.toLocaleDateString("en-AU") + "</i>";
+      content += "<i class=\"exipiry-date\"> Expires: " +
+      expiry.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) +
+      "</i>";
     }
 
     content += "<td></tr></tbody></table></div></div>";

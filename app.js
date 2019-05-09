@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 7905;
+const port = process.env.PORT || 7900;
 const bodyParser = require('body-parser');
 
 // setup MongoDB Atlas
 require('./models/db.js');
 
 // routes setup
-var routes = require('./routes/routes.js');
+var backendRoutes = require('./routes/backend-routes.js');
+var frontendRoutes = require('./routes/frontend-routes.js');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -21,36 +22,8 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
-app.use('/',routes);
-
-// home page
-app.get('/', function(req,res){
-  res.render('home');
-});
-
-// map page
-app.get('/map', function(req,res) {
-  res.render('map');
-});
-
-//
-app.get('/about', function(req,res) {
-  res.render('about');
-});
-
-app.get('/home', function(req,res) {
-  res.render('home');
-});
-
-// sign-up page
-app.get('/sign-up', function(req,res) {
-  res.render('sign-up');
-});
-
-// listing page
-app.get('/view-listing', function(req,res) {
-  res.render('view-listing');
-});
+app.use('/',backendRoutes);
+app.use('/',frontendRoutes);
 
 app.listen(port, function(){
   console.log("Listening on port " + port);

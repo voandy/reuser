@@ -1,6 +1,6 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 300px 900px 1fr;
+  grid-template-columns: 1fr 250px 700px 1fr;
   grid-template-rows: auto;
 }
 
@@ -43,27 +43,27 @@
 }
 
 .star-rating {
-  width: 100px;
+  width: 80px;
   padding-bottom: 10px;
 }
 
 .user-rating {
-  width: 100px;
+  width: 80px;
   padding-bottom: 10px;
 }
 
 .listing-pic {
   width = 100%;
-  max-width: 860px;
+  max-width: 660px;
   padding: 20px 0 20px 0;
 }
 
-#title {
+.category {
+  color: #999;
   text-transform: capitalize;
 }
 
-#category {
-  color: #999;
+#title {
   text-transform: capitalize;
 }
 
@@ -73,4 +73,25 @@
 
 #description {
   padding-bottom: 10px;
+}
+
+#user-details {
+  width: 100%;
+}
+
+#contact-button {
+  background-color: #39B54A;
+  font-size: 20px;
+  color: white;
+  border-radius: 47px;
+  border: none;
+  text-align: center;
+  padding: 4px;
+  width: 100%;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+#contact-button:focus {
+  outline: 0;
 }

@@ -111,13 +111,14 @@ getListing(listingId).then(function(){
 
   var postedDate = new Date(listing.datePosted);
   datePosted.innerHTML = "<div class=\"date\">Posted: " +
-    postedDate.toLocaleDateString("en-AU") + " in " +
-    listing.category + "</div>";
+    postedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short",
+    day:"numeric"}) + " in <i class=\"category\">" + listing.category + "</i></div>";
 
   if (listing.dateExpires) {
     var expiryDate = new Date(listing.dateExpires);
     dateExpires.innerHTML = "<div class=\"date\">Expires: " +
-      expiryDate.toLocaleDateString("en-AU") + "</div>";
+      expiryDate.toLocaleDateString("en-AU", {year:"numeric", month:"short",
+      day:"numeric"}) + "</div>";
   }
 
   if (listing.imageURLs.length != 0){
@@ -129,11 +130,8 @@ getListing(listingId).then(function(){
     fullName.innerText = user.fullName;
 
     var joinedDate = new Date(user.dateJoined);
-    dateJoined.innerHTML = "<div class=\"date\">Member since: " +
-      joinedDate.toLocaleDateString("en-AU") + "</div>";
-
-    contactButton.innerHTML = "<a href=\"mailto: " +
-      user.email + "\" class =\"button\">Contact</a>";
+    dateJoined.innerHTML = "<div class=\"date\">Joined: " +
+      joinedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short"}) + "</div>";
 
     averageRating.innerHTML =
       "<img class=\"user-rating\" src=\"" + getStars(user.starRatingAvg) + "\">";
@@ -145,6 +143,11 @@ getListing(listingId).then(function(){
       userPic.innerHTML = "<div class=\"profile-cropper\">" +
       "<img src=\"images/map/avatar.png\" class=\"profile-pic\"></div>";
     }
+
+    // add email link to button
+    contactButton.addEventListener("click", function(){
+      window.location.href = "mailto:" + user.email;
+    });
 
     reviews = getReviews(listing.userId).then(function(){
       if (reviews === undefined || reviews.length == 0) {
@@ -159,10 +162,11 @@ getListing(listingId).then(function(){
 
             reviews_content +=
             "<div class=review>" +
-              "<h5 class=\"review-title\">" + review.title + "</h4>" +
+              "<h6 class=\"review-title\">" + review.title + "</h6>" +
               "<img class=\"star-rating\" src=\"" + getStars(review.starRating) + "\">" +
               "<div class=\"left-by\">Left by: " + review.reviewer.fullName + "</div>" +
-              "<div class=\"date\">On: " + reviewDate.toLocaleDateString("en-AU") + "</div>" +
+              "<div class=\"date\">" +
+              reviewDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) + "</div>" +
               "<div class=\"review-content\">" + review.content + "</div>" +
             "</div>";
           });

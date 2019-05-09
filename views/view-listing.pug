@@ -10,14 +10,19 @@ block content
   .grid-container
     .user
       .user-details
-          h4#full-name
-          #user-pic
-          i#date-joined
-          #average-rating
-          #contact-button
+          h5#full-name
+          table#user-details
+              tbody
+                  tr
+                      td
+                          #user-pic
+                      td
+                          #average-rating
+                          i#date-joined
+          button#contact-button contact
       #reviews-rec
     .listing
-      h2#title
+      h3#title
       i#date-posted
       #address
       #images

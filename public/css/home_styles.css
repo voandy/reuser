@@ -13,7 +13,7 @@
   display: grid;
   grid-template-columns: 16vw 16vw 16vw 16vw 16vw 16vw;
   grid-template-rows: 580px 60px 130px;
-  grid-template-areas: 
+  grid-template-areas:
     "text text text illustration illustration illustration"
     ". . above-search-bar above-search-bar . ."
     ". search-bar search-bar search-bar search-bar .";
@@ -35,7 +35,7 @@
 
 .home-text {
     margin-left: 120px;
-    font-family: futura;
+    font-family: Raleway;
     font-size: 28px;
     font-weight: bold;
 }
@@ -44,7 +44,7 @@
 
 .button {
     background-color: #39B54A;
-    font-family: futura;
+    font-family: Raleway;
     font-size: 20px;
     color: white;
     border-radius: 47px;
@@ -82,6 +82,10 @@
     right: 0;
   }
 
+.button:focus {
+  outline: 0;
+}
+
 /* illustration piece */
 
 .hp-illustration-container {
@@ -105,7 +109,7 @@ div.above-search-section {
 }
 
 .above-search {
-    font-family: futura;
+    font-family: Raleway;
     font-size: 22px;
     font-weight: bold;
     color: #57CC86;
@@ -125,7 +129,7 @@ div.above-search-section {
     height: 50px;
     display: flex;
     justify-content: center;
-    font-family: futura;
+    font-family: Raleway;
 }
 
 .search-bar-container {
@@ -162,13 +166,13 @@ input:focus, textarea:focus, select:focus{
 
 @media screen and (max-width: 1300px) {
     .home-text {
-        font-size: 25px;        
+        font-size: 25px;
     }
 }
 
 @media screen and (max-width: 1150px) {
     .home-text {
-        font-size: 20px;        
+        font-size: 20px;
     }
 }
 
@@ -176,7 +180,7 @@ input:focus, textarea:focus, select:focus{
     .grid-container {
         grid-template-columns: 95vw;
         grid-template-rows: 350px 200px 60px 120px;
-        grid-template-areas: 
+        grid-template-areas:
           "illustration"
           "text"
           "above-search-bar"
@@ -193,7 +197,7 @@ input:focus, textarea:focus, select:focus{
         margin: 0;
         padding-top: 20px;
     }
-    
+
     .home-text-container {
         display: flex;
         justify-content: center;
