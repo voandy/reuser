@@ -1,0 +1,42 @@
+extends default
+
+append head
+  //- tab title
+  title reuser | login
+  link(rel='icon', href='/images/others/reuser-logo-green-small.png')
+  //- import css stylesheet
+  link(rel='stylesheet', href='../css/login_styles.css')
+  //- import jQuery script
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js')
+  //- import custome script
+
+block content
+  div.main-container
+    div.form-container
+      form#registerform(action='/login', method='POST')
+        h3 Login
+        hr
+        include partials/messages.pug
+
+        div.input-field-container
+          label(for='email')
+            b Email
+          input#email.custom-field(type='text', placeholder='', name='email', required)
+          span.underline
+          div
+            a#emailNotUnique.text-red 
+              | This email has an account registered.
+          div
+            a#invalidEmail.text-red
+              | Invalid email.
+
+
+        div.input-field-container
+          label(for='password')
+            b Password
+          input#password.custom-field(type='password', placeholder='', name='password', required)
+          span.underline
+
+        hr
+        br
+        button.registerbtn(type='submit') login

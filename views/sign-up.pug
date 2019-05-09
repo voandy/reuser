@@ -13,39 +13,46 @@ append head
 
 block content
   div.main-container
-    form
-      div.form-container
-        h2 Create your account
+    div.form-container
+      form#registerform(action='/user', method='POST')
+        h3 Register
         hr
-
+        include partials/messages.pug
         div.input-field-container
           label(for='fullname')
             b Name
-          input#fullName.custom-field(type='text', placeholder='', name='fullname', required='')
+          input#name.custom-field(type='text', placeholder='', name='name', required, value=(typeof name != 'undefined' ? name : ""))
           span.underline
+          div
+            a#invalidName.text-red
+              | Must be at least 3 characters long.
 
         div.input-field-container
           label(for='email')
             b Email
-          input#email.custom-field(type='text', placeholder='', name='email', required='')
+          input#email.custom-field(type='text', placeholder='', name='email', required, value=(typeof email != 'undefined' ? email : ""))
           span.underline
+          div
+            a#emailNotUnique.text-red 
+              | This email has an account registered.
           div
             a#invalidEmail.text-red
               | Invalid email.
 
+
         div.input-field-container
-          label(for='pwd')
+          label(for='password')
             b Password
-          input#password.custom-field(type='password', placeholder='', name='pwd', required='')
+          input#password.custom-field(type='password', placeholder='', name='password', required, value=(typeof password != 'undefined' ? password : ""))
           span.underline
           div
             a#passwordLength.text-red
               | Must be at least 8 characters long.
 
         div.input-field-container
-          label(for='confirm-pwd')
+          label(for='password_cfm')
             b Confirm Password
-          input#pwdConfirm.custom-field(type='password', placeholder='', name='confirm-pwd', required='')
+          input#password_cfm.custom-field(type='password', placeholder='', name='password_cfm', required, value=(typeof password_cfm != 'undefined' ? password_cfm : ""))
           span.underline
           div
             a#passwordDifferent.text-red
@@ -57,7 +64,7 @@ block content
           | by creating an account, you agree to our 
           a(href='#') terms & privacy
           | .
-        button.registerbtn(type='submit') register
+        button.registerbtn(type='submit') submit
         p.already-has-account-text
           | already have an account? 
           a(href='#') sign in

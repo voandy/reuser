@@ -18,7 +18,10 @@
   "homepage": "https://github.com/voandy/info30005-2019-reuser#readme",
   "dependencies": {
     "aws-sdk": "^2.441.0",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
     "express": "^4.16.4",
+    "express-session": "^1.16.1",
     "faker": "^4.1.0",
     "geo-coder": "^1.0.2",
     "mongoose": "^5.4.21",
@@ -28,6 +31,8 @@
     "multer-s3": "^2.9.0",
     "node-geocoder": "^3.22.0",
     "nodemon": "^1.19.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pug": "^2.0.3",
     "sharp": "^0.22.1"
   }

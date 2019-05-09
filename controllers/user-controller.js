@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const cryptography = require("./cryptography/cryptography.js");
 
 const User = mongoose.model('user');
 const Listing = mongoose.model('listing');
@@ -7,6 +6,9 @@ const Review = mongoose.model('review');
 
 const upload = require('../services/image-upload');
 const singleUpload = upload.single('image')
+
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 // get all users
 var getAll = function(req,res){
@@ -33,46 +35,112 @@ var getById = function(req,res){
 
 // create user
 var create = function(req,res){
-  // var salt = cryptography.generateSalt();
-  // var hash = cryptography.hashPassword(req.body.password, salt);
 
   console.log('someone tries to create user!');
-  console.log(req.body.email);
+  console.log(req.body);
 
+  const { name, email, password, password_cfm } = req.body;
+  let errors = []
 
-  var user = new User({
-    email:req.body.email,
-    dateJoined: new Date(),
+  // check required fields
+  if (!name || !email || !password || !password_cfm) {
+    errors.push({ msg: 'Please fill in all the fields'});
+  }
 
-    password:req.body.password,
-    passwordSalt:"salt",
+  // check password match
+  if (password !== password_cfm) {
+    errors.push({ msg: 'Passwords do not match'});
+  }
 
-    fullName:req.body.fullName,
+  // check password length
+  if (password.length < 8) {
+    errors.push({ msg: 'Password must be at least 8 characters'});
+  }
 
-    address:{
-      addressLine1:req.body.addressLine1,
-      addressLine2:req.body.addressLine2,
-      suburb:req.body.suburb,
-      state:req.body.state,
-      postcode:req.body.postcode,
-    },
+  // checks if there is issues with input values
+  if (errors.length > 0) {
+    res.render('sign-up', {
+      errors,
+      name,
+      email,
+      password,
+      password_cfm
+    });
+  // pass all validations  
+  } else {
+    User.findOne({ email: email })
+      .then(user => {
+        // user already exists
+        if (user) {
+          errors.push({ msg: "Email is already registered" });
+          res.render('sign-up', {
+            errors,
+            name,
+            email,
+            password,
+            password_cfm
+          });
+        } else {
+          const newUser = new User({
+            name: name,
+            email: email,
+            password: password,
+            dateJoined: new Date(),
+            thanksReceived:0,
+            starRatingAvg:0,
+            profilePicURL:null
+          });
 
-    phoneNo:req.body.phoneNo,
+          bcrypt.genSalt(10, (err, salt) => 
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) throw err;
+              // set password to hash
+              newUser.password = hash;
+              // save user
+              newUser.save()
+                .then(user => {
+                  res.redirect('/map');
+                })
+                .catch(err => console.log(err)); 
+          }))
+        }
+      }); 
+  }
 
-    thanksReceived:0,
-    starRatingAvg:0,
+  // Previous new user's parameters
+  // var user = new User({
+  //   name:req.body.name,
+  //   email:req.body.email,
+  //   password:req.body.password,
+  //   dateJoined: new Date(),
+  //   address:{
+  //     addressLine1:req.body.addressLine1,
+  //     addressLine2:req.body.addressLine2,
+  //     suburb:req.body.suburb,
+  //     state:req.body.state,
+  //     postcode:req.body.postcode,
+  //   },
+  //   phoneNo:req.body.phoneNo,
+  //   thanksReceived:0,
+  //   starRatingAvg:0,
+  //   profilePicURL:null
+  // });
 
-    profilePicURL:null
-  });
-
-  user.save(function(err,newUser){
-    if(!err){
-      res.send(newUser);
-    }else{
-      res.status(400).send(err);
-    }
-  });
 };
+
+var login = function(req, res, next) {
+  passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+    failureFlash: true
+  })(req, res, next);
+}
+
+var logout = function(req, res) {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/login')
+}
 
 // delete user by id
 var deleteById = function (req,res) {
@@ -150,3 +218,7 @@ module.exports.updateById = updateById;
 
 module.exports.getByEmail = getByEmail;
 module.exports.imageUpload = imageUpload;
+
+module.exports.login = login;
+module.exports.logout = logout;
+
