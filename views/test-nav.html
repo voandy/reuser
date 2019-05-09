@@ -7,6 +7,7 @@
     <title>test</title>
 
     <link rel="stylesheet" href="test-nav.css">
+    <script type="text/javascript" src="nav.js"></script>
 </head>
 <body>
 
@@ -28,10 +29,37 @@
             <!-- login -->
             <div class='nav-login'>
                 <a href="#log-in"><img class='nav-button' src="../public/images/nav/login.png"></a>
-                <li><a href='#log-in'>log in</a></li>
+                <li><a href='#log-in' id="btn" onclick='openLogin()'>log in</a></li>
             </div> 
         </div>  
+    </header>  
 
-    </header>    
+    <div id="modal">
+         <div class="modal-container">
+
+            <form action="/action_page.php">
+                <input type="email" name="email" placeholder="email""><br>
+                <br>
+                <input type="password" name="password" placeholder="password"><br>
+                <br>
+                <input type="submit" value="Submit">
+            </form> 
+
+            <small>don't have an account?<a href="/sign-up">sign up</a></small>
+            
+         </div>
+    </div> 
+
+
+    <script>
+        var modal = document.getElementById('modal');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }    
+    </script>
 </body>
 </html>
