@@ -17,6 +17,7 @@ block content
       form#registerform(action='/user', method='POST')
         h3 Register
         hr
+        //- Show errors if there's any
         include partials/messages.pug
         div.input-field-container
           label(for='fullname')
