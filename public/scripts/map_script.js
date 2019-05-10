@@ -200,7 +200,7 @@ function loadSidebar (){
         ((listings[i].user.profilePicURL) ? listings[i].user.profilePicURL : "images/profile/avatar-sm.png") +
         "\">" +
       "</div></td>" +
-      "<td><p class=\"user-box\">" + listings[i].user.fullName + "<br>" +
+      "<td><p class=\"user-box\">" + listings[i].user.name + "<br>" +
       "<i class=\"time-since\">" + timeSince(new Date(listings[i].datePosted)) + "</i></p>"+
       "</td>" +
     "</tr></tbody></table></div>";

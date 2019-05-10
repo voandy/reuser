@@ -50,4 +50,8 @@ router.get('/profile', function(req,res) {
   res.render('profile');
 });
 
+router.get('/error', function(req,res){
+  res.render('404');
+});
+
 module.exports = router;

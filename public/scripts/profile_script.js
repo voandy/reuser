@@ -7,13 +7,13 @@ const profileURL = "/profile";
 const userId = window.location.search.split("id=")[1];
 
 // user elements
-const fullName = document.getElementById('full-name');
+const userName = document.getElementById('full-name');
 const userPic = document.getElementById('user-pic');
 const userAddress = document.getElementById('user-address');
 const dateJoined = document.getElementById('date-joined');
 const averageRating = document.getElementById('average-rating');
 const thanksRec = document.getElementById('thanks-rec');
-const contactButton = document.getElementById('contact-button');
+const contact = document.getElementById('contact');
 
 // reviews element
 const reviewsRec = document.getElementById('reviews-rec');
@@ -24,19 +24,22 @@ const activeListings = document.getElementById('active-listings');
 var user;
 var reviews;
 var listings;
-var concAddress;
 
 getUser(userId).then(function(){
   // get user data
-  concAddress =
-    user.address.addressLine1 +
-    ((user.addressLine2 != null) ? "<br>" + user.address.addressLine2 : "") + "<br>" +
-    user.address.suburb + " " +
-    user.address.state + " " +
-    user.address.postcode;
+  userName.innerText = user.name;
 
-  fullName.innerText = user.fullName;
-  userAddress.innerHTML = concAddress;
+  if (user.address) {
+    var concAddress =
+      user.address.addressLine1 +
+      ((user.addressLine2 != null) ? "<br>" + user.address.addressLine2 : "") + "<br>" +
+      user.address.suburb + " " +
+      user.address.state + " " +
+      user.address.postcode;
+    userAddress.innerHTML = "<div class =\"user-address\">" + concAddress + "</div>";
+  } else {
+    userAddress.innerHTML = "<div class =\"user-address\">No address listed.</div>"
+  }
 
   var joinedDate = new Date(user.dateJoined);
   dateJoined.innerHTML = "<div class=\"date\">Joined: " +
@@ -50,6 +53,10 @@ getUser(userId).then(function(){
   } else {
     userPic.innerHTML = "<img src=\"images/profile/avatar-sm.png\" class=\"profile-pic\">";
   }
+
+  // create contact button
+  contact.innerHTML = "<button id=\"contact-button\">contact</button>";
+  const contactButton = document.getElementById("contact-button");
 
   // add email link to button
   contactButton.addEventListener("click", function(){
@@ -73,7 +80,7 @@ getUser(userId).then(function(){
             "<h6 class=\"review-title\">" + review.title + "</h6>" +
             "<img class=\"star-rating\" src=\"" + getStars(review.starRating) + "\">" +
             "<div class=\"left-by\">Left by: <a href=\"" + profileURL + "?id=" + review.reviewer._id + "\">" +
-            review.reviewer.fullName + "</a></div>" +
+            review.reviewer.name + "</a></div>" +
             "<div class=\"date\">" +
             reviewDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) + "</div>" +
             "<div class=\"review-content\">" + review.content + "</div>" +
@@ -118,10 +125,17 @@ getUser(userId).then(function(){
 
 function getUser(userId){
   return new Promise(resolve => {
-      jQuery.get(userURL + "/id/" + userId, function(data){
+    $.ajax({
+      url: userURL + "/id/" + userId,
+      type: 'GET',
+      success: function(data){
         user = data;
         resolve();
-      });
+      },
+      error: function(data) {
+        window.open("/error", "_self");
+      }
+    });
   });
 }
 

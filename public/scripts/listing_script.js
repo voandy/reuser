@@ -15,11 +15,11 @@ const description = document.getElementById('description');
 
 
 // user elements
-const fullName = document.getElementById('full-name');
+const userName = document.getElementById('full-name');
 const userPic = document.getElementById('user-pic');
 const dateJoined = document.getElementById('date-joined');
 const averageRating = document.getElementById('average-rating');
-const contactButton = document.getElementById('contact-button');
+const contact = document.getElementById('contact');
 
 // review element
 const reviewsRec = document.getElementById("reviews-rec");
@@ -60,8 +60,8 @@ getListing(listingId).then(function(){
 
   // get user data of listing's poster
   getUser(listing.userId).then(function(){
-    fullName.innerHTML = "<p class=\"user-name\"><a href=\"" + profileURL + "?id=" +
-    listing.userId + "\">" + user.fullName + "</a></p>";
+    userName.innerHTML = "<p class=\"user-name\"><a href=\"" + profileURL + "?id=" +
+    listing.userId + "\">" + user.name + "</a></p>";
 
     var joinedDate = new Date(user.dateJoined);
     dateJoined.innerHTML = "<div class=\"date\">Joined: " +
@@ -77,6 +77,10 @@ getListing(listingId).then(function(){
       userPic.innerHTML = "<div class=\"profile-cropper\">" +
       "<img src=\"images/profile/avatar-sm.png\" class=\"profile-pic\"></div>";
     }
+
+    // create contact button
+    contact.innerHTML = "<button id=\"contact-button\">contact</button>";
+    const contactButton = document.getElementById("contact-button");
 
     // add email link to button
     contactButton.addEventListener("click", function(){
@@ -99,7 +103,7 @@ getListing(listingId).then(function(){
               "<h6 class=\"review-title\">" + review.title + "</h6>" +
               "<img class=\"star-rating\" src=\"" + getStars(review.starRating) + "\">" +
               "<div class=\"left-by\">Left by: <a href=\"" + profileURL + "?id=" + review.reviewer._id + "\">" +
-              review.reviewer.fullName + "</a></div>" +
+              review.reviewer.name + "</a></div>" +
               "<div class=\"date\">" +
               reviewDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) + "</div>" +
               "<div class=\"review-content\">" + review.content + "</div>" +
@@ -114,9 +118,16 @@ getListing(listingId).then(function(){
 
 function getListing(listingId){
   return new Promise(resolve => {
-    jQuery.get(listingURL + "/id/" + listingId, function(data){
-      listing = data;
-      resolve();
+    $.ajax({
+      url: listingURL + "/id/" + listingId,
+      type: 'GET',
+      success: function(data){
+        listing = data;
+        resolve();
+      },
+      error: function(data) {
+        window.open("/error", "_self");
+      }
     });
   });
 }

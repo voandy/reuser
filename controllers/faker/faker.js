@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const faker   = require('faker');
-const cryptography = require("../cryptography/cryptography.js");
-var random = require('mongoose-simple-random');
+const random = require('mongoose-simple-random');
+const bcrypt = require('bcryptjs');
 
 const Listing = mongoose.model('listing');
 const User = mongoose.model('user');
@@ -10,18 +10,15 @@ const Review = mongoose.model('review');
 // adds random users
 var addRandomUsers = function(req,res){
   var numUsers = req.params.n;
-  var salt = cryptography.generateSalt();
-  var hash = cryptography.hashPassword(faker.internet.password(), salt);
 
   for(var i=0; i<numUsers; i++){
     var user = new User({
       email:faker.internet.email(),
       dateJoined: new Date(),
 
-      password:hash,
-      passwordSalt:salt,
+      name:faker.name.findName(),
 
-      fullName:faker.name.findName(),
+      password:"password",
 
       address:{
         addressLine1:faker.address.streetAddress(),
@@ -38,11 +35,22 @@ var addRandomUsers = function(req,res){
 
       profilePicURL:null
     });
-    user.save(function(err,newUser){
-      if(err){
-        res.status(400).send(err);
-      }
-    });
+
+    bcrypt.genSalt(10, (err, salt) =>
+      bcrypt.hash(user.email, salt, (err, hash) => {
+        if (err) {
+          throw err;
+        } else {
+          user.password = hash;
+          user.save(function(err,newUser){
+            if(err){
+              console.log(err);
+              res.status(400).send(err);
+            }
+          });
+        }
+      })
+    );
   }
   res.send("Added " + numUsers + " users.");
 };
