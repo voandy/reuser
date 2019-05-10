@@ -5,13 +5,22 @@ var enums = require('./enums');
 
 const userSchema = new Schema(
   {
-    email:String,
+    email: {
+      type: String,
+      required: true
+    },
+
+    name: { 
+      type: String,
+      required: true
+    },
+
+    password: { 
+      type: String,
+      required: true
+    },
+
     dateJoined:{type: Date, default: Date.now},
-
-    password:String,
-    passwordSalt:String,
-
-    fullName:String,
 
     address: {
       addressLine1:String,
@@ -38,4 +47,6 @@ userSchema.plugin(random);
 // assign state object to userSchema
 userSchema.statics.States = enums.States;
 
-mongoose.model('user',userSchema);
+const User = mongoose.model('user',userSchema);
+
+module.exports = User;

@@ -1,0 +1,33 @@
+//- this pug is used in sign-up and login pugs to show validation & authentication errors -//
+
+append head
+  link(rel='stylesheet', href='../css/partials/messages_styles.css')
+  link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+
+//- shows all encountered validation errors -//
+if (typeof errors != 'undefined')
+    each error in errors
+        div.alert.alert-warning.alert-dismissible.fade.show(role='alert') 
+            a= error.msg
+            button.close(type='button', data-dismiss='alert', aria-label='Close')
+                span(aria-hidden='true') ×
+
+//- flash messages -//
+if (typeof success_msg != 'undefined' && success_msg != '')
+    div.alert.alert-success.alert-dismissible.fade.show(role='alert')
+        a= success_msg
+        button.close(type='button', data-dismiss='alert', aria-label='Close')
+            span(aria-hidden='true') ×
+
+if (typeof error_msg != 'undefined' && error_msg != '')
+    div.alert.alert-danger.alert-dismissible.fade.show(role='alert')
+        a= error_msg
+        button.close(type='button', data-dismiss='alert', aria-label='Close')
+            span(aria-hidden='true') ×
+
+if (typeof error != 'undefined' && error != '')
+    div.alert.alert-danger.alert-dismissible.fade.show(role='alert')
+        a= error
+        button.close(type='button', data-dismiss='alert', aria-label='Close')
+            span(aria-hidden='true') ×
+
