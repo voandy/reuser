@@ -197,7 +197,7 @@ function loadSidebar (){
       "<td><div class=\"profile-cropper\">" +
         "<img class=\"profile-pic\" src=\"" +
         // add profile pic if one exists
-        ((listings[i].user.profilePicURL) ? listings[i].user.profilePicURL : "images/map/avatar.png") +
+        ((listings[i].user.profilePicURL) ? listings[i].user.profilePicURL : "images/profile/avatar-sm.png") +
         "\">" +
       "</div></td>" +
       "<td><p class=\"user-box\">" + listings[i].user.fullName + "<br>" +

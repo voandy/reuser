@@ -25,6 +25,12 @@ app.use(bodyParser.json());
 app.use('/',backendRoutes);
 app.use('/',frontendRoutes);
 
+app.use(function(req, res, next){
+  res.status(404);
+  res.render('404');
+  return;
+});
+
 app.listen(port, function(){
   console.log("Listening on port " + port);
 });

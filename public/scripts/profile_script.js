@@ -1,0 +1,186 @@
+const listingURL = "/listing";
+const viewListingURL ="/view-listing"
+const userURL = "/user";
+const reviewURL = "/review";
+const profileURL = "/profile";
+
+const userId = window.location.search.split("id=")[1];
+
+// user elements
+const fullName = document.getElementById('full-name');
+const userPic = document.getElementById('user-pic');
+const userAddress = document.getElementById('user-address');
+const dateJoined = document.getElementById('date-joined');
+const averageRating = document.getElementById('average-rating');
+const thanksRec = document.getElementById('thanks-rec');
+const contactButton = document.getElementById('contact-button');
+
+// reviews element
+const reviewsRec = document.getElementById('reviews-rec');
+
+// listings element
+const activeListings = document.getElementById('active-listings');
+
+var user;
+var reviews;
+var listings;
+var concAddress;
+
+getUser(userId).then(function(){
+  // get user data
+  concAddress =
+    user.address.addressLine1 +
+    ((user.addressLine2 != null) ? "<br>" + user.address.addressLine2 : "") + "<br>" +
+    user.address.suburb + " " +
+    user.address.state + " " +
+    user.address.postcode;
+
+  fullName.innerText = user.fullName;
+  userAddress.innerHTML = concAddress;
+
+  var joinedDate = new Date(user.dateJoined);
+  dateJoined.innerHTML = "<div class=\"date\">Joined: " +
+    joinedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short"}) + "</div>";
+
+  averageRating.innerHTML =
+    "<img class=\"user-rating\" src=\"" + getStars(user.starRatingAvg) + "\">";
+
+  if (user.profilePicURL){
+    userPic.innerHTML = "<img src=\"" + user.profilePicURL + "\" class=\"profile-pic\">";
+  } else {
+    userPic.innerHTML = "<img src=\"images/profile/avatar-sm.png\" class=\"profile-pic\">";
+  }
+
+  // add email link to button
+  contactButton.addEventListener("click", function(){
+    window.location.href = "mailto:" + user.email;
+  });
+
+  // get all reviews about user
+  getReviews(userId).then(function(){
+    if (reviews === undefined || reviews.length == 0) {
+      console.log("empty");
+    } else {
+      getReviewers().then(function(){
+        var reviews_content = "";
+
+        // gets the first 5 reviews left for this user
+        reviews.slice(0, 5).forEach(function(review){
+          var reviewDate = new Date(review.datePosted);
+
+          reviews_content +=
+          "<div class=review>" +
+            "<h6 class=\"review-title\">" + review.title + "</h6>" +
+            "<img class=\"star-rating\" src=\"" + getStars(review.starRating) + "\">" +
+            "<div class=\"left-by\">Left by: <a href=\"" + profileURL + "?id=" + review.reviewer._id + "\">" +
+            review.reviewer.fullName + "</a></div>" +
+            "<div class=\"date\">" +
+            reviewDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) + "</div>" +
+            "<div class=\"review-content\">" + review.content + "</div>" +
+          "</div>";
+        });
+        reviewsRec.innerHTML = reviews_content;
+      });
+    }
+  });
+
+  // get all listings made by user
+  getListings(userId).then(function(){
+    if (listings === undefined || listings.length == 0) {
+      console.log("empty")
+    } else {
+      var listings_content = "";
+
+      listings.forEach(function(listing){
+        var postedDate = new Date(listing.datePosted);
+
+        listings_content += "<div class=listing>";
+
+        if (listing.imageURLs.length != 0){
+          listings_content += "<img src=\"" + listing.imageURLs[0] + "\" class=\"listing-pic\">";
+        } else {
+          listings_content += "<img src=\"images/listing/listing-no-pic.png\" class=\"listing-pic\">";
+        }
+
+        listings_content +=  "<h6 class=\"listing-title\"><a href=\"" + viewListingURL + "?id=" + listing._id + "\">" + listing.title + "</a></h6>" +
+          "<div class=\"date\">Posted: " +
+          postedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short",
+          day:"numeric"}) + " in <i class=\"category\">" + listing.category + "</i></div>"
+
+        listings_content += "<p class=\"description\">" + listing.description + "</p>"
+
+        listings_content += "</div>"
+      });
+      activeListings.innerHTML = listings_content;
+    }
+  });
+});
+
+function getUser(userId){
+  return new Promise(resolve => {
+      jQuery.get(userURL + "/id/" + userId, function(data){
+        user = data;
+        resolve();
+      });
+  });
+}
+
+// returns all review written about given user
+function getReviews(userId){
+  return new Promise(resolve => {
+      jQuery.get(reviewURL + "/userId/" + userId, function(data){
+        reviews = data;
+        resolve();
+      });
+  });
+}
+
+// given a review, will get the reviewer and add it to that review
+function getReviewer(review){
+  return new Promise(resolve => {
+    jQuery.get(userURL + "/id/" + review.leftById, function(user) {
+      resolve(review.reviewer = user);
+    });
+  });
+}
+
+// add associated user to all reviews
+async function getReviewers(){
+  const promises = reviews.map(getReviewer);
+  await Promise.all(promises);
+}
+
+// returns all listings made by a user
+function getListings(userId){
+  return new Promise(resolve => {
+      jQuery.get(listingURL + "/userId/" + userId, function(data){
+        listings = data;
+        resolve();
+      });
+  });
+}
+
+function getStars(starCount){
+  switch(true) {
+    case (starCount<1):
+      return "images/review/stars/0.png";
+    case (starCount<1.25):
+      return "images/review/stars/1.png";
+    case (starCount<1.75):
+      return "images/review/stars/1h.png";
+    case (starCount<2.25):
+      return "images/review/stars/2.png";
+    case (starCount<2.75):
+      return "images/review/stars/2h.png";
+    case (starCount<3.25):
+      return "images/review/stars/3.png";
+    case (starCount<3.75):
+      return "images/review/stars/3h.png";
+    case (starCount<4.25):
+      return "images/review/stars/4.png";
+    case (starCount<4.75):
+      return "images/review/stars/4h.png";
+    default:
+      return "images/review/stars/5.png";
+  }
+}

@@ -50,6 +50,8 @@ router.get('/listing/image/id/:id', listingCont.getAllImages);
 router.put('/listing/image/id/:id', listingCont.imageUpload);
 // delete a specific listing's image by the image URL
 router.delete('/listing/image/id/:id', listingCont.deleteImageByURL);
+// returns all listings made by a given user
+router.get('/listing/userId/:userId', listingCont.getByUser);
 
 
 /* REVIEW ROUTS */

@@ -1,0 +1,35 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 250px 700px 1fr;
+}
+
+.listings {
+  grid-column: 2;
+  padding: 20px 10px 20px 30px;
+}
+
+.user {
+  grid-column: 3;
+  padding: 20px 10px 20px 10px;
+}
+
+.listing-pic {
+  width = 100%;
+  max-width: 100px;
+  padding: 20px 0 20px 0;
+}
+
+.profile-pic {
+  width = 100%;
+  max-width: 300px;
+}
+
+.star-rating {
+  width: 80px;
+  padding-bottom: 10px;
+}
+
+.user-rating {
+  width: 80px;
+  padding-bottom: 10px;
+}

@@ -2,8 +2,6 @@ extends default.pug
 
 append head
   title reUser : Spend less, consume less.
-  meta(name='viewport', content='initial-scale=1.0')
-  meta(charset='utf-8')
   link(rel='stylesheet', href='/css/listing_styles.css')
 
 block content
@@ -18,14 +16,14 @@ block content
                           #user-pic
                       td
                           #average-rating
-                          i#date-joined
+                          #date-joined
           button#contact-button contact
       #reviews-rec
     .listing
       h3#title
-      i#date-posted
+      #date-posted
       #address
       #images
       #description
-      i#date-expires
+      #date-expires
   script(src='/scripts/listing_script.js')

@@ -1,0 +1,27 @@
+extends default.pug
+
+append head
+  title reUser : Spend less, consume less.
+  link(rel='stylesheet', href='/css/profile_styles.css')
+
+block content
+  .grid-container
+    .user
+      .user-details
+        table#user-details
+            tbody
+                tr
+                    td
+                        #user-pic
+                    td
+                        h3#full-name
+                        #user-address
+                        #average-rating
+                        #thanks
+                        #date-joined
+                        button#contact-button contact
+      .reviews
+        #reviews-rec
+    .listings
+      #active-listings
+  script(src='/scripts/profile_script.js')

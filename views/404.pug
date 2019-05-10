@@ -1,0 +1,16 @@
+extends default.pug
+
+append head
+    title reuser | 404 Error
+    style(type='text/css').
+        #error {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+      
+block content
+    img#error(src='images/home/404.jpg')

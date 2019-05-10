@@ -30,4 +30,9 @@ router.get('/view-listing', function(req,res) {
   res.render('view-listing');
 });
 
+// user profile
+router.get('/profile', function(req,res) {
+  res.render('profile');
+});
+
 module.exports = router;

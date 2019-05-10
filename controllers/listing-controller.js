@@ -155,7 +155,7 @@ var filteredListings = function(req,res){
   });
 };
 
-// upload a single image to aws s3 
+// upload a single image to aws s3
 var imageUpload = function(req, res) {
   var listingId = req.params.id;
 
@@ -177,7 +177,7 @@ var imageUpload = function(req, res) {
 var getAllImages = function(req, res) {
   var listingId = req.params.id;
   Listing.findById(listingId, function(err, listing) {
-    return res.send(listing.imageURLs); 
+    return res.send(listing.imageURLs);
   });
 };
 
@@ -195,6 +195,18 @@ var deleteImageByURL = function(req, res) {
   });
 };
 
+// given a userId returns all review written ABOUT that user
+var getByUser = function(req,res){
+  var userId = req.params.userId;
+  Listing.find({userId:userId}, function(err, listings){
+    if (!err){
+      res.send(listings);
+    }else{
+      res.status(404);
+    }
+  });
+}
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
@@ -206,4 +218,4 @@ module.exports.filteredListings = filteredListings;
 module.exports.imageUpload = imageUpload;
 module.exports.getAllImages = getAllImages;
 module.exports.deleteImageByURL = deleteImageByURL;
-
+module.exports.getByUser = getByUser;

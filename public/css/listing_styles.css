@@ -1,7 +1,6 @@
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 250px 700px 1fr;
-  grid-template-rows: auto;
 }
 
 .user {
@@ -25,6 +24,7 @@
 .date {
   color: #999;
   padding-bottom: 10px;
+  font-style: italic;
 }
 
 .profile-cropper {
@@ -61,6 +61,7 @@
 .category {
   color: #999;
   text-transform: capitalize;
+  font-style: italic;
 }
 
 #title {
