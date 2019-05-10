@@ -2,7 +2,7 @@
 var modal = document.getElementById('modal');
 
 // Get the button that opens the modal
-var btn = document.getElementById('btn');
+var btn = document.getElementById('login-btn');
 
 // Get the <span> element that closes the modal
 var span = document.getElementById('close');

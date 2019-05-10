@@ -13,30 +13,29 @@
 
     <header>
 
-        <div class="nav-container">
-            <!-- logo -->
-            <div class='nav-logo'>
-                <a><img class='logo' src="../public/images/nav/reuser-logo-white-smol.png"></a>
-                <li><a href='/'>reuser</a></li>
-            </div>
-            <!-- nav buttons -->
-            <div class='nav-button'>
-                <ul>
-                    <li><a href='/map'>map</a></li>
-                    <li><a href='/about'>about</a></li>
-                </ul>
-            </div>
-            <!-- login -->
-            <div class='nav-login'>
-                <a href="#log-in"><img class='nav-button' src="../public/images/nav/login.png"></a>
-                <li><a href='#log-in' id="btn" onclick='openLogin()'>log in</a></li>
-            </div> 
-        </div>  
+        <!-- logo -->
+        <div class="logo-container">
+            <img id="logo-img" src="../public/images/nav/reuser-logo-white-smol.png" alt="reuser">
+            <a id="logo-brand" href="/">reuser</a>
+        </div>
+
+        <!-- nav buttons -->
+        <div class="tab">
+            <a href="/map">map</a>
+            <a href="/about">about</a>
+        </div>
+
+        <!-- login -->
+        <div class="login-container">
+            <img id="login-img" src="../public/images/nav/login.png" alt="login-image">
+            <a id="login-btn" href="#login" onclick="openLogin()">log in</a>
+        </div>
     </header>  
 
+    <!-- log in pop out -->
     <div id="modal">
          <div class="modal-container">
-
+                <span id="close" onclick="closeLogin()">&times</span>
             <form action="/action_page.php">
                 <input type="email" name="email" placeholder="email""><br>
                 <br>

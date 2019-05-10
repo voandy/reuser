@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 
 body{
-    background-color: aquamarine;
+    background-color: burlywood;
     margin: 0;
     padding: 0;
 }
-
- /* general  */
+/*
 .nav-container{
     height: 60px;
     font-size: 20px;
@@ -35,8 +34,6 @@ a:hover{
   color: #646363;
 }
 
-
-/* logo  */
 .nav-logo{
     float: left;
     display: grid;
@@ -56,7 +53,6 @@ img.logo{
 }
 
 
-/* buttons */
 .nav-button{
     display: grid;
     grid-area: nav;
@@ -68,7 +64,6 @@ img.logo{
 }
 
 
-/* login */
 .nav-login{
   display: grid;
   grid-area: login;
@@ -83,6 +78,76 @@ img.nav-button{
 .nav-login a{
   float: right;
 }
+
+*/
+
+/* general */
+header{
+  height: 60px;
+  font-size: 20px;
+  font-family: futura;
+  background-color: #39B54A;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+a{
+  color:white;
+  text-decoration: none;
+}
+
+/* logo */
+.logo-container{
+  height: inherit;
+  width: 20%;
+  float: left;
+}
+
+#logo-img{
+  float: left;
+  height: 65%;
+  padding-top:12px;
+  padding-left: 60px;
+  padding-right: 10px;
+}
+
+#logo-brand{
+  padding-top:60px;
+  padding-right: 10%;
+}
+
+/* tab buttons */
+.tab{
+  height: inherit; 
+  width: 50%;
+  /* margin-left: 25%; */
+  float: left;
+}
+
+.tab a{
+  /* padding-right: 20px; */
+  /* padding-top:15px; */
+}
+
+/* login */
+.login-container{
+  height: inherit;
+  float: right;
+  padding-right: 60px;
+}
+
+#login-img{
+  padding-top: 12%;
+  height: 60%;
+}
+
+#login-btn{
+
+  padding-top:20%
+
+}
+
+
 
 /* login modal (pop out) */
 #modal {
@@ -141,8 +206,7 @@ img.nav-button{
 }
 
 
-
-/* smaller screen */
+/*
 @media screen and (max-width: 500px){
 
   .nav-container{
@@ -165,3 +229,4 @@ img.nav-button{
     padding-right: 20px;
   }
 }
+*/
