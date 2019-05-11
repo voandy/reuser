@@ -6,14 +6,16 @@ append head
 
 block content
   .grid-container
+    .listings
+      #active-listings
     .user
       .user-details
         table#user-details
             tbody
                 tr
-                    td
+                    td.user-pic
                         #user-pic
-                    td
+                    td.user-text
                         h3#full-name
                         #user-address
                         #average-rating
@@ -22,6 +24,4 @@ block content
                         #contact
       .reviews
         #reviews-rec
-    .listings
-      #active-listings
   script(src='/scripts/profile_script.js')

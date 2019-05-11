@@ -96,7 +96,7 @@ getUser(userId).then(function(){
     if (listings === undefined || listings.length == 0) {
       console.log("empty")
     } else {
-      var listings_content = "";
+      var listings_content = "<div id=\"listings-title\"><h5>Active Listings</h5><div>";
 
       listings.forEach(function(listing){
         var postedDate = new Date(listing.datePosted);
