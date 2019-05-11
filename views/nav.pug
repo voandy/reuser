@@ -2,68 +2,49 @@ doctype html
 head
 
     // nav bar style and behaviour
-    link(rel='stylesheet', href='/css/nav_styles.css')
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel='stylesheet', href='/css/nav.css')
+    script(rel="text/javascript" src="/scripts/nav.js")
       
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
-
-    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut', crossorigin='anonymous')
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k', crossorigin='anonymous')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
-
     
-    // login page style and behaviour
-    //<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    
-// header for home page
-nav.navbar.navbar-expand-sm
+header
   // logo
-  a.navbar-brand
-    img.logo(src='images/nav/reuser-logo-white.png')
-  a.nav-link.brand-name(href='/') reuser
-  #data_links.collapse.navbar-collapse
-    // nav bar links
-    ul.navbar-nav
-      li.nav-item
-        a.nav-link(href='/map') map
-      li.nav-item
-        a.nav-link(href='/about') about
+  .logo-container
+    img#logo-img(src='images/nav/reuser-logo-white-smol.png', alt='reuser')
+    a#logo-brand(href='/') reuser
 
-  // login section
-  div
-    ul.navbar-nav
-      li.nav-item
-        a.nav-link(href='#log-in')
-          img.login-icon(src='images/nav/login.png')
+  // nav buttons
+  .tab
+    a(href='/map') map
+    a(href='/about') about
 
-  div
-    ul.navbar-nav
-      li.nav-item
-        a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#').login-text login
-        ul.dropdown-menu.form-wrapper
-          li
-            form(action='/examples/actions/confirmation.php', accept-charset='UTF-8', role='form')
-            fieldset
-              .form-group
-                input.form-control(placeholder='username', name='username', type='text')
-              .form-group
-                input.form-control(placeholder='password', name='password', type='password', value='')
-              label.checkbox.pull-left
-                input(type='checkbox', value='remember-me')
-              a.remember-me-text  remember me
-              a.forget-password-text(href='#') forget password?
-              br
-              br
-              //span.clearfix
-                
-              input.btn.btn-md.btn-primary.btn-block(type='submit', value='login')
-              a.dont-have-account-text don't have account? 
-              a.sign-up-text(href='/sign-up') sign up
-              
+  // login
+  .login-container
+    img#login-img(src='images/nav/login.png', alt='login-image')
+    a#login-btn(href='#login', onclick='openLogin()') log in
 
-              
+  // log in pop out
+  #modal
+    .modal-container
+      span#close(onclick='closeLogin()') ×
+      form(action='/action_page.php')
+        input(type='email', name='email', placeholder='email')
+        br
+        input(type='password', name='password', placeholder='password')
+        br
+        button(type='submit') Log in
+        br
+        small
+          | don't have an account?  
+          a(href='/sign-up') sign up
+
+script.
+  var modal = document.getElementById('modal');
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
