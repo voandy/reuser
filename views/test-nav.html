@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+
+    <link rel="stylesheet" href="test-nav.css">
+    <script type="text/javascript" src="nav.js"></script>
+</head>
+<body>
+
+    <header>
+
+        <!-- logo -->
+        <div class="logo-container">
+            <img id="logo-img" src="../public/images/nav/reuser-logo-white-smol.png" alt="reuser">
+            <a id="logo-brand" href="/">reuser</a>
+        </div>
+
+        <!-- nav buttons -->
+        <div class="tab">
+            <a href="/map">map</a>
+            <a href="/about">about</a>
+        </div>
+
+        <!-- login -->
+        <div class="login-container">
+            <img id="login-img" src="../public/images/nav/login.png" alt="login-image">
+            <a id="login-btn" href="#login" onclick="openLogin()">log in</a>
+        </div>
+    </header>  
+
+    <!-- log in pop out -->
+    <div id="modal">
+         <div class="modal-container">
+            <span id="close" onclick="closeLogin()">&times</span>
+            <form action="/action_page.php">
+                <input type="email" name="email" placeholder="email"><br>
+                <input type="password" name="password" placeholder="password"><br>
+                <button type="submit">Log in</button><br><br>
+            </form> 
+
+            <small>don't have an account?  <a href="/sign-up">sign up</a></small>
+            
+         </div>
+    </div> 
+
+
+    <script>
+        var modal = document.getElementById('modal');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }    
+    </script>
+</body>
+</html>
