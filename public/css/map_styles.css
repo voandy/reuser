@@ -13,11 +13,6 @@ a:hover {
   text-decoration: none;
 }
 
-h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
 img {
   vertical-align: baseline;
 }
@@ -109,7 +104,7 @@ img {
   max-width: 239px;
   max-height: 239px;
   overflow: hidden;
-  margin: 10px auto 0 auto;
+  margin: 0 auto 0 auto;
 }
 
 .profile-cropper {
@@ -140,15 +135,20 @@ img {
   color: #999;
 }
 
+#search-table {
+  width: 100%;
+  margin: 0 20px 0 10px;
+}
+
 #map {
   height: 100%;
 }
 
 #search-box {
   padding: 6px 0 6px 9px;
-  margin: 9px 0 5px 9px;
+  /* margin: 9px 0 5px 9px; */
   text-overflow: ellipsis;
-  width: 223px;
+  width: 100%;
   border-radius: 10px;
   border: 1px solid #999;
 }
@@ -159,13 +159,14 @@ img {
 }
 
 #filter-button {
-  margin-top: 10px;
+  height: 35.6px;
   padding: 0;
   cursor: pointer;
+  display: none;
 }
 
 .sidebar::-webkit-scrollbar {
-  width: 1em;
+  width: 10px;
   background: transparent;
 }
 .sidebar::-webkit-scrollbar-thumb {

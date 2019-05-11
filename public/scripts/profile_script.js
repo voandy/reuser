@@ -69,10 +69,10 @@ getUser(userId).then(function(){
       console.log("empty");
     } else {
       getReviewers().then(function(){
-        var reviews_content = "";
+        var reviews_content = "<div id=\"reviews-title\"><h4>Reviews Received</h4><div>";
 
         // gets the first 5 reviews left for this user
-        reviews.slice(0, 5).forEach(function(review){
+        reviews.forEach(function(review){
           var reviewDate = new Date(review.datePosted);
 
           reviews_content +=
@@ -86,6 +86,7 @@ getUser(userId).then(function(){
             "<div class=\"review-content\">" + review.content + "</div>" +
           "</div>";
         });
+
         reviewsRec.innerHTML = reviews_content;
       });
     }
@@ -96,25 +97,25 @@ getUser(userId).then(function(){
     if (listings === undefined || listings.length == 0) {
       console.log("empty")
     } else {
-      var listings_content = "<div id=\"listings-title\"><h5>Active Listings</h5><div>";
+      var listings_content = "<div id=\"listings-title\"><h4>Active Listings</h4><div>";
 
       listings.forEach(function(listing){
         var postedDate = new Date(listing.datePosted);
 
         listings_content += "<div class=listing>";
 
-        if (listing.imageURLs.length != 0){
-          listings_content += "<img src=\"" + listing.imageURLs[0] + "\" class=\"listing-pic\">";
-        } else {
-          listings_content += "<img src=\"images/listing/listing-no-pic.png\" class=\"listing-pic\">";
-        }
-
         listings_content +=  "<h6 class=\"listing-title\"><a href=\"" + viewListingURL + "?id=" + listing._id + "\">" + listing.title + "</a></h6>" +
           "<div class=\"date\">Posted: " +
           postedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short",
           day:"numeric"}) + " in <i class=\"category\">" + listing.category + "</i></div>"
 
-        listings_content += "<p class=\"description\">" + listing.description + "</p>"
+        // listings_content += "<p class=\"description\">" + listing.description + "</p>"
+
+        if (listing.imageURLs.length != 0){
+          listings_content += "<img src=\"" + listing.imageURLs[0] + "\" class=\"listing-pic\">";
+        } else {
+          listings_content += "<img src=\"images/listing/listing-no-pic.png\" class=\"listing-pic\">";
+        }
 
         listings_content += "</div>"
       });

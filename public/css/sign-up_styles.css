@@ -17,7 +17,7 @@
 }
 
 #passwordDifferent{
-    display: none;    
+    display: none;
 }
 
 .main-container {
@@ -67,7 +67,7 @@ label {
     height: 30px;
     border-bottom: solid lightgray 2px !important;
 }
-  
+
 input {
     width: 100% !important;
     display: inline-block;
