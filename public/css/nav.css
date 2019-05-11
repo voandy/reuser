@@ -9,7 +9,7 @@ body{
 header{
   height: 60px;
   font-size: 20px;
-  font-family: futura;
+  font-family: montserrat;
   background-color: #39B54A;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -37,7 +37,7 @@ a{
 }
 
 #logo-brand{
-  padding-top:15px;
+  padding-top:18px;
   padding-right: 10%;
 }
 
@@ -49,7 +49,7 @@ a{
 }
 
 .tab a{
-  padding-top:15px;
+  padding-top:18px;
   padding-right: 5px;
 }
 
@@ -66,7 +66,7 @@ a{
 }
 
 #login-btn{
-  padding-top:15px;
+  padding-top:18px;
   float: right;
   padding-right: 10px;
 
@@ -87,14 +87,13 @@ a{
 
   overflow: auto;
   background-color: rgba(0,0,0,0.4);
- 
 }
 
 .modal-container {
   position: relative;
   float: right;
   background-color: #fefefe;
-  margin: auto;
+  margin-right: 20px;
   padding: 10px;
   border: 2px solid #39B54A;
   width: 315px;
@@ -113,12 +112,12 @@ a{
 
 .modal-container ::-webkit-input-placeholder{
   font-size: 12px;
-  font-family: futura;
+  font-family: montserrat;
 }
 
 .modal-container ::-moz-placeholder {
   font-size: 12px;
-  font-family: futura;
+  font-family: montserrat;
 }
 
 .modal-container a{
@@ -137,7 +136,7 @@ a{
 }
 
 .modal-container small{
-  padding-left: 64px;
+  padding-left: 56px;
   font-size: 12px;
   text-align: center;
   justify-content: center;
@@ -145,18 +144,20 @@ a{
 
 
 .modal-container button{
-  width: 97%;
   border: none;
   color: white;
-  background-color: #39B54A;
-  padding: 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 12px;
+  font-family: montserrat;
+  background-color: #39B54A;
+
+  width: 97%;
+  padding: 10px;
   margin: 0 auto;
   cursor: pointer;
   border-radius: 47px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
 #close {
