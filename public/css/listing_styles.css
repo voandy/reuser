@@ -63,16 +63,17 @@
   font-style: italic;
 }
 
-#title {
-  text-transform: capitalize;
-}
-
 #user-pic {
   padding-bottom: 10px;
 }
 
 #description {
   padding-bottom: 10px;
+}
+
+#map {
+  margin-top: 20px;
+  height: 350px;
 }
 
 #user-details {

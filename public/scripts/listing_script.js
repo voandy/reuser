@@ -28,6 +28,20 @@ var listing;
 var user;
 var reviews;
 var concAddress;
+var map;
+var infoWindow;
+
+// place map
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -37.798535, lng: 144.960605},
+    zoom: 15,
+    styles: mapstyle,
+
+    mapTypeControl: false,
+    fullscreenControl: false,
+  });
+}
 
 getListing(listingId).then(function(){
   // get listing data
@@ -57,6 +71,34 @@ getListing(listingId).then(function(){
   if (listing.imageURLs.length != 0){
     images.innerHTML = "<img src=\"" + listing.imageURLs[0] + "\" class=\"listing-pic\"></div>";
   }
+
+  // set map
+  infowindow = new google.maps.InfoWindow();
+  var listingPos = {lat: listing.latitude, lng:listing.longitude};
+  map.setCenter(listingPos);
+
+  var infoContent = "<h5>" + listing.title + "</h5>" +
+  "<p>" + concAddress + "</p>";
+
+  // create marker
+  var marker = new google.maps.Marker({
+    position: listingPos,
+    map: map,
+    title: listing.title,
+    content: infoContent,
+    icon: {
+      url: "/images/map/green-dot.png"
+    }
+  });
+
+  // add InfoWindow to marker
+  google.maps.event.addListener(marker, "click", function () {
+    infowindow.setContent(this.content);
+    infowindow.open(map, this);
+  });
+
+  // place marker on map
+  marker.setMap(map);
 
   // get user data of listing's poster
   getUser(listing.userId).then(function(){
@@ -217,3 +259,32 @@ function timeSince(date) {
   }
   return "Just now";
 }
+
+var mapstyle =
+[
+  {
+    "featureType": "poi.business",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+];

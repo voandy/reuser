@@ -5,15 +5,25 @@ var modal = document.getElementById('modal');
 var btn = document.getElementById('login-btn');
 
 // Get the <span> element that closes the modal
-var span = document.getElementById('close');
+// var span = document.getElementById('close');
 
 // open log in bar
 function openLogin(){
-    modal.style.display = "block";
+
+    // disable login popup
+    if(modal.style.display == "block"){
+        modal.style.display = "none";
+        document.getElementById('login-btn').style.opacity = "1";
+    }
+    // enable login popup
+    else{
+        modal.style.display = "block";
+        document.getElementById('login-btn').style.opacity = "0.6";
+    }
 }
 // close log in bar
-function closeLogin() {
-    modal.style.display = "none";
-}
+// function closeLogin() {
+//     modal.style.display = "none";
+// }
 
 

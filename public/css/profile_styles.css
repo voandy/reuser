@@ -29,10 +29,6 @@
   padding-bottom: 20px;
 }
 
-.listing-title {
-  text-transform: capitalize;
-}
-
 .listing-pic {
   width = 100%;
   max-width: 230px;

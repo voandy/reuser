@@ -107,9 +107,14 @@ hr {
     opacity: 1;
 }
 
-/* Add a blue text color to links */
 a {
-    color: dodgerblue;
+  color: #39B54A !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #57EB74 !important;
+  text-decoration: none !important;
 }
 
 .term-n-privacy-text {

@@ -9,13 +9,9 @@ block content
       .map
         #map
       .search-bar
-        table#search-table
-          tbody
-            tr
-              td
-                input#search-box.mapControls(type='text', placeholder='Address or Suburb')
-              td
-                img#filter-button(src='/images/map/filter.png')
+        .search-box-container
+          input#search-box.mapControls(type='text', placeholder='Address or Suburb')
+          img#filter-button(src='/images/map/filter.png')
       #sidebar.sidebar
         #listings-list
           center

@@ -23,12 +23,12 @@ header
   // login
   .login-container
     img#login-img(src='images/nav/login.png', alt='login-image')
-    a#login-btn(href='#login', onclick='openLogin()') log in
+    a#login-btn(href='#login', onclick='openLogin()') login
 
   // log in pop out
   #modal
     .modal-container
-      span#close(onclick='closeLogin()') ×
+      //- span#close(onclick='closeLogin()') ×
       form(action='/action_page.php')
         input(type='email', name='email', placeholder='email')
         br

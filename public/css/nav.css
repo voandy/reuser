@@ -9,7 +9,8 @@ body{
 header{
   height: 60px;
   font-size: 20px;
-  font-family: futura;
+  font-family: montserrat;
+  font-weight: 500;
   background-color: #39B54A;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -24,21 +25,23 @@ header a{
 /* logo */
 .logo-container{
   height: inherit;
-  width: 140px;
+  width: 150px;
   float: left;
+  text-align: center;
   padding-left: 60px;
 }
 
 #logo-img{
   float: left;
   height: 65%;
-  padding-top:12px;
+  padding-top:10px;
   padding-right: 10px;
 }
 
 #logo-brand{
-  padding-top:15px;
+  padding-top: 18px;
   padding-right: 10%;
+  font-weight: bold;
 }
 
 /* tab buttons */
@@ -49,8 +52,8 @@ header a{
 }
 
 .tab a{
-  padding-top:15px;
-  padding-right: 5px;
+  padding-top:18px;
+  padding-right: 10px;
 }
 
 /* login */
@@ -66,7 +69,7 @@ header a{
 }
 
 #login-btn{
-  padding-top:15px;
+  padding-top:18px;
   float: right;
   padding-right: 10px;
 
@@ -81,20 +84,19 @@ header a{
   display: none;
   position: fixed;
 
-  z-index: 1;
+  z-index: 4; /* doesnt overlap with the map */
   padding: 10px;
   /* padding-right: 10px; */
 
   overflow: auto;
   background-color: rgba(0,0,0,0.4);
-
 }
 
 .modal-container {
   position: relative;
   float: right;
   background-color: #fefefe;
-  margin: auto;
+  margin-right: 20px;
   padding: 10px;
   border: 2px solid #39B54A;
   width: 315px;
@@ -113,12 +115,12 @@ header a{
 
 .modal-container ::-webkit-input-placeholder{
   font-size: 12px;
-  font-family: futura;
+  font-family: montserrat;
 }
 
 .modal-container ::-moz-placeholder {
   font-size: 12px;
-  font-family: futura;
+  font-family: montserrat;
 }
 
 .modal-container a{
@@ -137,7 +139,7 @@ header a{
 }
 
 .modal-container small{
-  padding-left: 64px;
+  padding-left: 56px;
   font-size: 12px;
   text-align: center;
   justify-content: center;
@@ -145,18 +147,20 @@ header a{
 
 
 .modal-container button{
-  width: 97%;
   border: none;
   color: white;
-  background-color: #39B54A;
-  padding: 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 12px;
+  font-family: montserrat;
+  background-color: #39B54A;
+
+  width: 97%;
+  padding: 10px;
   margin: 0 auto;
   cursor: pointer;
   border-radius: 47px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
 #close {
