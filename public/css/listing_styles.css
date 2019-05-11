@@ -5,12 +5,14 @@
 
 .user {
   grid-column: 2;
-  padding: 20px 10px 20px 10px;
+  padding: 20px;
+  background-color: #f5f5f5;
 }
 
 .listing {
   grid-column: 3;
-  padding: 20px 10px 20px 30px;
+  padding: 20px;
+  margin-left: 10px;
 }
 
 .review {
@@ -95,4 +97,26 @@
 
 #contact-button:focus {
   outline: 0;
+}
+
+@media (max-width: 950px) {
+  .grid-container {
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 100vh;
+  }
+  .listing-pic {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+  }
+  .listing {
+    margin-left: 0;
+  }
+  #title {
+    font-size: 1.3rem;
+  }
+  .user-name a {
+    font-size: 1.3rem;
+  }
 }
