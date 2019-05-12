@@ -36,9 +36,6 @@ var getById = function(req,res){
 // create user
 var create = function(req,res){
 
-  console.log('someone tries to create user!');
-  console.log(req.body);
-
   const { name, email, password, password_cfm } = req.body;
   let errors = []
 
@@ -99,7 +96,7 @@ var create = function(req,res){
               // save user
               newUser.save()
                 .then(user => {
-                  res.redirect('/map');
+                  res.redirect('/login');
                 })
                 .catch(err => console.log(err)); 
           }))
@@ -129,11 +126,23 @@ var create = function(req,res){
 };
 
 var login = function(req, res, next) {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-  })(req, res, next);
+  // first try to find the user by their email
+  User.findOne({ email: req.body.email })
+    .then(user => {
+      // redirect user to its own profile page upon successful login
+      // note: if user cannot be found, they will be redirected to failureRedirect anyway
+      var successRedirectURL = '/profile';
+      if (user) {
+        successRedirectURL += '?id=' + user._id;;
+      } 
+      // authenticate user
+      passport.authenticate('local', {
+        successRedirect: successRedirectURL,
+        failureRedirect: '/login',
+        failureFlash: true
+      })(req, res, next);  
+    })
+    .catch(err => { console.log(err) });
 }
 
 var logout = function(req, res) {
