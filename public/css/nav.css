@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600');
 
 body{
     margin: 0;
@@ -9,7 +9,7 @@ body{
 header{
   height: 60px;
   font-size: 20px;
-  font-family: montserrat;
+  font-family: Raleway;
   font-weight: 500;
   background-color: #39B54A;
   flex-flow: row nowrap;
@@ -44,9 +44,9 @@ header a :hover{
 
 #nav-logo-img{
   float: left ;
-  height: 65% ;
-  padding-top:10px ;
-  padding-right: 10px ;
+  height: 32px ;
+  padding-top: 14px;
+  padding-right: 0 ;
 }
 
 #nav-logo-brand{
@@ -89,10 +89,9 @@ header * {
 }
 
 #nav-login-img{
-  padding-top: 12px;
-  height: 80%;
+  padding-top: 14px;
+  height: 32px;
   float: right;
-  box-sizing: border-box !important;
 }
 
 #login-btn{
@@ -144,12 +143,12 @@ header * {
 
 .modal-container ::-webkit-input-placeholder{
   font-size: 12px;
-  font-family: montserrat;
+  font-family: Raleway;
 }
 
 .modal-container ::-moz-placeholder {
   font-size: 12px;
-  font-family: montserrat;
+  font-family: Raleway;
 }
 
 .modal-container a{
@@ -179,7 +178,7 @@ header * {
   border: none;
   color: white;
   font-size: 12px;
-  font-family: montserrat;
+  font-family: Raleway;
   background-color: #39B54A;
 
   width: 100%;
@@ -190,7 +189,10 @@ header * {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+
+  outline: none;
 }
+
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
