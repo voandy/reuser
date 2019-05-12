@@ -17,13 +17,20 @@ header{
 }
 
 header a{
-  color:white;
+  color:white !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  box-sizing: content-box !important;
+  line-height: 26px;
+}
+
+header a :hover{
+  color: #57EB74 !important;
   text-decoration: none;
-  display: inline-block;
 }
 
 /* logo */
-.logo-container{
+.nav-logo-container{
   height: inherit;
   width: 150px;
   float: left;
@@ -31,41 +38,50 @@ header a{
   padding-left: 60px;
 }
 
-#logo-img{
-  float: left;
-  height: 65%;
-  padding-top:10px;
-  padding-right: 10px;
+#nav-logo-img{
+  float: left ;
+  height: 65% ;
+  padding-top:10px ;
+  padding-right: 10px ;
 }
 
-#logo-brand{
+#nav-logo-brand{
   padding-top: 18px;
   padding-right: 10%;
   font-weight: bold;
 }
 
+#nav-logo-brand:before,
+#nav-logo-brand:after {
+  -webkit-box-sizing: content-box !important;
+     -moz-box-sizing: content-box !important;
+          box-sizing: content-box !important;
+}
+
+
 /* tab buttons */
-.tab{
+.nav-tab{
   height: inherit;
   width: 35vw;
   float: left;
 }
 
-.tab a{
+.nav-tab a{
   padding-top:18px;
   padding-right: 10px;
 }
 
 /* login */
-.login-container{
-  height: inherit;
+.nav-login-container{
+  height: 60px;
   padding-right: 60px;
 }
 
-#login-img{
+#nav-login-img{
   padding-top: 12px;
-  height: 60%;
+  height: 80%;
   float: right;
+  box-sizing: border-box !important;
 }
 
 #login-btn{
@@ -86,7 +102,6 @@ header a{
 
   z-index: 4; /* doesnt overlap with the map */
   padding: 10px;
-  /* padding-right: 10px; */
 
   overflow: auto;
   background-color: rgba(0,0,0,0.4);
@@ -124,8 +139,9 @@ header a{
 }
 
 .modal-container a{
-  text-decoration: underline;
-  color: #39B54A;
+  color: #39B54A !important;
+  text-decoration: underline !important;
+
 }
 
 .modal-container input{
@@ -145,7 +161,6 @@ header a{
   justify-content: center;
 }
 
-
 .modal-container button{
   border: none;
   color: white;
@@ -163,21 +178,6 @@ header a{
   display: inline-block;
 }
 
-#close {
-  color: black;
-  float: right;
-  padding-right: 10px;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-#close:hover,
-#close:focus {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0}
@@ -190,11 +190,11 @@ header a{
 }
 
 
-
+/* respondsive design */
 @media screen and (max-width: 600px){
 
   /* remove nav buttons */
-  .tab{
+  .nav-tab{
     display: none;
   }
 
@@ -203,16 +203,16 @@ header a{
 @media screen and (max-width: 450px){
 
   /* remove nav buttons */
-  .tab{
+  .nav-tab{
     display: none;
   }
 
   /* push logo and login to side */
-  .logo-container{
+  .nav-logo-container{
     padding-left: 10px;
   }
 
-  .login-container{
+  .nav-login-container{
     padding-right: 10px;
   }
 
