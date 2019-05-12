@@ -107,14 +107,14 @@ hr {
     opacity: 1;
 }
 
-a {
-  color: #39B54A !important;
-  text-decoration: none !important;
+.form-container a {
+  color: #39B54A;
+  text-decoration: none;
 }
 
-a:hover {
-  color: #57EB74 !important;
-  text-decoration: none !important;
+.form-container a:hover {
+  color: #57EB74;
+  text-decoration: none;
 }
 
 .term-n-privacy-text {

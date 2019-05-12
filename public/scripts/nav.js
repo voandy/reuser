@@ -4,8 +4,6 @@ var modal = document.getElementById('modal');
 // Get the button that opens the modal
 var btn = document.getElementById('login-btn');
 
-// Get the <span> element that closes the modal
-// var span = document.getElementById('close');
 
 // open log in bar
 function openLogin(){
@@ -21,7 +19,17 @@ function openLogin(){
         // document.getElementById('login-btn').style.opacity = "0.6";
     }
 }
-// close log in bar
-// function closeLogin() {
-//     modal.style.display = "none";
-// }
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
+
+// support for mobile devices
+window.addEventListener('touchstart', function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});

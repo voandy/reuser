@@ -103,10 +103,11 @@ getUser(userId).then(function(){
 
       listings.forEach(function(listing){
         var postedDate = new Date(listing.datePosted);
+        var thisListingURL = viewListingURL + "?id=" + listing._id;
 
         listings_content += "<div class=listing>";
 
-        listings_content +=  "<h6 class=\"listing-title\"><a href=\"" + viewListingURL + "?id=" + listing._id + "\">" + listing.title + "</a></h6>" +
+        listings_content +=  "<h6 class=\"listing-title\"><a href=\"" + thisListingURL + "\">" + listing.title + "</a></h6>" +
           "<div class=\"date\">Posted: " +
           postedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short",
           day:"numeric"}) + " in <i class=\"category\">" + listing.category + "</i></div>"
@@ -114,9 +115,11 @@ getUser(userId).then(function(){
         // listings_content += "<p class=\"description\">" + listing.description + "</p>"
 
         if (listing.imageURLs.length != 0){
-          listings_content += "<img src=\"" + listing.imageURLs[0] + "\" class=\"listing-pic\">";
+          listings_content += "<a href=\"" + thisListingURL + "\"><img src=\"" +
+            listing.imageURLs[0] + "\" class=\"listing-pic\"></a>";
         } else {
-          listings_content += "<img src=\"images/listing/listing-no-pic.png\" class=\"listing-pic\">";
+          listings_content += "<a href=\"" + thisListingURL +
+            "\"><img src=\"images/listing/listing-no-pic.png\" class=\"listing-pic\"></a>";
         }
 
         listings_content += "</div>"

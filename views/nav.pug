@@ -3,7 +3,6 @@ head
 
     // nav bar style and behaviour
     link(rel='stylesheet', href='/css/nav.css')
-    script(rel="text/javascript" src="/scripts/nav.js")
       
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -39,12 +38,5 @@ header
         small
           | don't have an account?  
           a(href='/sign-up') sign up
-
-script.
-  var modal = document.getElementById('modal');
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+          
+  script(rel="text/javascript" src="/scripts/nav.js")

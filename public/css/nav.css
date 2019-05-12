@@ -24,11 +24,6 @@ header a{
   line-height: 26px;
 }
 
-header a :hover{
-  color: #57EB74 !important;
-  text-decoration: none;
-}
-
 /* header a:visited {
   color: white !important;
 } */
@@ -154,8 +149,10 @@ header * {
 
 .modal-container a{
   color: #39B54A !important;
-  text-decoration: underline !important;
+}
 
+.modal-container a:hover{
+  color: #57EB74 !important;
 }
 
 .modal-container input{
