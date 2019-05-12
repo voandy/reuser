@@ -29,7 +29,7 @@ header
   #modal
     .modal-container
       //- span#close(onclick='closeLogin()') ×
-      form(action='/action_page.php')
+      form(action='/login', method='POST')
         input(type='email', name='email', placeholder='email')
         br
         input(type='password', name='password', placeholder='password')

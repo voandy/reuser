@@ -18,12 +18,10 @@ function openLogin(){
     // enable login popup
     else{
         modal.style.display = "block";
-        document.getElementById('login-btn').style.opacity = "0.6";
+        // document.getElementById('login-btn').style.opacity = "0.6";
     }
 }
 // close log in bar
 // function closeLogin() {
 //     modal.style.display = "none";
 // }
-
-

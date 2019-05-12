@@ -66,7 +66,7 @@ var create = function(req,res){
       password,
       password_cfm
     });
-  // pass all validations  
+  // pass all validations
   } else {
     User.findOne({ email: email })
       .then(user => {
@@ -91,7 +91,7 @@ var create = function(req,res){
             profilePicURL:null
           });
 
-          bcrypt.genSalt(10, (err, salt) => 
+          bcrypt.genSalt(10, (err, salt) =>
             bcrypt.hash(newUser.password, salt, (err, hash) => {
               if (err) throw err;
               // set password to hash
@@ -101,10 +101,10 @@ var create = function(req,res){
                 .then(user => {
                   res.redirect('/map');
                 })
-                .catch(err => console.log(err)); 
+                .catch(err => console.log(err));
           }))
         }
-      }); 
+      });
   }
 
   // Previous new user's parameters
@@ -130,7 +130,7 @@ var create = function(req,res){
 
 var login = function(req, res, next) {
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
+    successRedirect: '/profile?id=5cd5a6b2126fd93b985558e7',
     failureRedirect: '/login',
     failureFlash: true
   })(req, res, next);
@@ -221,4 +221,3 @@ module.exports.imageUpload = imageUpload;
 
 module.exports.login = login;
 module.exports.logout = logout;
-

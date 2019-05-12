@@ -29,6 +29,10 @@ header a :hover{
   text-decoration: none;
 }
 
+/* header a:visited {
+  color: white !important;
+} */
+
 /* logo */
 .nav-logo-container{
   height: inherit;
@@ -58,6 +62,13 @@ header a :hover{
           box-sizing: content-box !important;
 }
 
+header * {
+    box-sizing: content-box;
+}
+
+.modal-container * {
+    box-sizing: border-box;
+}
 
 /* tab buttons */
 .nav-tab{
@@ -105,6 +116,8 @@ header a :hover{
 
   overflow: auto;
   background-color: rgba(0,0,0,0.4);
+
+  font-size: 12px;
 }
 
 .modal-container {
@@ -112,8 +125,9 @@ header a :hover{
   float: right;
   background-color: #fefefe;
   margin-right: 20px;
-  padding: 10px;
-  border: 2px solid #39B54A;
+  padding: 10px 15px 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #999;
   width: 315px;
 
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -145,7 +159,7 @@ header a :hover{
 }
 
 .modal-container input{
-  width: 97%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -168,7 +182,7 @@ header a :hover{
   font-family: montserrat;
   background-color: #39B54A;
 
-  width: 97%;
+  width: 100%;
   padding: 10px;
   margin: 0 auto;
   cursor: pointer;

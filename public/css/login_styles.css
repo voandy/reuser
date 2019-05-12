@@ -17,7 +17,7 @@
 }
 
 #passwordDifferent{
-    display: none;    
+    display: none;
 }
 
 .main-container {
@@ -67,7 +67,7 @@ label {
     height: 30px;
     border-bottom: solid lightgray 2px !important;
 }
-  
+
 input {
     width: 100% !important;
     display: inline-block;
@@ -109,7 +109,7 @@ hr {
 
 /* Add a blue text color to links */
 a {
-    color: dodgerblue;
+    color: #39B54A;
 }
 
 .term-n-privacy-text {
@@ -129,7 +129,7 @@ input::-webkit-input-placeholder {
 }
 
 input:focus::-webkit-input-placeholder {
-    color: dodgerblue;
+    color: #39B54A;
 }
 
 input:focus+.underline {
@@ -138,7 +138,7 @@ input:focus+.underline {
 
 .underline {
     position: relative;
-    background-color: dodgerblue;
+    background-color: #39B54A;
     display: inline-block;
     height: 2px;
     top: -2px;

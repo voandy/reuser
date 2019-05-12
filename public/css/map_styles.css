@@ -25,7 +25,7 @@ img {
   grid-column: 2;
   grid-row: 1;
   z-index: 2;
-  padding: 11px 26px 0 10px;
+  padding: 6.5px 26px 0 10px;
 }
 
 .sidebar {
@@ -131,6 +131,7 @@ img {
   padding: 0;
   text-overflow: ellipsis;
   width: 228px;
+  height: 25px;
 }
 
 #search-box:focus, textarea:focus, select:focus{
@@ -139,8 +140,8 @@ img {
 
 #filter-button {
   /* height: 35.6px; */
-  padding: 0;
-  height: 15px;
+  padding: 3px 0 0 0;
+  height: 17px;
   cursor: pointer;
   /* display: none; */
 }
