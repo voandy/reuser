@@ -64,8 +64,8 @@ The following pages are all responsive and work on most mobile devices as well a
 
 *For front-end server:*
 - GET map page: /map
-- GET a specific profile page, requires userId param: /profile?id=<id>
-- GET a specific listing page, requires listingId param: /view-listing?id=<id>
+- GET a specific profile page, requires userId param: /profile?id=:userId
+- GET a specific listing page, requires listingId param: /view-listing?id=:listingId
 
 #### Controllers
 - user-controller.js
