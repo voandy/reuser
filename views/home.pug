@@ -1,7 +1,7 @@
 extends default.pug
 
 append head
-    title reuser | home
+    title reuser | spend less, consume less
     link(rel='stylesheet', href='/css/home_styles.css')
 
 block content
@@ -12,8 +12,9 @@ block content
                 p.home-text#highlight millions of people are using 
                     span.reuser-text reuser
                 p.home-text to help reduce their environmental footprint.    
-                button.button#sign-up-btn
-                    span.button-text become a reuser
+                form(action='/sign-up')
+                    button.button
+                        span.button-text become a reuser
 
             div.hp-illustration-container
                 img.hp-illustration(src='images/home/hp-illustration.svg')

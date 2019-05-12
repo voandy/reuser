@@ -148,3 +148,12 @@ input:focus+.underline {
     transition: all 0.5s linear;
     width: 100%;
 }
+
+@media (max-width: 556px) {
+    .main-container{
+        padding-top: 22px;
+    }
+    .form-container{
+        width:90%;
+    }
+}

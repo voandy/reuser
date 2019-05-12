@@ -1,6 +1,5 @@
 function initMap(){
   var input = document.getElementById('location-search');
-  var signup = document.getElementById('sign-up-btn');
 
   var autocomplete = autocomplete = new google.maps.places.Autocomplete(input, {
     fields: ["name", "geometry.location", "place_id", "formatted_address"]
@@ -27,9 +26,5 @@ function initMap(){
     latitude = place.geometry.location.lat();
     longitude = place.geometry.location.lng();
     window.open("/map?" + 'lat=' + latitude + '&lng=' + longitude, "_self");
-  });
-
-  signup.addEventListener('click', function(){
-    window.open("/sign-up", "_self");
   });
 }
