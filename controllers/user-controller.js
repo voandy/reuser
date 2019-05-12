@@ -36,9 +36,6 @@ var getById = function(req,res){
 // create user
 var create = function(req,res){
 
-  console.log('someone tries to create user!');
-  console.log(req.body);
-
   const { name, email, password, password_cfm } = req.body;
   let errors = []
 
@@ -99,41 +96,33 @@ var create = function(req,res){
               // save user
               newUser.save()
                 .then(user => {
-                  res.redirect('/map');
+                  res.redirect('/login');
                 })
                 .catch(err => console.log(err));
           }))
         }
       });
   }
-
-  // Previous new user's parameters
-  // var user = new User({
-  //   name:req.body.name,
-  //   email:req.body.email,
-  //   password:req.body.password,
-  //   dateJoined: new Date(),
-  //   address:{
-  //     addressLine1:req.body.addressLine1,
-  //     addressLine2:req.body.addressLine2,
-  //     suburb:req.body.suburb,
-  //     state:req.body.state,
-  //     postcode:req.body.postcode,
-  //   },
-  //   phoneNo:req.body.phoneNo,
-  //   thanksReceived:0,
-  //   starRatingAvg:0,
-  //   profilePicURL:null
-  // });
-
 };
 
 var login = function(req, res, next) {
-  passport.authenticate('local', {
-    successRedirect: '/profile?id=5cd5a6b2126fd93b985558e7',
-    failureRedirect: '/login',
-    failureFlash: true
-  })(req, res, next);
+  // first try to find the user by their email
+  User.findOne({ email: req.body.email })
+    .then(user => {
+      // redirect user to its own profile page upon successful login
+      // note: if user cannot be found, they will be redirected to failureRedirect anyway
+      var successRedirectURL = '/profile';
+      if (user) {
+        successRedirectURL += '?id=' + user._id;;
+      }
+      // authenticate user
+      passport.authenticate('local', {
+        successRedirect: successRedirectURL,
+        failureRedirect: '/login',
+        failureFlash: true
+      })(req, res, next);
+    })
+    .catch(err => { console.log(err) });
 }
 
 var logout = function(req, res) {

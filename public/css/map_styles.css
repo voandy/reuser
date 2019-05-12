@@ -11,7 +11,6 @@ img {
   display: grid;
   grid-template-columns: 1fr 300px;
   grid-template-rows: 50px 1fr;
-  /* grid-template-areas: ". ."; */
   height: calc(100vh - 60px);
 }
 
@@ -36,7 +35,6 @@ img {
 }
 
 .search-box-container {
-  /* margin: 12.2px 20px 0 10px; */
   border-radius: 10px;
   border: 1px solid #999;
   padding: 5px 0 5px 8px;
@@ -87,7 +85,6 @@ img {
 }
 
 .sidebar-crop {
-  /* margin: auto; */
   max-width: 239px;
   max-height: 239px;
   overflow: hidden;
@@ -139,11 +136,9 @@ img {
 }
 
 #filter-button {
-  /* height: 35.6px; */
   padding: 3px 0 0 0;
   height: 17px;
   cursor: pointer;
-  /* display: none; */
 }
 
 .sidebar::-webkit-scrollbar {

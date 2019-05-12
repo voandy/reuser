@@ -33,13 +33,16 @@ var infoWindow;
 
 // place map
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -37.798535, lng: 144.960605},
-    zoom: 15,
-    styles: mapstyle,
+  return new Promise(resolve => {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -37.798535, lng: 144.960605},
+      zoom: 15,
+      styles: mapstyle,
 
-    mapTypeControl: false,
-    fullscreenControl: false,
+      mapTypeControl: false,
+      fullscreenControl: false,
+    });
+    resolve();
   });
 }
 
@@ -73,32 +76,34 @@ getListing(listingId).then(function(){
   }
 
   // set map
-  infowindow = new google.maps.InfoWindow();
-  var listingPos = {lat: listing.latitude, lng:listing.longitude};
-  map.setCenter(listingPos);
+  initMap().then(function(){
+    infowindow = new google.maps.InfoWindow();
+    var listingPos = {lat: listing.latitude, lng:listing.longitude};
+    map.setCenter(listingPos);
 
-  var infoContent = "<h5>" + listing.title + "</h5>" +
-  "<p>" + concAddress + "</p>";
+    var infoContent = "<h5>" + listing.title + "</h5>" +
+    "<p>" + concAddress + "</p>";
 
-  // create marker
-  var marker = new google.maps.Marker({
-    position: listingPos,
-    map: map,
-    title: listing.title,
-    content: infoContent,
-    icon: {
-      url: "/images/map/green-dot.png"
-    }
+    // create marker
+    var marker = new google.maps.Marker({
+      position: listingPos,
+      map: map,
+      title: listing.title,
+      content: infoContent,
+      icon: {
+        url: "/images/map/green-dot.png"
+      }
+    });
+
+    // add InfoWindow to marker
+    google.maps.event.addListener(marker, "click", function () {
+      infowindow.setContent(this.content);
+      infowindow.open(map, this);
+    });
+
+    // place marker on map
+    marker.setMap(map);
   });
-
-  // add InfoWindow to marker
-  google.maps.event.addListener(marker, "click", function () {
-    infowindow.setContent(this.content);
-    infowindow.open(map, this);
-  });
-
-  // place marker on map
-  marker.setMap(map);
 
   // get user data of listing's poster
   getUser(listing.userId).then(function(){
