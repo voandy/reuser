@@ -43,9 +43,9 @@ The following pages are all responsive and work on most mobile devices as well a
 
 # Views, Routes, Controllers & Models
 
-#### Maps, Listings, Profile
+## Maps, Listings, Profile
 
-*Views*
+#### Views
 
 - default.pug
 - nav.pug
@@ -53,34 +53,34 @@ The following pages are all responsive and work on most mobile devices as well a
 - view-listing.pug
 - profile.pug
 
-*Routes*
+#### Routes
 
-For API server:
+*For API server:*
 - GET specific user: /user/id/:id
 - GET specific listing: /listing/id/:id
 - GET all listings: /listing
 - GET all listings made by specific user: /listing/userId/:userId
 - GET all reviews of specific user: /review/userId/:userId
 
-For front-end server:
+*For front-end server:*
 - GET map page: /map
 - GET a specific profile page, requires userId param: /profile?id=<id>
 - GET a specific listing page, requires listingId param: /view-listing?id=<id>
 
-*Controllers*
+#### Controllers
 - user-controller.js
 - listing-controller.js
 - review-controller.js
 
-*Models*
+#### Models
 
 - user
 - listing
 - review
 
-#### User Accounts
+## User Accounts
 
-*Views*
+#### Views
 
 - default.pug
 - nav.pug
@@ -88,24 +88,24 @@ For front-end server:
 - login.pug
 - dashboard.pug (for login testing purpose only, has not been fully implemented yet)
 
-*Routes*
+#### Routes
 
-For API server:
+*For API server:*
 - GET user by email: /user/email/:email
 - GET user by id: /user/id/:id
 - POST a new user: /user
 
-For front-end server:
+*For front-end server:*
 - GET login page: /login
 - POST login page to sign-in: /login
 - GET sign-up page: /sign-up
 - POST sign-up page to register a new user: /sign-up
 - GET dashboard page: /dashboard
 
-*Controllers*
+#### Controllers
 
 - user-controller.js
 
-*Models*
+#### Models
 
 - user
