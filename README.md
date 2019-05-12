@@ -98,12 +98,8 @@ For API server:
 For front-end server:
 - GET login page: /login
 - POST login page to sign-in: /login
-
-
 - GET sign-up page: /sign-up
 - POST sign-up page to register a new user: /sign-up
-
-
 - GET dashboard page: /dashboard
 
 *Controllers*
