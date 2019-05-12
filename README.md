@@ -31,7 +31,7 @@ The following pages are all responsive and work on most mobile devices as well a
 ### User Accounts
 
 #### Signing-up
-- New users can create an account by clicking the "become a reuser" button on the home page or clicking login on the top right of the navigation bar and selecting "sign-up."
+- New users can create an account by clicking the "become a reuser" button on the home page, or by clicking login on the top right of the navigation bar and selecting "sign-up."
 - The [sign-up page](https://www.reuser.xyz/sign-up) validates input ensuring that a valid email address is entered (follows a valid format and doesn't already exist in the database) and matching passwords of at least 8 characters are entered.
 - After signing-up, a new user account is added to the database, with their password hashed and salted via bcrypt.js. The user is then directed to the log-in page.
 
