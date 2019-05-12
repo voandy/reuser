@@ -53,11 +53,17 @@ Views
 - profile.pug
 
 Routes
+For API server:
 - Get specific user: /user/id/:id
 - Get specific listing: /listing/id/:id
 - Get all listings: /listing
 - Get all listings made by specific user: /listing/userId/:userId
 - Get all reviews of specific user: /review/userId/:userId
+
+For front-end server:
+- GET to map page: /map
+- GET to a specific profile page, requires ID param: /profile?id=<id>
+- GET to a specific listing page, requires listing-ID param: /view-listing?id=<id>
 
 Controllers
 - user-controller.js
@@ -74,13 +80,24 @@ Models
 Views
 - default.pug
 - nav.pug
-- sing-up.pug
+- sign-up.pug
 - login.pug
+- dashboard.pug (for login testing purpose only, have not been fully implemented yet)
 
-Routes
-- Get user by email: /user/email/:email
-- Get user by id: /user/id/:id
-- Post a new user: /user
+Routes:
+For API server:
+- GET user by email: /user/email/:email
+- GET user by id: /user/id/:id
+- POST a new user: /user
+
+For front-end server:
+- GET to login page: /login
+- POST to login page to sign-in: /login
+
+- GET to sign-up page: /sign-up
+- POST to sign-up page to register a new user: /sign-up
+
+- GET to dashboard page: /dashboard
 
 Controllers
 - user-controller.js
