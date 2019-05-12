@@ -33,12 +33,12 @@ The following pages are all responsive and work on most mobile devices as well a
 #### Signing-up
 - New users can create an account by clicking the "become a reuser" button on the home page or clicking login on the top right of the navigation bar and selecting "sign-up."
 - The [sign-up page](https://www.reuser.xyz/sign-up) validates input ensuring that a valid email address is entered (follows a valid format and doesn't already exist in the database) and matching passwords of at least 8 characters are entered.
-- After signing-up, a new user account is added to the database along with a hashed and salted password. The user is then directed to the log-in page.
+- After signing-up, a new user account is added to the database, with their password hashed and salted via bcrypt.js. The user is then directed to the log-in page.
 
 #### Logging-in
 - Users can log-in on the [log-in page](https://www.reuser.xyz/login) or by clicking "log-in" on the navigation bar which is available on every page.
-- Once the user's credentials are authenticated by passport an express-session is created to keep track of the user.
-- You can verify that you are logged-in by viewing the placeholder [dashboard](https://www.reuser.xyz/dashboard) (not yet implemented).
+- Once the user's credentials are authenticated via passport.js, a session is then created to keep track of the user. Express-session is used for the implementation and management of the sessions. 
+- You can verify that you are logged-in by viewing the placeholder [dashboard](https://www.reuser.xyz/dashboard) (not yet implemented). If you are not logged-in, you will be redirected to login page that prompts you to login.
 - Further features for logged-in users are yet to be implemented.
 
 # Views, Routes, Controllers & Models
