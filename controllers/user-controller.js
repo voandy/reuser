@@ -103,26 +103,6 @@ var create = function(req,res){
         }
       }); 
   }
-
-  // Previous new user's parameters
-  // var user = new User({
-  //   name:req.body.name,
-  //   email:req.body.email,
-  //   password:req.body.password,
-  //   dateJoined: new Date(),
-  //   address:{
-  //     addressLine1:req.body.addressLine1,
-  //     addressLine2:req.body.addressLine2,
-  //     suburb:req.body.suburb,
-  //     state:req.body.state,
-  //     postcode:req.body.postcode,
-  //   },
-  //   phoneNo:req.body.phoneNo,
-  //   thanksReceived:0,
-  //   starRatingAvg:0,
-  //   profilePicURL:null
-  // });
-
 };
 
 var login = function(req, res, next) {
