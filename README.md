@@ -36,7 +36,7 @@ The following pages are all responsive and work on most mobile devices as well a
 - After signing-up, a new user account is added to the database, with their password hashed and salted via bcrypt.js. The user is then directed to the log-in page.
 
 #### Logging-in
-- Users can log-in on the [log-in page](https://www.reuser.xyz/login) or by clicking "log-in" on the navigation bar which is available on every page.
+- Users can log-in on the [log-in page](https://www.reuser.xyz/login), or by clicking "log-in" on the navigation bar which is available on every page.
 - Once the user's credentials are authenticated via passport.js, a session is then created to keep track of the user. Express-session is used for the implementation and management of the sessions.
 - You can verify that you are logged-in by viewing the placeholder [dashboard](https://www.reuser.xyz/dashboard) (not yet implemented). If you are not logged-in, you will be redirected to login page that prompts you to login.
 - Further features for logged-in users are yet to be implemented.
