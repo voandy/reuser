@@ -3,16 +3,6 @@ html, body {
   padding: 0;
 }
 
-a {
-  color: #39B54A;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #57EB74;
-  text-decoration: none;
-}
-
 img {
   vertical-align: baseline;
 }

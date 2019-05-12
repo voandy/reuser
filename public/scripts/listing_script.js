@@ -131,7 +131,7 @@ getListing(listingId).then(function(){
 
     getReviews(listing.userId).then(function(){
       if (reviews === undefined || reviews.length == 0) {
-        console.log("empty");
+        reviewsRec.innerText = "No reviews received."
       } else {
         getReviewers().then(function(){
           var reviews_content = "";

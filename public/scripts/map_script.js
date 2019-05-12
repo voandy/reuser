@@ -47,7 +47,9 @@ function initMap() {
 
   // add google autocompleter to search-box
   var input = document.getElementById('search-box');
-  var autocomplete = new google.maps.places.Autocomplete(input);
+  var autocomplete = autocomplete = new google.maps.places.Autocomplete(input, {
+    fields: ["name", "geometry.location", "place_id", "formatted_address"]
+  });
 
   // circle in which to bias location searches
   var circle = new google.maps.Circle({

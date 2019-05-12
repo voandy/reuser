@@ -66,7 +66,8 @@ getUser(userId).then(function(){
   // get all reviews about user
   getReviews(userId).then(function(){
     if (reviews === undefined || reviews.length == 0) {
-      console.log("empty");
+      reviewsRec.innerHTML = "<div id=\"reviews-title\"><h4>Reviews Received</h4><div>" +
+      "<p>User has not received any reivews yet.</p>";
     } else {
       getReviewers().then(function(){
         var reviews_content = "<div id=\"reviews-title\"><h4>Reviews Received</h4><div>";
@@ -95,7 +96,8 @@ getUser(userId).then(function(){
   // get all listings made by user
   getListings(userId).then(function(){
     if (listings === undefined || listings.length == 0) {
-      console.log("empty")
+      activeListings.innerHTML = "<div id=\"listings-title\"><h4>Active Listings</h4><div>" +
+      "<p>No active listings.</p>";
     } else {
       var listings_content = "<div id=\"listings-title\"><h4>Active Listings</h4><div>";
 

@@ -1,7 +1,9 @@
 function initMap(){
   var input = document.getElementById('location-search');
 
-  var autocomplete = new google.maps.places.Autocomplete(input);
+  var autocomplete = autocomplete = new google.maps.places.Autocomplete(input, {
+    fields: ["name", "geometry.location", "place_id", "formatted_address"]
+  });
 
   // bias search to current location if available else Melbourne
   var currPos;
