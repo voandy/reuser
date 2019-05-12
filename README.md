@@ -37,7 +37,7 @@ The following pages are all responsive and work on most mobile devices as well a
 
 #### Logging-in
 - Users can log-in on the [log-in page](https://www.reuser.xyz/login) or by clicking "log-in" on the navigation bar which is available on every page.
-- Once the user's credentials are authenticated via passport.js, a session is then created to keep track of the user. Express-session is used for the implementation and management of the sessions. 
+- Once the user's credentials are authenticated via passport.js, a session is then created to keep track of the user. Express-session is used for the implementation and management of the sessions.
 - You can verify that you are logged-in by viewing the placeholder [dashboard](https://www.reuser.xyz/dashboard) (not yet implemented). If you are not logged-in, you will be redirected to login page that prompts you to login.
 - Further features for logged-in users are yet to be implemented.
 
@@ -45,62 +45,71 @@ The following pages are all responsive and work on most mobile devices as well a
 
 #### Maps, Listings, Profile
 
-Views
+*Views*
+
 - default.pug
 - nav.pug
 - map.pug
 - view-listing.pug
 - profile.pug
 
-Routes
+*Routes*
+
 For API server:
-- Get specific user: /user/id/:id
-- Get specific listing: /listing/id/:id
-- Get all listings: /listing
-- Get all listings made by specific user: /listing/userId/:userId
-- Get all reviews of specific user: /review/userId/:userId
+- GET specific user: /user/id/:id
+- GET specific listing: /listing/id/:id
+- GET all listings: /listing
+- GET all listings made by specific user: /listing/userId/:userId
+- GET all reviews of specific user: /review/userId/:userId
 
 For front-end server:
-- GET to map page: /map
-- GET to a specific profile page, requires ID param: /profile?id=<id>
-- GET to a specific listing page, requires listing-ID param: /view-listing?id=<id>
+- GET map page: /map
+- GET a specific profile page, requires userId param: /profile?id=<id>
+- GET a specific listing page, requires listingId param: /view-listing?id=<id>
 
-Controllers
+*Controllers*
 - user-controller.js
 - listing-controller.js
 - review-controller.js
 
-Models
+*Models*
+
 - user
 - listing
 - review
 
 #### User Accounts
 
-Views
+*Views*
+
 - default.pug
 - nav.pug
 - sign-up.pug
 - login.pug
-- dashboard.pug (for login testing purpose only, have not been fully implemented yet)
+- dashboard.pug (for login testing purpose only, has not been fully implemented yet)
 
-Routes:
+*Routes*
+
 For API server:
 - GET user by email: /user/email/:email
 - GET user by id: /user/id/:id
 - POST a new user: /user
 
 For front-end server:
-- GET to login page: /login
-- POST to login page to sign-in: /login
+- GET login page: /login
+- POST login page to sign-in: /login
 
-- GET to sign-up page: /sign-up
-- POST to sign-up page to register a new user: /sign-up
 
-- GET to dashboard page: /dashboard
+- GET sign-up page: /sign-up
+- POST sign-up page to register a new user: /sign-up
 
-Controllers
+
+- GET dashboard page: /dashboard
+
+*Controllers*
+
 - user-controller.js
 
-Models
-- User
+*Models*
+
+- user
