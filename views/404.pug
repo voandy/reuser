@@ -4,13 +4,21 @@ append head
     title reuser | 404 Error
     style(type='text/css').
         #error {
-        position: absolute;
+        position: fixed;
         top: 50%;
         left: 50%;
+        z-index: -1;
         -moz-transform: translateX(-50%) translateY(-50%);
         -webkit-transform: translateX(-50%) translateY(-50%);
         transform: translateX(-50%) translateY(-50%);
-      }
+        }
+
+        @media screen and (max-width: 600px){
+            #error{
+                width: 315px;
+            }
+        }
+
       
 block content
     img#error(src='images/home/404.jpg')
