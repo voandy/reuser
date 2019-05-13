@@ -116,15 +116,21 @@ function placeListings(){
   for(var i=0; i<listings.length; i++){
 
     var content = "<div class='info-window'><table><tbody><tr>";
+    var listingPicURL;
 
     // add image if one exists
     if (listings[i].imageURLs.length != 0) {
-      content += "<td><img class=\"info-pic\" src=\"" +
-      img300URL + listings[i].imageURLs[0] + "\"></td>"
+      listingPicURL = img300URL + listings[i].imageURLs[0];
+    } else {
+      listingPicURL = "images/listing/listing-no-pic.png"
     }
+
+    content += "<td><img class=\"info-pic\" src=\"" +
+    listingPicURL + "\"></td>"
 
     content +=
     "<td><div class=\"info-description\">" +
+    "<td><img class=\"info-pic-alt\" src=\"" + listingPicURL + "\">" +
       "<p><table><tbody><tr>" +
         "<td><a href=\"" + viewListingURL + "?id=" + listings[i]._id + "\">" +
         "<h5 class=\"info-title\">" + listings[i].title + "</h5></a></td>" +

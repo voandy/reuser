@@ -71,6 +71,12 @@ img {
   margin-right: 13px;
 }
 
+.info-pic-alt {
+  width: 200px;
+  /* max-height: 150px; */
+  display: none;
+}
+
 .info-title {
   margin: 0;
 }
@@ -164,9 +170,14 @@ img {
   }
 }
 
-@media(max-width:768px) {
+@media(max-width:650px) {
   .info-pic {
-    width: 150px;
-    max-height: 150px;
+    display: none;
+  }
+  .info-pic-alt {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
