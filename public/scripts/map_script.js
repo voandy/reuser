@@ -1,6 +1,10 @@
 const listingURL = "/listing";
 const viewListingURL ="/view-listing"
 const userURL = "/user";
+
+const img60URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/";
+const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/";
+
 var currPos =
   (window.location.search ? getJsonFromUrl(window.location.search) : null);
 
@@ -115,7 +119,8 @@ function placeListings(){
 
     // add image if one exists
     if (listings[i].imageURLs.length != 0) {
-      content += "<td><img class=\"info-pic\" src=\"" + listings[i].imageURLs[0] + "\"></td>"
+      content += "<td><img class=\"info-pic\" src=\"" +
+      img300URL + listings[i].imageURLs[0] + "\"></td>"
     }
 
     content +=
@@ -190,7 +195,8 @@ function loadSidebar (){
 
     // add image if one exists
     if (listings[i].imageURLs.length != 0) {
-      content += "<div class=\"sidebar-crop\"><img class=\"sidebar-pic\" src=\"" + listings[i].imageURLs[0] + "\"></div>"
+      content += "<div class=\"sidebar-crop\"><img class=\"sidebar-pic\" src=\"" +
+      img300URL + listings[i].imageURLs[0] + "\"></div>"
     }
 
     // add user
@@ -199,7 +205,7 @@ function loadSidebar (){
       "<td><div class=\"profile-cropper\">" +
         "<img class=\"profile-pic\" src=\"" +
         // add profile pic if one exists
-        ((listings[i].user.profilePicURL) ? listings[i].user.profilePicURL : "images/profile/avatar-sm.png") +
+        ((listings[i].user.profilePicURL) ? img60URL + listings[i].user.profilePicURL : "images/profile/avatar-sm.png") +
         "\">" +
       "</div></td>" +
       "<td><p class=\"user-box\">" + listings[i].user.name + "<br>" +

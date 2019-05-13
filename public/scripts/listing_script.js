@@ -3,6 +3,9 @@ const userURL = "/user";
 const reviewURL = "/review";
 const profileURL = "/profile";
 
+const img60URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/";
+const img650URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/650xAUTO/";
+
 const listingId = window.location.search.split("id=")[1];
 
 // listing elements
@@ -72,7 +75,7 @@ getListing(listingId).then(function(){
   }
 
   if (listing.imageURLs.length != 0){
-    images.innerHTML = "<img src=\"" + listing.imageURLs[0] + "\" class=\"listing-pic\"></div>";
+    images.innerHTML = "<img src=\"" + img650URL + listing.imageURLs[0] + "\" class=\"listing-pic\"></div>";
   }
 
   // set map
@@ -119,7 +122,7 @@ getListing(listingId).then(function(){
 
     if (user.profilePicURL){
       userPic.innerHTML = "<div class=\"profile-cropper\">" +
-      "<img src=\"" + user.profilePicURL + "\" class=\"profile-pic\"></div>";
+      "<img src=\"" + img60URL + user.profilePicURL + "\" class=\"profile-pic\"></div>";
     } else {
       userPic.innerHTML = "<div class=\"profile-cropper\">" +
       "<img src=\"images/profile/avatar-sm.png\" class=\"profile-pic\"></div>";

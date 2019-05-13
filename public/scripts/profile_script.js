@@ -4,6 +4,9 @@ const userURL = "/user";
 const reviewURL = "/review";
 const profileURL = "/profile";
 
+const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/";
+const img650URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/650xAUTO/";
+
 const userId = window.location.search.split("id=")[1];
 
 // user elements
@@ -49,7 +52,7 @@ getUser(userId).then(function(){
     "<img class=\"user-rating\" src=\"" + getStars(user.starRatingAvg) + "\">";
 
   if (user.profilePicURL){
-    userPic.innerHTML = "<img src=\"" + user.profilePicURL + "\" class=\"profile-pic\">";
+    userPic.innerHTML = "<img src=\"" + img300URL + user.profilePicURL + "\" class=\"profile-pic\">";
   } else {
     userPic.innerHTML = "<img src=\"images/profile/avatar-sm.png\" class=\"profile-pic\">";
   }
@@ -116,7 +119,7 @@ getUser(userId).then(function(){
 
         if (listing.imageURLs.length != 0){
           listings_content += "<a href=\"" + thisListingURL + "\"><img src=\"" +
-            listing.imageURLs[0] + "\" class=\"listing-pic\"></a>";
+            img650URL + listing.imageURLs[0] + "\" class=\"listing-pic\"></a>";
         } else {
           listings_content += "<a href=\"" + thisListingURL +
             "\"><img src=\"images/listing/listing-no-pic.png\" class=\"listing-pic\"></a>";
