@@ -9,6 +9,8 @@ const flash = require('connect-flash');
 const app = express();
 const port = process.env.PORT || 7900;
 
+const rateLimit = require("express-rate-limit");
+
 // setup MongoDB Atlas
 require('./models/db.js');
 
@@ -19,11 +21,21 @@ require('./config/passport.js')(passport);
 var backendRoutes = require('./routes/backend-routes.js');
 var frontendRoutes = require('./routes/frontend-routes.js');
 
+// limit request rate to protect against naive ddos attacks
+app.enable("trust proxy");
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 1000
+});
+
 // get user's permission to use their location
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
 });
+
+// use json
+app.use(express.json())
 
 // enable ssl redirect
 app.use(sslRedirect());
@@ -67,6 +79,9 @@ app.use(function(req, res, next) {
 // assign routes
 app.use('/',backendRoutes);
 app.use('/',frontendRoutes);
+
+// use rate limiter
+app.use(limiter);
 
 app.use(function(req, res, next){
   res.status(404);

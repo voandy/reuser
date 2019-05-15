@@ -4,6 +4,9 @@ const { ensureAuthenticated } = require('../config/auth');
 
 const userCont = require('../controllers/user-controller.js');
 
+const { body } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
+
 // home page
 router.get(['/', '/home'], function(req,res){
   res.render('home');
@@ -35,7 +38,10 @@ router.get('/login', function(req,res) {
 });
 
 // login authentication
-router.post('/login', userCont.login);
+router.post('/login', [
+  // sanitise input
+  body('email').isEmail().normalizeEmail()
+],userCont.login);
 
 // logout page
 router.get('/logout', userCont.logout);
