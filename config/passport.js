@@ -13,7 +13,7 @@ module.exports = function(passport) {
             User.findOne({ email: email })
                 .then(user => {
                     if (!user) {
-                        return done(null, false, { message: 'That email is not registered' });
+                        return done(null, false, { message: 'Email and/or password incorrect' });
                     }
                     // try to match password (not the best security wise)
                     bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -21,7 +21,7 @@ module.exports = function(passport) {
                         if (isMatch) {
                             return done(null, user);
                         } else {
-                            return done(null, false, { message: 'Password incorrect' });
+                            return done(null, false, { message: 'Email and/or password incorrect' });
                         }
                     });
                 })
@@ -32,7 +32,7 @@ module.exports = function(passport) {
     passport.serializeUser((user, done) => {
         done(null, user.id);
     });
-    
+
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
             done(err, user);

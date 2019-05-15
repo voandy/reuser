@@ -1,3 +1,4 @@
+const sslRedirect = require('heroku-ssl-redirect');
 const express = require('express');
 const session = require('express-session');
 
@@ -24,6 +25,9 @@ app.use(function(req, res, next) {
     next();
 });
 
+// enable ssl redirect
+app.use(sslRedirect());
+
 // set the view engine
 app.set('view engine', 'pug');
 
@@ -35,7 +39,7 @@ app.use(bodyParser.json());
 // allow a HTML form's POST request's body to be parsed
 app.use(express.urlencoded({ extended: true }));
 
-// initialize express session 
+// initialize express session
 app.use(
   session({
     secret: 'secret',
@@ -51,7 +55,7 @@ app.use(passport.session());
 // initialize connect flash
 app.use(flash());
 
-// flash the messages, if there's any, in the next response 
+// flash the messages, if there's any, in the next response
 // Note: for more info on res.locals, read up: https://expressjs.com/en/api.html
 app.use(function(req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
