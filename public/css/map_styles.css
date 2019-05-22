@@ -14,6 +14,12 @@ img {
   height: calc(100vh - 60px);
 }
 
+.filter-container {
+  grid-column: 1;
+  grid-row: 2;
+  z-index: 4;
+}
+
 .map {
   grid-column: 1 / span 2;
   grid-row: 1 / span 2;
@@ -155,6 +161,122 @@ img {
   background: #bbb;
   border-radius: 5px;
   /* -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); */
+}
+
+/* The Modal (background) */
+.filter-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.filter-content {
+  /* background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; */
+  position: relative;
+  float: none;
+  margin: auto;
+  background-color: #fefefe;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #999;
+  width: 350px;
+
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+.filter-container input{
+  border-radius: 47px;
+  padding-right: 10px; /* this doesnt work idk, but when width is not 100% then ok */
+}
+
+.filter-container ::-webkit-input-placeholder{
+  font-size: 12px;
+  font-family: Raleway;
+}
+
+.filter-container ::-moz-placeholder {
+  font-size: 12px;
+  font-family: Raleway;
+}
+
+.filter-container a{
+  color: #39B54A !important;
+}
+
+.filter-container a:hover{
+  color: #57EB74 !important;
+}
+
+.filter-container input{
+  /* width: 100%; */
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 47px;
+  box-sizing: border-box;
+}
+
+.filter-container input[type="text"]{
+  width: 100%;
+}
+
+.filter-container small{
+  padding-left: 56px;
+  font-size: 12px;
+  text-align: center;
+  justify-content: center;
+}
+
+.filter-container input[type="submit"]{
+  border: none;
+  color: white;
+  font-size: 12px;
+  font-family: Raleway;
+  background-color: #39B54A;
+
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 47px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+  outline: none;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media(max-width:950px) {

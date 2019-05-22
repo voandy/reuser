@@ -134,7 +134,7 @@ getListing(listingId).then(function(){
 
     // add email link to button
     contactButton.addEventListener("click", function(){
-      window.location.href = "mailto:" + user.email;
+      window.location.href = "mailto:" + user.email; //mailto subject
     });
 
     getReviews(listing.userId).then(function(){

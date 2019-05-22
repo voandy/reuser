@@ -6,6 +6,34 @@ append head
 
 block content
     .grid-container
+      .filter-container
+        #filter-form.filter-modal
+          .filter-content
+            //- span.close ×
+            input(type='checkbox', name='vehicle', value='Bike') 
+            |  Materials
+            br
+            input(type='checkbox', name='vehicle', value='Bike') 
+            |  Food
+            br
+            input(type='checkbox', name='vehicle', value='Bike') 
+            |  Clothing
+            br
+            input(type='checkbox', name='vehicle', value='Bike') 
+            |  Electronics
+            br
+            input(type='checkbox', name='vehicle', value='Bike') 
+            |  Furniture
+            br
+            input(type='checkbox', name='vehicle', value='Bike') 
+            |  Decor
+            br
+            input(type='checkbox', name='vehicle', value='Bike') 
+            |  Misc.
+            br
+            input(type='text', name='search-term', value='Enter search terms')
+            br
+            input(type='submit', value='Submit')
       .map
         #map
       .search-bar
