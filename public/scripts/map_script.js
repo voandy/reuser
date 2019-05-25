@@ -331,9 +331,14 @@ filterForm.addEventListener('submit', function(){
           alert(errorThrown);
       },
       success: function(data){
-        listings = data;
-        reloadPage();
-        categoryFilter.style.display = "none";
+        if (data.length > 0) {
+          listings = data;
+          reloadPage();
+          categoryFilter.style.display = "none";
+        } else {
+          // TODO: Use an alternative, less ugly, alert
+          alert("Search returned no listings.")
+        }
       }
   });
 });
@@ -374,6 +379,11 @@ function getChecked() {
   var misc = document.getElementById("check-misc")
   if (misc.checked) {
     checked.push(misc.value)
+  }
+
+  // user has checked no categories, assume they want all
+  if (checked.length == 0) {
+    checked = ["materials", "food", "clothing", "electronics", "furniture", "decor", "misc"];
   }
 
   return checked;
