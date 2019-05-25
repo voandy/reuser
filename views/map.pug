@@ -6,34 +6,36 @@ append head
 
 block content
     .grid-container
-      .filter-container
-        #filter-form.filter-modal
-          .filter-content
-            //- span.close ×
-            input(type='checkbox', name='vehicle', value='Bike') 
-            |  Materials
-            br
-            input(type='checkbox', name='vehicle', value='Bike') 
-            |  Food
-            br
-            input(type='checkbox', name='vehicle', value='Bike') 
-            |  Clothing
-            br
-            input(type='checkbox', name='vehicle', value='Bike') 
-            |  Electronics
-            br
-            input(type='checkbox', name='vehicle', value='Bike') 
-            |  Furniture
-            br
-            input(type='checkbox', name='vehicle', value='Bike') 
-            |  Decor
-            br
-            input(type='checkbox', name='vehicle', value='Bike') 
-            |  Misc.
-            br
-            input(type='text', name='search-term', value='Enter search terms')
-            br
-            input(type='submit', value='Submit')
+      #category-filter
+        #filter-modal
+          .filter-container
+            .modal-container
+              form#filter-form
+                //- span.close ×
+                input(type='checkbox', id='check-materials', value='materials') 
+                |  Materials
+                br
+                input(type='checkbox', id='check-food', value='food') 
+                |  Food
+                br
+                input(type='checkbox', id='check-clothing', value='clothing') 
+                |  Clothing
+                br
+                input(type='checkbox', id='check-electronics', value='electronics') 
+                |  Electronics
+                br
+                input(type='checkbox', id='check-furniture', value='furniture') 
+                |  Furniture
+                br
+                input(type='checkbox', id='check-decor', value='decor') 
+                |  Decor
+                br
+                input(type='checkbox', id='check-misc', value='misc') 
+                |  Misc.
+                br
+                input(type='text', id='search-term', onfocus="this.value=''", value='Enter search terms')
+                br
+                input(type='submit', value='Submit')
       .map
         #map
       .search-bar

@@ -32,6 +32,13 @@ table {
     border-spacing: 0;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Raleway', sans-serif;
   color: #39B54A;

@@ -10,6 +10,7 @@ var currPos =
 
 const sidebarLimit = 10;
 const listingsList = document.getElementById('listings-list');
+const filterForm = document.getElementById('filter-form')
 
 var map;
 var infowindow;
@@ -70,7 +71,6 @@ function initMap() {
   });
 }
 
-
 function initPage(){
   getListings().then(function(){
     getUsers().then(function(){
@@ -82,6 +82,20 @@ function initPage(){
         reloadSidebar();
         document.getElementById('sidebar').scrollTop = 0;
       });
+    });
+  });
+}
+
+function reloadPage(){
+  initMap();
+  getUsers().then(function(){
+    placeListings();
+    reloadSidebar();
+
+    // re-sort listings whenever the centre has changed
+    map.addListener('idle', function() {
+      reloadSidebar();
+      document.getElementById('sidebar').scrollTop = 0;
     });
   });
 }
@@ -155,7 +169,7 @@ function placeListings(){
       title: listings[i].title,
       content: content,
       icon: {
-        url: "/images/map/green-dot.png"
+        url: "/images/map/red-dot.png"
       }
     });
 
@@ -285,31 +299,84 @@ function getJsonFromUrl(url) {
   return result;
 }
 
-// Get the modal
-var filterForm = document.getElementById("filter-form");
-
-// Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
+var filterModal = document.getElementById("filter-modal");
+var categoryFilter = document.getElementById("category-filter");
 var btn = document.getElementById("filter-button");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
+// opens filter form on click
 btn.onclick = function() {
-  filterForm.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  filterForm.style.display = "none";
+  categoryFilter.style.display = "block";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    filterForm.style.display = "none";
+  if (event.target == filterModal) {
+    categoryFilter.style.display = "none";
   }
+}
+
+filterForm.addEventListener('submit', function(){
+  event.preventDefault();
+
+  var searchTerm = document.getElementById("search-term").value;
+
+  $.ajax({
+      type: "POST",
+      url: '/listing/filtered',
+      data: {
+        searchTerm: searchTerm,
+        checked: getChecked()
+      },
+      error: function (jXHR, textStatus, errorThrown) {
+          alert(errorThrown);
+      },
+      success: function(data){
+        listings = data;
+        reloadPage();
+        categoryFilter.style.display = "none";
+      }
+  });
+});
+
+function getChecked() {
+  var checked = [];
+
+  var materials = document.getElementById("check-materials")
+  if (materials.checked) {
+    checked.push(materials.value)
+  }
+
+  var food = document.getElementById("check-food")
+  if (food.checked) {
+    checked.push(food.value)
+  }
+
+  var clothing = document.getElementById("check-clothing")
+  if (clothing.checked) {
+    checked.push(clothing.value)
+  }
+
+  var electronics = document.getElementById("check-electronics")
+  if (electronics.checked) {
+    checked.push(electronics.value)
+  }
+
+  var furniture = document.getElementById("check-furniture")
+  if (furniture.checked) {
+    checked.push(furniture.value)
+  }
+
+  var decor = document.getElementById("check-decor")
+  if (decor.checked) {
+    checked.push(decor.value)
+  }
+
+  var misc = document.getElementById("check-misc")
+  if (misc.checked) {
+    checked.push(misc.value)
+  }
+
+  return checked;
 }
 
 var mapstyle =

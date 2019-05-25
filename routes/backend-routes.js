@@ -52,7 +52,7 @@ router.put('/listing/id/:id', listingCont.updateById);
 // add random listings
 router.post('/listing/n/:n', faker.addRandomListings);
 // get listings filtered by coords
-router.post('/listing/filtered', listingCont.filteredListings);
+router.post('/listing/filterCoords', listingCont.filteredCoords);
 // get all listing's images
 router.get('/listing/image/id/:id', listingCont.getAllImages);
 // create and upload to aws s3
@@ -61,6 +61,8 @@ router.put('/listing/image/id/:id', listingCont.imageUpload);
 router.delete('/listing/image/id/:id', listingCont.deleteImageByURL);
 // returns all listings made by a given user
 router.get('/listing/userId/:userId', listingCont.getByUser);
+// returns listing filtered by search term and categories
+router.post('/listing/filtered', listingCont.filteredSearch);
 
 
 /* REVIEW ROUTS */
