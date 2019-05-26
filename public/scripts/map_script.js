@@ -315,6 +315,13 @@ window.onclick = function(event) {
   }
 }
 
+// support for mobile devices
+window.addEventListener('touchstart', function(event) {
+  if (event.target == filterModal) {
+    modal.style.display = "none";
+  }
+});
+
 filterForm.addEventListener('submit', function(){
   event.preventDefault();
 

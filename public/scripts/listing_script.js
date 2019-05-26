@@ -94,7 +94,7 @@ getListing(listingId).then(function(){
       title: listing.title,
       content: infoContent,
       icon: {
-        url: "/images/map/green-dot.png"
+        url: "/images/map/red-dot.png"
       }
     });
 

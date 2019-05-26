@@ -76,6 +76,16 @@ app.use(function(req, res, next) {
   next();
 });
 
+// define local variables for logged in users
+app.use((req, res, next) => {
+  res.locals.login = req.isAuthenticated();
+  if (req.isAuthenticated()){
+    res.locals.loginId = req.user._id;
+    res.locals.loginName = req.user.name;
+  }
+  next();
+});
+
 // assign routes
 app.use('/',backendRoutes);
 app.use('/',frontendRoutes);

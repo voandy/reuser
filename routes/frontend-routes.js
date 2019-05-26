@@ -48,12 +48,15 @@ router.get('/logout', userCont.logout);
 
 // user dashboard page (required authentication)
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
-  res.render('dashboard', { name: req.user.name });
+  res.render('dashboard', {
+    loginId: req.user._id,
+    loginName: req.user.name
+  });
 });
 
 // user profile
 router.get('/profile', function(req,res) {
-  res.render('profile');
+    res.render('profile');
 });
 
 router.get('/error', function(req,res){
