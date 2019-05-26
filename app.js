@@ -78,10 +78,13 @@ app.use(function(req, res, next) {
 
 // define local variables for logged in users
 app.use((req, res, next) => {
-  res.locals.login = req.isAuthenticated();
+  res.locals.loggedIn = req.isAuthenticated();
   if (req.isAuthenticated()){
     res.locals.loginId = req.user._id;
     res.locals.loginName = req.user.name;
+    res.locals.loginPic = req.user.profilePicURL;
+    res.locals.loginRating = req.user.starRatingAvg;
+    res.locals.loginJoined = req.user.dateJoined;
   }
   next();
 });

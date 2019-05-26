@@ -17,13 +17,23 @@ header
   // nav buttons
   .nav-tab
     a(href='/map') map
-    a(href='/404') about
-    a=loginName
+    a(href='/about') about
 
   // login
   .nav-login-container
-    img#nav-login-img(src='images/nav/login.png', alt='login-image')
-    a#login-btn(href='#login', onclick='openLogin()') login
+    
+    if loggedIn
+      if loginPic
+        - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
+        .login-container
+          .login-cropper
+            img(src=loginPicURL).login-pic
+      else
+        img#nav-login-img(src='images/nav/login.png', alt='login-image')
+      a#login-btn(href='dashboard')= loginName
+    else
+      img#nav-login-img(src='images/nav/login.png', alt='login-image')
+      a#login-btn(href='#login', onclick='openLogin()') login
 
   // log in pop out
   #modal

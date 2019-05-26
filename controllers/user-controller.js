@@ -111,15 +111,9 @@ var login = function(req, res, next) {
   // first try to find the user by their email
   User.findOne({ email: req.body.email })
     .then(user => {
-      // redirect user to its own profile page upon successful login
-      // note: if user cannot be found, they will be redirected to failureRedirect anyway
-      var successRedirectURL = '/profile';
-      if (user) {
-        successRedirectURL += '?id=' + user._id;;
-      }
       // authenticate user
       passport.authenticate('local', {
-        successRedirect: successRedirectURL,
+        successRedirect: '/dashboard',
         failureRedirect: '/login',
         failureFlash: true
       })(req, res, next);

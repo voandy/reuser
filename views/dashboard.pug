@@ -1,7 +1,45 @@
-h1 dashboard
-a Welcome 
-a= loginName
-br
-a= loginId
-br
-a.btn.btn-secondary(href='/logout') logout
+extends default.pug
+
+append head
+  title reuser | dashboard
+  link(rel='stylesheet', href='/css/dashboard_styles.css')
+
+block content
+  - var loginUserURL = "/profile?id=" + loginId
+  .grid-container
+    .user
+      .user-details
+        h4#full-name
+          a(href=loginUserURL)= loginName
+        table#user-details
+          tbody
+            tr
+              td(width='70px')
+                #user-pic
+                  .profile-cropper
+                    if loginPic
+                      - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
+                      img(src=loginPicURL).profile-pic
+                    else
+                      img(src="images/profile/avatar-sm.png").profile-pic
+              td
+                #average-rating
+                #date-joined
+      .user-links
+        a link1
+        a link2
+        a.btn.btn-secondary(href='/logout') logout
+    .listings
+      h3#title My Listings
+      #date-posted
+      #address
+      #images
+      #description
+      #date-expires
+      #map
+  script.
+    // pass local express variables to client-side
+    var starRatingAvg = #{loginRating};
+    // var dateJoined = #{dateJoined};
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+  script(src='/scripts/dashboard_script.js')

@@ -24,9 +24,24 @@ header a{
   line-height: 26px;
 }
 
-/* header a:visited {
-  color: white !important;
-} */
+.login-container {
+  float: right ;
+  height: 32px ;
+  padding-top: 14px;
+  padding-right: 0 ;
+}
+
+.login-cropper {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.login-pic {
+  width: 32px;
+}
 
 /* logo */
 .nav-logo-container{
