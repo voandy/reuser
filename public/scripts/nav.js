@@ -16,17 +16,7 @@ function openLogin(){
     // enable login popup
     else{
         modal.style.display = "block";
-        changeToName();
     }
-}
-
-function changeToName(){
-
-  if(1){
-    document.getElementById("login-btn").innerHTML = "account";
-    // document.getElementById("nav-login-img").src = "something.jpg";
-
-  }
 }
 
 // When the user clicks anywhere outside of the modal, close it
