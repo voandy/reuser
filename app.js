@@ -83,8 +83,8 @@ app.use((req, res, next) => {
     res.locals.loginId = req.user._id;
     res.locals.loginName = req.user.name;
     res.locals.loginPic = req.user.profilePicURL;
-    res.locals.loginRating = req.user.starRatingAvg;
-    res.locals.loginJoined = req.user.dateJoined;
+    // res.locals.loginRating = req.user.starRatingAvg;
+    // res.locals.loginJoined = req.user.dateJoined;
   }
   next();
 });

@@ -1,8 +1,8 @@
-extends default.pug
+extends ../default.pug
 
 append head
   title reuser | dashboard
-  link(rel='stylesheet', href='/css/dashboard_styles.css')
+  link(rel='stylesheet', href='/css/dashboard/dashboard_styles.css')
 
 block content
   - var loginUserURL = "/profile?id=" + loginId
@@ -25,21 +25,18 @@ block content
               td
                 #average-rating
                 #date-joined
+                #edit-profile
+                  a(href='/logout') Edit profile
       .user-links
-        a link1
-        a link2
-        a.btn.btn-secondary(href='/logout') logout
-    .listings
-      h3#title My Listings
-      #date-posted
-      #address
-      #images
-      #description
-      #date-expires
-      #map
-  script.
-    // pass local express variables to client-side
-    var starRatingAvg = #{loginRating};
-    // var dateJoined = #{dateJoined};
+        p
+          a#my-listings(onclick='openListings()', href='#') 
+            b My Listings
+        p
+          a#my-reviews(onclick='openReviews()', href='#') Reviews
+        p
+          a#logout(href='/logout') Logout
+    .main
+      #main-frame
+        iframe(src='dash-listings', style='border:none;')
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
-  script(src='/scripts/dashboard_script.js')
+  script(src='/scripts/dashboard/dashboard_script.js')

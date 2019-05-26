@@ -48,10 +48,15 @@ router.get('/logout', userCont.logout);
 
 // user dashboard page (required authentication)
 router.get('/dashboard', ensureAuthenticated, function(req, res) {
-  res.render('dashboard', {
-    loginId: req.user._id,
-    loginName: req.user.name
-  });
+  res.render('dashboard/dashboard');
+});
+
+router.get('/dash-listings', ensureAuthenticated, function(req, res) {
+  res.render('dashboard/dash-listings');
+});
+
+router.get('/dash-reviews', ensureAuthenticated, function(req, res) {
+  res.render('dashboard/dash-reviews');
 });
 
 // user profile
@@ -59,8 +64,20 @@ router.get('/profile', function(req,res) {
     res.render('profile');
 });
 
+// render 404 page
 router.get('/error', function(req,res){
   res.render('404');
+});
+
+// get logged in user data
+router.get('/user/data', function(req, res) {
+
+  if (req.user === undefined) {
+    // The user is not logged in
+    res.redirect('/login');
+  } else {
+    res.send(req.user);
+  }
 });
 
 module.exports = router;
