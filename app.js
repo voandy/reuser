@@ -1,3 +1,4 @@
+const sslRedirect = require('heroku-ssl-redirect');
 const express = require('express');
 const session = require('express-session');
 
@@ -7,6 +8,8 @@ const flash = require('connect-flash');
 
 const app = express();
 const port = process.env.PORT || 7900;
+
+const rateLimit = require("express-rate-limit");
 
 // setup MongoDB Atlas
 require('./models/db.js');
@@ -18,11 +21,24 @@ require('./config/passport.js')(passport);
 var backendRoutes = require('./routes/backend-routes.js');
 var frontendRoutes = require('./routes/frontend-routes.js');
 
+// limit request rate to protect against naive ddos attacks
+app.enable("trust proxy");
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 1000
+});
+
 // get user's permission to use their location
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     next();
 });
+
+// use json
+app.use(express.json())
+
+// enable ssl redirect
+app.use(sslRedirect());
 
 // set the view engine
 app.set('view engine', 'pug');
@@ -35,7 +51,7 @@ app.use(bodyParser.json());
 // allow a HTML form's POST request's body to be parsed
 app.use(express.urlencoded({ extended: true }));
 
-// initialize express session 
+// initialize express session
 app.use(
   session({
     secret: 'secret',
@@ -51,7 +67,7 @@ app.use(passport.session());
 // initialize connect flash
 app.use(flash());
 
-// flash the messages, if there's any, in the next response 
+// flash the messages, if there's any, in the next response
 // Note: for more info on res.locals, read up: https://expressjs.com/en/api.html
 app.use(function(req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
@@ -63,6 +79,9 @@ app.use(function(req, res, next) {
 // assign routes
 app.use('/',backendRoutes);
 app.use('/',frontendRoutes);
+
+// use rate limiter
+app.use(limiter);
 
 app.use(function(req, res, next){
   res.status(404);

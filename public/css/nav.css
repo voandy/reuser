@@ -34,7 +34,7 @@ header a{
   width: 150px;
   float: left;
   text-align: center;
-  padding-left: 60px;
+  padding-left: 30px;
 }
 
 #nav-logo-img{
@@ -80,7 +80,7 @@ header * {
 /* login */
 .nav-login-container{
   height: 60px;
-  padding-right: 60px;
+  padding-right: 30px;
 }
 
 #nav-login-img{
@@ -120,7 +120,7 @@ header * {
   position: relative;
   float: right;
   background-color: #fefefe;
-  padding: 10px 15px 10px 15px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid #999;
   width: 315px;
@@ -158,7 +158,7 @@ header * {
 .modal-container input{
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-bottom: 10px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 47px;
@@ -189,6 +189,10 @@ header * {
   display: inline-block;
 
   outline: none;
+}
+
+.modal-container button:hover {
+  background-color: #57EB74;
 }
 
 

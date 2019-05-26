@@ -21,9 +21,12 @@
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "express": "^4.16.4",
+    "express-rate-limit": "^3.5.1",
     "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
     "faker": "^4.1.0",
     "geo-coder": "^1.0.2",
+    "heroku-ssl-redirect": "0.0.4",
     "mongoose": "^5.4.21",
     "mongoose-random": "^0.1.1",
     "mongoose-simple-random": "^0.4.1",
@@ -33,7 +36,7 @@
     "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.3",
-    "sharp": "^0.22.1"
-  }
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {}
 }

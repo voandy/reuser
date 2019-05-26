@@ -36,6 +36,8 @@ var getById = function(req,res){
 // create user
 var create = function(req,res){
 
+  // TODO: npm Validator, sanitise
+
   const { name, email, password, password_cfm } = req.body;
   let errors = []
 

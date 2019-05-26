@@ -7,6 +7,9 @@ const reviewCont = require('../controllers/review-controller.js');
 
 const faker = require('../controllers/faker/faker.js');
 
+const { body } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
+
 
 /* USER ROUTS */
 
@@ -15,7 +18,13 @@ router.get('/user', userCont.getAll);
 // get user by id
 router.get('/user/id/:id', userCont.getById);
 // create user
-router.post('/user', userCont.create);
+router.post('/user', [
+  // sanitise inputs
+  body('email').isEmail().normalizeEmail(),
+  body('name').isLength({ min: 3 }).trim().escape(),
+  body('password').isLength({ min: 8 }).trim().escape(),
+  body('password_cfm').isLength({ min: 8 }).trim().escape()
+],userCont.create);
 // delete user by id
 router.delete('/user/id/:id', userCont.deleteById);
 // update user by id
@@ -43,7 +52,7 @@ router.put('/listing/id/:id', listingCont.updateById);
 // add random listings
 router.post('/listing/n/:n', faker.addRandomListings);
 // get listings filtered by coords
-router.post('/listing/filtered', listingCont.filteredListings);
+router.post('/listing/filterCoords', listingCont.filteredCoords);
 // get all listing's images
 router.get('/listing/image/id/:id', listingCont.getAllImages);
 // create and upload to aws s3
@@ -52,6 +61,8 @@ router.put('/listing/image/id/:id', listingCont.imageUpload);
 router.delete('/listing/image/id/:id', listingCont.deleteImageByURL);
 // returns all listings made by a given user
 router.get('/listing/userId/:userId', listingCont.getByUser);
+// returns listing filtered by search term and categories
+router.post('/listing/filtered', listingCont.filteredSearch);
 
 
 /* REVIEW ROUTS */

@@ -134,7 +134,7 @@ var updateById = function(req,res){
 };
 
 // get listings filtered by coords
-var filteredListings = function(req,res){
+var filteredCoords = function(req,res){
   var longmin = req.body.longmin;
   var longmax = req.body.longmax;
   var latmin = req.body.latmin;
@@ -207,15 +207,46 @@ var getByUser = function(req,res){
   });
 }
 
+// return listings filtered by category and search term
+var filteredSearch = function (req,res){
+  var filter = {
+    checked: req.body.checked
+  };
+
+  if (typeof req.body.searchTerm !== "undefined"){
+    filter.searchTerm = req.body.searchTerm;
+    Listing.find({
+      $and: [
+        {title:{$regex: filter.searchTerm, '$options' : 'i'}},
+        {category: {$in: filter.checked}}
+      ]
+    }, function(err, listings){
+      if (!err){
+        res.send(listings);
+      }else{
+        res.status(404);
+      }
+    });
+  } else {
+    Listing.find({category: {$in: filter.checked}}, function(err, listings){
+      if (!err){
+        res.send(listings);
+      }else{
+        res.status(404);
+      }
+    });
+  }
+}
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 
-module.exports.filteredListings = filteredListings;
-
+module.exports.filteredCoords = filteredCoords;
 module.exports.imageUpload = imageUpload;
 module.exports.getAllImages = getAllImages;
 module.exports.deleteImageByURL = deleteImageByURL;
 module.exports.getByUser = getByUser;
+module.exports.filteredSearch = filteredSearch;

@@ -6,6 +6,36 @@ append head
 
 block content
     .grid-container
+      #category-filter
+        #filter-modal
+          .filter-container
+            .modal-container
+              form#filter-form
+                //- span.close ×
+                input(type='checkbox', id='check-materials', value='materials') 
+                |  Materials
+                br
+                input(type='checkbox', id='check-food', value='food') 
+                |  Food
+                br
+                input(type='checkbox', id='check-clothing', value='clothing') 
+                |  Clothing
+                br
+                input(type='checkbox', id='check-electronics', value='electronics') 
+                |  Electronics
+                br
+                input(type='checkbox', id='check-furniture', value='furniture') 
+                |  Furniture
+                br
+                input(type='checkbox', id='check-decor', value='decor') 
+                |  Decor
+                br
+                input(type='checkbox', id='check-misc', value='misc') 
+                |  Misc.
+                br
+                input(type='text', id='search-term', placeholder='Enter search terms')
+                br
+                input(type='submit', value='Submit')
       .map
         #map
       .search-bar
