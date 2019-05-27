@@ -1,5 +1,31 @@
-extends dash-head.pug
+extends dashboard.pug
 
-block content
-  h3 Active Listings
-  h3 Archived Listings
+append head
+  link(rel='stylesheet', href='/css/dashboard/dash_listings_styles.css')
+
+append content
+  script(src='/scripts/dashboard/dash_listings_script.js')
+  
+block links
+  ul
+    li
+      a(href='/my-listings')
+        b My Listings
+      ul.submenu
+        li
+          a(href='#active-listings') Active listings
+        li
+          a(href='#archived-listings') Archived listings
+        li
+          a(href='create-listing') Create new listing
+    li
+      a(href='/my-reviews') Reviews
+    li
+      a(href='/logout') Logout
+
+block main
+  h3.title Active Listings
+  #active-listings
+  h3.title Archived Listings
+  #archived-listings
+  

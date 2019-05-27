@@ -113,7 +113,7 @@ var login = function(req, res, next) {
     .then(user => {
       // authenticate user
       passport.authenticate('local', {
-        successRedirect: '/dashboard',
+        successRedirect: '/my-listings',
         failureRedirect: '/login',
         failureFlash: true
       })(req, res, next);

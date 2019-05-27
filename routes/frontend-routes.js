@@ -47,12 +47,12 @@ router.post('/login', [
 router.get('/logout', userCont.logout);
 
 // user dashboard page (required authentication)
-router.get('/dashboard', ensureAuthenticated, function(req, res) {
-  res.render('dashboard/dashboard');
+router.get('/my-listings', ensureAuthenticated, function(req, res) {
+  res.render('dashboard/dash-listings');
 });
 
-router.get('/dash-listings', ensureAuthenticated, function(req, res) {
-  res.render('dashboard/dash-listings');
+router.get('/my-reviews', ensureAuthenticated, function(req, res) {
+  res.render('dashboard/dash-reviews');
 });
 
 router.get('/dash-reviews', ensureAuthenticated, function(req, res) {

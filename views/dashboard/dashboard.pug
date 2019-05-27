@@ -28,15 +28,15 @@ block content
                 #edit-profile
                   a(href='/logout') Edit profile
       .user-links
-        p
-          a#my-listings(onclick='openListings()', href='#') 
-            b My Listings
-        p
-          a#my-reviews(onclick='openReviews()', href='#') Reviews
-        p
-          a#logout(href='/logout') Logout
+        block links
+          ul
+            li
+              a(href='/my-listings') My Listings
+            li
+              a(href='/my-reviews') Reviews
+            li
+              a(href='/logout') Logout
     .main
-      #main-frame
-        iframe(src='dash-listings', style='border:none;')
+      block main
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
   script(src='/scripts/dashboard/dashboard_script.js')

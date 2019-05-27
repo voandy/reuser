@@ -1,4 +1,23 @@
-extends dash-head.pug
+extends dashboard.pug
 
-block content
-  h3 Reviews
+append head
+  link(rel='stylesheet', href='/css/dashboard/dash_reviews_styles.css')
+
+append content
+  script(src='/scripts/dashboard/dash_reviews_script.js')
+
+block links
+  ul
+    li
+      a(href='/my-listings') My Listings
+    li
+      a(href='/my-reviews')
+        b Reviews
+    li
+      a(href='/logout') Logout
+
+block main
+  h3.title My Reviews
+  #my-reviews
+  h3.title Reviews Left for Others
+  #left-reviews

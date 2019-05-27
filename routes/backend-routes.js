@@ -81,5 +81,8 @@ router.put('/review/id/:id', reviewCont.updateById);
 router.post('/review/n/:n', faker.addRandomReviews);
 // returns all reviews about given user
 router.get('/review/userId/:userId', reviewCont.getByUser);
+// returns all review left by given user
+router.get('/review/leftUserId/:userId', reviewCont.getByLeftUser);
+
 
 module.exports = router;

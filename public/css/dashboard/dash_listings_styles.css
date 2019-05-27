@@ -1,0 +1,33 @@
+.listing-pic {
+  width: 200px;
+}
+
+.bin-image {
+  display: block;
+  width: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.undo-image {
+  display: block;
+  width: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.listing-content {
+  padding: 10px
+}
+
+.list-button {
+  width: 40px;
+}
+
+#active-listings {
+  margin-bottom: 20px;
+}
+
+#archived-listings {
+  margin-bottom: 20px;
+}

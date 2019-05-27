@@ -108,9 +108,22 @@ var getByUser = function(req,res){
   });
 }
 
+// given a userId returns all review written ABOUT that user
+var getByLeftUser = function(req,res){
+  var userId = req.params.userId;
+  Review.find({leftById:userId}, function(err, reviews){
+    if (!err){
+      res.send(reviews);
+    }else{
+      res.status(404);
+    }
+  });
+}
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 module.exports.getByUser = getByUser;
+module.exports.getByLeftUser = getByLeftUser;
