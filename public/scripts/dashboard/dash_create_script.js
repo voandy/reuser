@@ -21,19 +21,24 @@ createListing.addEventListener('submit', function(){
   var longitude = place.geometry.location.lng();
   var latitude = place.geometry.location.lat();
 
+  var data = {
+    title: listTitle,
+    description: listDescription,
+    formattedAddress: formattedAddress,
+    category: listCategory,
+    longitude: longitude,
+    latitude: latitude
+  };
+
+  if (listDate) {
+    data.dateExpires = listDate;
+  }
+
   // create the listing
   $.ajax({
     type: "POST",
     url: createListingURL + userId,
-    data: {
-      title: listTitle,
-      description: listDescription,
-      dateExpires: listDate,
-      formattedAddress: formattedAddress,
-      category: listCategory,
-      longitude: longitude,
-      latitude: latitude
-    },
+    data: data,
     error: function (jXHR, textStatus, errorThrown) {
       alert(errorThrown);
     },
