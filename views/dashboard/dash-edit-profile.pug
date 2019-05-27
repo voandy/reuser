@@ -5,7 +5,7 @@ append head
 
 append content
   script(src='/scripts/dashboard/dash_edit_script.js')
-  // script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap')
+  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap')
   
 block links
   ul
@@ -18,3 +18,25 @@ block links
 
 block main
   h3.title Edit Profile
+  form#update-user
+    | Name
+    br
+    input#user-name(type='text', placeholder='Full Name')
+    br
+      
+    | Email
+    br
+    input#user-email(type='text', placeholder='reuser@reuser.xyz')
+    br
+      
+    | Address
+    br
+    input#user-address(type='text', placeholder='Street Address')
+    br
+      
+    | Profile Picture (Optional)
+    br
+    input#user-image(type='file', name='image')
+    br
+      
+    input#user-submit(type='submit')

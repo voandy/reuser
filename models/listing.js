@@ -15,7 +15,6 @@ const listingSchema = new Schema(
 
     formattedAddress: String,
 
-    // derived from address using GoogleMaps API, required for filtering
     longitude:Number,
     latitude:Number,
 

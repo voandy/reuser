@@ -32,14 +32,8 @@ getUser(userId).then(function(){
   // get user data
   userName.innerText = user.name;
 
-  if (user.address) {
-    var concAddress =
-      user.address.addressLine1 +
-      ((user.addressLine2 != null) ? "<br>" + user.address.addressLine2 : "") + "<br>" +
-      user.address.suburb + " " +
-      user.address.state + " " +
-      user.address.postcode;
-    userAddress.innerHTML = "<div class =\"user-address\">" + concAddress + "</div>";
+  if (user.formattedAddress) {
+    userAddress.innerHTML = "<div class =\"user-address\">" + user.formattedAddress + "</div>";
   } else {
     userAddress.innerHTML = "<div class =\"user-address\">No address listed.</div>"
   }

@@ -10,25 +10,22 @@ const userSchema = new Schema(
       required: true
     },
 
-    name: { 
+    name: {
       type: String,
       required: true
     },
 
-    password: { 
+    password: {
       type: String,
       required: true
     },
 
     dateJoined:{type: Date, default: Date.now},
 
-    address: {
-      addressLine1:String,
-      addressLine2:String,
-      suburb:String,
-      state:{type: String, enum: Object.values(enums.States)},
-      postcode:{type:Number, min:0, max:9999}
-    },
+    formattedAddress: String,
+
+    longitude:Number,
+    latitude:Number,
 
     phoneNo:String,
 
