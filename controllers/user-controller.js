@@ -185,7 +185,9 @@ var imageUpload = function(req, res) {
       return res.status(422).send({errors: [{title: 'Image Upload Error', detail: err.message}] });
     }
 
-    User.findByIdAndUpdate(userId, {profilePicURL: req.file.location}, function(err, user){
+    // store only the image filename, url is appended by lamda resize
+    var thisURL = req.file.location.split("/");
+    User.findByIdAndUpdate(userId, {profilePicURL: thisURL[thisURL.length - 1]}, function(err, user){
       if(err){
         res.sendStatus(404);
       }

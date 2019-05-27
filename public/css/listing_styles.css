@@ -105,6 +105,10 @@ body {
   outline: 0;
 }
 
+#address {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 950px) {
   .grid-container {
     display: flex;

@@ -7,13 +7,6 @@ const User    = mongoose.model('user');
 const upload = require('../services/image-upload');
 const singleUpload = upload.single('image')
 
-const geocoder = NodeGeocoder({
-  provider: 'google',
-  httpAdapter: 'https',
-  apiKey: 'AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA',
-  formatter: null
-});
-
 // get all listings
 var getAll = function(req,res){
   Listing.find(function(err,listings){
@@ -39,71 +32,38 @@ var getById = function(req,res){
 
 // create listing
 var create = function (req,res) {
-  var address = req.body.addressLine1 + " " +
-    ((req.body.addressLine2 != null) ? req.body.addressLine2 : "") + ", " +
-    req.body.suburb + " " +
-    req.body.state + " " +
-    req.body.postcode;
+  // create the listing
+  var listing = new Listing({
+    userId:req.params.userId,
 
-  var listing;
+    title:req.body.title,
+    description:req.body.description,
 
-  // geocode concatenated address
-  function geocodeAddress() {
-    return new Promise((resolve,reject) => {
-      geocoder.geocode(address, function(err, res){
-        if (!err){
-          resolve({longitude:res[0].longitude, latitude:res[0].latitude});
-        }else{
-          reject();
-        }
-      });
-    });
-  }
+    datePosted: new Date(),
+    dateExpires:req.body.dateExpires,
 
-  async function createListing(){
-    // TODO: Error handling for rejected promise
-    var coords = await geocodeAddress();
+    formattedAddress: req.body.formattedAddress,
 
-    // create the listing
-    listing = new Listing({
-      userId:req.params.userId,
+    longitude:req.body.longitude,
+    latitude:req.body.latitude,
 
-      title:req.body.title,
-      description:req.body.description,
+    category:req.body.category,
 
-      datePosted: new Date(),
-      dateExpires:req.body.dateExpires,
+    minVisibility:req.body.minVisibility,
 
-      address: {
-        addressLine1:req.body.addressLine1,
-        addressLine2:req.body.addressLine2,
-        suburb:req.body.suburb,
-        state:req.body.state,
-        postcode:req.body.postcode,
-      },
+    thanksRecId:[],
 
-      longitude:coords.longitude,
-      latitude:coords.latitude,
+    isActive:1
+  });
 
-      category:req.body.category,
-
-      minVisibility:req.body.minVisibility,
-
-      thanksRecId:[],
-
-      isActive:1
-    });
-
-    // send it to database
-    listing.save(function (err,newListing) {
-      if(!err){
-        res.send(newListing);
-      }else{
-        res.status(400).send(err);
-      }
-    });
-  }
-  createListing();
+  // send it to database
+  listing.save(function (err,newListing) {
+    if(!err){
+      res.send(newListing);
+    }else{
+      res.status(400).send(err);
+    }
+  });
 }
 
 // delete listing by id
@@ -165,7 +125,11 @@ var imageUpload = function(req, res) {
     }
     Listing.findById(listingId, function(err, listing){
       var imageURLs = listing.imageURLs;
-      imageURLs.push(req.file.location);
+
+      // store only the image filename, url is appended by lamda resize
+      var thisURL = req.file.location.split("/");
+      imageURLs.push(thisURL[thisURL.length - 1]);
+
       listing.imageURLs = imageURLs;
       listing.save();
     });

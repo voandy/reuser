@@ -56,6 +56,8 @@ var addRandomUsers = function(req,res){
 };
 
 // adds random listings
+// DEPRECATED
+// TODO: Fix to work with new listing model
 var addRandomListings = function(req,res){
   var numListings = req.params.n;
   var categories = Object.values(Listing.Categories);

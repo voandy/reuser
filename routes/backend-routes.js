@@ -49,8 +49,8 @@ router.post('/listing/id/:userId', listingCont.create);
 router.delete('/listing/id/:id', listingCont.deleteById);
 // update listing by id
 router.put('/listing/id/:id', listingCont.updateById);
-// add random listings
-router.post('/listing/n/:n', faker.addRandomListings);
+// add random listings NEEDS FIXING
+// router.post('/listing/n/:n', faker.addRandomListings);
 // get listings filtered by coords
 router.post('/listing/filterCoords', listingCont.filteredCoords);
 // get all listing's images

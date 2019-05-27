@@ -1,0 +1,68 @@
+extends dashboard.pug
+
+append head
+  link(rel='stylesheet', href='/css/dashboard/dash_create_styles.css')
+
+append content
+  script(src='/scripts/dashboard/dash_create_script.js')
+  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap')
+  
+block links
+  ul
+    li
+      a(href='/my-listings')
+        b My Listings
+      ul.submenu
+        li
+          a(href='my-listings#active-listings') Active listings
+        li
+          a(href='my-listings#archived-listings') Archived listings
+        li
+          a(href='create-listing') 
+            b Create new listing
+    li
+      a(href='/my-reviews') Reviews
+    li
+      a(href='/logout') Logout
+
+block main
+  h3.title Create New Listing
+  form#create-listing
+    | Title
+    br
+    input#list-title(type='text', placeholder='Listing Title')
+    br
+      
+    | Category
+    br
+    select#list-category
+      option(value='materials') Materials
+      option(value='food') Food
+      option(value='clothing') Clothing
+      option(value='electronics') Electronics
+      option(value='furniture') Furniture
+      option(value='decor') Decor
+      option(value='misc') Misc
+    br
+      
+    | Address
+    br
+    input#list-address(type='text', placeholder='Street Address')
+    br
+      
+    | Description
+    br
+    input#list-description(type='text', placeholder='Describe your listing')
+    br
+      
+    | Expiry Date (Optional)
+    br
+    input#list-date(type='date', min='2019-01-01')
+    br
+      
+    | Image (Optional)
+    br
+    input#list-image(type='file', name='image')
+    br
+      
+    input#list-submit(type='submit')

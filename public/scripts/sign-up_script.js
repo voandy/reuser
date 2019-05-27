@@ -35,7 +35,7 @@ $(document).ready(function() {
 //         //  // check if all fields contain valid values
 //         // if (email_validator(event.SUBMIT) && password_validator(event.SUBMIT) && password_confirm_validator(event.SUBMIT)) {
 //         //     createUser();
-//         // // otherwise show appropriate warnings    
+//         // // otherwise show appropriate warnings
 //         // } else {
 //         //     show_warning(warning.FULLNAME, email_validator(event.SUBMIT));
 //         //     show_warning(warning.EMAIL, email_validator(event.SUBMIT));
@@ -46,7 +46,6 @@ $(document).ready(function() {
 //     });
 // });
 
-// given a listing, will get the associated user and add to that listing
 function createUser(){
     // get all the required values
     var fullName = $('#fullName').val();
@@ -54,7 +53,7 @@ function createUser(){
     var password = $('#password').val();
     var password_cfm = $('#password_cfm').val();
     // create body structure
-    var body = JSON.stringify({ 
+    var body = JSON.stringify({
         'fullName': fullName,
         'email': email,
         'password': password,
@@ -80,11 +79,11 @@ function name_validator(event_type) {
             // pass validation
             if (fullname.length >= 3 || fullname.length == 0) return true;
             break;
-            
+
         case event.SUBMIT:
             // pass validation
             if (fullname.length >= 3  && fullname.length != 0) return true;
-            break;    
+            break;
     }
     // fail
     return false;
@@ -99,11 +98,11 @@ function email_validator(event_type) {
             // pass validation
             if (pattern.test(email) || email.length == 0) return true;
             break;
-            
+
         case event.SUBMIT:
             // pass validation
             if (pattern.test(email) && email.length != 0) return true;
-            break;    
+            break;
     }
     // fail
     return false;
@@ -135,11 +134,11 @@ function password_validator(event_type) {
             // pass validation
             if (pwd.length >= min || pwd.length == 0) return true;
             break;
-            
+
         case event.SUBMIT:
             // pass validation
             if (pwd.length >= min && pwd.length != 0) return true;
-            break;    
+            break;
     }
    return false;
 }
@@ -153,12 +152,12 @@ function password_confirm_validator(event_type) {
             // pass validation
             if ((pwd1 === pwd2 && pwd2 != "") || pwd2.length == 0) return true;
             break;
-            
+
         case event.SUBMIT:
             // pass validation
             if ((pwd1 === pwd2 && pwd2 != "") && pwd2.length != 0) return true;
-            break;  
-    }  
+            break;
+    }
     return false;
 }
 
@@ -203,8 +202,3 @@ function show_warning(warning_type, notToShow) {
             break;
     }
 }
-
-
-
-
-

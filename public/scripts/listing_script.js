@@ -30,7 +30,6 @@ const reviewsRec = document.getElementById("reviews-rec");
 var listing;
 var user;
 var reviews;
-var concAddress;
 var map;
 var infoWindow;
 
@@ -50,17 +49,9 @@ function initMap() {
 }
 
 getListing(listingId).then(function(){
-  // get listing data
-  concAddress =
-    listing.address.addressLine1 +
-    ((listing.addressLine2 != null) ? "<br>" + listing.address.addressLine2 : "") + "<br>" +
-    listing.address.suburb + " " +
-    listing.address.state + " " +
-    listing.address.postcode;
-
   title.innerText = listing.title;
   description.innerText = listing.description;
-  address.innerHTML = concAddress;
+  address.innerHTML = listing.formattedAddress;
 
   var postedDate = new Date(listing.datePosted);
   datePosted.innerHTML = "<div class=\"date\">Posted: " +
@@ -85,7 +76,7 @@ getListing(listingId).then(function(){
     map.setCenter(listingPos);
 
     var infoContent = "<h5>" + listing.title + "</h5>" +
-    "<p>" + concAddress + "</p>";
+    "<p>" + listing.formattedAddress + "</p>";
 
     // create marker
     var marker = new google.maps.Marker({

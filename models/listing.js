@@ -13,13 +13,7 @@ const listingSchema = new Schema(
     datePosted:{type: Date, default: Date.now},
     dateExpires:Date,
 
-    address: {
-      addressLine1:String,
-      addressLine2:String,
-      suburb:String,
-      state:{type: String, enum: Object.values(enums.States)},
-      postcode:Number,
-    },
+    formattedAddress: String,
 
     // derived from address using GoogleMaps API, required for filtering
     longitude:Number,
@@ -36,7 +30,7 @@ const listingSchema = new Schema(
     // whether the listing is active or archived
     isActive:Boolean,
 
-    // url of the images posted 
+    // url of the images posted
     imageURLs:[String]
   }
 );
