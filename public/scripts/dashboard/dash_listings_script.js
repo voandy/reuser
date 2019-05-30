@@ -8,6 +8,21 @@ const archivedListings = document.getElementById('archived-listings');
 var user;
 var listings;
 
+document.getElementById('active-listings-subtab').onclick = function() {
+    activeListings.style.display = 'block';
+    archivedListings.style.display = 'none';
+    document.getElementById('active-listings-title').style.display = 'block';
+    document.getElementById('archived-listings-title').style.display = 'none';
+}
+
+document.getElementById('archived-listings-subtab').onclick = function() {
+    activeListings.style.display = 'none';
+    archivedListings.style.display = 'block';
+    document.getElementById('active-listings-title').style.display = 'none';
+    document.getElementById('archived-listings-title').style.display = 'block';
+}
+
+
 getUser().then(function(){
   // get all listings made by user
   getListings(user._id).then(function(){

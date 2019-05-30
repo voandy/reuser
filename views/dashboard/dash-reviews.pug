@@ -15,14 +15,14 @@ block links
         b Reviews
       ul.submenu
         li
-          a(href='#my-reviews') My Reviews
+          a#my-reviews-subtab(href='#my-reviews') My Reviews
         li
-          a(href='#left-reviews') Left for Others
+          a#left-reviews-subtab(href='#left-reviews') Left for Others
     li
       a(href='/logout') Logout
 
 block main
-  h3.title My Reviews
+  h3#my-reviews-title.title My Reviews
   #my-reviews
-  h3.title Reviews Left for Others
+  h3#left-reviews-title.title Reviews Left for Others
   #left-reviews

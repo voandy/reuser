@@ -9,6 +9,20 @@ var reviewsLeft;
 const myReviews = document.getElementById('my-reviews');
 const leftReviews = document.getElementById('left-reviews');
 
+document.getElementById('my-reviews-subtab').onclick = function() {
+    myReviews.style.display = 'block';
+    leftReviews.style.display = 'none';
+    document.getElementById('my-reviews-title').style.display = 'block';
+    document.getElementById('left-reviews-title').style.display = 'none';
+}
+
+document.getElementById('left-reviews-subtab').onclick = function() {
+    myReviews.style.display = 'none';
+    leftReviews.style.display = 'block';
+    document.getElementById('my-reviews-title').style.display = 'none';
+    document.getElementById('left-reviews-title').style.display = 'block';
+}
+
 getUser().then(function(){
   // get all reviews about user
   getReviewsFor(user._id).then(function(){

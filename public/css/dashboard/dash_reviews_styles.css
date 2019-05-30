@@ -14,9 +14,20 @@
 }
 
 #my-reviews {
+  display: block;
   margin-bottom: 20px;
 }
 
 #left-reviews {
+  display: none;
   margin-bottom: 20px;
 }
+
+#my-reviews-title {
+  display: block;
+}
+
+#left-reviews-title {
+  display: none;
+}
+

@@ -24,10 +24,20 @@
   width: 40px;
 }
 
+#active-listings-title {
+  display: block;
+}
+
+#archived-listings-title {
+  display: none;
+}
+
 #active-listings {
+  display: block;
   margin-bottom: 20px;
 }
 
 #archived-listings {
+  display: none;
   margin-bottom: 20px;
 }

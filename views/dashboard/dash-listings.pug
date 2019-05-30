@@ -13,9 +13,9 @@ block links
         b My Listings
       ul.submenu
         li
-          a(href='#active-listings') Active listings
+          a#active-listings-subtab(href='#active-listings') Active listings
         li
-          a(href='#archived-listings') Archived listings
+          a#archived-listings-subtab(href='#archived-listings') Archived listings
         li
           a(href='create-listing') Create new listing
     li
@@ -24,8 +24,8 @@ block links
       a(href='/logout') Logout
 
 block main
-  h3.title Active Listings
+  h3#active-listings-title.title Active Listings
   #active-listings
-  h3.title Archived Listings
+  h3#archived-listings-title.title Archived Listings
   #archived-listings
   
