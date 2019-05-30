@@ -171,28 +171,6 @@ var getByUser = function(req,res){
   });
 }
 
-// given a userId returns all listings posted by that user
-var getByUserId = function(req, res){
-  var userId = req.user._id;
-  Listing.find({userId:userId}, function(err, listings){
-    if (!err){
-      res.render('dashboard/dash-listings', {
-        listings,
-        parseDate: function(date) {
-          return date.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"});
-        }});
-    }else{
-      res.status(404);
-    }
-  });
-}
-
-// var parseDate = function(date) {
-//   var postedDate = new Date(date);
-//   postedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"});
-//   return postedDate;
-// };
-
 // return listings filtered by category and search term
 var filteredSearch = function (req,res){
   var filter = {
@@ -224,12 +202,12 @@ var filteredSearch = function (req,res){
   }
 }
 
+
 module.exports.getAll = getAll;
 module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
-module.exports.getByUserId = getByUserId;
 
 module.exports.filteredCoords = filteredCoords;
 module.exports.imageUpload = imageUpload;

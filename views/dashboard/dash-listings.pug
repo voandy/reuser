@@ -18,33 +18,9 @@ block main
         img(src='images/dash/create-new-listing-button.png')
 
   #listings
-    each listing in listings
-      if listing.isActive 
-        .active-listings
-          +listing-content(listing)
-      else 
-        .archived-listings
-          +listing-content(listing)
+    #active-listings-container
+    #archived-listings-container
 
-
-mixin listing-content(listing)
-  .listing-container 
-    .listing-img
-      img(src='http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/' + listing.imageURLs[0])
-    .listing-details
-      .listing-header
-        h6.title= listing.title
-        p.date-posted= 'Posted: ' + parseDate(listing.datePosted)
-      p.category= 'Category: ' + listing.category
-      p.description= listing.description
-      .actions
-        form
-          button 
-            img(src='images/dash/delete-button.png')
-        form
-          button 
-            img(src='images/dash/edit-button.png')
-        
 
   
   

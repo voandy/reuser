@@ -3,6 +3,15 @@
   color: #3CB16B !important;
 }
 
+/* The subtab text color */
+#active-listings-button {
+  color: #3CB16B; 
+}
+
+#archived-listings-button {
+  color: black; 
+}
+
 /* the green + button */
 #create-new-listing-btn {
   width: 100%;
@@ -29,7 +38,8 @@ button {
 
 /* listings */
 .listing-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px auto;
   height: 180px;
   width: 95%;
   border-bottom: solid 1px lightgray;
@@ -38,24 +48,27 @@ button {
 }
 
 .listing-img{
+  grid-column: 1;
   display: flex;
   height: 160px;
-  width: 300px;
   align-content: center;
   justify-content: center;
 }
 
 .listing-img img{
   height: 100%;
-  width: auto;
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .listing-details {
+  grid-column: 2;
   display: grid;
   grid-template-rows: 25px 15px 90px 30px;
   width: 100%;
   height: 100%;
-  padding: 5px 10px 10px 20px;
+  padding: 5px 10px 10px 0px;
 }
 
 .listing-header {
@@ -64,7 +77,7 @@ button {
   width:100%;
 }
 
-h6.title {
+h6.title a{
   float:left;
   color: black;
   font-weight: bold;

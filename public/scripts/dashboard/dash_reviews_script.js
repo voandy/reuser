@@ -53,15 +53,13 @@ function renderReview(review){
   var reviewDate = new Date(review.datePosted);
 
   review_content +=
-  "<div class=\"class=review\">" +
+    "<div class=\"class=review\">" +
     "<h6 class=\"review-title\">" + review.title + "</h6>" +
     "<img class=\"star-rating\" src=\"" + getStars(review.starRating) + "\">" +
-    "<div class=\"left-by\">Left by: <a href=\"" + profileURL + "?id=" + review.reviewer._id + "\">" +
-    review.reviewer.name + "</a></div>" +
-    "<div class=\"date\">" +
-    reviewDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) + "</div>" +
-    "<div class=\"review-content\">" + review.content + "</div>" +
-  "</div>";
+    "<div class=\"left-by\">Left by: <a href=\"" + profileURL + "?id=" + review.reviewer._id + "\">" +review.reviewer.name + "</a></div>" +
+    "<div class=\"date\">" + reviewDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) + "</div>" +
+    "<div class=\"review-content\">" + review.content + "</div>" +  
+    "</div>";
 
   return review_content;
 }

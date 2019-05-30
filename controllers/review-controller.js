@@ -72,7 +72,6 @@ var create = function (req,res) {
 // delete review by id
 var deleteById = function(req,res){
   var reviewId = req.params.id;
-
   // delete review
   Review.findByIdAndRemove(reviewId, function(err, review){
     if (!err){
@@ -127,3 +126,4 @@ module.exports.deleteById = deleteById;
 module.exports.updateById = updateById;
 module.exports.getByUser = getByUser;
 module.exports.getByLeftUser = getByLeftUser;
+
