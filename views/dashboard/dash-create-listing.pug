@@ -7,26 +7,11 @@ append content
   script(src='/scripts/dashboard/dash_create_script.js')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap')
   
-block links
-  ul
-    li
-      a(href='/my-listings')
-        b My Listings
-      ul.submenu
-        li
-          a(href='my-listings#active-listings') Active listings
-        li
-          a(href='my-listings#archived-listings') Archived listings
-        li
-          a(href='create-listing') 
-            b Create new listing
-    li
-      a(href='/my-reviews') Reviews
-    li
-      a(href='/logout') Logout
-
 block main
-  h3.title Create New Listing
+  #subtabs
+    .subtab 
+      a Create New Listing
+      
   form#create-listing
     | Title
     br

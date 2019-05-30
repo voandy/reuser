@@ -11,13 +11,16 @@ header{
   font-size: 20px;
   font-family: Raleway;
   font-weight: 500;
-  background-color: #39B54A;
+  background-color: white;
   flex-flow: row nowrap;
   justify-content: flex-start;
+  padding-top: 10px;
 }
 
 header a{
-  color:white !important;
+  color:#9B9B9B !important;
+  font-size: 15px;
+  font-weight: bold;
   text-decoration: none !important;
   display: inline-block !important;
   box-sizing: content-box !important;
@@ -48,21 +51,23 @@ header a{
   height: inherit;
   width: 150px;
   float: left;
-  text-align: center;
-  padding-left: 30px;
+  padding-left: 60px;
 }
 
 #nav-logo-img{
   float: left ;
   height: 32px ;
   padding-top: 14px;
-  padding-right: 0 ;
+  padding-right: 0;
 }
 
 #nav-logo-brand{
   padding-top: 18px;
   padding-right: 10%;
+  padding-left: 10px;
   font-weight: bold;
+  font-size: 19px;
+  color: black !important;
 }
 
 #nav-logo-brand:before,
@@ -85,17 +90,18 @@ header * {
   height: inherit;
   width: 35vw;
   float: left;
+  padding-left: 20px;
 }
 
 .nav-tab a{
   padding-top:18px;
-  padding-right: 10px;
+  padding-right: 30px;
 }
 
 /* login */
 .nav-login-container{
-  height: 60px;
-  padding-right: 30px;
+  height: 70px;
+  padding-right: 60px;
 }
 
 #nav-login-img{
@@ -105,13 +111,17 @@ header * {
 }
 
 #login-btn{
-  padding-top:18px;
   float: right;
-  padding-right: 10px;
-
+  /* padding-right: 10px; */
+  /* padding-top:18px;  */
 }
 
-
+#drop-down {
+  padding: 26px 0 0 10px !important;
+  padding-top: 20px;
+  height: auto;
+  width:16px;
+}
 
 /* login modal (pop out) */
 #modal {

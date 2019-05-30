@@ -9,33 +9,37 @@ block content
   .grid-container
     .user
       .user-details
-        h4#full-name
-          a(href=loginUserURL)= loginName
-        table#user-details
-          tbody
-            tr
-              td(width='70px')
-                #user-pic
-                  .profile-cropper
-                    if loginPic
-                      - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
-                      img(src=loginPicURL).profile-pic
-                    else
-                      img(src="images/profile/avatar-sm.png").profile-pic
-              td
-                #average-rating
-                #date-joined
-                #edit-profile
-                  a(href='/edit-profile') Edit profile
+        .profile-cropper
+          if loginPic
+            - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
+            img(src=loginPicURL).profile-pic
+          else
+            img(src="images/profile/avatar-sm.png").profile-pic
+        .user-info    
+          h6#full-name(href=loginUserURL)= loginName
+          #average-rating
+        //- #date-joined
+        //- #edit-profile
+          //- a(href='/edit-profile') Edit profile
       .user-links
-        block links
-          ul
-            li
-              a(href='/my-listings') My Listings
-            li
-              a(href='/my-reviews') Reviews
-            li
+        ul
+          li
+            #tab
+              img#tab-icon(src='/images/dash/profile-icon.png')
+              a#profile-text(href='/edit-profile') Profile Settings
+          li
+            #tab
+              img#tab-icon(src='/images/dash/listings-icon.png')
+              a#listing-text(href='/my-listings') My Listings
+          li
+            #tab
+              img#tab-icon(src='/images/dash/reviews-icon.png')
+              a#review-text(href='/my-reviews') Reviews
+          li
+            #tab
+              img#tab-icon(src='/images/dash/logout-icon.png')
               a(href='/logout') Logout
+        
     .main
       block main
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')

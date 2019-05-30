@@ -2,7 +2,7 @@ const listingURL = "/listing";
 const thisUserURL = "user/data";
 
 const averageRating = document.getElementById('average-rating');
-const dateJoined = document.getElementById('date-joined');
+// const dateJoined = document.getElementById('date-joined');
 const myListings = document.getElementById('my-listings');
 const mainFrame = document.getElementById('main-frame');
 
@@ -20,8 +20,8 @@ function getUser(){
 
 getUser().then(function(){
   var joinedDate = new Date(user.dateJoined);
-  dateJoined.innerHTML = "<div class=\"date\">Joined: " +
-    joinedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short"}) + "</div>";
+  // dateJoined.innerHTML = "<div class=\"date\">Joined: " +
+  //   joinedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short"}) + "</div>";
 
   averageRating.innerHTML =
     "<img class=\"user-rating\" src=\"" + getStars(user.starRatingAvg) + "\">";

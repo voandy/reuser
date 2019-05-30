@@ -6,22 +6,14 @@ append head
 append content
   script(src='/scripts/dashboard/dash_reviews_script.js')
 
-block links
-  ul
-    li
-      a(href='/my-listings') My Listings
-    li
-      a(href='/my-reviews')
-        b Reviews
-      ul.submenu
-        li
-          a(href='#my-reviews') My Reviews
-        li
-          a(href='#left-reviews') Left for Others
-    li
-      a(href='/logout') Logout
-
 block main
+  #subtabs
+      ul.subtab
+        li
+          a(href='#') My Reviews 
+        li
+          a(href='#') Reviews Left for Others 
+
   h3.title My Reviews
   #my-reviews
   h3.title Reviews Left for Others

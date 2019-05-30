@@ -3,6 +3,7 @@ const router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
 
 const userCont = require('../controllers/user-controller.js');
+const listingCont = require('../controllers/listing-controller.js');
 
 const { body } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -47,9 +48,7 @@ router.post('/login', [
 router.get('/logout', userCont.logout);
 
 // view logged in user's listings (required authentication)
-router.get('/my-listings', ensureAuthenticated, function(req, res) {
-  res.render('dashboard/dash-listings');
-});
+router.get('/my-listings', ensureAuthenticated, listingCont.getByUserId);
 
 // view logged in user's reivews (required authentication)
 router.get('/my-reviews', ensureAuthenticated, function(req, res) {

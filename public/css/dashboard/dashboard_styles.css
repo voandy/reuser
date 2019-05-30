@@ -13,19 +13,19 @@ li a {
   margin-bottom: 5px;
 }
 
-.submenu {
-  margin-left: 20px;
-}
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 250px 700px 1fr;
+  grid-template-columns: 30px 300px auto 30px;
+  background-color: white;
+  /* background-image: linear-gradient(to right top, #0a3441, #00616f, #00917e, #00c067, #54eb12); */
 }
 
 .user {
   grid-column: 2;
   padding: 20px;
   min-height: calc(100vh - 100px);
+  padding-left: 40px;
 }
 
 .main {
@@ -33,11 +33,19 @@ li a {
   padding: 20px;
   margin-left: 10px;
   min-height: calc(100vh - 100px);
-  background-color: #fff;
+  background-color: white;
 }
 
 .user-details {
+  padding-top: 20px;
   padding-bottom: 20px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.user-info {
+  padding-top: 10px;
+  padding-left: 25px;
 }
 
 .date {
@@ -48,8 +56,8 @@ li a {
 }
 
 .profile-cropper {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
@@ -81,17 +89,65 @@ li a {
   height: 100%;
 }
 
-#user-pic {
-  /* padding-bottom: 10px; */
-}
-
 #user-details {
   width: 100%;
+}
+
+#full-name {
+  color: #5E6367;
+  font-weight: bold;
+  font-size: 23px;
+  padding: 0;
+  margin: 0;
 }
 
 #edit-profile {
   font-size: 0.9em;
 }
+
+#tab {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#tab a {
+  color: #5E6367;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#tab-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 30px;
+}
+
+#subtabs {
+  padding: 0 0 10px 20px;
+  margin-bottom: 30px;
+  display: flex;
+  border-bottom: solid 1px lightgray;
+}
+
+#subtabs .subtab{
+  display: flex;
+  margin-top: 30px;
+}
+
+#subtabs .subtab li{
+  padding-right: 30px;
+}
+
+#subtabs .subtab a{
+  color: black;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.user-links {
+  border-bottom: solid 1px lightgray;
+}
+
 
 @media (max-width: 950px) {
   .grid-container {

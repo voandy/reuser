@@ -5,27 +5,46 @@ append head
 
 append content
   script(src='/scripts/dashboard/dash_listings_script.js')
-  
-block links
-  ul
-    li
-      a(href='/my-listings')
-        b My Listings
-      ul.submenu
-        li
-          a(href='#active-listings') Active listings
-        li
-          a(href='#archived-listings') Archived listings
-        li
-          a(href='create-listing') Create new listing
-    li
-      a(href='/my-reviews') Reviews
-    li
-      a(href='/logout') Logout
 
 block main
-  h3.title Active Listings
-  #active-listings
-  h3.title Archived Listings
-  #archived-listings
+  #subtabs
+    ul.subtab
+      li
+        a#active-listings-button(href='#active-listings') Active 
+      li
+        a#archived-listings-button(href='#archived-listings') Archived 
+    form#create-new-listing-btn(action='/create-listing')
+      button
+        img(src='images/dash/create-new-listing-button.png')
+
+  #listings
+    each listing in listings
+      if listing.isActive 
+        .active-listings
+          +listing-content(listing)
+      else 
+        .archived-listings
+          +listing-content(listing)
+
+
+mixin listing-content(listing)
+  .listing-container 
+    .listing-img
+      img(src='http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/' + listing.imageURLs[0])
+    .listing-details
+      .listing-header
+        h6.title= listing.title
+        p.date-posted= 'Posted: ' + parseDate(listing.datePosted)
+      p.category= 'Category: ' + listing.category
+      p.description= listing.description
+      .actions
+        form
+          button 
+            img(src='images/dash/delete-button.png')
+        form
+          button 
+            img(src='images/dash/edit-button.png')
+        
+
+  
   

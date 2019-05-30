@@ -1,33 +1,118 @@
-.listing-pic {
-  width: 200px;
+/* highlight the side tab text to tell user that they're in listing tab*/
+#listing-text {
+  color: #3CB16B !important;
 }
 
-.bin-image {
-  display: block;
-  width: 25px;
-  margin-left: auto;
-  margin-right: auto;
+/* the green + button */
+#create-new-listing-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end
 }
 
-.undo-image {
-  display: block;
-  width: 25px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.listing-content {
-  padding: 10px
-}
-
-.list-button {
+#create-new-listing-btn button {
+  border: none;
+  padding: 0;
+  height: 40px;
   width: 40px;
 }
 
-#active-listings {
-  margin-bottom: 20px;
+#create-new-listing-btn img{
+  width: 100%;
+  height: 100%;
 }
 
-#archived-listings {
-  margin-bottom: 20px;
+button {
+  cursor: pointer;
 }
+
+/* listings */
+.listing-container {
+  display: flex;
+  height: 180px;
+  width: 95%;
+  border-bottom: solid 1px lightgray;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.listing-img{
+  display: flex;
+  height: 160px;
+  width: 300px;
+  align-content: center;
+  justify-content: center;
+}
+
+.listing-img img{
+  height: 100%;
+  width: auto;
+}
+
+.listing-details {
+  display: grid;
+  grid-template-rows: 25px 15px 90px 30px;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px 10px 20px;
+}
+
+.listing-header {
+  grid-row: 1;
+  height: 25px;
+  width:100%;
+}
+
+h6.title {
+  float:left;
+  color: black;
+  font-weight: bold;
+}
+
+p.date-posted {
+  float: right;
+  font-size: 0.75rem;
+}
+
+p.category {
+  grid-row: 2;
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+p.description {
+  grid-row: 3;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #5E6367;
+  width: 100%;
+}
+
+.actions {
+  grid-row: 4;
+  display: block;
+}
+
+.actions button {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  border: none
+}
+
+.actions img {
+  width: 28px;
+  height: 28px;
+}
+
+/* to show or hide the listings */
+.active-listings {
+  display: block;
+}
+
+.archived-listings {
+  display: none;
+}
+

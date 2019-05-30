@@ -11,26 +11,30 @@ head
 header
   // logo
   .nav-logo-container
-    img#nav-logo-img(src='images/nav/reuser-logo-white-smol.png', alt='reuser')
-    a#nav-logo-brand(href='/') reuser
+    img#nav-logo-img(src='images/nav/reuser-logo-green.png', alt='reuser')
+    a#nav-logo-brand reuser
 
   // nav buttons
   .nav-tab
-    a(href='/map') map
-    a(href='/about') about
+    a(href='/home') Home
+    a(href='/map') Map
+    a(href='/about') About
 
   // login
   .nav-login-container
-    
+    a#login-btn(href='my-listings')
+      img#drop-down(src='images/nav/drop-down.png')
     if loggedIn
       if loginPic
         - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
         .login-container
           .login-cropper
-            img(src=loginPicURL).login-pic
+            a#login-btn(href='my-listings')
+              img(src=loginPicURL).login-pic
       else
-        img#nav-login-img(src='images/nav/login.png', alt='login-image')
-      a#login-btn(href='my-listings')= loginName
+        a#login-btn(href='my-listings')
+          img#nav-login-img(src='images/nav/login.png', alt='login-image')
+      //- a#login-btn(href='my-listings')= loginName
     else
       img#nav-login-img(src='images/nav/login.png', alt='login-image')
       a#login-btn(href='#login', onclick='openLogin()') login
