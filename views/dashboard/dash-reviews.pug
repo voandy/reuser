@@ -8,13 +8,12 @@ append content
 
 block main
   #subtabs
-      ul.subtab
-        li
-          a(href='#') My Reviews 
-        li
-          a(href='#') Reviews Left for Others 
+    ul.subtab
+      li
+        a#my-review-subtab(href='#my-reviews') My Reviews 
+      li
+        a#left-reviews-subtab(href='#reviews-left-for-others') Reviews Left for Others 
 
-  h3.title My Reviews
-  #my-reviews
-  h3.title Reviews Left for Others
-  #left-reviews
+  #reviews
+    #my-reviews
+    #left-reviews

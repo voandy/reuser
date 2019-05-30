@@ -1,4 +1,4 @@
-.review-content {
+/* .review-content {
   margin-bottom: 20px;
 }
 
@@ -11,14 +11,78 @@
 
 .list-button {
   width: 40px;
-}
+} */
 
-#my-reviews {
+/* reviews */
+.review-container {
+  display: grid;
+  grid-template-columns: 300px auto;
+  height: 180px;
+  width: 95%;
+  border-bottom: solid 1px lightgray;
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 
-#left-reviews {
-  margin-bottom: 20px;
+.review-details {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: 25px 15px 90px 30px;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px 10px 0px;
 }
 
+h6.title a{
+  float:left;
+  color: black;
+  font-weight: bold;
+}
+
+p.left-by {
+  grid-row: 2;
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+p.date-posted {
+  float: right;
+  font-size: 0.75rem;
+}
+
+
+p.description {
+  grid-row: 3;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #5E6367;
+  width: 100%;
+}
+
+/* .actions {
+  grid-row: 4;
+  display: block;
+}
+
+.actions button {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  border: none
+}
+
+.actions img {
+  width: 28px;
+  height: 28px;
+} */
+
+/* to show or hide the reviews */
+.active-reviews {
+  display: block;
+}
+
+.archived-reviews {
+  display: none;
+}
 
