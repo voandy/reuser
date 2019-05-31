@@ -2,6 +2,10 @@
   width: 200px;
 }
 
+.listing-id-hidden {
+  display: none;
+}
+
 .bin-image {
   display: block;
   width: 25px;
@@ -9,11 +13,19 @@
   margin-right: auto;
 }
 
+.bin-image:hover {
+  cursor: pointer;
+}
+
 .undo-image {
   display: block;
   width: 25px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.undo-image:hover {
+  cursor: pointer;
 }
 
 .listing-content {
@@ -41,3 +53,4 @@
   display: none;
   margin-bottom: 20px;
 }
+

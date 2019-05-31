@@ -5,9 +5,12 @@ const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300
 const activeListings = document.getElementById('active-listings');
 const archivedListings = document.getElementById('archived-listings');
 
+const archiveButtons = document.getElementsByClassName('archive-button');
+
 var user;
 var listings;
 
+// to switch between artive and archive listings
 document.getElementById('active-listings-subtab').onclick = function() {
     activeListings.style.display = 'block';
     archivedListings.style.display = 'none';
@@ -21,7 +24,6 @@ document.getElementById('archived-listings-subtab').onclick = function() {
     document.getElementById('active-listings-title').style.display = 'none';
     document.getElementById('archived-listings-title').style.display = 'block';
 }
-
 
 getUser().then(function(){
   // get all listings made by user
@@ -56,6 +58,16 @@ getUser().then(function(){
     } else {
       archivedListings.innerHTML = "<p>No archived listings.</p>";
     }
+  }).then(function() {
+    // assign onclick functions to the buttons only when 
+    // they are added to the html page
+    var archiveButtons = document.querySelectorAll('.bin-image');
+    for (archiveBtn of archiveButtons)  
+      archiveBtn.onclick = archiveListing;
+
+    var undoButtons = document.querySelectorAll('.undo-image');
+    for (undoBtn of undoButtons)  
+      undoBtn.onclick = undoArchivedListing;
   });
 });
 
@@ -67,14 +79,15 @@ function renderListing(listing) {
   var thisListingURL = viewListingURL + "?id=" + listing._id;
 
   listings_content += "<tr class=listing>";
-
+  // add a hidden cell that contains listing id for easier manipulation
+  listings_content += '<td class="listing-id-hidden">' + listing._id + '</td>';
   // lising image
   listings_content += "<td>";
   if (listing.imageURLs.length != 0){
     listings_content += "<a href=\"" + thisListingURL + "\"><img src=\"" +
       img300URL + listing.imageURLs[0] + "\" class=\"listing-pic\"></a>";
   } else {
-    listings_content += "<a href=\"" + thisListingURL +
+  listings_content += "<a href=\"" + thisListingURL +
       "\"><img src=\"images/listing/listing-no-pic.png\" class=\"listing-pic\"></a>";
   }
   listings_content += "</td>";
@@ -111,4 +124,44 @@ function getListings(userId){
         resolve();
       });
   });
-}1
+}
+
+function archiveListing() {
+  // get listing id
+  var listingId = $(this).parent().parent().children('td.listing-id-hidden').text();
+  // create body structure
+  var body = JSON.stringify({
+    'isActive': false
+  });
+  // put to server
+  $.ajax({
+    type: 'PUT',
+    url: '/listing/id/' + listingId,
+    data: body,
+    contentType: 'application/json',
+    error: function (jXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+    }
+  });
+  window.location.reload();  
+}
+
+function undoArchivedListing() {
+  // get listing id
+  var listingId = $(this).parent().parent().children('td.listing-id-hidden').text();
+  // create body structure
+  var body = JSON.stringify({
+    'isActive': true
+  });
+  // put to server
+  $.ajax({
+    type: 'PUT',
+    url: '/listing/id/' + listingId,
+    data: body,
+    contentType: 'application/json',
+    error: function (jXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+    }
+  });
+  window.location.reload();  
+}
