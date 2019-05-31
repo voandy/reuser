@@ -1,0 +1,83 @@
+.form-container {
+    width: 80%;
+    height: auto;
+    border: solid lightgray 1px;
+    padding: 20px 50px 20px 50px;
+    border-radius: 30px;
+}
+
+h3 {
+    /* font-family: Raleway !important; */
+    padding: 5px 0;
+    text-align: center;
+    font-weight: bold !important;
+    color: black !important;
+}
+
+.input-field-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 23px 0 23px 0;
+}
+
+.custom-field {
+    font-size: 15px;
+    font-weight: normal;
+    color: black;
+    width: 80%;
+    padding: 0;
+    background: white !important;
+    height: 30px;
+    border-bottom: solid lightgray 2px !important;
+}
+
+input {
+    width: 100% !important;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* input field animation */
+input::-webkit-input-placeholder {
+    color: #AAA;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #39B54A;
+}
+
+input:focus+.underline {
+    transform: scale(1);
+}
+
+.underline {
+    position: relative;
+    background-color: #39B54A;
+    display: inline-block;
+    height: 2px;
+    top: -2px;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    width: 100%;
+}
+
+@media (max-width: 556px) {
+    .main-container{
+        padding-top: 22px;
+    }
+}

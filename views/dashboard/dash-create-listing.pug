@@ -26,43 +26,42 @@ block links
       a(href='/logout') Logout
 
 block main
-  h3.title Create New Listing
-  form#create-listing
-    | Title
-    br
-    input#list-title(type='text', placeholder='Listing Title')
-    br
+  div.form-container
+    form#create-listing
+      h3 Create New Listing
+      hr
+      div.input-field-container
+        b Title
+        input#list-title.custom-field(type='text', placeholder='Listing Title')
+        span.underline
       
-    | Category
-    br
-    select#list-category
-      option(value='materials') Materials
-      option(value='food') Food
-      option(value='clothing') Clothing
-      option(value='electronics') Electronics
-      option(value='furniture') Furniture
-      option(value='decor') Decor
-      option(value='misc') Misc
-    br
-      
-    | Address
-    br
-    input#list-address(type='text', placeholder='Street Address')
-    br
-      
-    | Description
-    br
-    input#list-description(type='text', placeholder='Describe your listing')
-    br
-      
-    | Expiry Date (Optional)
-    br
-    input#list-date(type='date', min='2019-01-01')
-    br
-      
-    | Image (Optional)
-    br
-    input#list-image(type='file', name='image')
-    br
-      
-    input#list-submit(type='submit')
+      div.input-field-container
+        b Category
+        select#list-category
+          option(value='materials') Materials
+          option(value='food') Food
+          option(value='clothing') Clothing
+          option(value='electronics') Electronics
+          option(value='furniture') Furniture
+          option(value='decor') Decor
+          option(value='misc') Misc
+     
+      div.input-field-container
+        b Address
+        input#list-address.custom-field(type='text', placeholder='Street Address')
+        span.underline
+
+      div.input-field-container
+        b Description
+        input#list-description.custom-field(type='text', placeholder='Describe your listing')
+        span.underline  
+        
+      div.input-field-container
+        b Expiry Date (Optional)
+        input#list-date(type='date', min='2019-01-01')
+
+      div.input-field-container
+        b Image (Optional)
+        input#list-image(type='file', name='image')
+
+      input#list-submit(type='submit')
