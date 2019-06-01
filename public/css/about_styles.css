@@ -1,5 +1,10 @@
 * {box-sizing:border-box}
 
+.main-container h2 {
+    font-weight: bold;
+}
+
+
 /* Slideshow container */
 .slideshow-container {
   background-size:cover;
@@ -181,7 +186,7 @@
 }
 
 hr.about {
-    margin-top: 350px;
+    margin-top: 400px;
     border: 1px solid green;
     width: 100%;
 }
@@ -268,7 +273,7 @@ hr.about {
 .works-container {
     color: green;
     background-size: cover;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -278,13 +283,51 @@ hr.about {
 .works {
     width: 100%;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 70% 30%;
     align-items: center;
 }
 
 .work img{
     margin-top: 10px;
     width: 90%;
+    border-style: solid;
+    border-radius: 100px;
+    border-color: #39B54A;
+}
+
+#post {
+    grid-column: 2;
+    justify-self: center;
+}
+
+.works .giver {
+    width: 70%;
+    align-items: center;
+}
+
+.works .receiver {
+    width: 90%;
+    display:grid;
+    grid-template-columns: 30% 30% 30%;
+    align-items: center;
+    border-right: 2px dashed #39B54A;
+}
+
+#receiver-text {
+    text-decoration: underline;
+    padding-right: 150px;
+    text-align: center;
+}
+
+#giver-text {
+    text-decoration: underline;
+    padding-right: 100px;
+    text-align: center;
+}
+
+.work h5 {
+    padding-right: 25px;
+    text-align: center;
 }
 
 #browse {
@@ -301,10 +344,7 @@ hr.about {
     grid-column: 3;
     justify-self: center;
 }
-#post {
-    grid-column: 4;
-    justify-self: center;
-}
+
 
 @media screen and (max-width: 1200px) {
     .main-container {
