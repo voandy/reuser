@@ -4,6 +4,7 @@ append head
   link(rel='stylesheet', href='/css/dashboard/dash_edit_styles.css')
 
 append content
+  script(src='/scripts/functions/auto_complete.js')
   script(src='/scripts/dashboard/dash_edit_script.js')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap')
   
@@ -31,7 +32,7 @@ block main
       
     | Address
     br
-    input#user-address(type='text', placeholder='Street Address')
+    input#maps-autocomplete(type='text', placeholder='Street Address')
     br
       
     | Profile Picture (Optional)

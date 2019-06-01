@@ -4,6 +4,7 @@ append head
   link(rel='stylesheet', href='/css/dashboard/dash_create_styles.css')
 
 append content
+  script(src='/scripts/functions/auto_complete.js')
   script(src='/scripts/dashboard/dash_create_script.js')
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap')
   
@@ -48,7 +49,7 @@ block main
      
       div.input-field-container
         b Address
-        input#list-address.custom-field(type='text', placeholder='Street Address')
+        input#maps-autocomplete.custom-field(type='text', placeholder='Street Address')
         span.underline
 
       div.input-field-container
