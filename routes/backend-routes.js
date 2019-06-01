@@ -41,6 +41,8 @@ router.put('/user/image/id/:id', userCont.imageUpload);
 
 // get all listings
 router.get('/listing', listingCont.getAll);
+// get active listings
+router.get('/listing/active', listingCont.getActive);
 // get listing by id
 router.get('/listing/id/:id', listingCont.getById);
 // create listing
@@ -61,6 +63,8 @@ router.put('/listing/image/id/:id', listingCont.imageUpload);
 router.delete('/listing/image/id/:id', listingCont.deleteImageByURL);
 // returns all listings made by a given user
 router.get('/listing/userId/:userId', listingCont.getByUser);
+// returns active listings by a given user
+router.get('/listing/active/userId/:userId', listingCont.getActiveByUser);
 // returns listing filtered by search term and categories
 router.post('/listing/filtered', listingCont.filteredSearch);
 

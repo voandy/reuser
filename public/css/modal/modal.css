@@ -20,10 +20,6 @@
     box-sizing: border-box;
 }
 
-.modal-container p {
-  margin-bottom: 15px;
-}
-
 .modal-container {
   position: relative;
   float: right;

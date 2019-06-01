@@ -29,6 +29,9 @@ getUser().then(function(){
     if (reviews === undefined || reviews.length == 0) {
       myReviews.innerHTML = "<p>You have not received any reivews yet.</p>";
     } else {
+      reviews.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
       getReviewers().then(function(){
         var reviews_content = "";
 
@@ -46,6 +49,10 @@ getUser().then(function(){
     if (reviewsLeft === undefined || reviewsLeft.length == 0) {
       leftReviews.innerHTML = "<p>You have not reviewed any other users yet.</p>";
     } else {
+      reviewsLeft.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
+
       getReviewees().then(function(){
         var reviews_content = '<table><tbody>';
 
@@ -56,10 +63,16 @@ getUser().then(function(){
 
         reviews_content += '</table></tbody>';
         leftReviews.innerHTML = reviews_content;
+      }).then(function() {
+        // assign onclick functions to the buttons only when
+        // they are added to the html page
+        var deleteButtons = document.querySelectorAll('.bin-image');
+        for (deleteBtn of deleteButtons) {
+          deleteBtn.onclick = deleteReview;
+        }
       });
     }
   });
-
 });
 
 function renderReview(review){
@@ -95,6 +108,8 @@ function renderLeftReview(review) {
       reviewDate.toLocaleDateString("en-AU", {year:"numeric", month:"short", day:"numeric"}) + "</div>" +
       "<div class=\"review-content\">" + review.content + "</div>" +
     "</td>" +
+      // add a hidden cell that contains listing id for easier manipulation
+    '<td class="review-id-hidden">' + review._id + '</td>' +
     "<td class=\"list-button\">" +
       "<img src=\"images/dash/bin.png\" class=\"bin-image\">" +
     "</td>" +
@@ -145,10 +160,28 @@ function getReviewee(review){
       resolve(review.reviewee = user);
     });
   });
-}
+};
 
 // add associated reviewee to all reviews
 async function getReviewees(){
   const promises = reviewsLeft.map(getReviewee);
   await Promise.all(promises);
-}
+};
+
+function deleteReview() {
+  if (confirm('Are you sure you want to delete this review?')) {
+    // get listing id
+    var reviewId = $(this).parent().parent().children('td.review-id-hidden').text();
+    // put to server
+    $.ajax({
+      type: 'DELETE',
+      url: '/review/id/' + reviewId,
+      contentType: 'application/json',
+      error: function (jXHR, textStatus, errorThrown) {
+          alert(errorThrown);
+      }
+    }).then(function() {
+      window.location.reload();
+    });
+  }
+};
