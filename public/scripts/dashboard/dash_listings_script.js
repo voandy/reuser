@@ -1,6 +1,6 @@
 const viewListingURL ="/view-listing"
 
-const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/";
+const img300URL = "https://reuser-api.s3.amazonaws.com/300xAUTO/";
 
 const activeListings = document.getElementById('active-listings');
 const archivedListings = document.getElementById('archived-listings');

@@ -5,8 +5,8 @@ const reviewURL = "/review";
 const profileURL = "/profile";
 const thisUserURL = "user/data";
 
-const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/";
-const img650URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/650xAUTO/";
+const img300URL = "https://reuser-api.s3.amazonaws.com/300xAUTO/";
+const img650URL = "https://reuser-api.s3.amazonaws.com/650xAUTO/";
 
 const userId = window.location.search.split("id=")[1];
 

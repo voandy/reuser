@@ -3,8 +3,8 @@ const userURL = "/user";
 const reviewURL = "/review";
 const profileURL = "/profile";
 
-const img60URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/";
-const img650URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/650xAUTO/";
+const img60URL = "https://reuser-api.s3.amazonaws.com/60x60/";
+const img650URL = "https://reuser-api.s3.amazonaws.com/650xAUTO/";
 
 const listingId = window.location.search.split("id=")[1];
 
@@ -135,7 +135,7 @@ getListing(listingId).then(function(){
         reviews.sort(function(a,b){
           return new Date(b.datePosted) - new Date(a.datePosted);
         });
-        
+
         getReviewers().then(function(){
           var reviews_content = "";
 

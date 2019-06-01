@@ -18,7 +18,7 @@ block content
                 #user-pic
                   .profile-cropper
                     if loginPic
-                      - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
+                      - var loginPicURL = "https://reuser-api.s3.amazonaws.com/60x60/" + loginPic
                       img(src=loginPicURL).profile-pic
                     else
                       img(src="images/profile/avatar-sm.png").profile-pic

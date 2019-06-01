@@ -2,8 +2,8 @@ const listingURL = "/listing/active";
 const viewListingURL ="/view-listing"
 const userURL = "/user";
 
-const img60URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/";
-const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/";
+const img60URL = "https://reuser-api.s3.amazonaws.com/60x60/";
+const img300URL = "https://reuser-api.s3.amazonaws.com/300xAUTO/";
 
 var currPos =
   (window.location.search ? getJsonFromUrl(window.location.search) : null);
