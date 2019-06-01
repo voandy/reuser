@@ -1,9 +1,14 @@
-.form-container {
+/* .form-container {
     width: 80%;
     height: auto;
-    border: solid lightgray 1px;
-    padding: 20px 50px 20px 50px;
+    /* border: solid lightgray 1px; */
+    /* padding: 20px 50px 20px 50px;
     border-radius: 30px;
+}  */
+
+/* main container */
+#create-listing{
+    width: 85%;
 }
 
 h3 {
@@ -48,6 +53,8 @@ input:focus {
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
+    width: 100%;
+
 }
 
 /* input field animation */
