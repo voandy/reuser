@@ -1,3 +1,8 @@
+const s3resize60URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/";
+const s3resize300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/";
+const s3resize650URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/650xAUTO/";
+
+const request = require("request");
 const mongoose = require('mongoose');
 
 const User = mongoose.model('user');
@@ -187,13 +192,21 @@ var imageUpload = function(req, res) {
 
     // store only the image filename, url is appended by lamda resize
     var thisURL = req.file.location.split("/");
-    User.findByIdAndUpdate(userId, {profilePicURL: thisURL[thisURL.length - 1]}, function(err, user){
+    var filename = thisURL[thisURL.length - 1];
+
+    // send get requests to aws to pre-emptively resize images
+    request.get(s3resize60URL + filename, (error, response, body) => {});
+    request.get(s3resize300URL + filename, (error, response, body) => {});
+    request.get(s3resize650URL + filename, (error, response, body) => {});
+
+    User.findByIdAndUpdate(userId, {profilePicURL: filename}, function(err, user){
       if(err){
         res.sendStatus(404);
       }
+      setTimeout(function() {
+        return res.json({'imageUrl': req.file.location});
+      }, 5000);
     });
-
-    return res.json({'imageUrl': req.file.location});
   });
 };
 
