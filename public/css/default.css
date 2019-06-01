@@ -94,4 +94,14 @@ button:focus {
 }
 
 button, input[type="button"], input[type="submit"] {
+  background-color: #39B54A;
+  font-size: 20px;
+  color: white;
+  border-radius: 47px;
+  border: none;
+  text-align: center;
+  padding: 4px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
