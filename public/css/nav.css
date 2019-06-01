@@ -108,6 +108,14 @@ header * {
 }
 
 /* respondsive design */
+@media screen and (max-width: 800px){
+  /* remove login buttons */
+  #login-btn{
+    display: none !important;
+  }
+
+}
+
 @media screen and (max-width: 600px){
 
   /* remove nav buttons */
