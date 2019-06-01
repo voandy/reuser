@@ -1,53 +1,53 @@
 doctype html
 head
 
-    // nav bar style and behaviour
-    link(rel='stylesheet', href='/css/modal/modal.css')
-    link(rel='stylesheet', href='/css/nav.css')
-      
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(http-equiv='X-UA-Compatible', content='ie=edge')
-    
+        // nav bar style and behaviour
+        link(rel='stylesheet', href='/css/modal/modal.css')
+        link(rel='stylesheet', href='/css/nav.css')
+            
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible', content='ie=edge')
+        
 header
-  // logo
-  .nav-logo-container
-    img#nav-logo-img(src='images/nav/reuser-logo-white-smol.png', alt='reuser')
-    a#nav-logo-brand(href='/') reuser
+    // logo
+    .nav-logo-container
+        img#nav-logo-img(src='images/nav/reuser-logo-white-smol.png', alt='reuser')
+        a#nav-logo-brand(href='/') reuser
 
-  // nav buttons
-  .nav-tab
-    a(href='/map') map
-    a(href='/about') about
+    // nav buttons
+    .nav-tab
+        a(href='/map') map
+        a(href='/about') about
 
-  // login
-  .nav-login-container
-    
-    if loggedIn
-      if loginPic
-        - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
-        .login-container
-          .login-cropper
-            img(src=loginPicURL).login-pic
-      else
-        img#nav-login-img(src='images/nav/login.png', alt='login-image')
-      a#login-btn(href='my-listings')= loginName
-    else
-      img#nav-login-img(src='images/nav/login.png', alt='login-image')
-      a#login-btn(href='#login', onclick='openLogin()') login
+    // login
+    .nav-login-container
+        
+        if loggedIn
+            if loginPic
+                - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
+                .login-container
+                    .login-cropper
+                        img(src=loginPicURL).login-pic
+            else
+                img#nav-login-img(src='images/nav/login.png', alt='login-image')
+            a#login-btn(href='my-listings')= loginName
+        else
+            img#nav-login-img(src='images/nav/login.png', alt='login-image')
+            a#login-btn(href='#login', onclick='openLogin()') login
 
-  // log in pop out
-  #login-modal
-    .modal-container
-      form(action='/login', method='POST')
-        input(type='email', name='email', placeholder='email')
-        br
-        input(type='password', name='password', placeholder='password')
-        br
-        button(type='submit') Log in
-        br
-        small
-          | don't have an account?  
-          a(href='/sign-up') sign up
-          
-  script(rel="text/javascript" src="/scripts/nav.js")
+    // log in pop out
+    #login-modal
+        .modal-container
+            form(action='/login', method='POST')
+                input(type='email', name='email', placeholder='email')
+                br
+                input(type='password', name='password', placeholder='password')
+                br
+                button(type='submit') Log in
+                br
+                small
+                    | don't have an account?    
+                    a(href='/sign-up') sign up
+                    
+    script(rel="text/javascript" src="/scripts/nav.js")

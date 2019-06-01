@@ -1,71 +1,71 @@
 extends default
 
 append head
-  //- tab title
-  title reuser | sign-up
-  //- import css stylesheet
-  link(rel='stylesheet', href='../css/sign-up_styles.css')
-  //- import jQuery script
-  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js')
-  //- import custome script
-  script(src='scripts/sign-up_script.js')
+    //- tab title
+    title reuser | sign-up
+    //- import css stylesheet
+    link(rel='stylesheet', href='../css/sign-up_styles.css')
+    //- import jQuery script
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js')
+    //- import custome script
+    script(src='scripts/sign-up_script.js')
 
 block content
-  div.main-container
-    div.form-container
-      form#registerform(action='/user', method='POST')
-        h3 Register
-        hr
-        //- Show errors if there's any
-        include partials/messages.pug
-        div.input-field-container
-          label(for='fullname')
-            b Name
-          input#name.custom-field(type='text', placeholder='', name='name', required, value=(typeof name != 'undefined' ? name : ""))
-          span.underline
-          div
-            a#invalidName.text-red
-              | Must be at least 3 characters long.
+    div.main-container
+        div.form-container
+            form#registerform(action='/user', method='POST')
+                h3 Register
+                hr
+                //- Show errors if there's any
+                include partials/messages.pug
+                div.input-field-container
+                    label(for='fullname')
+                        b Name
+                    input#name.custom-field(type='text', placeholder='', name='name', required, value=(typeof name != 'undefined' ? name : ""))
+                    span.underline
+                    div
+                        a#invalidName.text-red
+                            | Must be at least 3 characters long.
 
-        div.input-field-container
-          label(for='email')
-            b Email
-          input#email.custom-field(type='text', placeholder='', name='email', required, value=(typeof email != 'undefined' ? email : ""))
-          span.underline
-          div
-            a#emailNotUnique.text-red 
-              | This email has an account registered.
-          div
-            a#invalidEmail.text-red
-              | Invalid email.
+                div.input-field-container
+                    label(for='email')
+                        b Email
+                    input#email.custom-field(type='text', placeholder='', name='email', required, value=(typeof email != 'undefined' ? email : ""))
+                    span.underline
+                    div
+                        a#emailNotUnique.text-red 
+                            | This email has an account registered.
+                    div
+                        a#invalidEmail.text-red
+                            | Invalid email.
 
 
-        div.input-field-container
-          label(for='password')
-            b Password
-          input#password.custom-field(type='password', placeholder='', name='password', required, value=(typeof password != 'undefined' ? password : ""))
-          span.underline
-          div
-            a#passwordLength.text-red
-              | Must be at least 8 characters long.
+                div.input-field-container
+                    label(for='password')
+                        b Password
+                    input#password.custom-field(type='password', placeholder='', name='password', required, value=(typeof password != 'undefined' ? password : ""))
+                    span.underline
+                    div
+                        a#passwordLength.text-red
+                            | Must be at least 8 characters long.
 
-        div.input-field-container
-          label(for='password_cfm')
-            b Confirm Password
-          input#password_cfm.custom-field(type='password', placeholder='', name='password_cfm', required, value=(typeof password_cfm != 'undefined' ? password_cfm : ""))
-          span.underline
-          div
-            a#passwordDifferent.text-red
-              | Password doesn&apos;t match.
+                div.input-field-container
+                    label(for='password_cfm')
+                        b Confirm Password
+                    input#password_cfm.custom-field(type='password', placeholder='', name='password_cfm', required, value=(typeof password_cfm != 'undefined' ? password_cfm : ""))
+                    span.underline
+                    div
+                        a#passwordDifferent.text-red
+                            | Password doesn&apos;t match.
 
-        hr
-        br
-        p.term-n-privacy-text
-          | by creating an account, you agree to our 
-          a(href='#') terms & privacy policy
-          | .
-        button.registerbtn(type='submit') submit
-        p.already-has-account-text
-          | already have an account? 
-          a(href='/login') sign in
-          | .
+                hr
+                br
+                p.term-n-privacy-text
+                    | by creating an account, you agree to our 
+                    a(href='#') terms & privacy policy
+                    | .
+                button.registerbtn(type='submit') submit
+                p.already-has-account-text
+                    | already have an account? 
+                    a(href='/login') sign in
+                    | .

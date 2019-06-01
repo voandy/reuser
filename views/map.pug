@@ -1,55 +1,55 @@
 extends default.pug
 
 append head
-    title reuser | map
-    link(rel='stylesheet', href='/css/map_styles.css')
-    link(rel='stylesheet', href='/css/modal/modal_form.css')
+        title reuser | map
+        link(rel='stylesheet', href='/css/map_styles.css')
+        link(rel='stylesheet', href='/css/modal/modal_form.css')
 
 block content
-    .grid-container
-      #modal-grid
-        #modal-background
-          .form-container
-            .modal-container
-              form#modal-form
-                //- span.close ×
-                input(type='checkbox', id='check-materials', value='materials') 
-                |  Materials
-                br
-                input(type='checkbox', id='check-food', value='food') 
-                |  Food
-                br
-                input(type='checkbox', id='check-clothing', value='clothing') 
-                |  Clothing
-                br
-                input(type='checkbox', id='check-electronics', value='electronics') 
-                |  Electronics
-                br
-                input(type='checkbox', id='check-furniture', value='furniture') 
-                |  Furniture
-                br
-                input(type='checkbox', id='check-decor', value='decor') 
-                |  Decor
-                br
-                input(type='checkbox', id='check-misc', value='misc') 
-                |  Misc.
-                br
-                input(type='text', id='search-term', placeholder='Enter search terms')
-                br
-                input(type='submit', value='Submit')
-      .map
-        #map
-      .search-bar
-        .search-box-container
-          input#search-box.mapControls(type='text', placeholder='Address or Suburb')
-          img#modal-form-button(src='/images/map/filter.png')
-      #sidebar.sidebar
-        #listings-list
-          center
-            img(src='/images/map/loading.png')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
-    script(src='/scripts/modal/modal_form.js')
-    script(src='/scripts/functions/map_styles.js')
-    script(src='/scripts/functions/time_since.js')
-    script(src='/scripts/map_script.js')
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap', async='', defer='')
+        .grid-container
+            #modal-grid
+                #modal-background
+                    .form-container
+                        .modal-container
+                            form#modal-form
+                                //- span.close ×
+                                input(type='checkbox', id='check-materials', value='materials') 
+                                |    Materials
+                                br
+                                input(type='checkbox', id='check-food', value='food') 
+                                |    Food
+                                br
+                                input(type='checkbox', id='check-clothing', value='clothing') 
+                                |    Clothing
+                                br
+                                input(type='checkbox', id='check-electronics', value='electronics') 
+                                |    Electronics
+                                br
+                                input(type='checkbox', id='check-furniture', value='furniture') 
+                                |    Furniture
+                                br
+                                input(type='checkbox', id='check-decor', value='decor') 
+                                |    Decor
+                                br
+                                input(type='checkbox', id='check-misc', value='misc') 
+                                |    Misc.
+                                br
+                                input(type='text', id='search-term', placeholder='Enter search terms')
+                                br
+                                input(type='submit', value='Submit')
+            .map
+                #map
+            .search-bar
+                .search-box-container
+                    input#search-box.mapControls(type='text', placeholder='Address or Suburb')
+                    img#modal-form-button(src='/images/map/filter.png')
+            #sidebar.sidebar
+                #listings-list
+                    center
+                        img(src='/images/map/loading.png')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+        script(src='/scripts/modal/modal_form.js')
+        script(src='/scripts/functions/map_styles.js')
+        script(src='/scripts/functions/time_since.js')
+        script(src='/scripts/map_script.js')
+        script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb9qNOsOS_Q77Z94lgwCdYUj4BdKShAA&libraries=places&callback=initMap', async='', defer='')
