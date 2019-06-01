@@ -9,8 +9,16 @@
   margin-right: auto;
 }
 
+.bin-image:hover {
+  cursor: pointer;
+}
+
 .list-button {
   width: 40px;
+}
+
+.review-id-hidden{
+  display: none;
 }
 
 #my-reviews {
