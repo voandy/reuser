@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const NodeGeocoder = require('node-geocoder');
 
 const Listing = mongoose.model('listing');
 const User    = mongoose.model('user');
