@@ -18,25 +18,48 @@ block links
 
 block main
   h3.title Edit Profile
+  hr
   form#update-user
-    | Name
-    br
-    input#user-name(type='text', placeholder='Full Name')
-    br
+
+    div.input-field-container
+    b Name
+    input#user-name.custom-field(type='text', placeholder='Full Name')
+    span.underline
+
+    div.input-field-container
+    b Email
+    input#user-email.custom-field(type='text', placeholder='reuser@reuser.xyz')
+    span.underline
+
+    div.input-field-container
+    b Adress
+    input#user-address.custom-field(type='text', placeholder='Street Address')
+    span.underline
+
+    div.input-field-container
+    b Profile Picture (Optional)
+    input#user-image.custom-field(type='file', name='image')
+    span.underline
+
+
+    //- b Name
+    //- br
+    //- input#user-name.custom-field(type='text', placeholder='Full Name')
+    //- br
       
-    | Email
-    br
-    input#user-email(type='text', placeholder='reuser@reuser.xyz')
-    br
+    //- b Email
+    //- br
+    //- input#user-email.custom-field(type='text', placeholder='reuser@reuser.xyz')
+    //- br
       
-    | Address
-    br
-    input#user-address(type='text', placeholder='Street Address')
-    br
+    //- b Address
+    //- br
+    //- input#user-address.custom-field(type='text', placeholder='Street Address')
+    //- br
       
-    | Profile Picture (Optional)
-    br
-    input#user-image(type='file', name='image')
-    br
+    //- b Profile Picture (Optional)
+    //- br
+    //- input#user-image.custom-field(type='file', name='image')
+    //- br
       
-    input#user-submit(type='submit')
+    input#user-submit.custom-field(type='submit')

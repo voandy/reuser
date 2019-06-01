@@ -124,7 +124,7 @@ body {
 
 @media (max-width: 650px) {
   .profile-pic {
-    width = 100%;
+    width : 100%;
     max-width: 200px;
   }
   .user-pic {
