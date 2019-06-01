@@ -18,6 +18,17 @@ var getAll = function(req,res){
   });
 };
 
+// get active listings
+var getActive = function(req,res){
+  Listing.find({isActive:true}, function(err, listings){
+    if (!err){
+      res.send(listings);
+    }else{
+      res.status(404);
+    }
+  });
+};
+
 // get listing by id
 var getById = function(req,res){
   var listingId = req.params.id;
@@ -159,10 +170,22 @@ var deleteImageByURL = function(req, res) {
   });
 };
 
-// given a userId returns all review written ABOUT that user
+// given a userId returns all listings made by that user
 var getByUser = function(req,res){
   var userId = req.params.userId;
   Listing.find({userId:userId}, function(err, listings){
+    if (!err){
+      res.send(listings);
+    }else{
+      res.status(404);
+    }
+  });
+}
+
+// given a userId returns all ACTIVE listings made by that user
+var getActiveByUser = function(req,res){
+  var userId = req.params.userId;
+  Listing.find({userId:userId, isActive:true}, function(err, listings){
     if (!err){
       res.send(listings);
     }else{
@@ -203,6 +226,7 @@ var filteredSearch = function (req,res){
 }
 
 module.exports.getAll = getAll;
+module.exports.getActive = getActive;
 module.exports.getById = getById;
 module.exports.create = create;
 module.exports.deleteById = deleteById;
@@ -213,4 +237,5 @@ module.exports.imageUpload = imageUpload;
 module.exports.getAllImages = getAllImages;
 module.exports.deleteImageByURL = deleteImageByURL;
 module.exports.getByUser = getByUser;
+module.exports.getActiveByUser = getActiveByUser;
 module.exports.filteredSearch = filteredSearch;

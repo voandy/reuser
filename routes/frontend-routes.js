@@ -81,7 +81,7 @@ router.get('/user/data', function(req, res) {
 
   if (req.user === undefined) {
     // The user is not logged in
-    res.send(200, {"loggedIn": false});
+    res.status(200).send({"loggedIn": false});
   } else {
     res.send(req.user);
   }

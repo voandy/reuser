@@ -1,4 +1,4 @@
-const listingURL = "/listing";
+const listingURL = "/listing/active";
 const viewListingURL ="/view-listing"
 const userURL = "/user";
 const reviewURL = "/review";
@@ -82,6 +82,10 @@ getUser(userId).then(function(){
       reviewsRec.innerHTML = "<div id=\"reviews-title\"><h4>Reviews Received</h4><div>" +
       "<p>User has not received any reivews yet.</p>";
     } else {
+      reviews.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
+
       getReviewers().then(function(){
         var reviews_content = "<div id=\"reviews-title\"><h4>Reviews Received</h4><div>";
 
@@ -105,7 +109,7 @@ getUser(userId).then(function(){
       });
     }
 
-    // add functionality to revew form
+    // add functionality to review form
     getLoggedInUser().then(function(){
       // user not logged in
       if (loggedInUser.loggedIn == false) {
@@ -183,6 +187,10 @@ getUser(userId).then(function(){
       activeListings.innerHTML = "<div id=\"listings-title\"><h4>Active Listings</h4><div>" +
       "<p>No active listings.</p>";
     } else {
+      listings.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
+
       var listings_content = "<div id=\"listings-title\"><h4>Active Listings</h4><div>";
 
       listings.forEach(function(listing){

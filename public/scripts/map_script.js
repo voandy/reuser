@@ -1,4 +1,4 @@
-const listingURL = "/listing";
+const listingURL = "/listing/active";
 const viewListingURL ="/view-listing"
 const userURL = "/user";
 

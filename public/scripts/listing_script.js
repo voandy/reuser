@@ -132,6 +132,10 @@ getListing(listingId).then(function(){
       if (reviews === undefined || reviews.length == 0) {
         reviewsRec.innerText = "No reviews received."
       } else {
+        reviews.sort(function(a,b){
+          return new Date(b.datePosted) - new Date(a.datePosted);
+        });
+        
         getReviewers().then(function(){
           var reviews_content = "";
 

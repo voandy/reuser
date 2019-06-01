@@ -19,27 +19,26 @@ block links
 
 block main
   h3.title Edit Profile
-  hr
   form#update-user
 
     div.input-field-container
-    b Name
+    h6 Name
     input#user-name.custom-field(type='text', placeholder='Full Name')
     span.underline
 
     div.input-field-container
-    b Email
+    h6 Email
     input#user-email.custom-field(type='text', placeholder='reuser@email.com')
     span.underline
 
     div.input-field-container
-    b Address
+    h6 Address
     input#maps-autocomplete.custom-field(type='text', placeholder='Street Address')
     span.underline
 
     div.input-field-container
-    b Profile Picture (Optional)
+    h6 Profile Picture (Optional)
     input#user-image(type='file', name='image')
     span.underline
       
-    input#user-submit(type='submit')
+    input#user-submit(type='submit', value='submit')
