@@ -1,79 +1,39 @@
 extends default.pug
 
 append head
-    title reuser | about
-    link(rel='stylesheet', href='/css/about_styles.css')
+  title reuser | about
+  link(rel='stylesheet', href='/css/about_styles.css')
+  link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
 
 block content
-    main(role='main')
-      section.jumbotron.text-center
-        .container
-          h1.jumbotron-heading Reusing have never been so simple
-          p.lead.text-muted
-            | Many things get thrown away :( 
-            br
-            |  so lets reuse them today !
-          // search bar
-          .row
-            .col-md-3.col-sm-3.col-xs-4
-            .col-md-6.col-sm-6.col-xs-4
-              form
-                .input-group.mb-3
-                  input.form-control(type='text', placeholder='Browse Items', aria-label='Search')
-                  .input-group-append
-            .col-md-3.col-sm-3.col-xs-4
-      // infomation box
-      .d-md-flex.flex-md-equal.w-100.my-md-3.pl-md-3
-        .col-md-6.col-sm-12.bg-dark.mr-md-3.pt-3.px-3.pt-md-5.px-md-5.text-center.text-white.overflow-hidden
-          .my-3.py-3
-            h2.display-5 Whats Different ?
-            p.lead
-              | Reuser is a non-profit organisation, aiming to connect givers and receivers around
-              | their neighbourhood to distribute unwanted items
-        .col-md-6.col-sm-12.bg-light.mr-md-3.pt-3.px-3.pt-md-5.px-md-5.text-center.overflow-hidden
-          .my-3.p-3
-            h2.display-5 Its over Anakin, I got the high ground
-            p.lead You underestimate my power
-      // The creators
-      .album.py-5.bg-light
-        h3.jumbotron-heading.text-center The Creators
-        .container
-          .row
-            .col-lg-3.col-md-6
-              // <div class="card md3-3 shadow-sm"><img src="/images/about/pika.jpg" />
-              .card.md3-3.shadow-sm.img-fluid
-                img.card-img(src='/images/about/pika.jpg')
-                .card-body
-                  p.card-text Andy Vo
-                  .d-flex.justify-content-between.align-items-center
-                    small.text-muted Sillicon Valley is amazing
-            .col-lg-3.col-md-6
-              .card.md3-3.shadow-sm
-                img.card-img(src='/images/about/pika.jpg')
-                .card-body
-                  p.card-text Nick Ang
-                  .d-flex.justify-content-between.align-items-center
-                    small.text-muted comp sys suc
-            .col-lg-3.col-md-6
-              .card.md3-3.shadow-sm
-                img.card-img(src='/images/about/pika.jpg')
-                .card-body
-                  p.card-text Shaun Soong
-                  .d-flex.justify-content-between.align-items-center
-                    small.text-muted hue
-            .col-lg-3.col-md-6
-              .card.md3-3.shadow-sm
-                img.card-img(src='/images/about/pika.jpg')
-                .card-body
-                  p.card-text Christain Sugianto
-                  .d-flex.justify-content-between.align-items-center
-                    small.text-muted fat is me
-    footer.text-muted
-      .container
-        p.float-right
-          a(href='#') Back to top
-        p Reuser © - all rights reserved 
-    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-    script.
-      window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\\\/script>')
-    script(src='/docs/4.3/dist/js/bootstrap.bundle.min.js', integrity='sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o', crossorigin='anonymous')
+  body
+    .slideshow-container
+      .mySlides.fade
+        img(src='images/about/first.jpg')
+        .text.first Start saving our planet by 
+          i reusing
+        button.button Sign Up Today
+      .mySlides.fade
+        img(src='images/about/second.jpg')
+        .text.second The Challenge 
+         p Too many reusable goods are disposed of to landfill because there exist few convenient ways to redistribute these items. We are taught to reduce, reuse, and recycle, but when it comes to reusing, the current facilities we have at our disposal are inadequate
+      .mySlides.fade
+        img(src='images/about/third.jpg')
+        .text.third Our Goal
+         p We find a way to connect people who want to donate their reusable goods to other people who need these goods in a convenient manner. Thus, less goods will be disposed which introduces us to a healthier environment
+      a.prev(onclick='plusSlides(-1)') ❮
+      a.next(onclick='plusSlides(1)') ❯
+      div(style='text-align:center')
+      span.dot.dot1(onclick='currentSlide(1)')
+      span.dot.dot2(onclick='currentSlide(2)')
+      span.dot.dot3(onclick='currentSlide(3)')
+    script(src='/scripts/about_script.js')
+
+    
+    .w3-container
+      h2 Photo Card
+      .w3-card-4(style='width:50%')
+        img(src='img_snowtops.jpg', alt='Alps', style='width:100%')
+        .w3-container.w3-center
+          p The Italian / Austrian Alps
