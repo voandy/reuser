@@ -81,3 +81,16 @@ input:focus+.underline {
         padding-top: 22px;
     }
 }
+
+input[type=submit] {
+    width: 30% !important; 
+    margin-left: 35%;
+    font-size: 20px;
+    padding:5px 15px; 
+    color: #f1f1f1;
+    background:#39B54A; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 30px; 
+}
