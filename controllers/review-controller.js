@@ -66,7 +66,7 @@ var create = function (req,res) {
     });
   });
 
-  res.send(newReview);
+  res.send(review);
 };
 
 // delete review by id

@@ -12,7 +12,19 @@ block content
                 .form-container
                     .modal-container
                         form#modal-form
-                            input(type='text', id='reivew-text', placeholder='Enter review')
+                            h5 Start (out of 5)
+                            select#star-rating
+                                option(value="1") 1
+                                option(value="2") 2
+                                option(value="3") 3
+                                option(value="4") 4
+                                option(value="5") 5
+                            br
+                            h5 Review Title
+                            input(type='text', id='reivew-title', placeholder='Summerise your review')
+                            br
+                            h5 Review Details
+                            textarea(id='reivew-content', rows='10', cols='30', placeholder='Describe your experience')
                             br
                             input(type='submit', value='Submit')
         .listings
@@ -29,10 +41,11 @@ block content
                                 #date-joined
                                 #user-address
                                 #average-rating
-                                #thanks
                                 button#contact-button contact
                                 if loggedIn
                                     button#modal-form-button review
+                                else
+                                    button#modal-form-button(style="display:none;")
             .reviews
                 #reviews-rec
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')

@@ -20,6 +20,10 @@
     box-sizing: border-box;
 }
 
+.modal-container p {
+  margin-bottom: 15px;
+}
+
 .modal-container {
   position: relative;
   float: right;
@@ -65,7 +69,27 @@
   margin-bottom: 10px;
   display: inline-block;
   border: 1px solid #ccc;
-  border-radius: 47px;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.modal-container select{
+  width: 100%;
+  padding: 7px 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.modal-container textarea{
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
   box-sizing: border-box;
 }
 

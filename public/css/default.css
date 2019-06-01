@@ -84,10 +84,9 @@ button {
   border: none;
   text-align: center;
   padding: 4px;
-  /* width: 80%; */
   transition: all 0.5s;
   cursor: pointer;
-  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 button:focus {
