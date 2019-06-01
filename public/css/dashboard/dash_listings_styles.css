@@ -61,3 +61,9 @@
   display: none;
   margin-bottom: 20px;
 }
+
+#create-listing {
+  width: 50% !important;
+  margin-left: 25%;
+  font-size: 20px;
+}

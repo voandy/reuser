@@ -34,11 +34,6 @@ updateUser.addEventListener('submit', function(){
   var userImage = document.getElementById("user-image").value;
   var userAddress = document.getElementById("maps-autocomplete").value;
 
-  var formattedAddress = place.formatted_address;
-
-  var longitude = place.geometry.location.lng();
-  var latitude = place.geometry.location.lat();
-
   var data = {};
   if (userName) {
     data.name = userName;
@@ -48,6 +43,10 @@ updateUser.addEventListener('submit', function(){
   }
   if (userAddress) {
     data.formattedAddress = userAddress;
+  }
+  if (place) {
+    data.longitude = place.geometry.location.lng();
+    data.latitude = place.geometry.location.lat();
   }
 
   // update the user

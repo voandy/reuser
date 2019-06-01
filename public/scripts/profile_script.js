@@ -1,8 +1,9 @@
-const listingURL = "/listing";
+const listingURL = "/listing/active";
 const viewListingURL ="/view-listing"
 const userURL = "/user";
 const reviewURL = "/review";
 const profileURL = "/profile";
+const thisUserURL = "user/data";
 
 const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300xAUTO/";
 const img650URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/650xAUTO/";
@@ -15,7 +16,6 @@ const userPic = document.getElementById('user-pic');
 const userAddress = document.getElementById('user-address');
 const dateJoined = document.getElementById('date-joined');
 const averageRating = document.getElementById('average-rating');
-const thanksRec = document.getElementById('thanks');
 const contact = document.getElementById('contact');
 
 // reviews element
@@ -24,9 +24,24 @@ const reviewsRec = document.getElementById('reviews-rec');
 // listings element
 const activeListings = document.getElementById('active-listings');
 
+// review form
+const reviewForm = document.getElementById('modal-form');
+
 var user;
+var loggedInUser;
 var reviews;
 var listings;
+
+// get the logged in user
+function getLoggedInUser(){
+  return new Promise(resolve => {
+      jQuery.get(thisUserURL, function(data){
+        console.log(data);
+        loggedInUser = data;
+        resolve();
+      });
+  });
+}
 
 getUser(userId).then(function(){
   // get user data
@@ -48,11 +63,7 @@ getUser(userId).then(function(){
   averageRating.innerHTML =
     "<img class=\"user-rating\" src=\"" + getStars(user.starRatingAvg) + "\">";
 
-  // thanks received TODO 
-  thanksRec.innerHTML =
-    "<div>" + "10" + "<img src=\"images/profile/like.png\"><\div>";
-
-  // profile picture  
+  // profile picture
   if (user.profilePicURL){
     userPic.innerHTML = "<img src=\"" + img300URL + user.profilePicURL + "\" class=\"profile-pic\">";
   } else {
@@ -71,6 +82,10 @@ getUser(userId).then(function(){
       reviewsRec.innerHTML = "<div id=\"reviews-title\"><h4>Reviews Received</h4><div>" +
       "<p>User has not received any reivews yet.</p>";
     } else {
+      reviews.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
+
       getReviewers().then(function(){
         var reviews_content = "<div id=\"reviews-title\"><h4>Reviews Received</h4><div>";
 
@@ -93,6 +108,77 @@ getUser(userId).then(function(){
         reviewsRec.innerHTML = reviews_content;
       });
     }
+
+    // add functionality to review form
+    getLoggedInUser().then(function(){
+      // user not logged in
+      if (loggedInUser.loggedIn == false) {
+        return;
+      }
+
+      // prevent users from reviewing themselves
+      if (userId == loggedInUser._id) {
+        document.getElementById("modal-form-button").onclick = function() {
+          alert("You cannot review youself!");
+        }
+      }
+
+      reviews.forEach(function(review){
+        if (review.leftById == loggedInUser._id) {
+          document.getElementById("modal-form-button").onclick = function() {
+            alert("You already reviewed this user!");
+          }
+        }
+      });
+
+      reviewForm.addEventListener('submit', function(){
+        event.preventDefault();
+
+        var reviewURL = "/review/id/" + userId + "/" + loggedInUser._id;
+
+        var reviewTitle = document.getElementById("reivew-title").value;
+        var reviewContent = document.getElementById("reivew-content").value;
+
+        var starRating;
+        switch (document.getElementById("star-rating").value) {
+          case "1":
+          starRating = 1;
+          break;
+          case "2":
+          starRating = 2;
+          break;
+          case "3":
+          starRating = 3;
+          break;
+          case "4":
+          starRating = 4;
+          break;
+          case "5":
+          starRating = 5;
+          break;
+        }
+
+        var data = {
+          userId:userId,
+          leftById:loggedInUser._id,
+          title:reviewTitle,
+          content:reviewContent,
+          starRating:starRating
+        }
+
+        $.ajax({
+            type: "POST",
+            url: reviewURL,
+            data: data,
+            error: function (jXHR, textStatus, errorThrown) {
+              alert(errorThrown);
+            },
+            success: function(){
+              window.location.reload();
+            }
+        });
+      });
+    });
   });
 
   // get all listings made by user
@@ -101,6 +187,10 @@ getUser(userId).then(function(){
       activeListings.innerHTML = "<div id=\"listings-title\"><h4>Active Listings</h4><div>" +
       "<p>No active listings.</p>";
     } else {
+      listings.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
+
       var listings_content = "<div id=\"listings-title\"><h4>Active Listings</h4><div>";
 
       listings.forEach(function(listing){
@@ -156,13 +246,6 @@ function getReviews(userId){
       });
   });
 }
-
-// returns the number of likes gievn
-// function getThanks(userId){
-//   return new Promise(resolve =>{
-//     jQuery.get()
-//   })
-// }
 
 // given a review, will get the reviewer and add it to that review
 function getReviewer(review){

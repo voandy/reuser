@@ -26,6 +26,10 @@ document.getElementById('archived-listings-subtab').onclick = function() {
 getUser().then(function(){
   // get all listings made by user
   getListings(user._id).then(function(){
+    listings.sort(function(a,b){
+      return new Date(b.datePosted) - new Date(a.datePosted);
+    });
+
     var active_listings_content = '<table class=\"listings-table\"><tbody>';
     var archived_listings_content = '<table class=\"listings-table\"><tbody>';
 

@@ -29,6 +29,9 @@ getUser().then(function(){
     if (reviews === undefined || reviews.length == 0) {
       myReviews.innerHTML = "<p>You have not received any reivews yet.</p>";
     } else {
+      reviews.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
       getReviewers().then(function(){
         var reviews_content = "";
 
@@ -46,15 +49,19 @@ getUser().then(function(){
     if (reviewsLeft === undefined || reviewsLeft.length == 0) {
       leftReviews.innerHTML = "<p>You have not reviewed any other users yet.</p>";
     } else {
+      reviewsLeft.sort(function(a,b){
+        return new Date(b.datePosted) - new Date(a.datePosted);
+      });
+
       getReviewees().then(function(){
-        var reviews_content = '<table><tbody>';
+        var reviews_content = '<table class=\"review-table\"><tbody>';
 
         // gets the first 5 reviews left for this user
         reviewsLeft.forEach(function(review){
           reviews_content += renderLeftReview(review);
         });
 
-        reviews_content += '</table></tbody>';
+        reviews_content += '</table class=\"review-table\"></tbody>';
         leftReviews.innerHTML = reviews_content;
       }).then(function() {
         // assign onclick functions to the buttons only when
@@ -91,7 +98,7 @@ function renderLeftReview(review) {
   var reviewDate = new Date(review.datePosted);
 
   review_content +=
-  "<tr class=\"class=review\">" +
+  "<tr class=\"review-row\">" +
     "<td>" +
       "<h6 class=\"review-title\">" + review.title + "</h6>" +
       "<img class=\"star-rating\" src=\"" + getStars(review.starRating) + "\">" +

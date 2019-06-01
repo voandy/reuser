@@ -28,7 +28,8 @@ header
                 - var loginPicURL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/60x60/" + loginPic
                 .login-container
                     .login-cropper
-                        img(src=loginPicURL).login-pic
+                        a(href='my-listings')
+                            img(src=loginPicURL).login-pic
             else
                 img#nav-login-img(src='images/nav/login.png', alt='login-image')
             a#login-btn(href='my-listings')= loginName

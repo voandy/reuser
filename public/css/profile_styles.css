@@ -78,19 +78,6 @@ body {
   width: 100%;
 }
 
-/* thanks */
-#thanks{
-  line-height: 50px;
-  /* display: inline;  */
-  white-space: nowrap;
-  padding-bottom: 10px;
-}
-
-#thanks img{
-  width: 54px;
-  float: left;
-}
-
 #contact-button {
   width: 80%;
   transition: all 0.5s;
