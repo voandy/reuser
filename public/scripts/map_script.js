@@ -10,7 +10,7 @@ var currPos =
 
 const sidebarLimit = 10;
 const listingsList = document.getElementById('listings-list');
-const filterForm = document.getElementById('filter-form')
+const filterForm = document.getElementById('modal-form');
 
 var map;
 var infowindow;
@@ -271,29 +271,6 @@ function getJsonFromUrl(url) {
   return result;
 }
 
-var filterModal = document.getElementById("filter-modal");
-var categoryFilter = document.getElementById("category-filter");
-var btn = document.getElementById("filter-button");
-
-// opens filter form on click
-btn.onclick = function() {
-  categoryFilter.style.display = "block";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == filterModal) {
-    categoryFilter.style.display = "none";
-  }
-}
-
-// support for mobile devices
-window.addEventListener('touchstart', function(event) {
-  if (event.target == filterModal) {
-    modal.style.display = "none";
-  }
-});
-
 filterForm.addEventListener('submit', function(){
   event.preventDefault();
 
@@ -313,7 +290,7 @@ filterForm.addEventListener('submit', function(){
         if (data.length > 0) {
           listings = data;
           reloadPage();
-          categoryFilter.style.display = "none";
+          document.getElementById("modal-grid").style.display = "none";
         } else {
           // TODO: Use an alternative, less ugly, alert
           alert("Search returned no listings.")

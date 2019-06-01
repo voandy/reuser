@@ -3,14 +3,15 @@ extends default.pug
 append head
     title reuser | map
     link(rel='stylesheet', href='/css/map_styles.css')
+    link(rel='stylesheet', href='/css/modal/modal_form.css')
 
 block content
     .grid-container
-      #category-filter
-        #filter-modal
-          .filter-container
+      #modal-grid
+        #modal-background
+          .form-container
             .modal-container
-              form#filter-form
+              form#modal-form
                 //- span.close ×
                 input(type='checkbox', id='check-materials', value='materials') 
                 |  Materials
@@ -41,12 +42,13 @@ block content
       .search-bar
         .search-box-container
           input#search-box.mapControls(type='text', placeholder='Address or Suburb')
-          img#filter-button(src='/images/map/filter.png')
+          img#modal-form-button(src='/images/map/filter.png')
       #sidebar.sidebar
         #listings-list
           center
             img(src='/images/map/loading.png')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+    script(src='/scripts/modal/modal_form.js')
     script(src='/scripts/functions/map_styles.js')
     script(src='/scripts/functions/time_since.js')
     script(src='/scripts/map_script.js')

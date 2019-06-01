@@ -76,10 +76,6 @@ header * {
     box-sizing: content-box;
 }
 
-.modal-container * {
-    box-sizing: border-box;
-}
-
 /* tab buttons */
 .nav-tab{
   height: inherit;
@@ -109,112 +105,6 @@ header * {
   float: right;
   padding-right: 10px;
 
-}
-
-
-
-/* login modal (pop out) */
-#modal {
-  display: none;
-
-  position: fixed;
-  left: 0; right: 0;
-  top: 0; bottom: 0;
-  z-index: 1000;
-
-  z-index: 4; /* doesnt overlap with the map */
-  padding: 70px 10px 10px 1px;
-
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-
-  font-size: 12px;
-}
-
-.modal-container {
-  position: relative;
-  float: right;
-  background-color: #fefefe;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #999;
-  width: 315px;
-
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}
-
-.modal-container input{
-  border-radius: 47px;
-  padding-right: 10px; /* this doesnt work idk, but when width is not 100% then ok */
-}
-
-.modal-container ::-webkit-input-placeholder{
-  font-size: 12px;
-  font-family: Raleway;
-}
-
-.modal-container ::-moz-placeholder {
-  font-size: 12px;
-  font-family: Raleway;
-}
-
-.modal-container a{
-  color: #39B54A !important;
-}
-
-.modal-container a:hover{
-  color: #57EB74 !important;
-}
-
-.modal-container input{
-  width: 100%;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 47px;
-  box-sizing: border-box;
-}
-
-.modal-container small{
-  padding-left: 56px;
-  font-size: 12px;
-  text-align: center;
-  justify-content: center;
-}
-
-.modal-container button{
-  border: none;
-  color: white;
-  font-size: 12px;
-  font-family: Raleway;
-  background-color: #39B54A;
-
-  width: 100%;
-  padding: 10px;
-  margin: 0 auto;
-  cursor: pointer;
-  border-radius: 47px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-
-  outline: none;
-}
-
-.modal-container button:hover {
-  background-color: #57EB74;
-}
-
-
-/* Add Animation */
-@-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
 }
 
 @keyframes animatetop {

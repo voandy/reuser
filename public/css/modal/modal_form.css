@@ -1,0 +1,39 @@
+/* The Modal (background) */
+#modal-background {
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.form-container {
+  position: relative;
+  float: none;
+  margin: auto;
+  margin-top: 70px;
+  width: 315px;
+}
+
+#modal-form input[type="checkbox"]{
+  width: auto;
+}
+
+#modal-form input[type="text"]{
+  padding: 8px 20px;
+  color: #999;
+}
+
+#modal-form input[type="submit"]{
+  color: white;
+  background-color: #39B54A;
+  margin-bottom: 0;
+  padding: 8px 15px;
+}
+
+#modal-form input[type="submit"]:hover{
+  background-color: #57EB74;
+}

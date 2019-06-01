@@ -2,6 +2,7 @@ doctype html
 head
 
     // nav bar style and behaviour
+    link(rel='stylesheet', href='/css/modal/modal.css')
     link(rel='stylesheet', href='/css/nav.css')
       
     meta(charset='UTF-8')
@@ -36,7 +37,7 @@ header
       a#login-btn(href='#login', onclick='openLogin()') login
 
   // log in pop out
-  #modal
+  #login-modal
     .modal-container
       form(action='/login', method='POST')
         input(type='email', name='email', placeholder='email')
