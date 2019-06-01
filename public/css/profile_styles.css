@@ -38,12 +38,12 @@ body {
 }
 
 .listing-pic {
-  width = 100%;
+  width : 100%;
   max-width: 210px;
 }
 
 .profile-pic {
-  width = 100%;
+  width : 100%;
   max-width: 300px;
 }
 
@@ -71,6 +71,19 @@ body {
   width: 100%;
 }
 
+/* thanks */
+#thanks{
+  line-height: 50px;
+  /* display: inline;  */
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+#thanks img{
+  width: 54px;
+  float: left;
+}
+
 #contact-button {
   background-color: #39B54A;
   font-size: 20px;
@@ -82,7 +95,7 @@ body {
   width: 80%;
   transition: all 0.5s;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #contact-button:focus {
