@@ -1,0 +1,78 @@
+h3 {
+    /* font-family: Raleway !important; */
+    padding: 5px 0;
+    text-align: center;
+    font-weight: bold !important;
+    color: black !important;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+/* form css */
+
+.custom-field {
+    font-size: 15px;
+    font-weight: normal;
+    color: black;
+    width: 80%;
+    padding: 0;
+    background: white !important;
+    height: 30px;
+    border-bottom: solid lightgray 2px !important;
+}
+
+input {
+    width: 100% !important;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* input field animation */
+input::-webkit-input-placeholder {
+    color: #AAA;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #39B54A;
+}
+
+input:focus+.underline {
+    transform: scale(1);
+}
+
+.underline {
+    position: relative;
+    background-color: #39B54A;
+    display: inline-block;
+    height: 2px;
+    top: -15px;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    width: 100%;
+}
+
+/* submit button */
+input[type=submit] {
+    width: 30% !important; 
+    margin-left: 35%;
+    font-size: 20px;
+    padding:5px 15px; 
+    color: #f1f1f1;
+    background:#39B54A; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 30px; 
+}

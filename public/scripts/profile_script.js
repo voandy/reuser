@@ -15,7 +15,7 @@ const userPic = document.getElementById('user-pic');
 const userAddress = document.getElementById('user-address');
 const dateJoined = document.getElementById('date-joined');
 const averageRating = document.getElementById('average-rating');
-const thanksRec = document.getElementById('thanks-rec');
+const thanksRec = document.getElementById('thanks');
 const contact = document.getElementById('contact');
 
 // reviews element
@@ -32,19 +32,27 @@ getUser(userId).then(function(){
   // get user data
   userName.innerText = user.name;
 
+  // name
   if (user.formattedAddress) {
     userAddress.innerHTML = "<div class =\"user-address\">" + user.formattedAddress + "</div>";
   } else {
     userAddress.innerHTML = "<div class =\"user-address\">No address listed.</div>"
   }
 
+  // date
   var joinedDate = new Date(user.dateJoined);
   dateJoined.innerHTML = "<div class=\"date\">Joined: " +
     joinedDate.toLocaleDateString("en-AU", {year:"numeric", month:"short"}) + "</div>";
 
+  // rating
   averageRating.innerHTML =
     "<img class=\"user-rating\" src=\"" + getStars(user.starRatingAvg) + "\">";
 
+  // thanks received TODO 
+  thanksRec.innerHTML =
+    "<div>" + "10" + "<img src=\"images/profile/like.png\"><\div>";
+
+  // profile picture  
   if (user.profilePicURL){
     userPic.innerHTML = "<img src=\"" + img300URL + user.profilePicURL + "\" class=\"profile-pic\">";
   } else {
@@ -148,6 +156,13 @@ function getReviews(userId){
       });
   });
 }
+
+// returns the number of likes gievn
+// function getThanks(userId){
+//   return new Promise(resolve =>{
+//     jQuery.get()
+//   })
+// }
 
 // given a review, will get the reviewer and add it to that review
 function getReviewer(review){

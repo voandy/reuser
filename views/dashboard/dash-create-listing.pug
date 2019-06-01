@@ -27,42 +27,43 @@ block links
       a(href='/logout') Logout
 
 block main
-  div.form-container
-    form#create-listing
-      h3 Create New Listing
-      hr
-      div.input-field-container
-        b Title
-        input#list-title.custom-field(type='text', placeholder='Listing Title')
-        span.underline
+  //- div.form-container
+  h3 Create New Listing
+  hr
+  form#create-listing
+  
+    div.input-field-container
+      b Title
+      input#list-title.custom-field(type='text', placeholder='Listing Title')
+      span.underline
+    
+    div.input-field-container
+      b Category
+      select#list-category
+        option(value='materials') Materials
+        option(value='food') Food
+        option(value='clothing') Clothing
+        option(value='electronics') Electronics
+        option(value='furniture') Furniture
+        option(value='decor') Decor
+        option(value='misc') Misc
+    
+    div.input-field-container
+      b Address
+      input#maps-autocomplete.custom-field(type='text', placeholder='Street Address')
+      span.underline
+
+    div.input-field-container
+      b Description
+      input#list-description.custom-field(type='text', placeholder='Describe your listing')
+      span.underline  
       
-      div.input-field-container
-        b Category
-        select#list-category
-          option(value='materials') Materials
-          option(value='food') Food
-          option(value='clothing') Clothing
-          option(value='electronics') Electronics
-          option(value='furniture') Furniture
-          option(value='decor') Decor
-          option(value='misc') Misc
-     
-      div.input-field-container
-        b Address
-        input#maps-autocomplete.custom-field(type='text', placeholder='Street Address')
-        span.underline
+    div.input-field-container
+      b Expiry Date (Optional)
+      input#list-date(type='date', min='2019-01-01')
 
-      div.input-field-container
-        b Description
-        input#list-description.custom-field(type='text', placeholder='Describe your listing')
-        span.underline  
-        
-      div.input-field-container
-        b Expiry Date (Optional)
-        input#list-date(type='date', min='2019-01-01')
+    div.input-field-container
+      b Image (Optional)
+      input#list-image(type='file', name='image')
 
-      div.input-field-container
-        b Image (Optional)
-        input#list-image(type='file', name='image')
-
-      input#list-submit(type='submit')
+    input#list-submit(type='submit')

@@ -1,9 +1,14 @@
-.form-container {
+/* .form-container {
     width: 80%;
     height: auto;
-    border: solid lightgray 1px;
-    padding: 20px 50px 20px 50px;
+    /* border: solid lightgray 1px; */
+    /* padding: 20px 50px 20px 50px;
     border-radius: 30px;
+}  */
+
+/* main container */
+#create-listing{
+    width: 85%;
 }
 
 h3 {
@@ -48,6 +53,8 @@ input:focus {
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
+    width: 100%;
+
 }
 
 /* input field animation */
@@ -80,4 +87,17 @@ input:focus+.underline {
     .main-container{
         padding-top: 22px;
     }
+}
+
+input[type=submit] {
+    width: 30% !important; 
+    margin-left: 35%;
+    font-size: 20px;
+    padding:5px 15px; 
+    color: #f1f1f1;
+    background:#39B54A; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 30px; 
 }

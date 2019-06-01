@@ -45,12 +45,12 @@ body {
 }
 
 .listing-pic {
-  width = 100%;
+  width : 100%;
   max-width: 210px;
 }
 
 .profile-pic {
-  width = 100%;
+  width : 100%;
   max-width: 300px;
 }
 
@@ -78,8 +78,24 @@ body {
   width: 100%;
 }
 
+/* thanks */
+#thanks{
+  line-height: 50px;
+  /* display: inline;  */
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+#thanks img{
+  width: 54px;
+  float: left;
+}
+
 #contact-button {
   width: 80%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 #modal-form-button {
@@ -121,7 +137,7 @@ body {
 
 @media (max-width: 650px) {
   .profile-pic {
-    width = 100%;
+    width : 100%;
     max-width: 200px;
   }
   .user-pic {
