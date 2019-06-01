@@ -5,8 +5,6 @@ const img300URL = "http://reuser-api.s3-website-ap-southeast-1.amazonaws.com/300
 const activeListings = document.getElementById('active-listings');
 const archivedListings = document.getElementById('archived-listings');
 
-const archiveButtons = document.getElementsByClassName('archive-button');
-
 var user;
 var listings;
 
