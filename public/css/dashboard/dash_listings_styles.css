@@ -36,6 +36,14 @@
   width: 40px;
 }
 
+.listings-table {
+  width: 100%;
+}
+
+.listings-td {
+  width: 200px;
+}
+
 #active-listings-title {
   display: block;
 }
@@ -53,4 +61,3 @@
   display: none;
   margin-bottom: 20px;
 }
-

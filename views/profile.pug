@@ -3,27 +3,39 @@ extends default.pug
 append head
     title reuser | profile
     link(rel='stylesheet', href='/css/profile_styles.css')
+    link(rel='stylesheet', href='/css/modal/modal_form.css')
 
 block content
     .grid-container
+        #modal-grid
+            #modal-background
+                .form-container
+                    .modal-container
+                        form#modal-form
+                            input(type='text', id='reivew-text', placeholder='Enter review')
+                            br
+                            input(type='submit', value='Submit')
         .listings
             #active-listings
         .user
             .user-details
                 table(width='100%')
-                        tbody
-                                tr
-                                        td.user-pic
-                                                #user-pic
-                                        td.user-text
-                                                h3#full-name
-                                                #date-joined
-                                                #user-address
-                                                #average-rating
-                                                #thanks
-                                                #contact
+                    tbody
+                        tr
+                            td.user-pic
+                                #user-pic
+                            td.user-text
+                                h3#full-name
+                                #date-joined
+                                #user-address
+                                #average-rating
+                                #thanks
+                                button#contact-button contact
+                                if loggedIn
+                                    button#modal-form-button review
             .reviews
                 #reviews-rec
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+    script(src='/scripts/modal/modal_form.js')
     script(src='/scripts/functions/get_stars.js')
     script(src='/scripts/profile_script.js')

@@ -7,6 +7,13 @@ body {
   grid-template-columns: 1fr 250px 700px 1fr;
 }
 
+#modal-grid {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 4;
+  display: none;
+}
+
 .listings {
   grid-column: 2;
   padding: 20px;
@@ -72,21 +79,11 @@ body {
 }
 
 #contact-button {
-  background-color: #39B54A;
-  font-size: 20px;
-  color: white;
-  border-radius: 47px;
-  border: none;
-  text-align: center;
-  padding: 4px;
   width: 80%;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin-top: 20px;
 }
 
-#contact-button:focus {
-  outline: 0;
+#modal-form-button {
+  width: 80%;
 }
 
 @media (max-width: 950px) {

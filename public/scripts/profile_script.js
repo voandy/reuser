@@ -51,11 +51,8 @@ getUser(userId).then(function(){
     userPic.innerHTML = "<img src=\"images/profile/avatar-sm.png\" class=\"profile-pic\">";
   }
 
-  // create contact button
-  contact.innerHTML = "<button id=\"contact-button\">contact</button>";
-  const contactButton = document.getElementById("contact-button");
-
   // add email link to button
+  const contactButton = document.getElementById("contact-button");
   contactButton.addEventListener("click", function(){
     window.location.href = "mailto:" + user.email;
   });

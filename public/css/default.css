@@ -75,3 +75,24 @@ h6 {
   font-size: 1rem;
   margin-block-end: 0.3em;
 }
+
+button {
+  background-color: #39B54A;
+  font-size: 20px;
+  color: white;
+  border-radius: 47px;
+  border: none;
+  text-align: center;
+  padding: 4px;
+  /* width: 80%; */
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button, input[type="button"], input[type="submit"] {
+}
