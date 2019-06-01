@@ -210,6 +210,10 @@ header * {
   background-color: #57EB74;
 }
 
+#dont-have-account{
+  margin-left: 4%;
+}
+
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
