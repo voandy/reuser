@@ -112,18 +112,33 @@
 
 /* The dots/bullets/indicators */
 .dot {
+  transform: translate(-50%, -50%);
+  position: absolute;
   cursor: pointer;
   height: 15px;
   width: 15px;
-  margin: 0 2px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+  bottom: 0.25%;
 }
 
 .active, .dot:hover {
   background-color: #717171;
+}
+
+.dot1 {
+    margin-left: -20px;
+    align-content: center;
+}
+.dot2 {
+    align-content: center;
+}
+
+.dot3 {
+    margin-left: 20px;
+    align-content: center;
 }
 
 /* Fading animation */
@@ -142,4 +157,164 @@
 @keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
+}
+
+.background-container {
+    width: 100%;
+    height: Calc(100vh - 60px);
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.main-container {
+    width: 1000px;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.creators-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.creators {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.creator {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.creator img{
+    width: 90%;
+}
+
+#andy {
+    grid-column: 1;
+    justify-self: center;
+}
+
+#shaun {
+    grid-column: 2;
+    justify-self: center;
+}
+
+#christian {
+    grid-column: 3;
+    justify-self: center;
+}
+
+#nick {
+    grid-column: 4;
+    justify-self: center;
+}
+
+.video-container {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.reuser-video {
+    width: 600px;
+    height: 338px;
+}
+@media screen and (max-width: 1200px) {
+    .main-container {
+        width: 900px;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .main-container {
+        width: 600px;
+    }
+
+    .creators {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: 
+            "1 2"
+            "3 4";
+     }
+
+     .creator {
+         margin-bottom: 30px;
+     }
+
+     #andy {
+        grid-area: 1;
+    }
+    
+    #shaun {
+        grid-area: 2;
+    }
+    
+    #christian {
+        grid-area: 3;
+    }
+    
+    #nick {
+        grid-area: 4;
+    }
+
+    .reuser-video {
+        width: 480px;
+        height: 270px;
+    }
+
+}
+
+@media screen and (max-width: 550px) {
+    .main-container {
+        width: 450px;
+    }
+
+    .creators {
+        grid-template-columns: 100%;
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-areas: 
+            "1"
+            "2"
+            "3"
+            "4";
+     }
+
+     .creator {
+        margin-bottom: 30px;
+     }
+
+     .creator img {
+        width: 250px;
+        height: auto;
+     }
+
+     .reuser-video {
+        width: 400px;
+        height: 225px;
+    }
+
+    .video-container {
+        margin-bottom: 50px;
+    }
+
 }
