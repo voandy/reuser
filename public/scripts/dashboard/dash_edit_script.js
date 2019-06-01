@@ -6,6 +6,24 @@ var updateUser = document.getElementById("update-user");
 var userSubmit = document.getElementById("user-submit");
 var place;
 
+// user elements
+var user;
+const userId = window.location.search.split("id=")[1];
+
+getUser(userId).then(function(){
+
+  const userName = document.getElementById('user-name');
+  const userEmail = document.getElementById('user-email');
+  const userAddress = document.getElementById('user-address');
+
+  // get user data
+  userName.value = user.name
+  userEmail.value = user.email
+  if (user.formattedAddress) {
+    userAddress.value = user.formattedAddress
+  }
+});
+
 updateUser.addEventListener('submit', function(){
   event.preventDefault();
 
@@ -22,7 +40,6 @@ updateUser.addEventListener('submit', function(){
   var latitude = place.geometry.location.lat();
 
   var data = {};
-
   if (userName) {
     data.name = userName;
   }
@@ -30,7 +47,7 @@ updateUser.addEventListener('submit', function(){
     data.email = userEmail;
   }
   if (userAddress) {
-    data.formattedAddress = formattedAddress;
+    data.formattedAddress = userAddress;
   }
 
   // update the user
