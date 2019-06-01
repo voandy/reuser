@@ -1,4 +1,4 @@
-const sslRedirect = require('heroku-ssl-redirect');
+// const sslRedirect = require('heroku-ssl-redirect');
 const express = require('express');
 const session = require('express-session');
 
@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
 app.use(express.json())
 
 // enable ssl redirect
-app.use(sslRedirect());
+// app.use(sslRedirect());
 
 // set the view engine
 app.set('view engine', 'pug');

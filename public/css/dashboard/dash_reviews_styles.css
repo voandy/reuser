@@ -21,6 +21,10 @@
   display: none;
 }
 
+.review-table {
+  width: 100%;
+}
+
 #my-reviews {
   display: block;
   margin-bottom: 20px;
@@ -38,4 +42,3 @@
 #left-reviews-title {
   display: none;
 }
-
