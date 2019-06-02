@@ -13,6 +13,9 @@ The following pages are all responsive and work on most mobile devices as well a
 - [Profile page](https://www.reuser.xyz/profile?id=5cbc59652a14973148d1384a)
 - [Sign-up Page](https://www.reuser.xyz/sign-up)
 - [Log-in Page](https://www.reuser.xyz/login)
+- [User's Listings at Dashboard Page](https://www.reuser.xyz/my-listings)
+- [User's Reviews at Dashboard Page](https://www.reuser.xyz/my-reviews)
+
 
 ## Browsing Website/Listings
 
@@ -42,6 +45,7 @@ The following pages are all responsive and work on most mobile devices as well a
 - Once a user is logged-in, they will be redirected to the dashboard page.
 
 #### Dashboard
+- User can get to the dashboard page by logging in, or clicking on the their own profile picture located at the right side of the navigation bar once they are logged in.
 - User can access both their active listings and archived listings at the dashboard page, user can archive an active listing (make an active listing unviewable to the public), and to re-active an archived listing.
 - User can view the reviews about themselves left by the other users, and the reviews they have made for other users in the dashboard page as well. User is able to delete the reviews they have left for others in the page.
 - User can also edit their profile settings, e.g. name, email, address, etc.
