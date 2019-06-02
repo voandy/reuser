@@ -3,31 +3,62 @@ extends default.pug
 append head
   title reuser | about
   link(rel='stylesheet', href='/css/about_styles.css')
+  link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
 
 block content
-  .background-container
-    .main-container
-      .creators-container
-        h2 Meet the creators of reuser
-        .creators
-          .creator 
-            img#andy(src='images/about/andy.jpg')
-            h5 Andy Vo
-            p founder
-          .creator 
-            img#shaun(src='images/about/shaun.jpg')
-            h5 Shaun Soong
-            p co-founder
-          .creator 
-            img#christian(src='images/about/christian.jpg')
-            h5 Christian Sugianto
-            p pre-founder
-          .creator 
-            img#nick(src='images/about/nick.jpg')
-            h5 Nick Ang
-            p post-founder
-      br      
-      .video-container
-        h2 Watch how reuser is made
-        iframe.reuser-video(src='https://www.youtube.com/embed/3tAld8B2b60')
-        //- iframe.reuser-video(src='https://www.youtube.com/embed/tgbNymZ7vqY')
+  .background
+    .slideshow-container
+      .mySlides.fade
+        img(src='images/about/first.jpg')
+        .text.first Start saving our planet by 
+          i reusing
+        a.button(href='/sign-up') Join Us Today
+      .mySlides.fade
+        img(src='images/about/second.jpg')
+        .text.second The Challenge 
+          p Too many reusable goods are disposed of to landfill because there exist few convenient ways to redistribute these items. We are taught to reduce, reuse, and recycle, but when it comes to reusing, the current facilities we have at our disposal are inadequate
+      .mySlides.fade
+        img(src='images/about/third.jpg')
+        .text.third Our Goal
+          p We find a way to connect people who want to donate their reusable goods to other people who need these goods in a convenient manner. Thus, less goods will be disposed which leads to a healthier environment
+      a.prev(onclick='plusSlides(-1)') ❮
+      a.next(onclick='plusSlides(1)') ❯
+      div(style='text-align:center')
+      span.dot.dot1(onclick='currentSlide(1)')
+      span.dot.dot2(onclick='currentSlide(2)')
+      span.dot.dot3(onclick='currentSlide(3)')
+    script(src='/scripts/about_script.js')
+
+    .background-container
+      .main-container
+        .creators-container
+          h2 Meet the creators of reuser
+          br
+          .creators
+            .creator 
+              img#andy(src='images/about/andy.jpg')
+              h5 Andy Vo
+
+            .creator 
+              img#shaun(src='images/about/shaun.jpg')
+              h5 Shaun Soong
+
+            .creator 
+              img#christian(src='images/about/christian.jpg')
+              h5 Christian Sugianto
+      
+            .creator 
+              img#nick(src='images/about/nick.jpg')
+              h5 Nick Ang
+        hr.about
+
+        .video-container
+          .row
+            .column.video-text
+              h2 What is reuser?
+              h4 discover how reuser was made
+            .column.video
+              //- iframe.reuser-video(src='https://www.youtube.com/embed/tgbNymZ7vqY')
+              iframe.reuser-video(src="https://www.youtube.com/embed/3tAld8B2b60")
+        hr.about
