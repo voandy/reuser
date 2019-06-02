@@ -1,4 +1,7 @@
-* {box-sizing:border-box}
+* {
+    box-sizing:border-box;
+    font-family: Raleway;
+}
 
 .main-container h2 {
     font-weight: bold;
@@ -7,10 +10,17 @@
 
 /* Slideshow container */
 .slideshow-container {
-  background-size:cover;
+  /* background-size:cover; */
+  overflow: hidden;
   position: relative;
+  width: 100%;
   margin: auto;
   text-align: center;
+}
+
+.slideshow-container img{
+    height: 100%;
+    width: auto;
 }
 
 /* Hide the images by default */
@@ -58,7 +68,7 @@
 
 /* Caption text */
 .text {
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
   color: #ffffff;
   font-size: 50px;
   position: absolute;
@@ -262,13 +272,20 @@ hr.about {
 }
 
 .column.video-text h2{
-    margin-top: 140px;
+    margin-top: 80px;
     margin-left: -30px;
 }
 
+.column.video-text h4{
+    margin-left: -30px;
+    color: black;
+}
+
+
+
 .reuser-video {
-    width: 445px;
-    height: 338px;
+    width: 480px;
+    height: 270px;
 }
 
 .works-container {
@@ -346,6 +363,28 @@ hr.about {
     justify-self: center;
 }
 
+/* responsive design */
+@media screen and (max-width: 1560px) {
+    /* fix carousell size */
+    .text {
+        font-size: 30px;
+    }
+
+    .slideshow-container{
+        height: 40vh;
+    }
+
+    .slideshow-container img{
+        height: 100%;
+        width: auto;
+        padding-right: 50vh;
+    }
+
+    .slideshow-container p{
+        font-size: 20px;
+    }
+
+}
 
 @media screen and (max-width: 1200px) {
     .main-container {
@@ -354,6 +393,21 @@ hr.about {
 }
 
 @media screen and (max-width: 1000px) {
+    
+    /* carousell */
+    .slideshow-container .text {
+        font-size: 25px;
+    }
+
+    .slideshow-container p{
+        font-size: 15px;
+    }
+
+    .slideshow-container .button {
+        font-size: 14px;
+    }
+    
+    /* main container */
     .main-container {
         width: 600px;
     }
