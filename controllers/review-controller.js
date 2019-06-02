@@ -42,31 +42,29 @@ var create = function (req,res) {
     if (err){
       res.status(400);
     }
-  });
+    // update average user rating
+    var userId = review.userId;
 
-  // update average user rating
-  var userId = req.params.userId;
+    Review.find({userId:userId}, function(err, reviews){
+      var reviewCount = 0;
+      var starTotal = 0;
+      var starRatingAvg = 0;
 
-  Review.find({userId:userId}, function(err, reviews){
-    var reviewCount = 0;
-    var starTotal = 0;
-    var starRatingAvg = 0;
+      reviews.forEach(function(review) {
+        reviewCount ++;
+        starTotal += review.starRating;
+      });
+      starRatingAvg = starTotal / reviewCount;
 
-    reviews.forEach(function(review) {
-      reviewCount ++;
-      starTotal += review.starRating;
+      User.findByIdAndUpdate(userId, {starRatingAvg:starRatingAvg},
+        {runValidators:true}, function(err, user) {
+        if (err){
+          res.status(404);
+        }
+        res.send(review);
+      });
     });
-    starRatingAvg = starTotal / reviewCount;
-
-    User.findByIdAndUpdate(userId, {starRatingAvg:starRatingAvg},
-      {runValidators:true}, function(err, user) {
-      if (err){
-        res.status(404);
-      }
-    });
   });
-
-  res.send(review);
 };
 
 // delete review by id
@@ -76,7 +74,28 @@ var deleteById = function(req,res){
   // delete review
   Review.findByIdAndRemove(reviewId, function(err, review){
     if (!err){
-      res.send(reviewId + " deleted.");
+      // update average user rating
+      var userId = review.userId;
+
+      Review.find({userId:userId}, function(err, reviews){
+        var reviewCount = 0;
+        var starTotal = 0;
+        var starRatingAvg = 0;
+
+        reviews.forEach(function(review) {
+          reviewCount ++;
+          starTotal += review.starRating;
+        });
+        starRatingAvg = starTotal / reviewCount;
+
+        User.findByIdAndUpdate(userId, {starRatingAvg:starRatingAvg},
+          {runValidators:true}, function(err, user) {
+          if (err){
+            res.status(404);
+          }
+          res.send(reviewId + " deleted.");
+        });
+      });
     }else{
       res.status(404);
     }

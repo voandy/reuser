@@ -102,10 +102,12 @@
   background-color: #39B54A;
   color: white;
   font-size: 16px;
-  padding: 12px 24px;
+  padding: 7px 15px;
   border: none;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 20px;
+  width: 200px;
+  margin-top: 2%;
 }
 
 .slideshow-container .button:hover {
@@ -183,11 +185,6 @@
   align-items: center;
 }
 
-/* main container */
-.main-container h2 {
-  font-weight: bold;
-}
-
 .main-container {
   width: 1000px;
   height: 100%;
@@ -201,10 +198,10 @@
 
 /* break lines */
 hr.about {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 0px;
   /* border: 1px solid green; */
-  width: 100%;
+  width: 95%;
 }
 
 .creators-container {
@@ -232,6 +229,10 @@ hr.about {
 
   margin-left: auto;
   margin-right: auto;
+}
+
+.creator h5{
+  color: black;
 }
 
 .creator img{
@@ -279,21 +280,20 @@ hr.about {
   content: "";
   clear: both;
   display: table;
+  width: 860px;
 }
 
 .column.video-text h2{
   margin-top: 90px;
-  margin-left: -30px;
 }
 
 .column.video-text h4{
-  margin-left: -30px;
   color: black;
 }
 
 .reuser-video {
-  width: 480px;
-  height: 270px;
+  width: 430px;
+  height: 241.875px;
 }
 
 /* how it works section */
@@ -411,7 +411,7 @@ hr.about {
   /* video */
   .video-container {
     margin-top: 35px;
-    height: 500px;
+    height: 650px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -434,6 +434,7 @@ hr.about {
   .reuser-video {
     width: 90%;
     margin-left: 5%;
+    height: 435.375px;
   }
 }
 
@@ -469,6 +470,26 @@ hr.about {
     margin-bottom: 30px;
   }
 
+  .video-container {
+    width: 600px;
+  }
+
+  .row {
+    width: 600px;
+  }
+
+  .column-video {
+    width: 600px;
+  }
+
+  .reuser-video {
+    display: block;
+    width: 540px;
+    height: 303.75px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   #andy {
     grid-area: 1;
   }
@@ -492,6 +513,7 @@ hr.about {
   }
 
   .creators {
+    width: 270px;
     grid-template-columns: 100%;
     grid-template-rows: 25% 25% 25% 25%;
     grid-template-areas:
@@ -511,6 +533,22 @@ hr.about {
   }
 
   .video-container {
-    margin-bottom: 50px;
+    width: 400px;
+  }
+
+  .row {
+    width: 400px;
+  }
+
+  .column-video {
+    width: 400px;
+  }
+
+  .reuser-video {
+    display: block;
+    width: 350px;
+    height: 196.875px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
