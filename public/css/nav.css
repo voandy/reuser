@@ -98,6 +98,7 @@ header * {
   padding-top: 14px;
   height: 32px;
   float: right;
+  cursor: pointer;
 }
 
 #login-btn{

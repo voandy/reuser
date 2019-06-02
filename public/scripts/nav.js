@@ -4,6 +4,9 @@ var loginModal = document.getElementById('login-modal');
 // Get the button that opens the modal
 var btn = document.getElementById('login-btn');
 
+// Get nav buton
+var navImage = document.getElementById('nav-login-img');
+
 
 // open log in bar
 function openLogin(){
@@ -32,3 +35,5 @@ window.addEventListener('touchstart', function(event) {
     loginModal.style.display = "none";
   }
 });
+
+navImage.addEventListener('click', openLogin);
