@@ -9,8 +9,9 @@ https://www.reuser.xyz/
 The following pages are all responsive and work on most mobile devices as well as modern desktop browsers (Chrome, Firefox, Safari).
 - [Homepage](https://www.reuser.xyz/)
 - [Map](https://www.reuser.xyz/map)
-- [Listings page](https://www.reuser.xyz/view-listing?id=5cbc59742a14973148d13862)
-- [Profile page](https://www.reuser.xyz/profile?id=5cbc59652a14973148d1384a)
+- [About Page](https://www.reuser.xyz/about)
+- [Listings Page](https://www.reuser.xyz/view-listing?id=5cbc59742a14973148d13862)
+- [Profile Page](https://www.reuser.xyz/profile?id=5cbc59652a14973148d1384a)
 - [Sign-up Page](https://www.reuser.xyz/sign-up)
 - [Log-in Page](https://www.reuser.xyz/login)
 - [User's Listings at Dashboard Page](https://www.reuser.xyz/my-listings)
