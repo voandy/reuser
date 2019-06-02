@@ -228,12 +228,13 @@ hr.about {
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 100%;
+    width: 90%;
 }
 
 .creator img{
-    margin-top: 10px;
-    width: 90%;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 #andy {
