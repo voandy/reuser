@@ -17,6 +17,7 @@ const userAddress = document.getElementById('user-address');
 const dateJoined = document.getElementById('date-joined');
 const averageRating = document.getElementById('average-rating');
 const contact = document.getElementById('contact');
+const thankCount = document.getElementById('thank-count');
 
 // reviews element
 const reviewsRec = document.getElementById('reviews-rec');
@@ -62,6 +63,9 @@ getUser(userId).then(function(){
   // rating
   averageRating.innerHTML =
     "<img class=\"user-rating\" src=\"" + getStars(user.starRatingAvg) + "\">";
+
+  // thanks received
+  thankCount.innerText = user.thanksReceived;
 
   // profile picture
   if (user.profilePicURL){

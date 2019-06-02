@@ -85,6 +85,17 @@ body {
   margin-top: 10px;
 }
 
+#thank-img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+#thank-count {
+  color: #999;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
 #modal-form-button {
   width: 80%;
 }
