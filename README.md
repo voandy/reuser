@@ -124,6 +124,7 @@ The following pages are all responsive and work on most mobile devices as well a
 - POST login page to sign-in: /login
 - GET sign-up page: /sign-up
 - POST sign-up page to register a new user: /sign-up
+- GET to logout: /logout
 - GET to my-listings on dashboard page: /my-listings
 - GET to my-review on dashboard page: /my-reviews
 - GET to create-listings on dashboard page: /create-listing
