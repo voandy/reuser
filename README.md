@@ -39,7 +39,14 @@ The following pages are all responsive and work on most mobile devices as well a
 - Users can log-in on the [log-in page](https://www.reuser.xyz/login), or by clicking "log-in" on the navigation bar which is available on every page.
 - Once the user's credentials are authenticated by passport.js, a session is then created to keep track of the user. Express-session is used for the implementation and management of sessions.
 - You can verify that you are logged-in by viewing the placeholder [dashboard](https://www.reuser.xyz/dashboard) (not yet implemented). If you are not logged-in, you will be redirected to login page that prompts you to login.
-- Further features for logged-in users are yet to be implemented.
+- Once a user is logged-in, they will be redirected to the dashboard page.
+
+#### Dashboard
+- User can access both their active listings and archived listings at the dashboard page, user can archive an active listing (make an active listing unviewable to the public), and to re-active an archived listing.
+- User can view the reviews about themselves left by the other users, and the reviews they have made for other users in the dashboard page as well. User is able to delete the reviews they have left for others in the page.
+- User can also edit their profile settings, e.g. name, email, address, etc.
+- User can logout of the site by clicking on the 'logout' button at the sidebar menu.
+
 
 # Views, Routes, Controllers & Models
 
@@ -100,7 +107,7 @@ The following pages are all responsive and work on most mobile devices as well a
 - POST login page to sign-in: /login
 - GET sign-up page: /sign-up
 - POST sign-up page to register a new user: /sign-up
-- GET dashboard page: /dashboard
+
 
 #### Controllers
 
@@ -109,3 +116,37 @@ The following pages are all responsive and work on most mobile devices as well a
 #### Models
 
 - user
+
+## Dashboard
+
+#### Views
+
+- dashboard.pug
+- dash-listings.pug
+- dash-reviews.pug
+- dash-create.pug
+
+#### Routes
+
+*For API server:*
+- GET specific listing: /listing/id/:id
+- GET all listings made by specific user: /listing/userId/:userId
+- GET all reviews of specific user: /review/userId/:userId
+- DELETE review by id: /review/id/:id
+- DELETE listing by id: /listing/id/:id
+
+*For front-end server:*
+- GET dashboard page: /dashboard
+
+#### Controllers
+
+- user-controller.js
+- listing-controller.js
+- review-controller.js
+
+#### Models
+
+- user
+- listing
+- review
+
