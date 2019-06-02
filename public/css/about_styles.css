@@ -484,7 +484,7 @@ hr.about {
 
 @media screen and (max-width: 550px) {
     .main-container {
-        width: 450px;
+        width: 100%;
     }
 
     .creators {
