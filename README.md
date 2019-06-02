@@ -16,6 +16,9 @@ The following pages are all responsive and work on most mobile devices as well a
 - [Log-in Page](https://www.reuser.xyz/login)
 - [User's Listings at Dashboard Page](https://www.reuser.xyz/my-listings)
 - [User's Reviews at Dashboard Page](https://www.reuser.xyz/my-reviews)
+- [User's Profile Settings at Dashboard Page](https://www.reuser.xyz/edit-profile)
+- [Create new listing at Dashboard Page](https://www.reuser.xyz/create-listing)
+
 
 
 ## Browsing Website/Listings
@@ -98,7 +101,11 @@ The following pages are all responsive and work on most mobile devices as well a
 - nav.pug
 - sign-up.pug
 - login.pug
-- dashboard.pug (for login testing purpose only, has not been fully implemented yet)
+- dashboard.pug
+- dash-listings.pug
+- dash-reviews.pug
+- dash-create-listing.pug
+- dash-edit-profile.pug
 
 #### Routes
 
@@ -106,34 +113,6 @@ The following pages are all responsive and work on most mobile devices as well a
 - GET user by email: /user/email/:email
 - GET user by id: /user/id/:id
 - POST a new user: /user
-
-*For front-end server:*
-- GET login page: /login
-- POST login page to sign-in: /login
-- GET sign-up page: /sign-up
-- POST sign-up page to register a new user: /sign-up
-
-
-#### Controllers
-
-- user-controller.js
-
-#### Models
-
-- user
-
-## Dashboard
-
-#### Views
-
-- dashboard.pug
-- dash-listings.pug
-- dash-reviews.pug
-- dash-create.pug
-
-#### Routes
-
-*For API server:*
 - GET specific listing: /listing/id/:id
 - GET all listings made by specific user: /listing/userId/:userId
 - GET all reviews of specific user: /review/userId/:userId
@@ -141,7 +120,14 @@ The following pages are all responsive and work on most mobile devices as well a
 - DELETE listing by id: /listing/id/:id
 
 *For front-end server:*
-- GET dashboard page: /dashboard
+- GET login page: /login
+- POST login page to sign-in: /login
+- GET sign-up page: /sign-up
+- POST sign-up page to register a new user: /sign-up
+- GET to my-listings on dashboard page: /my-listings
+- GET to my-review on dashboard page: /my-reviews
+- GET to create-listings on dashboard page: /create-listing
+- GET to profile settings on dashboard page: /edit-profile
 
 #### Controllers
 
