@@ -2,143 +2,45 @@
 
 ![reuser logo](public/images/others/reuser-logo-green-small.png)
 
-# Features
+### Creators
 
-https://www.reuser.xyz/
+- [Andy Vo](https://github.com/voandy)
+- [Nick Ang](https://github.com/nickangmc)
+- [Shaun Soong](https://github.com/Shankskun)
+- [Christian Sugianto](https://github.com/christianhadinata)
 
-The following pages are all responsive and work on most mobile devices as well as modern desktop browsers (Chrome, Firefox, Safari).
-- [Homepage](https://www.reuser.xyz/)
-- [Map](https://www.reuser.xyz/map)
-- [About Page](https://www.reuser.xyz/about)
-- [Listings Page](https://www.reuser.xyz/view-listing?id=5cbc59742a14973148d13862)
-- [Profile Page](https://www.reuser.xyz/profile?id=5cbc59652a14973148d1384a)
-- [Sign-up Page](https://www.reuser.xyz/sign-up)
-- [Log-in Page](https://www.reuser.xyz/login)
-- [User's Listings at Dashboard Page](https://www.reuser.xyz/my-listings)
-- [User's Reviews at Dashboard Page](https://www.reuser.xyz/my-reviews)
-- [User's Profile Settings at Dashboard Page](https://www.reuser.xyz/edit-profile)
-- [Create new listing at Dashboard Page](https://www.reuser.xyz/create-listing)
+### About
 
+reuser is a website developed by Andy, Nick, Shaun and Christian as the major assignment for the subject INFO30005: Web Information Technologies at the University of Melbourne - Semester 1, 2019.
 
+[![reuser video](readme-img/video.jpg)](https://www.youtube.com/watch?v=sOCh-H1qT74)
 
-## Browsing Website/Listings
+### The Website
 
-#### Map
-- From the [homepage](https://www.reuser.xyz/), users can search for listings in their area by entering the address or suburb into the search bar (try "Parkville "), this will direct them to a [map](https://www.reuser.xyz/map) showing individual listings as pins.
-- A dynamically updating bar on the right of the map shows the ten closest listings in order or proximity.
-- Clicking a listing on the bar will zoom in on the pin and open an info window with more details.
-- Clicking the title of the info window will direct the user to a detailed listing page.
+##### Cross-platform
+The website is designed to work on a variety of platforms including modern desktop and mobile devices.
+![Platforms Demo](readme-img/platforms.jpg)
 
-#### Listings/Profiles
-- The [listings page](https://www.reuser.xyz/view-listing?id=5cbc59742a14973148d13862) shows the details of one listing and a map with a single pin indicating its location.
-- A sidebar on the left shows the user who posted the listing along with their 5 most recent reviews.
-- Clicking on the name of the listing's poster or any of the reviewers will take you to a detailed [profile page](https://www.reuser.xyz/profile?id=5cbc59652a14973148d1384a).
-- The profile page shows the user's details as well as all their active listings and reviews of them.
+##### Features
+It supports a variety of features including geographic searching, map-based browsing, sign-up and login, posting/deleting listings and posting reviews.
+![Site Demo](readme-img/demo.jpg)
 
-## User Accounts
+##### Technology Stack
+![Technology Stack](readme-img/stack.jpg)
 
-#### Signing-up
-- New users can create an account by clicking the "become a reuser" button on the home page, or by clicking login on the top right of the navigation bar and selecting "sign-up."
-- The [sign-up page](https://www.reuser.xyz/sign-up) validates input ensuring that a valid email address is entered (follows a valid format and doesn't already exist in the database) and matching passwords of at least 8 characters are entered.
-- After signing-up, a new user account is added to the database with their password hashed and salted by bcrypt.js. The user is then directed to the log-in page.
+### The Premise
 
-#### Logging-in
-- Users can log-in on the [log-in page](https://www.reuser.xyz/login), or by clicking "log-in" on the navigation bar which is available on every page.
-- Once the user's credentials are authenticated by passport.js, a session is then created to keep track of the user. Express-session is used for the implementation and management of sessions.
-- You can verify that you are logged-in by viewing the placeholder [dashboard](https://www.reuser.xyz/dashboard) (not yet implemented). If you are not logged-in, you will be redirected to login page that prompts you to login.
-- Once a user is logged-in, they will be redirected to the dashboard page.
+##### The Issue
 
-#### Dashboard
-- User can get to the dashboard page by logging in, or clicking on the their own profile picture located at the right side of the navigation bar once they are logged in.
-- User can access both their active listings and archived listings at the dashboard page, user can archive an active listing (make an active listing unviewable to the public), and to re-active an archived listing.
-- User can view the reviews about themselves left by the other users, and the reviews they have made for other users in the dashboard page as well. User is able to delete the reviews they have left for others in the page.
-- User can also edit their profile settings, e.g. name, email, address, etc.
-- User can logout of the site by clicking on the 'logout' button at the sidebar menu.
+Too many reusable goods are disposed of to landfill because there exist few efficient systems for the redistribution of goods from those disposing of them to those who might make use of them. The average Australian generates approximately 2,000 kilograms of waste every year; one third of which is food waste. This is a problem that impacts all of us as we live in a world of limited resources too many of which we consume and discard before they are fully utilised. We are taught to reduce, reuse, and recycle, but when it comes to reusing the current facilities we have at our disposal are inadequate.
+
+We can put used items out for hard rubbish collection but not all goods are accepted and there are no guidelines for what is done with them so they often end up in landfill. We can donate used items to charity shops but there is no easy way to browse these items without going to the physical store. We can give the items away on listing sites such as Gumtree but these are generally for-profit companies where free listing get lost in a sea of products for sale. On top of these limitations none of these approaches facilitate the redistribution of perishable goods such as food or building materials.
+
+Most consumers care about preserving the environment but are too often forced to dispense with still useful goods simple because they lack an avenue for getting these goods to other people who can further utilise them.
 
 
-# Views, Routes, Controllers & Models
+##### The Solution
 
-## Maps, Listings, Profile
+reUser is a platform intended to connect givers with reusers. It is a map based listing platform (based on the Google Maps API) which allows givers to advertise goods they wish to give away instead of discarding. Goods can be listed in a variety of categories including traditional ones (e.g. electronics and furniture) and ones often neglected by other facilities such as groceries and building materials.
 
-#### Views
-
-- default.pug
-- nav.pug
-- map.pug
-- view-listing.pug
-- profile.pug
-
-#### Routes
-
-*For API server:*
-- GET specific user: /user/id/:id
-- GET specific listing: /listing/id/:id
-- GET all listings: /listing
-- GET all listings made by specific user: /listing/userId/:userId
-- GET all reviews of specific user: /review/userId/:userId
-
-*For front-end server:*
-- GET map page: /map
-- GET a specific profile page, requires userId param: /profile?id=:userId
-- GET a specific listing page, requires listingId param: /view-listing?id=:listingId
-
-#### Controllers
-- user-controller.js
-- listing-controller.js
-- review-controller.js
-
-#### Models
-
-- user
-- listing
-- review
-
-## User Accounts
-
-#### Views
-
-- default.pug
-- nav.pug
-- sign-up.pug
-- login.pug
-- dashboard.pug
-- dash-listings.pug
-- dash-reviews.pug
-- dash-create-listing.pug
-- dash-edit-profile.pug
-
-#### Routes
-
-*For API server:*
-- GET user by email: /user/email/:email
-- GET user by id: /user/id/:id
-- POST a new user: /user
-- GET specific listing: /listing/id/:id
-- GET all listings made by specific user: /listing/userId/:userId
-- GET all reviews of specific user: /review/userId/:userId
-- DELETE review by id: /review/id/:id
-- DELETE listing by id: /listing/id/:id
-
-*For front-end server:*
-- GET login page: /login
-- POST login page to sign-in: /login
-- GET sign-up page: /sign-up
-- POST sign-up page to register a new user: /sign-up
-- GET to logout: /logout
-- GET to my-listings on dashboard page: /my-listings
-- GET to my-review on dashboard page: /my-reviews
-- GET to create-listings on dashboard page: /create-listing
-- GET to profile settings on dashboard page: /edit-profile
-
-#### Controllers
-
-- user-controller.js
-- listing-controller.js
-- review-controller.js
-
-#### Models
-
-- user
-- listing
-- review
-
+The ultimate goal of reUser is to maximise the lifespan and utility of goods neglected by other facilities by getting them to people who can make use of them thereby reducing the environmental impact of excess consumption.
