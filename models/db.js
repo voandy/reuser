@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const dbURI = "mongodb+srv://andy:aExWCboBTwKTm1Pf@reuser-2aqqs.mongodb.net/";
+const dbURI = process.env.MONGODBURI;
 
 var options = {
   useNewUrlParser: true,

@@ -1,7 +1,5 @@
 # reuser
 
-![reuser logo](public/images/others/reuser-logo-green-small.png)
-
 ### Creators
 
 - [Andy Vo](https://github.com/voandy)
@@ -16,6 +14,8 @@ reuser is a website developed by Andy, Nick, Shaun and Christian as the major as
 [![reuser video](readme-img/video.jpg)](https://www.youtube.com/watch?v=sOCh-H1qT74)
 
 ### The Website
+
+Live Prototype: http://www.reuser.xyz/
 
 ##### Cross-platform
 The website is designed to work on a variety of platforms including modern desktop and mobile devices.

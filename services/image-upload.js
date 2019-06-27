@@ -3,10 +3,8 @@ const multerS3 = require('multer-s3');
 const aws = require('aws-sdk');
 
 aws.config.update({
-  // Should set this as an Env Variable, e.g: process.env.SECRET_ACCESS_KEY
-  secretAccessKey: "Iq14XPxKhsKMPX/wLMZdnzbSBwUhZOCx7bg1dcvR",
-  // Should set this as an Env Variable, e.g: process.env.ACCESS_KEY_ID
-  accessKeyId: "AKIAQP4YHMKTX33ZJ2ZT",
+  secretAccessKey: process.env.AWSACCESSKEY,
+  accessKeyId: process.env.AWSKEYID,
   // Region of the bucket
   region: 'us-east-1'
 });
